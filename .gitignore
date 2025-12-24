@@ -1,0 +1,24 @@
+# Node
+node_modules/
+
+# Env
+.env
+*.env
+
+# Dist / build outputs
+dist/
+build/
+
+# Jest / Coverage
+coverage/
+.jest/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# IDE
+.vscode/
