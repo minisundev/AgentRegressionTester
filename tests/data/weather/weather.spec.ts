@@ -10,7 +10,7 @@ import {
   createWeatherTestClient,
   buildWeatherRequestBody
 } from '../../client/weatherClient';
-import { WeatherResultRow, WeatherTestCase } from '../../types/weather';
+import { AgentResponse, WeatherResultRow, WeatherTestCase } from '../../types/weather';
 import Table from 'cli-table3';
 import { TC1, UAT3_1, UAT3_1_50, UAT3_2, UAT3_3, UAT3_4, UAT3_5, UAT3_51_100, UAT3_6 } from '../../data/uat_testcase';
 
