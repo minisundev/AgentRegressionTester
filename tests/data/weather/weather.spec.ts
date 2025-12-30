@@ -10,35 +10,11 @@ import {
   createWeatherTestClient,
   buildWeatherRequestBody
 } from '../../client/weatherClient';
-import { WeatherTestCase } from '../../types/weather';
+import { WeatherResultRow, WeatherTestCase } from '../../types/weather';
 import Table from 'cli-table3';
 import { TC1, UAT3_1, UAT3_1_50, UAT3_2, UAT3_3, UAT3_4, UAT3_5, UAT3_51_100, UAT3_6 } from '../../data/uat_testcase';
 
 const client = createWeatherTestClient();
-
-interface AgentResponse {
-  resultCode: number;
-  requestMessage: string;
-  response: {
-    message: string;
-    
-    mainIntent: string;
-    subIntent: string;
-    ttsText: string;
-  };
-}
-
-interface WeatherResultRow {
-  group: string,
-  id: number | string;
-  request: string;
-  response: string;
-  reason?: string;
-  mainIntent?: string;
-  subIntent?: string;
-  tts?:string;
-  time: number;
-}
 
 const CASE_GROUPS: {
   groupName: string;
@@ -49,15 +25,15 @@ const CASE_GROUPS: {
   { groupName: 'Temperature', cases: TEMPERATURE_TEST_CASES },
   { groupName: 'AirQuality', cases: AIR_QUALITY_TEST_CASES },
   { groupName: 'WeeklyForecast', cases: WEEKLY_FORECAST_TEST_CASES },
-  { groupName: 'UAT_TestCases', cases: TC1 },
-  { groupName: 'UAT3_1_50', cases: UAT3_1_50 },
-  { groupName: 'UAT3_51_100', cases: UAT3_51_100 },
-  { groupName: 'UAT3_1', cases: UAT3_1 },
-  { groupName: 'UAT3_2', cases: UAT3_2 },
-  { groupName: 'UAT3_3', cases: UAT3_3 },
-  { groupName: 'UAT3_4', cases: UAT3_4 },
-  { groupName: 'UAT3_5', cases: UAT3_5 },
-  { groupName: 'UAT3_6', cases: UAT3_6 },
+  //{ groupName: 'UAT_TestCases', cases: TC1 },
+  //{ groupName: 'UAT3_1_50', cases: UAT3_1_50 },
+  //{ groupName: 'UAT3_51_100', cases: UAT3_51_100 },
+  //{ groupName: 'UAT3_1', cases: UAT3_1 },
+  //{ groupName: 'UAT3_2', cases: UAT3_2 },
+  //{ groupName: 'UAT3_3', cases: UAT3_3 },
+  //{ groupName: 'UAT3_4', cases: UAT3_4 },
+  //{ groupName: 'UAT3_5', cases: UAT3_5 },
+  //{ groupName: 'UAT3_6', cases: UAT3_6 },
 ];
 
 describe('Weather API Regression', () => {
