@@ -12,7 +12,6 @@ export interface AgentResponse {
   requestMessage: string;
   response: {
     message: string;
-    
     mainIntent: string;
     subIntent: string;
     ttsText: string;
@@ -27,7 +26,7 @@ export interface ResultRow {
   reason?: string;
   mainIntent?: string;
   subIntent?: string;
-  tts?:string;
+  judge?:string;
   time: number;
 }
 
@@ -39,8 +38,7 @@ export const SheetColumns = {
   E: "request",
   F: "response",
   G: "translation",
-  H: "gemini",
-  I: "tts",
+  H: "judge",
   J: "time",
   K: "reason",
   L: "testedAt",
@@ -57,9 +55,11 @@ export interface SheetRow {
   request: string;
   response: string;
   translation: string; //=GOOGLETRANSLATE()
-  gemini: string; //=GEMINI()
-  tts: string;
+  judge: string;//=GEMINI()
   time: number;
   reason: string;
   testedAt: string;
 }
+
+export type ReportTarget = 'terminal' | 'sheet';
+export type JudgeMode = 'none' | 'sheet' | 'local';

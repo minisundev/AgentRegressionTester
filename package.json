@@ -5,8 +5,11 @@
   "main": "dist/app.js",
   "scripts": {
     "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
-    "test:local": "REPORT_TO=terminal npm run test:all",
-    "test:sheet": "REPORT_TO=sheet npm run test:all"
+    "test:sheet:none": "REPORT_TO=sheet JUDGE_MODE=none npm run test:all",
+    "test:sheet:internalAi": "REPORT_TO=sheet JUDGE_MODE=sheet npm run test:all",
+    "test:sheet:externalAi": "REPORT_TO=sheet JUDGE_MODE=local npm run test:all",
+    "test:local": "REPORT_TO=terminal JUDGE_MODE=none npm run test:all",
+    "test:local:externalAi": "REPORT_TO=terminal JUDGE_MODE=local npm run test:all"
   },
   "author": "Minseon Kim",
   "license": "minisundev",

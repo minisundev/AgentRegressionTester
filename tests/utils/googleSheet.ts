@@ -1,6 +1,7 @@
 import { google } from "googleapis";
-import { ResultRow, SheetColumns, SheetRow } from "../types/type";
+import { JudgeMode, ResultRow, SheetColumns, SheetRow } from "../types/type";
 import { getSheetPrompt } from "./promptLoader";
+import { judgeResponse } from "./ai";
 
 export async function appendRowsToSheet(rows: ResultRow[]) {
     if (rows.length === 0) return;
@@ -23,31 +24,7 @@ export async function appendRowsToSheet(rows: ResultRow[]) {
     });
 
     const startRow = (response.data.values?.length || 0) + 1;
-
-    const values: any[][] = rows.map((r, index) => {
-        const req = r.request ?? '';
-
-        const cleanResponse = r.response?.replace(/\n/g, ' ').trim() ?? '';
-        const currentRow = startRow + index;
-        const prompt = getSheetPrompt('prompt.sheet.yaml');
-
-        const rowData: SheetRow = {
-            group: r.group ?? '',
-            id: r.id ?? '',
-            mainIntent: r.mainIntent ?? '',
-            subIntent: r.subIntent ?? '',
-            request: r.request ?? '',
-            response: cleanResponse,
-            translation: `=GOOGLETRANSLATE(F${currentRow}, "auto", "en")`,
-            gemini: `=GEMINI("${prompt}", E${currentRow}:F${currentRow})`,
-            tts: r.tts ?? '',
-            time: r.time ?? 0,
-            reason: r.reason ?? '',
-            testedAt: new Date().toISOString()
-        };
-
-        return Object.keys(SheetColumns).map((key) => rowData[SheetColumns[key as keyof typeof SheetColumns] as keyof SheetRow]);
-  });
+    const values = await processResponseForSheet(rows, startRow);
 
   try {
     await sheets.spreadsheets.values.append({
@@ -60,4 +37,45 @@ export async function appendRowsToSheet(rows: ResultRow[]) {
   } catch (error) {
     console.error('[FAIL] failed to append rows to Google Sheet:', error);
   }
+}
+
+function getPrompt() : string{
+    const judgeMode: JudgeMode = (process.env.JUDGE_MODE as JudgeMode) || 'none';
+    if(judgeMode === 'sheet'){ 
+        return getSheetPrompt('prompt.sheet.yaml')
+    }
+    if(judgeMode === 'local'){
+        return getSheetPrompt('prompt.ai.yaml');
+    }
+    return '';
+}
+
+async function processResponseForSheet(rows: ResultRow[], startRow: number): Promise<any[][]> {
+    const prompt = getPrompt();
+
+    // Promise<any[]>[]
+    const promises = rows.map(async (r, index) => {
+        const cleanResponse = r.response?.replace(/\n/g, ' ').trim() ?? '';
+        const currentRow = startRow + index;
+
+        const rowData: SheetRow = {
+            group: r.group ?? '',
+            id: r.id ?? '',
+            mainIntent: r.mainIntent ?? '',
+            subIntent: r.subIntent ?? '',
+            request: r.request ?? '',
+            response: cleanResponse,
+            translation: `=GOOGLETRANSLATE(E${currentRow}, "auto", "en")`,
+            judge: await judgeResponse(prompt, r.request ?? '', cleanResponse, currentRow),
+            time: r.time ?? 0,
+            reason: r.reason ?? '',
+            testedAt: new Date().toISOString()
+        };
+
+        return Object.keys(SheetColumns).map((key) => rowData[SheetColumns[key as keyof typeof SheetColumns] as keyof SheetRow]);
+    });
+
+    // 모든 Promise가 해결될 때까지 기다림
+    const values = await Promise.all(promises);
+    return values;
 }

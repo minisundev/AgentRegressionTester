@@ -43,7 +43,6 @@ export function handleSuccess(
     response: data.response.message,
     mainIntent: data.response.mainIntent,
     subIntent: data.response.subIntent,
-    tts: data.response.ttsText,
     time: time,
   });
 }

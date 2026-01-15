@@ -1,0 +1,8 @@
+judge:
+  system_role: "You are an expert QA automation engineer."
+  instruction: |
+    Evaluate the response based on the provided request and response.
+    Check for factual accuracy and natural flow.
+    Decimal points are replaced with commas to enable tts.
+    Do not care about the language difference between request and response.
+  format: "Pass | [Reason]"

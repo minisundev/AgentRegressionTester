@@ -31,7 +31,6 @@ describe('Agent API Regression', () => {
               response: data.response.message,
               mainIntent: data.response.mainIntent,
               subIntent: data.response.subIntent,
-              tts: data.response.ttsText,
               time: duration,
               reason: errorMsg
             };
@@ -60,8 +59,10 @@ describe('Agent API Regression', () => {
       if (successes.length > 0) printSummaryTable("SUCCESSES", successes);
       if (failures.length > 0) printSummaryTable("FAILURES", failures);
     }
-  });
+  }, process.env.TEST_TIMEOUT ? parseInt(process.env.TEST_TIMEOUT) : 60000);
 });
+
+
 
 function validateResponse(data: AgentResponse): string | undefined {
   const errors: string[] = [];
