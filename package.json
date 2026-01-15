@@ -4,14 +4,17 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "test:weather": "jest tests/data/weather --config jest.config.ts"
+  "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner/weather --config jest.config.ts",
+  "test:local": "REPORT_TO=terminal npm run test:all",
+  "test:sheet": "REPORT_TO=sheet npm run test:all"
   },
   "author": "Minseon Kim",
-  "license": "MK",
+  "license": "minisundev",
   "dependencies": {
     "axios": "^1.7.0",
     "cli-table3": "^0.6.5",
-    "dotenv": "^16.4.0"
+    "dotenv": "^16.4.0",
+    "googleapis": "^170.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
