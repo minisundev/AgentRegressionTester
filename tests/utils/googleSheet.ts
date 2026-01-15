@@ -1,5 +1,6 @@
 import { google } from "googleapis";
 import { ResultRow, SheetColumns, SheetRow } from "../types/type";
+import { getSheetPrompt } from "./promptLoader";
 
 export async function appendRowsToSheet(rows: ResultRow[]) {
     if (rows.length === 0) return;
@@ -28,7 +29,7 @@ export async function appendRowsToSheet(rows: ResultRow[]) {
 
         const cleanResponse = r.response?.replace(/\n/g, ' ').trim() ?? '';
         const currentRow = startRow + index;
-        const prompt = "Compare Request(E) and Response(F). Judge accuracy. Output: 'Pass | [Reason]' or 'Fail | [Reason]'. No formulas."
+        const prompt = getSheetPrompt('prompt.sheet.yaml');
 
         const rowData: SheetRow = {
             group: r.group ?? '',
