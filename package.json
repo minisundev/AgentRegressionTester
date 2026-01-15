@@ -4,13 +4,14 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-  "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
-  "test:local": "REPORT_TO=terminal npm run test:all",
-  "test:sheet": "REPORT_TO=sheet npm run test:all"
+    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
+    "test:local": "REPORT_TO=terminal npm run test:all",
+    "test:sheet": "REPORT_TO=sheet npm run test:all"
   },
   "author": "Minseon Kim",
   "license": "minisundev",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.7.0",
     "cli-table3": "^0.6.5",
     "dotenv": "^16.4.0",
