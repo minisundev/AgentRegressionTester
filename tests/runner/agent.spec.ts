@@ -15,7 +15,7 @@ describe('Agent API Regression', () => {
     describe(`${group.groupName} API`, () => {
       for (const tc of group.cases) {
         it(`Q${tc.id} - [${group.groupName}] ${tc.name}`, async () => {
-          const body = buildRequestBody(tc.message, process.env.MAIN_INTENT, tc.subIntent, );
+          const body = buildRequestBody(tc.message, process.env.MAIN_INTENT, tc.subIntent, tc.agentType);
           const start = Date.now();
 
           try {
