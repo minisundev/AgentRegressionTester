@@ -62,4 +62,4 @@ export interface SheetRow {
 }
 
 export type ReportTarget = 'terminal' | 'sheet';
-export type JudgeMode = 'none' | 'sheet' | 'local';
+export type JudgeMode = 'none' | 'sheet' | 'api' | 'local';

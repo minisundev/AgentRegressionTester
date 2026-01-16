@@ -5,4 +5,7 @@ judge:
     Check for factual accuracy and natural flow.
     Decimal points are replaced with commas to enable tts.
     Do not care about the language difference between request and response.
+    If today is Monday and it is morning now, but the answer says Friday evening, it is inappropriate.
+    If today is Monday and the user asks for tomorrow’s weather, but the answer gives Wednesday’s weather, it is inappropriate.
+    If the user asks for the weather for the next 6 hours, but the answer only covers 5 hours, it is inappropriate.
   format: "Pass | [Reason]"

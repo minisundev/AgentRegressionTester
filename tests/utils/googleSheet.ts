@@ -44,7 +44,7 @@ function getPrompt() : string{
     if(judgeMode === 'sheet'){ 
         return getSheetPrompt('prompt.sheet.yaml')
     }
-    if(judgeMode === 'local'){
+    if(judgeMode === 'api' || judgeMode === 'local'){
         return getSheetPrompt('prompt.ai.yaml');
     }
     return '';
