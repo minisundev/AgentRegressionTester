@@ -37,8 +37,9 @@ export const SheetColumns = {
   D: "subIntent",
   E: "request",
   F: "response",
-  G: "translation",
-  H: "judge",
+  G: "reqTranslation",
+  H: "resTranslation",
+  I: "judge",
   J: "time",
   K: "reason",
   L: "testedAt",
@@ -54,7 +55,8 @@ export interface SheetRow {
   subIntent: string;
   request: string;
   response: string;
-  translation: string; //=GOOGLETRANSLATE()
+  reqTranslation: string; //=GOOGLETRANSLATE()
+  resTranslation: string; //=GOOGLETRANSLATE()
   judge: string;//=GEMINI()
   time: number;
   reason: string;
