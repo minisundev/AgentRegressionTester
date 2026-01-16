@@ -51,8 +51,8 @@ async function judgeResponseByLocalAI(prompt: string, request: string, response:
             prompt: content,
             stream: false,
             options: {
-                temperature: process.env.LOCAL_AI_TEMPERATURE,
-                num_predict: process.env.LOCAL_AI_MAX_TOKENS
+                temperature: Number(process.env.LOCAL_AI_TEMPERATURE) || 0.1,
+                num_predict: Number(process.env.LOCAL_AI_MAX_TOKEN) || 150
             }
         });
         return res.data.response.trim();
