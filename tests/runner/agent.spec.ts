@@ -11,10 +11,17 @@ describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
   const failures: ResultRow[] = [];
 
+  const delay = Number(process.env.SERVICE_DELAY_SEC) || 0;
+
   for (const group of CASE_GROUPS) {
     describe(`${group.groupName} API`, () => {
       for (const tc of group.cases) {
         it(`Q${tc.id} - [${group.groupName}] ${tc.name}`, async () => {
+          //서버 과부하 방지
+          if (delay > 0) {
+            await sleep(delay);
+          }
+
           const body = buildRequestBody(tc.message, process.env.MAIN_INTENT, tc.subIntent, tc.agentType);
           const start = Date.now();
 
@@ -62,7 +69,7 @@ describe('Agent API Regression', () => {
   }, process.env.TEST_TIMEOUT ? parseInt(process.env.TEST_TIMEOUT) : 60000);
 });
 
-
+const sleep = (sec: number) => new Promise(resolve => setTimeout(resolve, sec * 1000));
 
 function validateResponse(data: AgentResponse): string | undefined {
   const errors: string[] = [];
