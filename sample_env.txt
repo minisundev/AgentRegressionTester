@@ -1,0 +1,32 @@
+CONTROL_BASE_URL=""
+X_API_KEY=""
+
+AI_API_KEY=""
+AI_MODEL="gemini-3-flash-preview"
+
+GOOGLE_SERVICE_ACCOUNT_EMAIL=""
+GOOGLE_SHEET_ID=""
+GOOGLE_PRIVATE_KEY=""
+
+ACCOUNT_ID=""
+AGENT_VERSION=""
+DEVICE_ID=""
+OS_APP_TYPE=""
+OS_APP_VERSION=""
+ACCEPT_LANGUAGE=""
+TRACE_ID=""
+LANGUAGE=""
+
+TEST_TIMEOUT="120000"
+
+# [Service Delay]
+SERVICE_DELAY_SEC=1
+# [Judge Delay]
+# for Gemini API
+DELAY_API=12
+# for local Ollama
+DELAY_LOCAL=0
+
+LOCAL_AI_MODEL='gemma2:27b'
+LOCAL_AI_TEMPERATURE=0.1 # 일관된 판정을 위해 낮게 설정
+LOCAL_AI_MAX_TOKEN=200 # 답변이 너무 길어지지 않게 제한
