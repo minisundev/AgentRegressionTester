@@ -7,10 +7,10 @@
     "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
     "test:sheet:none": "REPORT_TO=sheet JUDGE_MODE=none npm run test:all",
     "test:sheet:internal": "REPORT_TO=sheet JUDGE_MODE=sheet npm run test:all",
-    "test:sheet:api": "REPORT_TO=sheet JUDGE_MODE=api API_DELAY_SEC=12 npm run test:all",
-    "test:sheet:local": "REPORT_TO=sheet JUDGE_MODE=local API_DELAY_SEC=0 npm run test:all",
+    "test:sheet:api": "REPORT_TO=sheet JUDGE_MODE=api npm run test:all",
+    "test:sheet:local": "REPORT_TO=sheet JUDGE_MODE=local npm run test:all",
     "test:local": "REPORT_TO=terminal JUDGE_MODE=none npm run test:all",
-    "test:local:ai": "REPORT_TO=terminal JUDGE_MODE=local API_DELAY_SEC=0 npm run test:all"
+    "test:local:ai": "REPORT_TO=terminal JUDGE_MODE=local npm run test:all"
   },
   "author": "Minseon Kim",
   "license": "minisundev",
