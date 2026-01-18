@@ -4,6 +4,7 @@ import { AgentResponse, ResultRow, TestCase } from '../types/type';
 import { printSummaryTable } from '../utils/log';
 import { appendRowsToSheet } from '../utils/googleSheet';
 import { CASE_GROUPS } from '../data/testcase_groups';
+import { sendSlackReport } from '../utils/slack';
 
 const client = createTestClient();
 
@@ -22,7 +23,7 @@ describe('Agent API Regression', () => {
             await sleep(delay);
           }
 
-          const body = buildRequestBody(tc.message, process.env.MAIN_INTENT, tc.subIntent, tc.agentType);
+          const body = buildRequestBody(tc.message, tc.agentType, tc.mainIntent, tc.subIntent);
           const start = Date.now();
 
           try {
@@ -66,7 +67,12 @@ describe('Agent API Regression', () => {
       if (successes.length > 0) printSummaryTable("SUCCESSES", successes);
       if (failures.length > 0) printSummaryTable("FAILURES", failures);
     }
-  }, process.env.TEST_TIMEOUT ? parseInt(process.env.TEST_TIMEOUT) : 60000);
+
+    if (process.env.SLACK_WEBHOOK_URL) {
+      console.log('Sending report to Slack...');
+      await sendSlackReport(successes, failures);
+    }
+  }, parseInt(process.env.TEST_TIMEOUT_SEC ?? '3000', 10) * 1000);
 });
 
 const sleep = (sec: number) => new Promise(resolve => setTimeout(resolve, sec * 1000));
