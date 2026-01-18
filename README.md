@@ -85,17 +85,12 @@ SLACK_CHANNEL=""
 - Google Sheets API Key
     
     https://console.cloud.google.com/welcome/new
-    
-    ![image.png](README/image.png)
-    
-    ![image.png](README/image%201.png)
-    
+<img width="2698" height="1116" alt="image" src="https://github.com/user-attachments/assets/40ec9a11-de44-4e6b-9f2a-e07779a9a558" />
+    <img width="1266" height="818" alt="image" src="https://github.com/user-attachments/assets/c9776b1b-2934-4e3b-9c9e-3a2d675a13db" />
     Enable Google Sheets API
     
-    ![image.png](README/image%202.png)
-    
-    ![image.png](README/image%203.png)
-    
+    <img width="1102" height="398" alt="image" src="https://github.com/user-attachments/assets/18896a9d-9318-4f98-8981-452fd920fe38" />
+    <img width="1712" height="828" alt="image" src="https://github.com/user-attachments/assets/c1ec1aec-a23a-4971-b09d-0b700650a736" />
     Credentials 탭 클릭 → Create Credentials → Service Account
     
     Service Accounts→ Keys→ Create private key→ Json
@@ -131,7 +126,8 @@ SLACK_CHANNEL=""
     https://ai.google.dev/gemini-api/docs/models
     여기 가서 모델 고르기
     
-    ![image.png](README/image%204.png)
+<img width="3016" height="1558" alt="image" src="https://github.com/user-attachments/assets/0aa2dfa6-4fc3-4d10-90e6-2342023185f5" />
+
     
     .env에 설정
     
