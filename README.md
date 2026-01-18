@@ -129,7 +129,6 @@ SLACK_CHANNEL=""
 - Gemini
     
     https://ai.google.dev/gemini-api/docs/models
-    
     여기 가서 모델 고르기
     
     ![image.png](README/image%204.png)
@@ -171,6 +170,14 @@ npm test all
     "test:local": "REPORT_TO=terminal JUDGE_MODE=none npm run test:all",
     "test:local:ai": "REPORT_TO=terminal JUDGE_MODE=local npm run test:all"
 ```
+
+### 4. DEMO
+테스트가 완료되면 슬랙에 메시지가 전송됩니다.
+<img width="707" height="494" alt="image" src="https://github.com/user-attachments/assets/3f94935d-fb64-49e5-843f-00b3bb323794" />
+
+나의 구글 시트에 들어가보면 다음과같이 잘 정리된 테스트 케이스들이 있고 나는 Fail인 것만 검토를 하면 됩니다.
+<img width="1210" height="540" alt="image" src="https://github.com/user-attachments/assets/9a4ee244-7cf9-4697-a294-2c3b95c417a9" />
+
 
 ---
 
