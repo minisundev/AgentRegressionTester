@@ -44,7 +44,7 @@ async function judgeResponseByLocalAI(prompt: string, request: string, response:
         const content = `${prompt} [Target to Evaluate] 
             Request: ${request}
             Response: ${response}
-            Now: ${new Date().toISOString().split('T')[0]}
+            Now: ${new Date().toISOString().split('T')[0]} , ${process.env.TODAY} // TODAY=MON,TUE,WED,THU,FRI,SAT,SUN
             `.trim();
         const res = await axios.post('http://localhost:11434/api/generate', {
             model: process.env.LOCAL_AI_MODEL,
