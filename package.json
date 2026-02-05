@@ -9,8 +9,8 @@
     "test:sheet:internal": "REPORT_TO=sheet JUDGE_MODE=sheet npm run test:all",
     "test:sheet:api": "REPORT_TO=sheet JUDGE_MODE=api npm run test:all",
     "test:sheet:local": "REPORT_TO=sheet JUDGE_MODE=local npm run test:all",
-    "test:local": "REPORT_TO=terminal JUDGE_MODE=none npm run test:all",
-    "test:local:ai": "REPORT_TO=terminal JUDGE_MODE=local npm run test:all"
+    "test:terminal": "REPORT_TO=terminal JUDGE_MODE=none npm run test:all",
+    "test:terminal:ai": "REPORT_TO=terminal JUDGE_MODE=local npm run test:all"
   },
   "author": "Minseon Kim",
   "license": "minisundev",
