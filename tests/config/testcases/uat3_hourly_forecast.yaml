@@ -1,0 +1,242 @@
+groupName: Weather
+cases:
+  - id: 42
+    name: "VI - UAT3 #42"
+    message: "Thời tiết trong 1 tiếng tời tại Đà Lạt"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 43
+    name: "VI - UAT3 #43"
+    message: "Thời tiết buổi sáng ở Hà Nội như thế nào"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 44
+    name: "VI - UAT3 #44"
+    message: "Cho tui xem thời tiết buổi chiều Sài Gòn nha"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 45
+    name: "VI - UAT3 #45"
+    message: "Đà Nẵng buổi tối hôm nay mưa không má"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 46
+    name: "VI - UAT3 #46"
+    message: "Thời tiết lúc 1 giờ thế nào"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 47
+    name: "VI - UAT3 #47"
+    message: "Thời tiết đêm nay ở Nha Trang ra sao"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 48
+    name: "VI - UAT3 #48"
+    message: "Dự báo thời tiết từ 6 giờ đến 12 giờ Huế với"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 49
+    name: "VI - UAT3 #49"
+    message: "Hải Phòng tầm 3 giờ chiều thời tiết thế nào"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 50
+    name: "VI - UAT3 #50"
+    message: "Buôn Ma Thuột lúc 8 giờ sáng mưa không"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 51
+    name: "VI - UAT3 #51"
+    message: "Cho biết thời tiết từ 18h đến 21h Lạng Sơn"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 52
+    name: "VI - UAT3 #52"
+    message: "Buổi chiều trời có mưa không"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 53
+    name: "VI - UAT3 #53"
+    message: "Chiều nay thời tiết thế nào"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 54
+    name: "VI - UAT3 #54"
+    message: "Thời tiết sau 6 giờ chiều thế nào nhỉ"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 55
+    name: "VI - UAT3 #55"
+    message: "8 giờ tối trời có mưa không ta"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 56
+    name: "VI - UAT3 #56"
+    message: "Sau 7 giờ sáng Hà Nội có nắng không"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 57
+    name: "VI - UAT3 #57"
+    message: "Thời tiết 10h tối nay"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 58
+    name: "VI - UAT3 #58"
+    message: "Thời tiết đêm nay tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 59
+    name: "VI - UAT3 #59"
+    message: "Thời tiết tối nay"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 60
+    name: "VI - UAT3 #60"
+    message: "Tra thời tiết mỗi tiếng ở Hà Nội buổi chiều nay"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 61
+    name: "VI - UAT3 #61"
+    message: "Xem thời tiết từng khung giờ ở Buôn Ma Thuột tối nay dùm tui"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 62
+    name: "VI - UAT3 #62"
+    message: "Cho tôi xem thời tiết từng tiếng ở Quảng Ninh đêm nay"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 63
+    name: "VI - UAT3 #63"
+    message: "Tối nay liệu rằng có mưa không"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 64
+    name: "VI - UAT3 #64"
+    message: "Xem dự báo từng giờ tại Hải Phòng giúp tôi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 65
+    name: "VI - UAT3 #65"
+    message: "Check hourly forecast in Ho Chi Minh City"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 66
+    name: "VI - UAT3 #66"
+    message: "Cho tôi xem dự báo thời tiết theo giờ của Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 67
+    name: "VI - UAT3 #67"
+    message: "Xem thời tiết từng tiếng ở TPHCM"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 68
+    name: "VI - UAT3 #68"
+    message: "Tôi muốn biết thời tiết mỗi giờ ở Hải Phòng"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 69
+    name: "VI - UAT3 #69"
+    message: "Mình muốn biết thời tiết tính từng giờ của Huế"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 70
+    name: "VI - UAT3 #70"
+    message: "Xem dự báo thời tiết thờ giờ tại Phú Quốc"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 71
+    name: "VI - UAT3 #71"
+    message: "Thời tiết giờ này ở Hà Nội như thế nào từng tiếng một vậy"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 72
+    name: "VI - UAT3 #72"
+    message: "Cho tôi xem thời tiết theo giờ ở Huế"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 73
+    name: "VI - UAT3 #73"
+    message: "Xem dự báo từng giờ tại Hải Phòng giúp tôi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 74
+    name: "VI - UAT3 #74"
+    message: "Tra thời tiết mỗi tiếng tại Đà Lạt"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 75
+    name: "VI - UAT3 #75"
+    message: "Check hourly forecast in Ho Chi Minh City"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 76
+    name: "VI - UAT3 #76"
+    message: "Cho tôi xem dự báo thời tiết theo giờ của Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 77
+    name: "VI - UAT3 #77"
+    message: "Xem thời tiết từng tiếng ở TPHCM"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 78
+    name: "VI - UAT3 #78"
+    message: "Tôi muốn biết thời tiết mỗi giờ ở Hải Phòng"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 79
+    name: "VI - UAT3 #79"
+    message: "Hiển thị thời tiết theo giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 80
+    name: "VI - UAT3 #80"
+    message: "Xem thời tiết từng khung giờ ở Cần Thơ"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 81
+    name: "VI - UAT3 #81"
+    message: "Dự báo thời tiết theo giờ tại Nha Trang"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

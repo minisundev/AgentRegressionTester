@@ -1,0 +1,242 @@
+groupName: Weather
+cases:
+  - id: 122
+    name: "VI - UAT3 #122"
+    message: "Hôm nay ở Hà Nội bao nhiêu độ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 123
+    name: "VI - UAT3 #123"
+    message: "Nhiệt độ ở Cần Thơ là mấy độ C"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 124
+    name: "VI - UAT3 #124"
+    message: "Trời bây giờ nóng mấy độ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 125
+    name: "VI - UAT3 #125"
+    message: "Nhiệt độ hiện tại bao nhiêu rứa"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 126
+    name: "VI - UAT3 #126"
+    message: "Nhiệt độ ở Úc bây giờ là bao nhiêu"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 127
+    name: "VI - UAT3 #127"
+    message: "Nhiệt độ ở Đà Nẵng bây giờ là bao nhiêu"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 128
+    name: "VI - UAT3 #128"
+    message: "Bao nhiêu độ ở Nha Trang"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 129
+    name: "VI - UAT3 #129"
+    message: "Trời hôm nay nóng không"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 130
+    name: "VI - UAT3 #130"
+    message: "Nhiệt độ hôm nay sao"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 131
+    name: "VI - UAT3 #131"
+    message: "Nhiệt độ cao nhất hôm nay"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 132
+    name: "VI - UAT3 #132"
+    message: "Nhiệt độ thấp nhất hôm nay"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 133
+    name: "VI - UAT3 #133"
+    message: "Nhiệt độ hiện giờ bao nhiêu"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 134
+    name: "VI - UAT3 #134"
+    message: "Ngoài trời bao nhiêu độ ta"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 135
+    name: "VI - UAT3 #135"
+    message: "Hôm nay trời nóng hay mát"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 136
+    name: "VI - UAT3 #136"
+    message: "hôm nay lạnh nhất tầm bao nhiêu độ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 137
+    name: "VI - UAT3 #137"
+    message: "Nhiệt độ hiện tại thế nào"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 138
+    name: "VI - UAT3 #138"
+    message: "Ngày mai nóng nhất là tầm bao nhiêu độ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 139
+    name: "VI - UAT3 #139"
+    message: "Nhiệt độ hôm nay mấy độ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 140
+    name: "VI - UAT3 #140"
+    message: "Nhiệt độ cao nhất hôm nay bao nhiêu"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 141
+    name: "VI - UAT3 #141"
+    message: "Max temperature hôm nay mấy độ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 142
+    name: "VI - UAT3 #142"
+    message: "Nhiệt độ tối nay tầm bao nhiêu"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 143
+    name: "VI - UAT3 #143"
+    message: "Max temp ngày mai tầm bao nhiêu"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 144
+    name: "VI - UAT3 #144"
+    message: "Nhiệt độ tại Thành phố Hồ Chí Minh"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 145
+    name: "VI - UAT3 #145"
+    message: "Nhiệt độ tại Seoul"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 146
+    name: "VI - UAT3 #146"
+    message: "Nhiệt độ hiện tại"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 147
+    name: "VI - UAT3 #147"
+    message: "Nhiệt độ bây giờ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 148
+    name: "VI - UAT3 #148"
+    message: "Xem nhiệt độ ngoài trời ở TP Hồ Chí Minh bây giờ coi"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 149
+    name: "VI - UAT3 #149"
+    message: "Cho biết nhiệt độ thấp nhất Đà Lạt đêm nay"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 150
+    name: "VI - UAT3 #150"
+    message: "Bắc Giang hôm nay có nóng không mấy độ má"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 151
+    name: "VI - UAT3 #151"
+    message: "Cho tui biết nhiệt độ sáng nay Lạng Sơn với"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 152
+    name: "VI - UAT3 #152"
+    message: "Nhiệt độ tối nay Tam Kỳ dự báo bao nhiêu má"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 153
+    name: "VI - UAT3 #153"
+    message: "Current temperature in Sydney please"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 154
+    name: "VI - UAT3 #154"
+    message: "Check temperature in Seoul for me"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 155
+    name: "VI - UAT3 #155"
+    message: "Nhiệt độ coi"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 156
+    name: "VI - UAT3 #156"
+    message: "Nhiệt độ Hà Nội hôm nay bao nhiêu độ"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 157
+    name: "VI - UAT3 #157"
+    message: "Cho tui biết nhiệt độ Sài Gòn bây giờ nha"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 158
+    name: "VI - UAT3 #158"
+    message: "Đà Nẵng bây giờ mấy độ vậy má"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 159
+    name: "VI - UAT3 #159"
+    message: "Nhiệt độ hiện tại ở Nha Trang là bao nhiêu"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 160
+    name: "VI - UAT3 #160"
+    message: "Cho xem nhiệt độ Cần Thơ lúc này nè"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 161
+    name: "VI - UAT3 #161"
+    message: "Vũng Tàu bây giờ nóng mấy độ má"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent

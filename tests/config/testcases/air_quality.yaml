@@ -1,0 +1,44 @@
+groupName: Weather
+cases:
+  - id: 1
+    name: "EN - current air quality"
+    message: "currently Hanoi air quality"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "EN - today air quality"
+    message: "today Hanoi air quality"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 3
+    name: "VI - current air quality"
+    message: "Tình trạng chất lượng không khí ở Hà Nội bây giờ như thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 4
+    name: "EN - 2 hours later"
+    message: "2 hours later Hanoi air quality"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 5
+    name: "EN - 4 hours from 2 hours later"
+    message: "Hanoi air quality for 4 hours from 2 hours later"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 6
+    name: "EN - next 6 hours"
+    message: "Is the air clear for next 6 hours"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 7
+    name: "EN - tomorrow air quality"
+    message: "tomorrow Hanoi air quality"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent

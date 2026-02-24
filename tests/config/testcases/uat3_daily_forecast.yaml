@@ -1,0 +1,272 @@
+groupName: Weather
+cases:
+  - id: 1
+    name: "VI - UAT3 #1"
+    message: "Open the assistant and say as below."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "VI - UAT3 #2"
+    message: "Thời tiết ngày hôm nay ở Bạc Liêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 3
+    name: "VI - UAT3 #3"
+    message: "Bây giờ Đà Lạt thời tiết thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 4
+    name: "VI - UAT3 #4"
+    message: "Hôm nay ở Cà Mau thời tiết thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 5
+    name: "VI - UAT3 #5"
+    message: "Tình hình thời tiết hiện tại"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 6
+    name: "VI - UAT3 #6"
+    message: "Cập nhật thời tiết hiện tại"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 7
+    name: "VI - UAT3 #7"
+    message: "Thời tiết hiện tại sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 8
+    name: "VI - UAT3 #8"
+    message: "Thời tiết hiện tại coi"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 9
+    name: "VI - UAT3 #9"
+    message: "Thời tiết hiện tại coi sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 10
+    name: "VI - UAT3 #10"
+    message: "Thời tiết hôm nay thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 11
+    name: "VI - UAT3 #11"
+    message: "Hôm nay có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 12
+    name: "VI - UAT3 #12"
+    message: "Trời nắng hay râm"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 13
+    name: "VI - UAT3 #13"
+    message: "Hôm nay ở Quảng Ngãi trời ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 14
+    name: "VI - UAT3 #14"
+    message: "Dự báo thời tiết hôm nay tại Nha Trang như thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 15
+    name: "VI - UAT3 #15"
+    message: "Trời có nhiều mây không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 16
+    name: "VI - UAT3 #16"
+    message: "Có mưa lớn không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 17
+    name: "VI - UAT3 #17"
+    message: "Hôm nay có dông không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 18
+    name: "VI - UAT3 #18"
+    message: "Hôm nay trời có đẹp không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 19
+    name: "VI - UAT3 #19"
+    message: "Bữa ni thời tiết ra mô"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 20
+    name: "VI - UAT3 #20"
+    message: "Hôm nay ở Bình Thuận nắng hay mưa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 21
+    name: "VI - UAT3 #21"
+    message: "Ngoài trời có âm u không rứa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 22
+    name: "VI - UAT3 #22"
+    message: "Thời tiết bữa ni răng rồi"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 23
+    name: "VI - UAT3 #23"
+    message: "Dự báo hôm nay ở Pleiku thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 24
+    name: "VI - UAT3 #24"
+    message: "Cập nhật tình hình thời tiết"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 25
+    name: "VI - UAT3 #25"
+    message: "Thời tiết hiện tại"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 26
+    name: "VI - UAT3 #26"
+    message: "Thời tiết hôm nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 27
+    name: "VI - UAT3 #27"
+    message: "Thời tiết bây giờ"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 28
+    name: "VI - UAT3 #28"
+    message: "Thời tiết Hà Nội"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 29
+    name: "VI - UAT3 #29"
+    message: "Thời tiết ở Sơn La ngày hôm nay thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 30
+    name: "VI - UAT3 #30"
+    message: "Cho tôi xem dự báo thời tiết hôm nay ở Sài Gòn"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 31
+    name: "VI - UAT3 #31"
+    message: "Thời tiết ngày ở Bắc Ninh ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 32
+    name: "VI - UAT3 #32"
+    message: "Hồ Chí Minh có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 33
+    name: "VI - UAT3 #33"
+    message: "Thời tiết Hồ Chí Minh hiện tại"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 34
+    name: "VI - UAT3 #34"
+    message: "Thời tiết sao rồi"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 35
+    name: "VI - UAT3 #35"
+    message: "Dự báo thời tiết Hà Nội"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 36
+    name: "VI - UAT3 #36"
+    message: "Ngoài trời có nắng không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 37
+    name: "VI - UAT3 #37"
+    message: "Hải Dương thời tiết như thế nào ngày hôm nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 38
+    name: "VI - UAT3 #38"
+    message: "Tôi cần xem thời tiết Nam Định ngày hôm nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 39
+    name: "VI - UAT3 #39"
+    message: "Check weather tại Cần Thơ cho tôi"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 40
+    name: "VI - UAT3 #40"
+    message: "Weather today in Saigon please"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 41
+    name: "VI - UAT3 #41"
+    message: "Cho tôi biết thời tiết hôm nay tại Đồng Tháp"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 102
+    name: "VI - UAT3 #102"
+    message: "Thời tiết ngày mai ra sao bro"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 103
+    name: "VI - UAT3 #103"
+    message: "Weather ngày mai thế nào nhỉ"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 106
+    name: "VI - UAT3 #106"
+    message: "Ngày mai Đà Nẵng có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 120
+    name: "VI - UAT3 #120"
+    message: "Ngày mai trời nắng hay mưa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

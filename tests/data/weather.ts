@@ -1,3 +1,11 @@
+/**
+ * @deprecated This file is deprecated and will be removed in a future version.
+ * Test cases have been migrated to YAML files in tests/config/testcases/.
+ * Use the testcaseLoader utility to load test cases from YAML instead.
+ *
+ * @see tests/utils/testcaseLoader.ts
+ * @see tests/config/testcases/
+ */
 import { TestCase } from '../types/type';
 
 export const SAMPLE_TEST_CASES: TestCase[] = [

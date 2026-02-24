@@ -1,0 +1,74 @@
+groupName: Weather
+cases:
+  - id: 1
+    name: "EN - hourly"
+    message: "Tell me the hourly weather in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "EN - from 3 hours later for 4 hours"
+    message: "Tell me the hourly weather in Hanoi from 3 hours later for 4 hours"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 3
+    name: "EN - 2 hours later"
+    message: "Tell me the weather in Hanoi 2 hours later from now"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 4
+    name: "EN - after 2 oclock"
+    message: "Tell me the weather after 2 o'clock"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 5
+    name: "EN - before 11pm"
+    message: "hanoi weather before 11pm"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 6
+    name: "EN - tonight"
+    message: "tell me tonight's weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 7
+    name: "EN - tomorrow morning"
+    message: "tell me tomorrow morning's weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 8
+    name: "EN - tomorrow dawn"
+    message: "tell me tomorrow dawn's weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 9
+    name: "EN - tomorrow 낮"
+    message: "tell me tomorrow 낮's weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 10
+    name: "KR+EN - tomorrow daytime"
+    message: "tell me tomorrow 낮's weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 11
+    name: "EN - tomorrow evening"
+    message: "tell me tomorrow evening's weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 12
+    name: "EN - tomorrow night"
+    message: "tell me tomorrow night's weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

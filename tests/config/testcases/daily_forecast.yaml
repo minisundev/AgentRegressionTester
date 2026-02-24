@@ -1,0 +1,50 @@
+groupName: Weather
+cases:
+  - id: 1
+    name: "EN - now, Hanoi"
+    message: "hanoi weather right now"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "EN - sunny or cloudy"
+    message: "Is it sunny or cloudy?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 3
+    name: "EN - rain today"
+    message: "Will it rain today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 4
+    name: "EN - today Hanoi"
+    message: "Tell me the weather in Hà Nội today"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 5
+    name: "EN - today New York"
+    message: "Tell me the weather in New York today"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 6
+    name: "EN - tomorrow Hanoi"
+    message: "Tell me tomorrow's weather in Hanoi"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 7
+    name: "EN - today London"
+    message: "how's the weather in London today"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 8
+    name: "EN - today London Canada"
+    message: "how's the weather in London, Canada today"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

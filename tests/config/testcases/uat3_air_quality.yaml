@@ -1,0 +1,242 @@
+groupName: Weather
+cases:
+  - id: 162
+    name: "VI - UAT3 #162"
+    message: "Bụi mịn PM25 hôm nay cao không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 163
+    name: "VI - UAT3 #163"
+    message: "Tình trạng chất lượng không khí ở Hà Nội bây giờ như thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 164
+    name: "VI - UAT3 #164"
+    message: "Kiểm tra xem ô nhiễm không khí bây giờ ở mức nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 165
+    name: "VI - UAT3 #165"
+    message: "Kiểm tra nồng độ ô nhiễm không khí"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 166
+    name: "VI - UAT3 #166"
+    message: "Chất lượng không khí hôm nay thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 167
+    name: "VI - UAT3 #167"
+    message: "Nồng độ PM25 hôm nay là bao nhiêu"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 168
+    name: "VI - UAT3 #168"
+    message: "Không khí hôm nay có phù hợp để đi ra ngoài không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 169
+    name: "VI - UAT3 #169"
+    message: "Hôm nay cần đeo khẩu trang không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 170
+    name: "VI - UAT3 #170"
+    message: "AQI có vượt chuẩn không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 171
+    name: "VI - UAT3 #171"
+    message: "Không khí ngoài trời có khói bụi nhiều không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 172
+    name: "VI - UAT3 #172"
+    message: "Hoôm nay chất lượng không khí ở mức tốt hay xấu"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 173
+    name: "VI - UAT3 #173"
+    message: "Mức độ ô nhiễm PM10 hôm nay thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 174
+    name: "VI - UAT3 #174"
+    message: "AQI hiện tại có nguy hiểm không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 175
+    name: "VI - UAT3 #175"
+    message: "Mức bụi mịn hiện tại cao không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 176
+    name: "VI - UAT3 #176"
+    message: "Chỉ số bụi PM25 hôm nay ra sao"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 177
+    name: "VI - UAT3 #177"
+    message: "AQI hôm nay có vượt chuẩn không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 178
+    name: "VI - UAT3 #178"
+    message: "Chất lượng không khí hôm nay có ok không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 179
+    name: "VI - UAT3 #179"
+    message: "Không khí hôm nay có bị ô nhiễm không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 180
+    name: "VI - UAT3 #180"
+    message: "Chất lượng không khí hôm nay"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 181
+    name: "VI - UAT3 #181"
+    message: "Không khí hôm nay khói bụi nhiều không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 182
+    name: "VI - UAT3 #182"
+    message: "Bụi mịn ở Hà Nội bây giờ thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 183
+    name: "VI - UAT3 #183"
+    message: "Tình hình không khí ở đây"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 184
+    name: "VI - UAT3 #184"
+    message: "Chất lượng không khí Hà Nội hôm nay thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 185
+    name: "VI - UAT3 #185"
+    message: "Cho tui xem chỉ số AQI Sài Gòn bây giờ nha"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 186
+    name: "VI - UAT3 #186"
+    message: "Mức độ ô nhiễm không khí Nha Trang ra sao"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 187
+    name: "VI - UAT3 #187"
+    message: "Hải Phòng bụi mịn hôm nay cao không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 188
+    name: "VI - UAT3 #188"
+    message: "Cho tui kiểm tra chất lượng không khí Đà Lạt"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 189
+    name: "VI - UAT3 #189"
+    message: "Quy Nhơn không khí có nguy hiểm không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 190
+    name: "VI - UAT3 #190"
+    message: "Buôn Ma Thuột ô nhiễm không khí cao không với"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 191
+    name: "VI - UAT3 #191"
+    message: "Chất lượng không khí Bắc Giang có tốt không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 192
+    name: "VI - UAT3 #192"
+    message: "Cà Mau bụi PM25 vượt chuẩn không má"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 193
+    name: "VI - UAT3 #193"
+    message: "Thái Nguyên không khí có độc hại không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 194
+    name: "VI - UAT3 #194"
+    message: "Tôi muốn xem chất lượng không khí hiện tại"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 195
+    name: "VI - UAT3 #195"
+    message: "Lạng Sơn chất lượng không khí an toàn không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 196
+    name: "VI - UAT3 #196"
+    message: "Cho tui xem nồng độ bụi Tam Kỳ với"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 197
+    name: "VI - UAT3 #197"
+    message: "Chất lượng không khí tại vị trí tui thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 198
+    name: "VI - UAT3 #198"
+    message: "Chất lượng không khí sao"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 199
+    name: "VI - UAT3 #199"
+    message: "Chất lượng không khí như nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 200
+    name: "VI - UAT3 #200"
+    message: "Kiểm tra mức bụi mịn PM10 hiện tại"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 201
+    name: "VI - UAT3 #201"
+    message: "Hải Phòng hôm nay ô nhiễm ở mức nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent

@@ -1,0 +1,218 @@
+groupName: Weather
+cases:
+  - id: 82
+    name: "VI - UAT3 #82"
+    message: "Thời tiết tuần này"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 83
+    name: "VI - UAT3 #83"
+    message: "Cho tôi biết thời tiết mấy ngày tới"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 84
+    name: "VI - UAT3 #84"
+    message: "Cho tôi xem thời tiết những ngày tới"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 85
+    name: "VI - UAT3 #85"
+    message: "Dự báo thời tiết tuần này đi"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 86
+    name: "VI - UAT3 #86"
+    message: "Cho tôi biết tình hình thời tiết cả tuần ở Đà Nẵng"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 87
+    name: "VI - UAT3 #87"
+    message: "Dự báo thời tiết tuần này ở Hà Nội nha"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 88
+    name: "VI - UAT3 #88"
+    message: "Cho tui xem thời tiết cả tuần Sài Gòn với"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 89
+    name: "VI - UAT3 #89"
+    message: "Xem dự báo thời tiết tuần sau Nha Trang má"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 90
+    name: "VI - UAT3 #90"
+    message: "Cho biết thời tiết cả tuần này Huế nè"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 91
+    name: "VI - UAT3 #91"
+    message: "Thời tiết những ngày tới Vũng Tàu ra sao"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 92
+    name: "VI - UAT3 #92"
+    message: "Cho tui xem thời tiết suốt tuần Hải Phòng"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 93
+    name: "VI - UAT3 #93"
+    message: "Thời tiết trong tuần này Phú Quốc có mưa không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 94
+    name: "VI - UAT3 #94"
+    message: "Dự báo thời tiết cả tuần sau Buôn Ma Thuột với"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 95
+    name: "VI - UAT3 #95"
+    message: "Xem thời tiết 5 ngày tới Bắc Giang má"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 96
+    name: "VI - UAT3 #96"
+    message: "Thời tiết tuần này Cà Mau có nắng không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 97
+    name: "VI - UAT3 #97"
+    message: "Cho tui biết dự báo tuần này Vinh nè"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 98
+    name: "VI - UAT3 #98"
+    message: "Cho biết thời tiết cả tuần này Tam Kỳ với"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 99
+    name: "VI - UAT3 #99"
+    message: "Thời tiết tuần này tại vị trí tui như thế nào"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 100
+    name: "VI - UAT3 #100"
+    message: "Dự báo tuần này"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 101
+    name: "VI - UAT3 #101"
+    message: "Thời tiết những ngày tới"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 104
+    name: "VI - UAT3 #104"
+    message: "Ngày kia lạnh không nhỉ"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 105
+    name: "VI - UAT3 #105"
+    message: "Thời tiết 2 ngày tới thế nào ta"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 107
+    name: "VI - UAT3 #107"
+    message: "Thời tiết tuần sau thế nào"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 108
+    name: "VI - UAT3 #108"
+    message: "Xem dự báo thời tiết 7 ngày"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 109
+    name: "VI - UAT3 #109"
+    message: "Cho tôi coi dự báo thời tiết 7 ngày tới"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 110
+    name: "VI - UAT3 #110"
+    message: "Thời tiết 7 ngày tới"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 111
+    name: "VI - UAT3 #111"
+    message: "Cập nhật tình hình thời tiết tuần sau"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 112
+    name: "VI - UAT3 #112"
+    message: "Tôi muốn coi thời tiết tuần sau"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 113
+    name: "VI - UAT3 #113"
+    message: "Thời tiết 7 ngày tới ở Đà Nẵng thế nào"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 114
+    name: "VI - UAT3 #114"
+    message: "Dự báo thời tiết 10 ngày tới Cần Thơ"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 115
+    name: "VI - UAT3 #115"
+    message: "Dự báo thời tiết tuần tới Quy Nhơn như thế nào"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 116
+    name: "VI - UAT3 #116"
+    message: "Xem thời tiết từ thứ hai đến chủ nhật Đà Lạt"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 117
+    name: "VI - UAT3 #117"
+    message: "Thời tiết những ngày sắp tới Thái Nguyên ra sao"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 118
+    name: "VI - UAT3 #118"
+    message: "Dự báo 4 ngày tới Lạng Sơn thế nào má"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 119
+    name: "VI - UAT3 #119"
+    message: "Tuần sau có mưa không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 121
+    name: "VI - UAT3 #121"
+    message: "Thời tiết thứ Sáu có nắng không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

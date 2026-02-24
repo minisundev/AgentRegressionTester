@@ -1,0 +1,8 @@
+groupName: Sample
+cases:
+  - id: 201
+    name: "VI - UAT3 #201"
+    message: "Hải Phòng hôm nay ô nhiễm ở mức nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent

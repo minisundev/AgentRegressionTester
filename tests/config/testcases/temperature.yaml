@@ -1,0 +1,38 @@
+groupName: Weather
+cases:
+  - id: 1
+    name: "EN - now temperature"
+    message: "Tell me temperature in Hanoi right now"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "EN - today temperature"
+    message: "Tell me the weather in Hà Nội today"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 3
+    name: "EN - tomorrow temperature"
+    message: "Tell me tomorrow's temperature in Hanoi"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 4
+    name: "EN - range this week"
+    message: "tell me the temperature range in hanoi this week"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 5
+    name: "EN - range next week"
+    message: "tell me the temperature range in hanoi next week"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 6
+    name: "EN - min max"
+    message: "Tell me min and max temperature in Hanoi"
+    subIntent: CheckTemperature
+    mainIntent: Weather
+    agentType: DailyInfoAgent

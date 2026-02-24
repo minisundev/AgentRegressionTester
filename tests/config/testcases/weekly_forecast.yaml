@@ -1,0 +1,20 @@
+groupName: Weather
+cases:
+  - id: 1
+    name: "EN - 2 days later"
+    message: "2 days later Hanoi Weather"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "EN - this week"
+    message: "tell me the weather in hanoi this week"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 3
+    name: "EN - next week"
+    message: "tell me the weather in hanoi next week"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
