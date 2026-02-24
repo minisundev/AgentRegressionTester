@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { ApiError } from '../errors';
 import { buildRequestBody } from '../client/Client';
 import { AgentResponse, ResultRow, TestCase } from '../types/type';
 
@@ -56,13 +56,14 @@ export function handleError(
   failures: ResultRow[],
   time: number
 ) {
-  if (axios.isAxiosError(err) && err.response) {
+  if (ApiError.isAxiosError(err)) {
+    const apiError = ApiError.fromAxiosError(err);
     failures.push({
       group: groupName,
       id: tc.id,
       request: body.requestMessage,
-      response: `[ERROR ${err.response.status}]`,
-      reason: `HTTP ${err.response.status}: ${JSON.stringify(err.response.data)}`,
+      response: `[ERROR ${apiError.statusCode}]`,
+      reason: apiError.message,
       time: time
     });
   } else {
