@@ -2,18 +2,20 @@ import { google } from "googleapis";
 import { JudgeMode, ResultRow, SheetColumns, SheetRow } from "../types/type";
 import { getSheetPrompt } from "./promptLoader";
 import { judgeResponse } from "./ai";
+import { ExternalServiceError } from "../errors";
+import { env } from "../config/env";
 
 export async function appendRowsToSheet(rows: ResultRow[]) {
     if (rows.length === 0) return;
 
-    const sheetId = process.env.GOOGLE_SHEET_ID!;
-    const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL!;
-    const privateKey = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
+    const sheetId = env.GOOGLE_SHEET_ID!;
+    const clientEmail = env.GOOGLE_SERVICE_ACCOUNT_EMAIL!;
+    const privateKey = (env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
 
-    const auth = new google.auth.JWT({ 
-        email: clientEmail, 
-        key: privateKey, 
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'] 
+    const auth = new google.auth.JWT({
+        email: clientEmail,
+        key: privateKey,
+        scopes: ['https://www.googleapis.com/auth/spreadsheets']
     });
     const sheets = google.sheets({ version: 'v4', auth });
 
@@ -35,13 +37,18 @@ export async function appendRowsToSheet(rows: ResultRow[]) {
     });
     console.log(`[SUCCESS] ${rows.length} rows appended to Google Sheet.`);
   } catch (error) {
-    console.error('[FAIL] failed to append rows to Google Sheet:', error);
+    const serviceError = new ExternalServiceError(
+      'Failed to append rows to Google Sheet',
+      'Google Sheets',
+      error
+    );
+    console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
   }
 }
 
 function getPrompt() : string{
-    const judgeMode: JudgeMode = (process.env.JUDGE_MODE as JudgeMode) || 'none';
-    if(judgeMode === 'sheet'){ 
+    const judgeMode: JudgeMode = env.JUDGE_MODE;
+    if(judgeMode === 'sheet'){
         return getSheetPrompt('prompt.sheet.yaml')
     }
     if(judgeMode === 'api' || judgeMode === 'local'){
@@ -65,8 +72,8 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             subIntent: r.subIntent ?? '',
             request: r.request ?? '',
             response: cleanResponse,
-            reqTranslation: `=GOOGLETRANSLATE(E${currentRow}, "${process.env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${process.env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`,
-            resTranslation: `=GOOGLETRANSLATE(F${currentRow}, "${process.env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${process.env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`,
+            reqTranslation: `=GOOGLETRANSLATE(E${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`,
+            resTranslation: `=GOOGLETRANSLATE(F${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`,
             judge: await judgeResponse(prompt, r.request ?? '', cleanResponse, currentRow),
             time: r.time ?? 0,
             reason: r.reason ?? '',

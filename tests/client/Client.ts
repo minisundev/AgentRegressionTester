@@ -1,20 +1,17 @@
 import axios, { AxiosInstance } from 'axios';
-import 'dotenv/config';
+import { env } from '../config/env';
 
 export const createTestClient = () : AxiosInstance => {
-  const BASE_URL =
-    process.env.CONTROL_BASE_URL;
-
   return axios.create({
-    baseURL: BASE_URL,
+    baseURL: env.CONTROL_BASE_URL,
     headers: {
       'Content-Type': 'application/json',
-      'deviceId': process.env.DEVICE_ID||'default-device-id',
-      'osapptype': process.env.OS_APP_TYPE||'android',
-      'osappversion': process.env.OS_APP_VERSION||'1.0.0',
-      'accept-language': process.env.ACCEPT_LANGUAGE||'vi',
-      'traceId': process.env.TRACE_ID||'default-trace-id',
-      'x-api-key': process.env.X_API_KEY,
+      'deviceId': env.DEVICE_ID,
+      'osapptype': env.OS_APP_TYPE,
+      'osappversion': env.OS_APP_VERSION,
+      'accept-language': env.ACCEPT_LANGUAGE,
+      'traceId': env.TRACE_ID,
+      'x-api-key': env.X_API_KEY,
     },
     timeout: 20000,
   });
@@ -22,13 +19,13 @@ export const createTestClient = () : AxiosInstance => {
 
 export const buildRequestBody = (message: string, agent?:string, mainIntent?: string, subIntent?: string) => {
   return {
-    accountId: process.env.ACCOUNT_ID,
-    agentVersion: process.env.AGENT_VERSION,
+    accountId: env.ACCOUNT_ID,
+    agentVersion: env.AGENT_VERSION,
     transactionId: 'test-' + Date.now(),
     agentType: agent,
     mainIntent: mainIntent,
     subIntent: subIntent,
     requestMessage: message,
-    language: process.env.LANGUAGE || 'vietnamese',
+    language: env.LANGUAGE,
   };
 };

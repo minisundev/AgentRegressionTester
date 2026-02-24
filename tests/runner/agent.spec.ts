@@ -1,10 +1,11 @@
-import axios from 'axios';
 import { createTestClient, buildRequestBody } from '../client/Client';
 import { AgentResponse, ResultRow, TestCase } from '../types/type';
 import { printSummaryTable } from '../utils/log';
 import { appendRowsToSheet } from '../utils/googleSheet';
 import { CASE_GROUPS } from '../data/testcase_groups';
 import { sendSlackReport } from '../utils/slack';
+import { ApiError } from '../errors';
+import { env } from '../config/env';
 
 const client = createTestClient();
 
@@ -12,7 +13,7 @@ describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
   const failures: ResultRow[] = [];
 
-  const delay = Number(process.env.SERVICE_DELAY_SEC) || 0;
+  const delay = env.SERVICE_DELAY_SEC;
 
   for (const group of CASE_GROUPS) {
     describe(`${group.groupName} API`, () => {
@@ -31,7 +32,7 @@ describe('Agent API Regression', () => {
             const duration = Date.now() - start;
 
             const errorMsg = validateResponse(data);
-            
+
             const result: ResultRow = {
               group: group.groupName,
               id: tc.id,
@@ -57,7 +58,7 @@ describe('Agent API Regression', () => {
   }
 
   afterAll(async () => {
-    const reportTo = process.env.REPORT_TO || 'terminal';
+    const reportTo = env.REPORT_TO;
 
     if (reportTo === 'sheet') {
       console.log('Reporting results to Google Sheets...');
@@ -68,11 +69,11 @@ describe('Agent API Regression', () => {
       if (failures.length > 0) printSummaryTable("FAILURES", failures);
     }
 
-    if (process.env.SLACK_WEBHOOK_URL) {
+    if (env.SLACK_WEBHOOK_URL) {
       console.log('Sending report to Slack...');
       await sendSlackReport(successes, failures);
     }
-  }, parseInt(process.env.TEST_TIMEOUT_SEC ?? '3000', 10) * 1000);
+  }, env.TEST_TIMEOUT_SEC * 1000);
 });
 
 const sleep = (sec: number) => new Promise(resolve => setTimeout(resolve, sec * 1000));
@@ -84,14 +85,24 @@ function validateResponse(data: AgentResponse): string | undefined {
   return errors.length > 0 ? errors.join('; ') : undefined;
 }
 
-function handleAxiosError(group: string, tc: TestCase, err: any, body: any, time: number): ResultRow {
-  const isAxios = axios.isAxiosError(err);
+function handleAxiosError(group: string, tc: TestCase, err: unknown, body: any, time: number): ResultRow {
+  if (ApiError.isAxiosError(err)) {
+    const apiError = ApiError.fromAxiosError(err);
+    return {
+      group,
+      id: tc.id,
+      request: body.requestMessage,
+      response: `[HTTP ${apiError.statusCode}]`,
+      reason: apiError.message,
+      time
+    };
+  }
   return {
     group,
     id: tc.id,
     request: body.requestMessage,
-    response: isAxios ? `[HTTP ${err.response?.status}]` : '[Unknown Error]',
-    reason: isAxios ? JSON.stringify(err.response?.data) : String(err),
+    response: '[Unknown Error]',
+    reason: String(err),
     time
   };
 }

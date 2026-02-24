@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { ResultRow } from '../types/type';
+import { ExternalServiceError } from '../errors';
+import { env } from '../config/env';
 
 export async function sendSlackReport(successes: ResultRow[], failures: ResultRow[]) {
-  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+  const webhookUrl = env.SLACK_WEBHOOK_URL;
   if (!webhookUrl) return;
 
   const total = successes.length + failures.length;
@@ -30,13 +32,18 @@ export async function sendSlackReport(successes: ResultRow[], failures: ResultRo
     const failSummary = failures.slice(0, 5).map(f => `• [${f.id}] ${f.reason}`).join('\n');
     blocks.push({
       type: "section",
-      text: { type: "mrkdwn", text: `Main failure reasons: \n${failSummary}` }
+      fields: [{ type: "mrkdwn", text: `Main failure reasons: \n${failSummary}` }]
     });
   }
 
   try {
     await axios.post(webhookUrl, { blocks });
-  } catch (err) {
-    console.error('Failed to send Slack report', err);
+  } catch (error) {
+    const serviceError = new ExternalServiceError(
+      'Failed to send Slack report',
+      'Slack',
+      error
+    );
+    console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
   }
 }

@@ -1,12 +1,14 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { JudgeMode } from "../types/type";
+import { ExternalServiceError } from "../errors";
 import axios from "axios";
+import { env } from "../config/env";
 
-const genAI = new GoogleGenerativeAI(process.env.AI_API_KEY!);
-const model = genAI.getGenerativeModel({ model: process.env.AI_MODEL || 'gemini-3-flash-preview' });
+const genAI = new GoogleGenerativeAI(env.AI_API_KEY || '');
+const model = genAI.getGenerativeModel({ model: env.AI_MODEL });
 
 export async function judgeResponse(prompt: string, request: string, response: string, currentRow: number): Promise<string> {
-    const judgeMode: JudgeMode = (process.env.JUDGE_MODE as JudgeMode) || 'none';
+    const judgeMode: JudgeMode = env.JUDGE_MODE;
     if(judgeMode === 'api'){//gemini api
         return await judgeResponseByAIApi(prompt, request, response);
     }
@@ -21,7 +23,7 @@ export async function judgeResponse(prompt: string, request: string, response: s
 
 async function judgeResponseByAIApi(prompt: string, request: string, response: string): Promise<string> {
   try {
-    const content = `${prompt} [Target to Evaluate] 
+    const content = `${prompt} [Target to Evaluate]
         Request: ${request}
         Response: ${response}
         Now: ${new Date().toISOString().split('T')[0]}
@@ -30,7 +32,12 @@ async function judgeResponseByAIApi(prompt: string, request: string, response: s
     const result = await model.generateContent(content);
     return result.response.text().trim();
   } catch (error) {
-    console.error("[Error] AI Api evaluation failed", error);
+    const serviceError = new ExternalServiceError(
+      'AI API evaluation failed',
+      'Gemini API',
+      error
+    );
+    console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
     return "Error | AI evaluation failed";
   }
 }
@@ -40,24 +47,29 @@ async function judgeResponseBySheetAI(prompt: string, currentRow: number): Promi
 }
 
 async function judgeResponseByLocalAI(prompt: string, request: string, response: string): Promise<string> {
-    try { 
-        const content = `${prompt} [Target to Evaluate] 
+    try {
+        const content = `${prompt} [Target to Evaluate]
             Request: ${request}
             Response: ${response}
-            Now: ${new Date().toISOString().split('T')[0]} , ${process.env.TODAY} // TODAY=MON,TUE,WED,THU,FRI,SAT,SUN
+            Now: ${new Date().toISOString().split('T')[0]} , ${env.TODAY} // TODAY=MON,TUE,WED,THU,FRI,SAT,SUN
             `.trim();
         const res = await axios.post('http://localhost:11434/api/generate', {
-            model: process.env.LOCAL_AI_MODEL,
+            model: env.LOCAL_AI_MODEL,
             prompt: content,
             stream: false,
             options: {
-                temperature: Number(process.env.LOCAL_AI_TEMPERATURE) || 0.1,
-                num_predict: Number(process.env.LOCAL_AI_MAX_TOKEN) || 150
+                temperature: env.LOCAL_AI_TEMPERATURE,
+                num_predict: env.LOCAL_AI_MAX_TOKEN
             }
         });
         return res.data.response.trim();
     } catch (error) {
-        console.error("[Local AI Error]", error);
+        const serviceError = new ExternalServiceError(
+            'Local AI evaluation failed',
+            'Ollama',
+            error
+        );
+        console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
         return "Error | Local AI evaluation failed";
     }
 }
