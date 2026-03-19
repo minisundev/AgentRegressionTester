@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import from 'js-yaml';
+import yaml from 'js-yaml';
 import { ConfigurationError } from '../errors';
 
 const PROMPT_DIR = path.resolve(__dirname, '../config/prompts');
