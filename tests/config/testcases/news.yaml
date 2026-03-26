@@ -1,0 +1,206 @@
+groupName: GemmaGeneration
+cases:
+  - id: 303
+    name: "SearchNews - Today hot news"
+    message: "hôm nay có tin nóng gì không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 304
+    name: "SearchNews - Daily highlights"
+    message: "cập nhật nhanh tin nổi bật trong ngày."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 305
+    name: "SearchNews - Most interesting events"
+    message: "Có sự kiện gì đang được quan tâm nhất không Tammi?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 306
+    name: "SearchNews - Social media trends"
+    message: "hôm nay mạng xã hội nói nhiều về chuyện gì vậy?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 307
+    name: "SearchNews - News summary"
+    message: "tóm tắt tin tức hôm nay cho tôi."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 308
+    name: "SearchNews - Morning news recap"
+    message: "điểm tin buổi sáng giúp tôi."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 309
+    name: "SearchNews - Evening news summary"
+    message: "cuối ngày rồi, tổng kết tin chính đi."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 310
+    name: "SearchNews - Comparison with yesterday"
+    message: "có gì mới so với hôm qua không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 311
+    name: "SearchNews - International news"
+    message: "cho tôi biết tin quốc tế nổi bật hôm nay."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 312
+    name: "SearchNews - World situation"
+    message: "Tình hình thế giới hôm nay sao rồi Tammi?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 313
+    name: "SearchNews - Major world fluctuations"
+    message: "Có biến động gì lớn trên thế giới không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 314
+    name: "SearchNews - Financial market update"
+    message: "cập nhật thị trường tài chính hôm nay."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 315
+    name: "SearchNews - Economic news"
+    message: "Tin kinh tế mới nhất có gì đáng chú ý không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 316
+    name: "SearchNews - Gold and USD prices"
+    message: "xem giúp tôi tin về giá vàng, USD hôm nay."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 317
+    name: "SearchNews - Stock market news"
+    message: "Có tin gì về chứng khoán không Tammi?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 318
+    name: "SearchNews - Tech news"
+    message: "công nghệ hôm nay có gì mới?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 319
+    name: "SearchNews - Product launches"
+    message: "Có sản phẩm công nghệ nào vừa ra mắt không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 320
+    name: "SearchNews - AI updates"
+    message: "cập nhật tin AI mới nhất đi."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 321
+    name: "SearchNews - Tech industry drama"
+    message: "ngành tech hôm nay có drama gì không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 322
+    name: "SearchNews - New car models"
+    message: "có mẫu xe nào vừa được công bố không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 323
+    name: "SearchNews - New phone launches"
+    message: "hạng điện thoại nào vừa ra sản phẩm mới?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 324
+    name: "SearchNews - Tech reviews"
+    message: "Tin review công nghệ hôm nay có gì hay?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 325
+    name: "SearchNews - Showbiz noise"
+    message: "showbiz hôm nay có gì ồn ào không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 326
+    name: "SearchNews - New songs and movies"
+    message: "có bài hát hay phim mới nổi không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 327
+    name: "SearchNews - Entertainment scandals"
+    message: "Tin giải trí hôm nay có scandal nào không vậy?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 328
+    name: "SearchNews - Health warnings"
+    message: "có cảnh báo sức khỏe nào hôm nay không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 329
+    name: "SearchNews - Life news highlights"
+    message: "Tin đời sống hôm nay có gì nổi bật?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 330
+    name: "SearchNews - Medical research"
+    message: "xem có nghiên cứu y khoa mới nào không."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 331
+    name: "SearchNews - Domestic news"
+    message: "thời sự trong nước hôm nay có gì?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 332
+    name: "SearchNews - New policies"
+    message: "Có chính sách mới nào vừa ban hành không Tammi?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 333
+    name: "SearchNews - Traffic and weather"
+    message: "cập nhật tình hình giao thông – thời tiết hôm nay với."
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 334
+    name: "SearchNews - Hot football matches"
+    message: "bóng đá hôm nay có trận gì hot?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 335
+    name: "SearchNews - Vietnam national team"
+    message: "Có tin gì về đội tuyển Việt Nam không?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent
+  - id: 336
+    name: "SearchNews - Latest sports results"
+    message: "kết quả thể thao mới nhất là gì?"
+    subIntent: SearchNews
+    mainIntent: News
+    agentType: QAAgent

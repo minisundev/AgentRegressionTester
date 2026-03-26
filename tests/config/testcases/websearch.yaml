@@ -1,0 +1,1190 @@
+groupName: GemmaGeneration
+cases:
+  - id: 302
+    name: "WebSearch - nearby coffee recommendation"
+    message: "Can you search the web for popular cafes in Hanoi old quarter?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 303
+    name: "WebSearch - Hanoi famous cafe"
+    message: "Hãy web search thông tin quán cà phê nổi tiếng ở Hà Nội trên trình duyệt하노이의 유명 카페에 대한 정보를 웹 브라우저에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 304
+    name: "WebSearch - Viettel Telecom homepage"
+    message: "Tìm trang chủ Viettel Telecom trên google구글에서 비엣텔 텔레콤 홈페이지를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 305
+    name: "WebSearch - Gold price search"
+    message: "Vào trình duyệt Tìm kiếm giá vàng브라우저를 열고 금 가격을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 306
+    name: "WebSearch - Hanoi attractions"
+    message: "Lướt trên google Địa điểm vui chơi tại Hà Nội하노이에서 즐길 거리를 구글에서 검색하고 있습니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 307
+    name: "WebSearch - Reputable English center"
+    message: "Lên mạng tìm cho tôi trung tâm học tiếng Anh uy tín온라인에서 평판이 좋은 영어 학습 센터를 찾아주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 308
+    name: "WebSearch - Latest news online"
+    message: "Tin tức mới trên mạng최신 뉴스 온라인"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 309
+    name: "WebSearch - Gold price Bao Tin Minh Chau"
+    message: "Vô web coi Giá vàng bảo tím minh châu웹사이트에 접속하여 보라색 진주를 포함한 금 가격을 확인하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 310
+    name: "WebSearch - Hanoi cafes internet"
+    message: "Các quán cafe tại Hà Nội trên internet인터넷에서 하노이 카페 찾기"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 311
+    name: "WebSearch - Gaming laptop selection"
+    message: "Tìm kiếm tiêu chí lựa chọn laptop gaming tốt trên trình duyệt웹 브라우저에서 좋은 게이밍 노트북을 고르는 기준을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 312
+    name: "WebSearch - Hanoi dining spots"
+    message: "Hãy tìm kiếm những địa điểm ăn uống nổi tiếng ở Hà Nội trên browser브라우저에서 하노이의 인기 맛집을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 313
+    name: "WebSearch - Vegetable preservation"
+    message: "Hãy tìm cách bảo quản rau sạch tươi lâu trên browser브라우저를 사용하여 신선한 채소를 더 오래 신선하게 보관하는 방법을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 314
+    name: "WebSearch - Safe weight loss"
+    message: "Web search 'cách giảm cân nhanh an toàn'웹 검색창에 '빠르고 안전하게 체중 감량하는 방법'을 입력하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 315
+    name: "WebSearch - Cheap flights"
+    message: "Tìm thử vé máy bay rẻ trên web đi온라인에서 저렴한 항공편을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 316
+    name: "WebSearch - Self-harm keyword search"
+    message: "Tìm kiếm trên web từ khóa: Làm hại bản thân웹에서 '자해'라는 키워드로 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 317
+    name: "WebSearch - World gold price"
+    message: "Tìm kiếm trên web giá vàng thế giới đi세계 금 시세를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 318
+    name: "WebSearch - CGV movie ticket booking"
+    message: "Tôi muốn đặt vé xem phim cgv trên webCGV 영화 티켓을 온라인으로 예매하고 싶어요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 319
+    name: "WebSearch - Cake brand recommendations"
+    message: "Tôi muốn mua bánh kem, gợi ý thương hiệu bánh kem ngon trên web đi케이크를 사고 싶은데, 온라인에서 괜찮은 케이크 브랜드 좀 추천해 주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 320
+    name: "WebSearch - Beach trip preparation"
+    message: "Đi biển nên chuẩn bị gì trên web해변 여행을 위해 무엇을 준비해야 할까요? (웹사이트 참조)"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 321
+    name: "WebSearch - Highlights of the day"
+    message: "Tìm tin tức nổi bật trong ngày trên web웹에서 오늘의 주요 뉴스 기사를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 322
+    name: "WebSearch - Technology news"
+    message: "Tìm tin tức về công nghệ trên web đi웹에서 기술 관련 뉴스를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 323
+    name: "WebSearch - Running Man program"
+    message: "Tìm chương trình running man trên web đi웹에서 러닝맨 프로그램을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 324
+    name: "WebSearch - Hanoi attractions browser"
+    message: "Tìm trên trình duyệt những địa điểm vui chơi tại Hà Nội đi브라우저에서 하노이에서 즐길 거리를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 325
+    name: "WebSearch - Viettel Chairman info"
+    message: "Kiếm thông tin chủ tich Viettel trên web điViettel 회장에 대한 정보는 웹에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 326
+    name: "WebSearch - Gym for beginners"
+    message: "Tìm kiếm cách tập gym cho người mới trên web초보자를 위한 헬스장 운동 가이드를 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 327
+    name: "WebSearch - Traffic fine lookup"
+    message: "Tra cứu phạt nguội trên web교통 범칙금을 온라인으로 확인하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 328
+    name: "WebSearch - Weather info"
+    message: "Tìm Thời tiết hôm nay trên web오늘의 날씨 정보는 인터넷에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 329
+    name: "WebSearch - Football schedule today"
+    message: "Search Lịch thi đấu bóng đá hôm nay trên web오늘의 축구 경기 일정을 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 330
+    name: "WebSearch - Netflix trending"
+    message: "Tìm kiếm Phim đang thịnh hành trên Netflix넷플릭스에서 인기 영화를 검색하세요"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 331
+    name: "WebSearch - TikTok trending songs"
+    message: "Tìm bài hát đang trend trên tiktok là gì trên trình duyệt đi브라우저에서 틱톡에서 인기 있는 노래를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 332
+    name: "WebSearch - Best reviewed Hanoi restaurants"
+    message: "Nhà hàng nào được review tốt nhất ở Hà Nội trên web하노이에서 인터넷 평점이 가장 좋은 레스토랑은 어디인가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 333
+    name: "WebSearch - Hanoi beef pho recipe"
+    message: "Tìm kiếm trên web cách nấu phỏ bò chuẩn vị Hà Nội trên web인터넷에서 정통 하노이식 소고기 포 조리법을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 334
+    name: "WebSearch - PC monitor troubleshooting"
+    message: "Hướng dẫn sửa lỗi máy tính không lên màn hình trên web컴퓨터 전원이 켜지지 않을 때 문제 해결 가이드(웹 기반 가이드)"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 335
+    name: "WebSearch - Book recommendations"
+    message: "Tìm Gợi ý sách hay nên đọc trên web웹에서 책 추천을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 336
+    name: "WebSearch - Personal tax code lookup"
+    message: "Mở tra cứu mã số thuế cá nhân trên web웹사이트에서 개인 납세자 식별 번호 조회 도구를 여세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 337
+    name: "WebSearch - ChatGPT"
+    message: "Tìm chatgpt trên web đi웹에서 chatgpt를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 338
+    name: "WebSearch - USD exchange rate"
+    message: "Tìm kiếm Tỷ giá USD hôm nay trên web웹에서 오늘의 미국 달러 환율을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 339
+    name: "WebSearch - Hot movies currently"
+    message: "Tìm Phim đang hot hiện nay trên web현재 웹에서 가장 인기 있는 영화를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 340
+    name: "WebSearch - Cheap flight locations"
+    message: "Tìm vé may bay mua ở đâu rẻ trên web온라인에서 저렴한 항공권을 어디서 찾을 수 있을까요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 341
+    name: "WebSearch - FB password change"
+    message: "Tìm kiếm trên trình duyệt Cách đổi mật khẩu Facebook브라우저에서 \"페이스북 비밀번호 변경 방법\"을 검색하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 342
+    name: "WebSearch - Gym for beginners browser"
+    message: "Tìm thử cách tập gym cho người mới trên trình duyệt đi브라우저에서 초보자를 위한 헬스장 운동법을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 343
+    name: "WebSearch - Da Nang food"
+    message: "Tìm món ăn ngon ở Đà Nẵng trên web다낭에서 맛있는 음식을 온라인으로 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 344
+    name: "WebSearch - Movie suggestions"
+    message: "Tôi muốn xem phim, tìm phim gì trên web cho tôi xem đi영화를 보고 싶어요. 인터넷에서 볼 만한 영화를 찾아주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 345
+    name: "WebSearch - Weather travel advice"
+    message: "Tìm kiếm thời tiết này nên đi chơi đâu trên web이런 날씨에 갈 만한 곳을 인터넷에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 346
+    name: "WebSearch - Famous cafes online"
+    message: "Tìm quán cafe nổi tiếng trên web đi인터넷에서 유명 카페를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 347
+    name: "WebSearch - Today gold price availability"
+    message: "Giá vàng hôm nay trên web có không웹사이트에서 현재 금 가격을 확인할 수 있나요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 348
+    name: "WebSearch - World gold price availability"
+    message: "Giá vàng thế giới tìm trên web có không인터넷에서 세계 금 시세를 확인할 수 있을까요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 349
+    name: "WebSearch - Latest cinema releases"
+    message: "Tìm kiếm phim chiếu rạp mới nhất trên trình duyệt브라우저에서 최신 영화 개봉작을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 350
+    name: "WebSearch - Weather forecast search"
+    message: "Tìm kiếm dự báo thời tiết trên web đi인터넷에서 일기예보를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 351
+    name: "WebSearch - Movie ticket booking"
+    message: "Tôi muốn đặt vé xem phim trên mạng온라인으로 영화표를 예매하고 싶어요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 352
+    name: "WebSearch - Upcoming concerts"
+    message: "Có concert nào sắp diễn ra không, tìm thử trên web đi곧 열릴 콘서트가 있나요? 인터넷에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 353
+    name: "WebSearch - Vietnam tourism spots"
+    message: "Tìm những địa điểm du lịch đẹp tại Việt Nam trên web인터넷에서 베트남의 아름다운 관광지를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 354
+    name: "WebSearch - Best movies 2024"
+    message: "Search web tìm các bộ phim hay nhất năm 20242024년 최고의 영화를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 355
+    name: "WebSearch - English certificates info"
+    message: "Hãy search thông tin về chứng chỉ tiếng Anh quốc tế trên web국제 영어 자격증에 대한 정보는 인터넷에서 검색해 보시기 바랍니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 356
+    name: "WebSearch - Yoga benefits"
+    message: "Tìm trên mạng về những lợi ích của yoga요가의 효능에 대해 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 357
+    name: "WebSearch - Hanoi best Italian restaurant"
+    message: "Tìm nhà hàng Ý ngon nhất ở Hà Nội trên web.온라인에서 하노이 최고의 이탈리아 레스토랑을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 358
+    name: "WebSearch - Nobel Physics 2025"
+    message: "Search nhà khoa học đoạt giải Nobel Vật lý 2025 trên internet인터넷에서 2025년 노벨 물리학상 수상자를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 359
+    name: "WebSearch - Saigon beautiful cafes"
+    message: "Check các quán cafe đẹp ở Sài Gòn trên web사이공의 아름다운 카페들을 웹에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 360
+    name: "WebSearch - Son Tung M-TP latest"
+    message: "Search info về ca sĩ Sơn Tùng M-TP mới nhất trên trình duyệt가수 손퉁엠티에 대한 최신 정보를 브라우저에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 361
+    name: "WebSearch - Da Nang Japanese restaurant"
+    message: "Tìm nhà hàng Nhật chất ở Đà Nẵng trên web다낭에서 괜찮은 일본 음식점을 온라인으로 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 362
+    name: "WebSearch - Southern VN universities"
+    message: "Check danh sách trường ĐH tốt miền Nam trên trình duyệt브라우저에서 베트남 남부의 우수 대학 목록을 확인해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 363
+    name: "WebSearch - Homemade bread recipe"
+    message: "Tìm công thức bánh mì homemade dễ làm trên web간편한 수제 빵 레시피를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 364
+    name: "WebSearch - Nha Trang hotel review"
+    message: "Search review khách sạn view đẹp ở Nha Trang trên trình duyệt브라우저에서 나트랑의 아름다운 전망을 자랑하는 호텔 후기를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 365
+    name: "WebSearch - Hue street food"
+    message: "Tìm quán ăn vặt nổi tiếng ở Huế trên web후에(Hue)의 유명한 길거리 음식점을 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 366
+    name: "WebSearch - Vietnam new policy info"
+    message: "Tra cứu thông tin chính sách mới ở Việt Nam trên trình duyệt브라우저에서 베트남의 최신 정책 정보를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 367
+    name: "WebSearch - Hanoi vegan restaurant"
+    message: "Search nhà hàng chay ngon Hà Nội trên web인터넷에서 하노이의 맛있는 채식 식당을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 368
+    name: "WebSearch - Ha Long tour schedule"
+    message: "Tìm lịch trình tour du lịch Hạ Long trên trình duyệt브라우저에서 하롱베이 투어 일정을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 369
+    name: "WebSearch - Grammy 2025 winners"
+    message: "Check danh sách ca sĩ đoạt giải Grammy 2025 trên web2025년 그래미상 수상자 목록은 웹에서 확인하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 370
+    name: "WebSearch - Saigon bubble tea"
+    message: "Search quán trà sữa hot nhất Sài Gòn trên trình duyệt브라우저에서 사이공에서 가장 인기 있는 버블티 가게를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 371
+    name: "WebSearch - Elon Musk SpaceX 2025"
+    message: "Tìm info về Elon Musk và SpaceX 2025 trên web일론 머스크와 SpaceX 2025에 대한 정보를 웹에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 372
+    name: "WebSearch - Marvel movies in VN"
+    message: "Tra cứu phim Marvel sắp chiếu ở Việt Nam trên trình duyệt브라우저에서 베트남에서 개봉 예정인 마블 영화를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 373
+    name: "WebSearch - Phu Quoc luxury resort review"
+    message: "Search review resort cao cấp ở Phú Quốc trên web푸꾸옥의 고급 리조트에 대한 후기를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 374
+    name: "WebSearch - Northern BBQ restaurant"
+    message: "Tìm nhà hàng BBQ ngon miền Bắc trên trình duyệt브라우저에서 맛있는 북부 베트남식 바비큐 레스토랑을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 375
+    name: "WebSearch - Free English learning apps"
+    message: "Check các app học tiếng Anh free tốt nhất trên web웹에서 찾을 수 있는 최고의 무료 영어 학습 앱들을 확인해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 376
+    name: "WebSearch - Hanoi Banh Cuon"
+    message: "Tìm quán bánh cuốn ngon Hà Nội trên trình duyệt브라우저에서 맛있는 하노이식 찐쌀롤 맛집을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 377
+    name: "WebSearch - Nobel Chemistry 2025"
+    message: "Search danh sách Nobel Hóa học 2025 trên web웹에서 2025년 노벨 화학상 수상자 목록을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 378
+    name: "WebSearch - Saigon hype sneaker shop"
+    message: "Tìm shop giày sneaker hype Sài Gòn trên trình duyệt브라우저에서 사이공의 인기 스니커즈 매장을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 379
+    name: "WebSearch - Da Nang bus schedule"
+    message: "Check lịch trình xe bus Đà Nẵng trên web다낭 버스 시간표는 웹사이트에서 확인하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 380
+    name: "WebSearch - HCM authentic Italian Pizza"
+    message: "Tìm quán pizza Ý chuẩn vị ở TP.HCM trên trình duyệt브라우저에서 호치민시의 정통 이탈리아 피자 레스토랑을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 381
+    name: "WebSearch - Northern weather next week"
+    message: "Search thông tin thời tiết tuần tới miền Bắc trên web다음 주 북베트남 날씨 예보를 인터넷에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 382
+    name: "WebSearch - Hue boutique hotel review"
+    message: "Tìm review khách sạn boutique ở Huế trên trình duyệt브라우저에서 후에(Hue)의 부티크 호텔 리뷰를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 383
+    name: "WebSearch - Latest scientific articles 2025"
+    message: "Tra cứu bài báo khoa học mới nhất 2025 trên web2025년까지 발표될 최신 과학 논문을 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 384
+    name: "WebSearch - Da Lat street food"
+    message: "Check quán ăn vặt nổi tiếng Đà Lạt trên trình duyệt브라우저에서 달랏의 유명한 길거리 음식점을 확인해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 385
+    name: "WebSearch - Hanoi sushi restaurant"
+    message: "Tìm quán sushi ngon Hà Nội trên web온라인에서 하노이의 맛있는 스시 레스토랑을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 386
+    name: "WebSearch - VN hot movies review 2025"
+    message: "Search review phim Việt hot nhất 2025 trên web2025년 가장 인기 있는 베트남 영화에 대한 리뷰를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 387
+    name: "WebSearch - Central VN seafood restaurant"
+    message: "Tìm nhà hàng hải sản ngon miền Trung trên trình duyệt브라우저에서 맛있는 중부 베트남 해산물 레스토랑을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 388
+    name: "WebSearch - V-League 2025 info"
+    message: "Check thông tin giải bóng đá V-League 2025 trên web웹사이트에서 V리그 2025 축구 토너먼트에 대한 정보를 확인하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 389
+    name: "WebSearch - Hanoi trendy bubble tea"
+    message: "Tìm quán trà sữa trendy ở Hà Nội trên trình duyệt브라우저에서 하노이의 트렌디한 버블티 가게를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 390
+    name: "WebSearch - Nobel Literature 2025"
+    message: "Search nhà văn đoạt giải Nobel Văn học 2025 trên web웹에서 2025년 노벨 문학상 수상자를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 391
+    name: "WebSearch - Saigon reputable spa"
+    message: "Tìm địa chỉ spa uy tín Sài Gòn trên mạng사이공의 평판 좋은 스파를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 392
+    name: "WebSearch - Da Nang check-in spots"
+    message: "Tra cứu địa điểm check-in Đà Nẵng trên trình duyệt브라우저에서 다낭 체크인 장소를 검색하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 393
+    name: "WebSearch - Hue famous bakery"
+    message: "Search quán bánh ngọt nổi tiếng ở Huế trên phần mềm duyệt web웹 브라우저를 사용하여 후에(Hue)의 유명한 제과점을 검색하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 394
+    name: "WebSearch - Hanoi Italian restaurant view"
+    message: "Tìm nhà hàng Ý view đẹp ở Hà Nội trên web하노이에서 전망이 아름다운 이탈리아 레스토랑을 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 395
+    name: "WebSearch - Favorite Kpop artists 2025"
+    message: "Check danh sách ca sĩ Kpop được yêu thích nhất 2025 trên trình duyệt2025년 가장 인기 있는 K팝 가수 목록을 브라우저에서 확인하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 396
+    name: "WebSearch - Phu Quoc beach hotel review"
+    message: "Tìm review khách sạn ven biển Phú Quốc trên web푸꾸옥 해변 호텔에 대한 후기를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 397
+    name: "WebSearch - Saigon hot street food"
+    message: "Search các món ăn vặt hot ở Sài Gòn trên trình duyệt브라우저에서 사이공의 인기 길거리 음식을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 398
+    name: "WebSearch - Da Lat BBQ restaurant"
+    message: "Tìm quán BBQ ngon Đà Lạt trên web달랏의 맛있는 바비큐 레스토랑을 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 399
+    name: "WebSearch - Nobel Peace 2025"
+    message: "Tra cứu thông tin Nobel Hòa bình 2025 trên trình duyệt브라우저에서 2025년 노벨 평화상에 대한 정보를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 400
+    name: "WebSearch - Hanoi vintage lemon tea"
+    message: "Search quán trà chanh vintage Hà Nội trên web인터넷에서 하노이의 빈티지 레몬티 가게를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 401
+    name: "WebSearch - Saigon center Italian restaurant"
+    message: "Tìm nhà hàng Ý nổi tiếng gần trung tâm Sài Gòn trên trình duyệt브라우저에서 사이공 중심가 근처의 유명 이탈리아 레스토랑을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 402
+    name: "WebSearch - AI related search browser"
+    message: "Mình muốn xem có gì liên quan đến trí tuệ nhân tạo tìm kiếm trên trình duyệt브라우저 검색에 인공지능과 관련된 요소가 있는지 확인하고 싶습니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 403
+    name: "WebSearch - Dinosaur news search"
+    message: "Có thể search trên web xem có gì mới về khủng long không인터넷에서 공룡에 관한 새로운 정보가 있는지 검색해 볼 수 있습니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 404
+    name: "WebSearch - Hanoi aesthetic cafe"
+    message: "Tìm trên mạng giúp anh cái quán cà phê đẹp ở Hà Nội chụp hình sống ảo được nha인스타그램에 올릴 만한 사진 찍기 좋은 하노이의 괜찮은 카페를 온라인에서 찾아주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 405
+    name: "WebSearch - Nam Dinh Beef Pho recipe"
+    message: "Mày search web cho tao cách nấu phở bò Nam Định chuẩn vị đi정통 남딘 소고기 쌀국수 레시피를 인터넷에서 찾아줘."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 406
+    name: "WebSearch - Saigon cozy coffee shop"
+    message: "Hôm nay trời Sài Gòn mưa quá, kiếm chỗ uống cà phê ấm cúng dùm cái web search오늘 사이공에 비가 너무 많이 와요. 커피 마시기 좋은 아늑한 곳 좀 알려주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 407
+    name: "WebSearch - Postpartum weight loss"
+    message: "Chị ơi tìm giúp em cách giảm cân sau sinh mà không cần tập gym trên web언니, 출산 후 헬스장에 가지 않고 체중을 감량할 수 있는 인터넷 방법을 좀 알려주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 408
+    name: "WebSearch - iPhone 16 Pro Max price Saigon"
+    message: "Giá iPhone 16 Pro Max màu đen rẻ nhất ở Sài Gòn hiện tại là bao nhiêu tìm kiếm trên trình duyệt현재 사이공에서 검정색 아이폰 16 프로 맥스를 가장 저렴하게 살 수 있는 가격은 얼마인가요? (브라우저에서 검색해 보세요)"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 409
+    name: "WebSearch - Brown sugar bubble tea recipe"
+    message: "Cách làm trà sữa trân châu đường đen tại nhà ngon như The Alley tìm kiếm trên trình duyệt더 앨리(The Alley)처럼 맛있는 수제 흑설탕 버블티 만드는 법 (브라우저에서 검색해 보세요)"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 410
+    name: "WebSearch - Vietnam football schedule tonight"
+    message: "Web search Lịch thi đấu bóng đá Việt Nam tối nay có trận nào hay không웹 검색: 오늘 밤 베트남에서 볼만한 축구 경기가 있나요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 411
+    name: "WebSearch - See Tinh TikTok remix"
+    message: "Tìm kiếm trên trình duyệt bài hát See Tình bản remix TikTok đang hot브라우저에서 현재 인기 있는 노래 \"See Tình bản remix TikTok\"을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 412
+    name: "WebSearch - Win 11 bypass TPM 2025"
+    message: "Web search Hướng dẫn cài Win 11 bypass TPM mới nhất 2025웹 검색: TPM 우회를 통한 Windows 11 설치 가이드(최신 2025 버전)"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 413
+    name: "WebSearch - Liveshow tickets cheap"
+    message: "Web Mua vé liveshow Anh Trai Vượt Ngàn Chông Gai ở đâu rẻ nhất\"천 개의 가시를 이겨낸 형제\" 라이브 공연 티켓을 가장 저렴하게 구입할 수 있는 곳은 어디인가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 414
+    name: "WebSearch - Online English communication course"
+    message: "Tìm chỗ học tiếng Anh giao tiếp online giá dưới 2 triệu trên web웹사이트에서 200만 VND 미만의 온라인 영어 회화 수업을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 415
+    name: "WebSearch - Blackhead treatment"
+    message: "Cách trị mụn đầu đen ở mũi trong 1 tuần hiệu quả nhất trên mạng온라인에서 찾은, 코에 난 블랙헤드를 일주일 안에 없애는 가장 효과적인 방법들."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 416
+    name: "WebSearch - Saigon best Bun Bo Hue"
+    message: "Tìm quán bún bò Huế ngon nhất Sài Gòn đi chị trên internet언니, 사이공에서 제일 맛있는 분보후에 맛집을 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 417
+    name: "WebSearch - Hanoi modern Ao Dai"
+    message: "Tìm trên web Mua áo dài cách tân đẹp giá học sinh ở Hà Nội đâu하노이에서 아름답고 저렴한 현대적인 아오자이(베트남 전통 의상)를 어디서 살 수 있을까요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 418
+    name: "WebSearch - Work from home mom 2025"
+    message: "Tìm kiếm trên mạng Công thức làm thêm tại nhà cho mẹ bỉm sữa 2025온라인에서 \"2025년 전업주부를 위한 집에서 할 수 있는 부업 레시피\"를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 419
+    name: "WebSearch - Thai hotpot guide"
+    message: "Tìm kiếm trên web Hướng dẫn nấu lẩu Thái chua cay chuẩn vị웹에서 \"정통 태국식 매콤새콤한 핫팟 요리 가이드\"를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 420
+    name: "WebSearch - Netflix Korean drama Nov 2025"
+    message: "Tìm kiếm trên web 10 phim Hàn đang hot trên Netflix tháng 11/20252025년 11월 넷플릭스에서 가장 인기 있는 한국 드라마 10편을 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 421
+    name: "WebSearch - US scholarship 2026"
+    message: "Tìm kiếm trên web Cách xin học bổng du học Mỹ 2026웹에서 \"2026년 미국 유학 장학금 신청 방법\"을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 422
+    name: "WebSearch - District 7 cheap rental"
+    message: "Tìm trên web nhà trọ giá rẻ quận 7 có máy lạnh và wifi에어컨과 와이파이가 갖춰진 7구역의 저렴한 임대 방을 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 423
+    name: "WebSearch - Tet gifts 2026"
+    message: "Mua gì làm quà Tết 2026 mà sang mà rẻ tìm trên web2026년 설날에 우아하면서도 부담 없는 선물을 고르려면 어떻게 해야 할까요? 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 424
+    name: "WebSearch - Pi Network investment 2025"
+    message: "Tìm kiếm trên web Tiền ảo Pi Network có đáng đầu tư không 2025웹 검색 결과: 2025년에 파이 네트워크(Pi Network) 암호화폐에 투자할 가치가 있을까요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 425
+    name: "WebSearch - Baby chicken porridge recipe"
+    message: "Tìm kiếm trên trình duyệt Cách nấu cháo gà ngon cho bé 1 tuổi브라우저에서 \"1살 아기를 위한 맛있는 닭고기 죽 만드는 법\"을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 426
+    name: "WebSearch - Binh Thanh international kindergarten"
+    message: "Tìm kiếm trên webTrường mầm non quốc tế tốt nhất quận Bình Thạnh웹에서 빈탄 지구 최고의 국제 유치원을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 427
+    name: "WebSearch - Gold price per tael"
+    message: "Tìm kiếm trên web Giá vàng hôm nay bao nhiêu 1 chỉ웹에서 검색해 보세요: 오늘 금 1냥당 가격은 얼마인가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 428
+    name: "WebSearch - Hanoi Macbook repair"
+    message: "Tìm kiếm trên web Chỗ sửa MacBook uy tín ở Hà Nội하노이에서 평판이 좋은 맥북 수리점을 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 429
+    name: "WebSearch - Homemade pate bread recipe"
+    message: "Tìm kiếm trên web Cách làm bánh mì pate ngon tại nhà웹에서 \"집에서 맛있는 파테 샌드위치 만드는 법\"을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 430
+    name: "WebSearch - Nha Trang fish cake noodle restaurant"
+    message: "Tìm kiếm trên web Cái quán hôm bữa ăn bún chả cá ở Nha Trang tên gì nhỉ인터넷에서 검색해 봤어요. \"며칠 전에 나트랑에서 어묵 국수를 먹었던 식당 이름이 뭐지?\""
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 431
+    name: "WebSearch - Hanoi Pho song new version"
+    message: "Tìm trên web cái bài hát mà có câu “em ơi Hà Nội phố” bản mới\"오, 나의 사랑, 하노이 시\"라는 가사가 있는 새로운 버전의 노래를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 432
+    name: "WebSearch - Northern lottery 28/11/2025"
+    message: "Tìm trên mạng kết quả xổ số kiến thiết miền Bắc ngày mai (28/11/2025)내일(2025년 11월 28일) 북베트남 복권 추첨 결과를 온라인에서 확인하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 433
+    name: "WebSearch - Saigon famous restaurants"
+    message: "Search web giúp tôi các quán ăn nổi tiếng ở Sài Gòn.인터넷 검색을 통해 사이공의 유명 레스토랑 몇 곳을 찾아주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 434
+    name: "WebSearch - Effective English learning info"
+    message: "Tìm kiếm trên web thông tin về cách học tiếng Anh hiệu quả.영어를 효과적으로 배우는 방법에 대한 정보를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 435
+    name: "WebSearch - Graphic laptop list"
+    message: "Hãy search trên mạng danh sách laptop đồ họa mạnh nhất hiện nay.현재 판매되는 가장 강력한 그래픽 노트북 목록을 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 436
+    name: "WebSearch - Air purifier selection guide"
+    message: "Tìm trên mạng hướng dẫn chọn máy lọc không khí.온라인에서 공기청정기 선택 가이드를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 437
+    name: "WebSearch - Skincare face properly"
+    message: "Web search 'cách chăm sóc da mặt đúng cách'.웹 검색창에 '얼굴 피부를 제대로 관리하는 방법'을 입력하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 438
+    name: "WebSearch - Da Lat tourism info"
+    message: "Tìm kiếm thông tin về du lịch Đà Lạt trên web웹에서 달랏 관광에 대한 정보를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 439
+    name: "WebSearch - VN top coffee brands"
+    message: "Search web cho tôi các thương hiệu cà phê hàng đầu Việt Nam.베트남 최고의 커피 브랜드를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 440
+    name: "WebSearch - Gym methods for beginners"
+    message: "Tìm trên mạng những phương pháp tập gym cho người mới.초보자를 위한 헬스장 운동 방법을 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 441
+    name: "WebSearch - Latest iPhone review"
+    message: "Hãy tìm bài đánh giá về iPhone mới nhất trên internet최신 아이폰 리뷰를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 442
+    name: "WebSearch - Prestigious universities info"
+    message: "Search thông tin về các trường đại học uy tín trên mạng평판이 좋은 대학에 대한 정보를 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 443
+    name: "WebSearch - Quick cooking tips"
+    message: "Tìm trên web các mẹo nấu ăn nhanh.간편한 요리 팁을 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 444
+    name: "WebSearch - Action movies 2024"
+    message: "Search web top phim hành động 2024.2024년 최고의 액션 영화를 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 445
+    name: "WebSearch - Money saving methods"
+    message: "Tìm thông tin trên mạng về cách tiết kiệm tiền.돈을 절약하는 방법에 대한 정보를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 446
+    name: "WebSearch - TOEIC materials online"
+    message: "Tìm kiếm trên mạng tài liệu về chứng chỉ TOEIC.TOEIC 자격증에 대한 정보를 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 447
+    name: "WebSearch - Meditation for beginners"
+    message: "Web search 'hướng dẫn thiền cho người mới'.웹에서 '초보자를 위한 명상 가이드'를 검색하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 448
+    name: "WebSearch - Late night restaurants"
+    message: "Search web danh sách quán ăn mở cửa khuya.늦게까지 영업하는 식당 목록을 웹에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 449
+    name: "WebSearch - VN economy analysis"
+    message: "Tìm bài phân tích về kinh tế Việt Nam trên web인터넷에서 베트남 경제 분석 자료를 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 450
+    name: "WebSearch - New motorbike reviews"
+    message: "Tìm thông tin review các mẫu xe máy mới trên mạng새로운 오토바이 모델에 대한 리뷰를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 451
+    name: "WebSearch - Fast programming learning tips"
+    message: "Search web giúp tôi mẹo học lập trình nhanh.웹 검색을 통해 프로그래밍을 빠르게 배우는 데 도움이 되는 팁들을 찾을 수 있었습니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 452
+    name: "WebSearch - Flan recipe online"
+    message: "Tìm kiếm công thức món bánh flan trên mạng.온라인에서 플랑 레시피를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 453
+    name: "WebSearch - Stock market analysis this week"
+    message: "Cho tôi xem bài viết phân tích về thị trường chứng khoán tuần này search web이번 주 주식 시장 분석 기사를 보여주세요 (웹 검색)."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 454
+    name: "WebSearch - Hanoi historical facts"
+    message: "Web search \"historical facts about Hanoi\" (sự thật lịch sử về Hà Nội).웹 검색창에 \"하노이에 관한 역사적 사실\"을 입력하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 455
+    name: "WebSearch - Polytechnic University admission 2025"
+    message: "Tra cứu trên mạng thông tin tuyển sinh của trường Đại học Bách Khoa năm 2025.2025년도 폴리테크닉 대학교 입학 정보를 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 456
+    name: "WebSearch - Tiki discount code"
+    message: "Tìm giúp tui mã giảm giá của Tiki trên mạng온라인에서 티키 할인 코드를 찾는 데 도움을 주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 457
+    name: "WebSearch - Weekend movie recommendations"
+    message: "Search web những bộ phim hay nên xem vào cuối tuần.이번 주말에 볼 만한 좋은 영화를 인터넷에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 458
+    name: "WebSearch - Phu Quoc prices and schedule"
+    message: "Tìm trên web lịch trình và giá vé tham quan Phú Quốc.푸꾸옥 관광 일정과 입장료 정보를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 459
+    name: "WebSearch - VinFast VF 9 review"
+    message: "Cho mình bài review về chiếc xe VinFast VF 9 trên mạngVinFast VF 9에 대한 온라인 리뷰를 몇 개 알려주시겠어요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 460
+    name: "WebSearch - Zoom installation guide"
+    message: "Hỏi Google cách cài đặt phần mềm Zoom đi.Zoom 설치 방법을 Google에 물어보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 461
+    name: "WebSearch - Da Nang cultural events"
+    message: "Hãy tìm các sự kiện văn hóa sắp diễn ra ở Đà Nẵng trên mạng다낭에서 열리는 예정된 문화 행사를 온라인에서 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 462
+    name: "WebSearch - Back pain and treatment"
+    message: "Web search \"bệnh đau lưng và cách chữa trị\".웹 검색창에 \"허리 통증과 치료법\"을 입력하세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 463
+    name: "WebSearch - Python for beginners"
+    message: "Tìm kiếm tài liệu về ngôn ngữ lập trình Python cho người mới trên google구글에서 파이썬 프로그래밍 언어 초보자를 위한 자료를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 464
+    name: "WebSearch - Latest road traffic law"
+    message: "Tra thông tin về luật giao thông đường bộ mới nhất cho tôi trên google구글에서 최신 도로교통법규 정보를 찾아주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 465
+    name: "WebSearch - English for 5yo baby"
+    message: "Google cách học tiếng anh cho bé 5 tuổi구글에서 5세 아이에게 영어를 가르치는 방법을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 466
+    name: "WebSearch - Social insurance 2026 Q1"
+    message: "Câu 1: Tìm kiếm thông tin về lương bảo hiểm xã hội năm 2026 trên mạng질문 1: 2026년 사회보험 혜택에 대한 정보를 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 467
+    name: "WebSearch - Social insurance targets Q2"
+    message: "Câu 2: có phân biệt đối tượng được hưởng không질문 2: 수급 자격 기준에 차이가 있나요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 468
+    name: "WebSearch - Early retirement Q3"
+    message: "Câu 3: tôi có nên về hưu sớm không질문 3: 조기 퇴직을 고려해야 할까요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 469
+    name: "WebSearch - Retirement age context Q4"
+    message: "Câu 4: tôi giờ mới có 40 tuổi thôi질문 4: 저는 현재 40세입니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 470
+    name: "WebSearch - Reasonable retirement age Q5"
+    message: "Câu 5: vậy khi nào về hưu là hợp lý nhất질문 5: 퇴직하기에 가장 적절한 시기는 언제인가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 471
+    name: "WebSearch - New policy 2026 Q1"
+    message: "Câu 1: Tìm kiếm chính sách mới được áp dụng từ đầu năm 2026 trên mạng질문 1: 2026년 초부터 시행될 새로운 정책들을 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 472
+    name: "WebSearch - Gasoline motorbike ban Q2"
+    message: "Câu 2: Bao giờ cấm xe máy xăng nhỉ질문 2: 휘발유 엔진 오토바이는 언제 금지되나요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 473
+    name: "WebSearch - Electric cars Q3"
+    message: "Câu 3: còn oto thì sao질문 3: 자동차는 어떤가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 474
+    name: "WebSearch - Best EV brand Q4"
+    message: "Câu 4: mua xe điện hãng nào thì tốt질문 4: 어떤 전기차 브랜드가 좋은가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 475
+    name: "WebSearch - Hybrid car purchase Q5"
+    message: "Câu 5: Hay là mua xe Hybrid đi질문 5: 하이브리드 자동차를 사는 건 어떤가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 476
+    name: "WebSearch - USD currency price Q1"
+    message: "Câu 1: Tìm kiếm giá ngoại tệ USD trên mạng질문 1: 온라인에서 미국 달러 환율을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 477
+    name: "WebSearch - Best bank exchange rate Q2"
+    message: "Câu 2: Cho tôi ngân hàng có tỷ giá ngoại tệ tốt nhất질문 2: 어느 은행이 가장 좋은 외환 환율을 제공하는지 알려주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 478
+    name: "WebSearch - MB Bank branch search Q3"
+    message: "Câu 3: Tìm cho tôi chi nhánh ngân hàng MB trên mạng질문 3: 온라인에서 MB 은행 지점을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 479
+    name: "WebSearch - Da Lat hotel search Q1"
+    message: "Câu 1: tìm phòng khách sạn ở Đà Lạt trên mạng질문 1: 온라인으로 달랏 호텔 객실을 어떻게 찾을 수 있나요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 480
+    name: "WebSearch - Celine express hotel review Q2"
+    message: "Câu 2: Khách sạn \"Celine express\" được review thế nào trên mạng질문 2: \"셀린 익스프레스\" 호텔의 온라인 후기는 어떤가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 481
+    name: "WebSearch - Da Lat delicious food Q3"
+    message: "Câu 3: ở Đà lạt ăn gì thì ngon질문 3: 달랏에서 맛있는 음식은 무엇인가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 482
+    name: "WebSearch - Da Lat photo locations Q4"
+    message: "Câu 4: Địa điểm chụp ảnh đẹp nữa질문 4: 사진 찍기 좋은 아름다운 장소는 어디인가요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 483
+    name: "WebSearch - Outfit for photo Q5"
+    message: "câu 5: nên mặc gì chụp cho đẹp질문 5: 예쁜 사진을 찍으려면 어떤 옷을 입어야 할까요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 484
+    name: "WebSearch - Get rich online business"
+    message: "Tìm trên mạng những cách làm giàu từ kinh doanh online.온라인 사업으로 부자가 되는 방법을 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 485
+    name: "WebSearch - Investment methods to get rich"
+    message: "Mở trình duyệt web tra giúp mình các phương pháp đầu tư để làm giàu.웹 브라우저를 열고 부자가 되는 투자 방법을 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 486
+    name: "WebSearch - Money making for office workers"
+    message: "Tìm kiếm các ý tưởng làm giàu dành cho dân văn phòng trên mạng.직장인을 위한 돈벌이 아이디어를 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 487
+    name: "WebSearch - Real estate wealth model"
+    message: "Bạn tra trên web những mô hình làm giàu từ bất động sản.부동산으로 돈을 버는 모델을 온라인에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 488
+    name: "WebSearch - Reliable wealth articles"
+    message: "Tìm trên web giúp mình các bài viết uy tín về làm giàu mà không phải ‘đa cấp’.다단계 마케팅에 참여하지 않고 부자가 되는 방법에 대한 믿을 만한 온라인 기사를 찾을 수 있도록 도와주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 489
+    name: "WebSearch - Practical wealth sharing"
+    message: "Bạn mở trình duyệt và tìm những chia sẻ thực tế về cách làm giàu.브라우저를 열고 부자가 되는 실제 사례를 검색합니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 490
+    name: "WebSearch - Reliable wealth content"
+    message: "tìm giúp mình các nội dung làm giàu đáng tin cậy trên internet.믿을 만한 재물운 증진 콘텐츠를 인터넷에서 찾을 수 있도록 도와주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 491
+    name: "WebSearch - Comparison of wealth methods"
+    message: "Bạn mở web và tìm giúp mình so sánh các phương pháp làm giàu phổ biến.인터넷을 열어서 부자가 되는 인기 있는 방법들을 비교한 자료를 찾아주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 492
+    name: "WebSearch - Most effective wealth method"
+    message: "Tìm trên mạng xem phương pháp làm giàu nào được đánh giá hiệu quả nhất.온라인에서 어떤 부의 축적 방법이 가장 효과적인지 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 493
+    name: "WebSearch - Fast but safe wealth"
+    message: "Tra web xem người ta đang đề xuất những cách làm giàu nhanh nhưng an toàn nào.안전하고 빠르게 부자가 될 수 있는 방법들이 무엇인지 인터넷에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 494
+    name: "WebSearch - Wealth with little capital"
+    message: "Mở trình duyệt và tìm cách làm giàu phù hợp với người ít vốn.브라우저를 열고 적은 자본으로도 부자가 될 수 있는 방법을 찾아보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 495
+    name: "WebSearch - Wealth ideas for students"
+    message: "Tìm trên internet những ý tưởng làm giàu dành cho sinh viên.인터넷에서 학생들이 돈을 벌 수 있는 아이디어를 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 496
+    name: "WebSearch - Wealth for full-time workers"
+    message: "Bạn tra giúp mình các cách làm giàu phù hợp cho người có công việc full-time.정규직으로 일하는 사람이 부자가 될 수 있는 적절한 방법을 찾는 데 도움을 주시겠어요?"
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 497
+    name: "WebSearch - Wealth method links"
+    message: "Bạn tìm trên web một số link về các phương pháp làm giàu.당신은 부자가 되는 방법에 대한 링크를 찾기 위해 웹을 검색합니다."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 498
+    name: "WebSearch - Reliable wealth resources"
+    message: "Tra web và liệt kê giúp mình các nguồn tài liệu về làm giàu đáng tin.인터넷에서 부자가 되는 방법에 대한 믿을 만한 자료들을 검색해서 목록을 만들어 주세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
+  - id: 499
+    name: "WebSearch - Escaping poverty"
+    message: "Tìm kiếm trên internet xem có cách nào để thoát nghèo가난에서 벗어날 수 있는 방법이 있는지 인터넷에서 검색해 보세요."
+    subIntent: WebSearch
+    mainIntent: WebSearch
+    agentType: GeneralAgent
