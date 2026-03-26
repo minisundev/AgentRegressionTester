@@ -3,6 +3,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { TestCase } from '../types/type';
 import { ConfigurationError } from '../errors';
+import { CASE_GROUPS } from '../data/testcase_groups';
 
 const TESTCASE_DIR = path.resolve(__dirname, '../config/testcases');
 
@@ -37,19 +38,7 @@ export function loadTestCaseGroup(fileName: string): TestCaseGroup {
 }
 
 export function loadAllTestCases(): TestCaseGroup[] {
-  const testCaseFiles = [
-    'daily_forecast.yaml',
-    'weekly_forecast.yaml',
-    'temperature.yaml',
-    'hourly_forecast.yaml',
-    'air_quality.yaml',
-    'uat3_daily_forecast.yaml',
-    'uat3_weekly_forecast.yaml',
-    'uat3_temperature.yaml',
-    'uat3_hourly_forecast.yaml',
-    'uat3_air_quality.yaml',
-    'sample.yaml',
-  ];
+  const testCaseFiles = CASE_GROUPS;
 
   const groups: TestCaseGroup[] = [];
 
