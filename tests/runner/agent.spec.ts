@@ -2,7 +2,7 @@ import { createTestClient, buildRequestBody } from '../client/Client';
 import { AgentResponse, ResultRow, TestCase } from '../types/type';
 import { printSummaryTable } from '../utils/log';
 import { appendRowsToSheet } from '../utils/googleSheet';
-import { CASE_GROUPS } from '../data/testcase_groups';
+import { loadAllTestCases } from '../utils/testcaseLoader';
 import { sendSlackReport } from '../utils/slack';
 import { ApiError } from '../errors';
 import { env } from '../config/env';
@@ -15,7 +15,7 @@ describe('Agent API Regression', () => {
 
   const delay = env.SERVICE_DELAY_SEC;
 
-  for (const group of CASE_GROUPS) {
+  for (const group of loadAllTestCases()) {
     describe(`${group.groupName} API`, () => {
       for (const tc of group.cases) {
         it(`Q${tc.id} - [${group.groupName}] ${tc.name}`, async () => {
@@ -34,7 +34,7 @@ describe('Agent API Regression', () => {
             const errorMsg = validateResponse(data);
 
             const result: ResultRow = {
-              group: group.groupName,
+              group: String(group.groupName),
               id: tc.id,
               request: data.requestMessage,
               response: data.response.message,
