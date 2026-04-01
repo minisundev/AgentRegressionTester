@@ -63,6 +63,8 @@ export function handleError(
       id: tc.id,
       request: body.requestMessage,
       response: `[ERROR ${apiError.statusCode}]`,
+      mainIntent: tc.mainIntent,
+      subIntent: tc.subIntent,
       reason: apiError.message,
       time: time
     });
@@ -72,6 +74,8 @@ export function handleError(
       id: tc.id,
       request: body.requestMessage,
       response: `[UNKNOWN ERROR]`,
+      mainIntent: tc.mainIntent,
+      subIntent: tc.subIntent,
       reason: String(err),
       time: time
     });

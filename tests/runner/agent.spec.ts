@@ -12,6 +12,7 @@ const client = createTestClient();
 describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
   const failures: ResultRow[] = [];
+  const allResults: ResultRow[] = [];
 
   const delay = env.SERVICE_DELAY_SEC;
 
@@ -44,12 +45,19 @@ describe('Agent API Regression', () => {
               reason: errorMsg
             };
 
-            if (errorMsg) failures.push(result);
-            else successes.push(result);
+            if (errorMsg) {
+              failures.push(result);
+              allResults.push(result);
+            } else {
+              successes.push(result);
+              allResults.push(result);
+            }
 
           } catch (err) {
             const duration = Date.now() - start;
-            failures.push(handleAxiosError(group.groupName, tc, err, body, duration));
+            const errResult = handleAxiosError(group.groupName, tc, err, body, duration);
+            failures.push(errResult);
+            allResults.push(errResult);
             throw err;
           }
         });
@@ -62,7 +70,7 @@ describe('Agent API Regression', () => {
 
     if (reportTo === 'sheet') {
       console.log('Reporting results to Google Sheets...');
-      await appendRowsToSheet([...successes, ...failures]);
+      await appendRowsToSheet(allResults);
     } else {
       console.log('\nLocal Test Summary');
       if (successes.length > 0) printSummaryTable("SUCCESSES", successes);
@@ -93,6 +101,8 @@ function handleAxiosError(group: string, tc: TestCase, err: unknown, body: any, 
       id: tc.id,
       request: body.requestMessage,
       response: `[HTTP ${apiError.statusCode}]`,
+      mainIntent: tc.mainIntent,
+      subIntent: tc.subIntent,
       reason: apiError.message,
       time
     };
@@ -102,6 +112,8 @@ function handleAxiosError(group: string, tc: TestCase, err: unknown, body: any, 
     id: tc.id,
     request: body.requestMessage,
     response: '[Unknown Error]',
+    mainIntent: tc.mainIntent,
+    subIntent: tc.subIntent,
     reason: String(err),
     time
   };
