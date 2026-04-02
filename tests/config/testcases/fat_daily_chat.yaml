@@ -1,0 +1,494 @@
+groupName: General Queries
+cases:
+  - id: 1
+    name: "VI - Bun bo Hue Cau Giay"
+    message: "Quán bún bò ngon ở Hà Nội quanh khu Cầu Giấy"
+    subIntent: RestaurantRecommendation
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 2
+    name: "VI - Immunity Cold Season"
+    message: "Ăn gì để tăng đề kháng mùa lạnh"
+    subIntent: NutritionAdvice
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 3
+    name: "VI - Stroke Prevention"
+    message: "Cách phòng ngừa đột quỵ"
+    subIntent: DiseasePrevention
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 4
+    name: "VI - Gas Price Today"
+    message: "Giá xăng hôm nay bao nhiêu"
+    subIntent: PriceUpdate
+    mainIntent: Finance
+    agentType: DailyInfoAgent
+  - id: 5
+    name: "VI - Fund vs Stock"
+    message: "Chứng chỉ quỹ hay cổ phiếu đầu tư cái nào tốt hơn"
+    subIntent: InvestmentAdvice
+    mainIntent: Finance
+    agentType: FinanceAgent
+  - id: 6
+    name: "VI - UCL 2026"
+    message: "UEFA Champions League 2026"
+    subIntent: TournamentInfo
+    mainIntent: Sports
+    agentType: SportsAgent
+  - id: 7
+    name: "VI - World Cup 2026"
+    message: "World Cup 2026"
+    subIntent: TournamentInfo
+    mainIntent: Sports
+    agentType: SportsAgent
+  - id: 8
+    name: "VI - Premier League 2025"
+    message: "Ngoại hạng Anh 2025"
+    subIntent: LeagueInfo
+    mainIntent: Sports
+    agentType: SportsAgent
+  - id: 9
+    name: "VI - Venus Atmosphere"
+    message: "không khí trên Sao Kim có độc không"
+    subIntent: AstronomyFacts
+    mainIntent: Science
+    agentType: GeneralKnowledgeAgent
+  - id: 10
+    name: "VI - Space Atmosphere"
+    message: "Ở ngoài vũ trụ có không khí không"
+    subIntent: AstronomyFacts
+    mainIntent: Science
+    agentType: GeneralKnowledgeAgent
+  - id: 11
+    name: "VI - Hanoi Info"
+    message: "Hà Nội"
+    subIntent: LocationInfo
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 12
+    name: "VI - Holiday Destination"
+    message: "Nên đi đâu vào dịp lễ sắp tới?"
+    subIntent: TripPlanning
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 13
+    name: "VI - Beach vs Mountain"
+    message: "Nên đi biển hay đi núi vào mùa này"
+    subIntent: Recommendation
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 14
+    name: "VI - Hoi An Food"
+    message: "Ăn gì khi đến Hội An"
+    subIntent: TravelDining
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 15
+    name: "VI - Phu Quoc Season"
+    message: "Du lịch Phú Quốc mùa nào đẹp"
+    subIntent: SeasonalAdvice
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 16
+    name: "VI - Danang Resort"
+    message: "Resort nổi tiếng ở Đà Nẵng"
+    subIntent: Accommodation
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 17
+    name: "VI - Sapa December"
+    message: "Tháng 12 đi du lịch SaPa thời tiết đẹp không"
+    subIntent: WeatherAdvice
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 18
+    name: "VI - Hue Sightseeing"
+    message: "Các địa điểm thăm quan ở Huế"
+    subIntent: Attractions
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 19
+    name: "VI - Fatigue Symptom"
+    message: "Câu 1: Dạo này mình hay mệt lắm, không biết do đâu"
+    subIntent: SymptomCheck
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 20
+    name: "VI - Sleep Duration"
+    message: "Câu 2: Mình ngủ khoảng 6 tiếng mỗi đêm có đủ không"
+    subIntent: SleepAdvice
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 21
+    name: "VI - Bedtime Recommendation"
+    message: "Câu 3: Vậy ngủ thêm thì nên đi ngủ lúc mấy giờ"
+    subIntent: SleepAdvice
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 22
+    name: "VI - Sleeping with Toddler"
+    message: "Câu 4: Mà mình có con nhỏ hay thức khuya, làm sao ngủ đủ giấc đây"
+    subIntent: LifestyleAdjustment
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 23
+    name: "VI - Baby Early Sleep"
+    message: "Câu 5: Có cách nào giúp bé ngủ sớm hơn không"
+    subIntent: ParentingAdvice
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 24
+    name: "VI - Suggest New Hobby"
+    message: "Câu 1: Mình muốn học thêm một sở thích mới, Tammi gợi ý gì không"
+    subIntent: Recommendation
+    mainIntent: Education
+    agentType: LifestyleAgent
+  - id: 25
+    name: "VI - Drawing Preparation"
+    message: "Câu 2: Vẽ thì cần chuẩn bị gì để bắt đầu"
+    subIntent: SkillStarter
+    mainIntent: Education
+    agentType: EducationAgent
+  - id: 26
+    name: "VI - Online Learning Drawing"
+    message: "Câu 3: Mình hoàn toàn không có năng khiếu, học online có được không"
+    subIntent: Feasibility
+    mainIntent: Education
+    agentType: EducationAgent
+  - id: 27
+    name: "VI - Drawing Course Beginner"
+    message: "Câu 4: Khóa học nào phù hợp cho người mới hoàn toàn"
+    subIntent: Recommendation
+    mainIntent: Education
+    agentType: EducationAgent
+  - id: 28
+    name: "VI - Study Time"
+    message: "Câu 5: Mỗi ngày học bao nhiêu tiếng là hợp lý"
+    subIntent: TimeManagement
+    mainIntent: Education
+    agentType: EducationAgent
+  - id: 29
+    name: "VI - Reunion Planning"
+    message: "Câu 1: Mình đang muốn tổ chức buổi gặp mặt bạn bè lâu ngày không gặp"
+    subIntent: EventPlanning
+    mainIntent: Social
+    agentType: LifestyleAgent
+  - id: 30
+    name: "VI - Venue Choice Home Out"
+    message: "Câu 2: Tổ chức ở nhà hay đi ra ngoài thì vui hơn nhỉ"
+    subIntent: Advice
+    mainIntent: Social
+    agentType: LifestyleAgent
+  - id: 31
+    name: "VI - Group 10 Recommendation"
+    message: "Câu 3: Nhóm mình có 10 người, đặt chỗ nào vừa vui vừa không quá đắt"
+    subIntent: Recommendation
+    mainIntent: Social
+    agentType: DiningAgent
+  - id: 32
+    name: "VI - Group Games Suggestions"
+    message: "Câu 4: Có trò chơi gì vui để cả nhóm chơi cùng không"
+    subIntent: ActivitySuggestion
+    mainIntent: Social
+    agentType: LifestyleAgent
+  - id: 33
+    name: "VI - Social Confidence Tips"
+    message: "Câu 5: Mình nhút nhát hay ngại nói chuyện, làm sao để tự nhiên hơn trong buổi gặp"
+    subIntent: SelfImprovement
+    mainIntent: Social
+    agentType: LifestyleAgent
+  - id: 34
+    name: "VI - Near Hanoi Short Trip"
+    message: "Câu 1: Tháng sau mình muốn đi nghỉ 3 ngày 2 đêm gần Hà Nội"
+    subIntent: TripPlanning
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 35
+    name: "VI - Ninh Binh vs Ha Long"
+    message: "Câu 2: Ninh Bình với Hạ Long thì chỗ nào đẹp hơn mùa này"
+    subIntent: Comparison
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 36
+    name: "VI - Ninh Binh Transport"
+    message: "Câu 3: Đi Ninh Bình thì nên thuê xe máy hay đi tour"
+    subIntent: Logistics
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 37
+    name: "VI - Ninh Binh Cheap Eats"
+    message: "Câu 4: Ăn gì ngon ở đó mà không quá đắt"
+    subIntent: TravelDining
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 38
+    name: "VI - Ninh Binh Accommodation"
+    message: "Câu 5: Đặt khách sạn ở khu nào thì tiện nhất"
+    subIntent: Accommodation
+    mainIntent: Travel
+    agentType: TravelAgent
+  - id: 39
+    name: "VI - Weight Loss Goal"
+    message: "Câu 1: Mình muốn giảm 5kg trong 2 tháng có khả thi không"
+    subIntent: WeightManagement
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 40
+    name: "VI - Diet and Workout"
+    message: "Câu 2: Vậy nên tập môn gì và ăn uống thế nào"
+    subIntent: FitnessPlan
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 41
+    name: "VI - 30 Min Workout"
+    message: "Câu 3: Mình bận đi làm, chỉ có 30 phút mỗi ngày để tập"
+    subIntent: FitnessPlan
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 42
+    name: "VI - Night Workout"
+    message: "Câu 4: Buổi tối tập có ảnh hưởng đến giấc ngủ không"
+    subIntent: ExerciseScience
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 43
+    name: "VI - Fitness App"
+    message: "Câu 5: Có app nào theo dõi calo và lịch tập tốt hiện nay không"
+    subIntent: ToolRecommendation
+    mainIntent: Health
+    agentType: HealthAgent
+  - id: 44
+    name: "VI - Family Dining Tonight"
+    message: "- Tôi muốn rủ gia đình đi ăn nhà hàng tối nay."
+    subIntent: GeneralDining
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 45
+    name: "VI - New Seafood Center"
+    message: "- Gợi ý các nhà hàng hải sản mới khai trương trong tháng này ở trung tâm nhé."
+    subIntent: NewOpenings
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 46
+    name: "VI - Summer Set Menu Search"
+    message: "- Nhà hàng nào trong số đó đang có set menu mùa hè mới nhất?"
+    subIntent: MenuInquiry
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 47
+    name: "VI - Booking Hotline"
+    message: "- Cho tôi số điện thoại hotline để đặt bàn ngay bây giờ."
+    subIntent: BookingInfo
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 48
+    name: "VI - Michelin Pho Hanoi"
+    message: "- Năm nay Hà Nội có thêm quán phở nào vào danh sách Michelin không?"
+    subIntent: AwardInfo
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 49
+    name: "VI - Reviewer Choice"
+    message: "- Trong những quán mới đó, quán nào đang được các food reviewer đánh giá cao nhất tuần qua?"
+    subIntent: ReviewAnalysis
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 50
+    name: "VI - Pho Loi Rua Price"
+    message: "- Quán đó có bán phở lõi rùa không và giá hiện tại là bao nhiêu?"
+    subIntent: MenuSpecifics
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 51
+    name: "VI - Opening Hours Today"
+    message: "- Giờ mở cửa sáng nay của họ là mấy giờ?"
+    subIntent: BusinessHours
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 52
+    name: "VI - Weekend Food Festival"
+    message: "- Cuối tuần này ở phố đi bộ có tổ chức lễ hội ẩm thực nào không?"
+    subIntent: LocalEvent
+    mainIntent: Events
+    agentType: EventAgent
+  - id: 53
+    name: "VI - International Food Booths"
+    message: "- Lễ hội đó có các gian hàng ẩm thực quốc tế nào mới lạ không?"
+    subIntent: EventSpecifics
+    mainIntent: Events
+    agentType: EventAgent
+  - id: 54
+    name: "VI - Chef Performance Today"
+    message: "- Có đầu bếp nổi tiếng nào tham gia biểu diễn nấu ăn trực tiếp hôm nay không?"
+    subIntent: EventSchedule
+    mainIntent: Events
+    agentType: EventAgent
+  - id: 55
+    name: "VI - Detailed Event Schedule"
+    message: "- Lịch trình sự kiện chi tiết chiều nay như thế nào?"
+    subIntent: EventSchedule
+    mainIntent: Events
+    agentType: EventAgent
+  - id: 56
+    name: "VI - Seasonal Fruits Mekong"
+    message: "- Trái cây nào đang vào mùa rộ nhất ở miền Tây lúc này vậy?"
+    subIntent: SeasonalProduct
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 57
+    name: "VI - Viral Fruit Recipe"
+    message: "- Gợi ý cho tôi công thức làm món gỏi cuốn trái cây đang viral dạo gần đây."
+    subIntent: RecipeSearch
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 58
+    name: "VI - Viral Cooking Video YouTube"
+    message: "- Video hướng dẫn nấu món này trên YouTube đang có lượt xem cao nhất tuần này là video nào?"
+    subIntent: VideoRecommendation
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 59
+    name: "VI - Video Summary Steps"
+    message: "- Tóm tắt lại các bước sơ chế từ video đó giúp tôi."
+    subIntent: ContentSummary
+    mainIntent: DiningInfo
+    agentType: DiningAgent
+  - id: 60
+    name: "VI - Korea Time Now"
+    message: "Giờ bên Hàn Quốc"
+    subIntent: TimeZone
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 61
+    name: "VI - Current Time Query"
+    message: "“Bây giờ là mấy giờ?”"
+    subIntent: CurrentTime
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 62
+    name: "VI - Vietnam Time Now"
+    message: "Bây giờ ở Việt Nam là mấy giờ"
+    subIntent: CurrentTime
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 63
+    name: "VI - Hanoi Time Query"
+    message: "Giờ Hà Nội bây giờ là mấy giờ"
+    subIntent: CurrentTime
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 64
+    name: "VI - Time Check Hanoi"
+    message: "Mấy giờ rồi ở Hà Nội vậy"
+    subIntent: CurrentTime
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 65
+    name: "VI - New York Time"
+    message: "“Mình cần biết giờ ở New York.”"
+    subIntent: TimeZone
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 66
+    name: "VI - Korea Time Messaging"
+    message: "“Bên Hàn Quốc bây giờ mấy giờ để mình nhắn tin?”"
+    subIntent: TimeZone
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 67
+    name: "VI - Day of Week Today"
+    message: "Hôm nay thứ mấy rồi"
+    subIntent: CalendarInfo
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 68
+    name: "VI - Lunar Date Today"
+    message: "Hôm nay âm lịch là ngày bao nhiêu"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 69
+    name: "VI - 31st Day Weekday"
+    message: "31 tháng này là thứ mấy"
+    subIntent: CalendarInfo
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 70
+    name: "VI - 1st Lunar Day Weekday"
+    message: "Mùng 1 âm tháng này là thứ mấy"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 71
+    name: "VI - 5th Day Weekday"
+    message: "Ngày 5 tháng này là thứ mấy"
+    subIntent: CalendarInfo
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 72
+    name: "VI - Lunar Dec 2nd"
+    message: "Ngày 2/12 âm lịch năm nay là thứ mấ"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 73
+    name: "VI - Full Moon Date"
+    message: "Thứ mấy là rằm tháng này"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 74
+    name: "VI - 1st Next Month Weekday"
+    message: "Thứ mấy là mùng 1 tháng sau"
+    subIntent: CalendarInfo
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 75
+    name: "VI - Lunar Aug 4th Weekday"
+    message: "4/8 âm lịch là thứ mấy"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 76
+    name: "VI - Tet Anniversary Weekday"
+    message: "Giỗ ông nội tôi mùng 4 tết là thứ mấy"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 77
+    name: "VI - Mid-Autumn Year Now"
+    message: "Trung thu năm nay là thứ mấy"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 78
+    name: "VI - Mid-Autumn Next Year"
+    message: "Trung thu năm sau là thứ mấy"
+    subIntent: LunarCalendar
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 79
+    name: "VI - Day After Tomorrow Query"
+    message: "Ngày kia có phải thứ năm không"
+    subIntent: CalendarInfo
+    mainIntent: TimeDate
+    agentType: DailyInfoAgent
+  - id: 80
+    name: "VI - Translate Hello"
+    message: "“Dịch ‘xin chào’ sang tiếng Anh.”"
+    subIntent: TextTranslation
+    mainIntent: Translation
+    agentType: TranslationAgent
+  - id: 81
+    name: "VI - Translate Thank You"
+    message: "“Cho mình biết ‘cảm ơn’ nói bằng tiếng Anh thế nào.”"
+    subIntent: TextTranslation
+    mainIntent: Translation
+    agentType: TranslationAgent
+  - id: 82
+    name: "VI - Translate Goodbye"
+    message: "“Từ ‘tạm biệt’ tiếng Anh là gì?”"
+    subIntent: TextTranslation
+    mainIntent: Translation
+    agentType: TranslationAgent
