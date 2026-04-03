@@ -77,7 +77,9 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             judge: await judgeResponse(prompt, r.request ?? '', cleanResponse, currentRow),
             time: r.time ?? 0,
             reason: r.reason ?? '',
-            testedAt: new Date().toISOString()
+            testedAt: new Date().toISOString(),
+            todayCard: r.todayCard ?? '',
+            card: r.card ?? '',
         };
 
         return Object.keys(SheetColumns).map((key) => rowData[SheetColumns[key as keyof typeof SheetColumns] as keyof SheetRow]);

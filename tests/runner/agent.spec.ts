@@ -34,6 +34,13 @@ describe('Agent API Regression', () => {
 
             const errorMsg = validateResponse(data);
 
+            const todayCard = data.response.todayCard ? JSON.stringify(data.response.todayCard) : '';
+            const card = data.response.weeklyCard
+              ? JSON.stringify(data.response.weeklyCard)
+              : data.response.hourlyCard
+              ? JSON.stringify(data.response.hourlyCard)
+              : '';
+
             const result: ResultRow = {
               group: String(group.groupName),
               id: tc.id,
@@ -42,7 +49,9 @@ describe('Agent API Regression', () => {
               mainIntent: data.response.mainIntent,
               subIntent: data.response.subIntent,
               time: duration,
-              reason: errorMsg
+              reason: errorMsg,
+              todayCard,
+              card,
             };
 
             if (errorMsg) {

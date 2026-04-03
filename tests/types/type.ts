@@ -15,6 +15,9 @@ export interface AgentResponse {
     mainIntent: string;
     subIntent: string;
     ttsText: string;
+    todayCard?: Record<string, unknown>;
+    weeklyCard?: Record<string, unknown>;
+    hourlyCard?: Record<string, unknown>;
   };
 }
 
@@ -28,6 +31,8 @@ export interface ResultRow {
   subIntent?: string;
   judge?:string;
   time: number;
+  todayCard?: string;
+  card?: string; // weeklyCard or hourlyCard as JSON
 }
 
 export const SheetColumns = {
@@ -43,6 +48,8 @@ export const SheetColumns = {
   J: "time",
   K: "reason",
   L: "testedAt",
+  M: "todayCard",
+  N: "card",
 } as const;
 
 export type SheetColumnKey = keyof typeof SheetColumns;
@@ -61,6 +68,8 @@ export interface SheetRow {
   time: number;
   reason: string;
   testedAt: string;
+  todayCard: string;
+  card: string; // weeklyCard or hourlyCard as JSON
 }
 
 export type ReportTarget = 'terminal' | 'sheet';

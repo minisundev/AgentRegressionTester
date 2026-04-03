@@ -22,6 +22,13 @@ export function handleSuccess(
     );
   }
 
+  const todayCard = data.response.todayCard ? JSON.stringify(data.response.todayCard) : '';
+  const card = data.response.weeklyCard
+    ? JSON.stringify(data.response.weeklyCard)
+    : data.response.hourlyCard
+    ? JSON.stringify(data.response.hourlyCard)
+    : '';
+
   if (errors.length > 0) {
     successes.push({
       group: groupName,
@@ -32,6 +39,8 @@ export function handleSuccess(
       subIntent: data.response.subIntent,
       reason: errors.join('; '),
       time: time,
+      todayCard,
+      card,
     });
     return;
   }
@@ -44,6 +53,8 @@ export function handleSuccess(
     mainIntent: data.response.mainIntent,
     subIntent: data.response.subIntent,
     time: time,
+    todayCard,
+    card,
   });
 }
 
