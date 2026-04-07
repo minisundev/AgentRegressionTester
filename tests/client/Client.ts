@@ -18,10 +18,12 @@ export const createTestClient = () : AxiosInstance => {
 };
 
 export const buildRequestBody = (message: string, agent?:string, mainIntent?: string, subIntent?: string) => {
+  const accountId = env.ACCOUNT_ID;
+  const transactionId = `${accountId}-${Date.now()}`;
   return {
-    accountId: env.ACCOUNT_ID,
+    accountId,
     agentVersion: env.AGENT_VERSION,
-    transactionId: 'test-' + Date.now(),
+    transactionId,
     agentType: agent,
     mainIntent: mainIntent,
     subIntent: subIntent,
