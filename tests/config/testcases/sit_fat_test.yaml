@@ -1,0 +1,272 @@
+groupName: Weather
+cases:
+  - id: 1
+    name: "EN - Current Weather Hanoi"
+    message: "What is the weather like in Hanoi today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "EN - Rain HCMC"
+    message: "Is it raining in Ho Chi Minh city today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 3
+    name: "EN - Tokyo Afternoon"
+    message: "What is the weather like in Tokyo this afternoon?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 4
+    name: "EN - Seoul Condition"
+    message: "Is it sunny or rainy in Seoul today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 5
+    name: "EN - Paris Weather"
+    message: "What's the weather like in Paris today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 6
+    name: "EN - General Today"
+    message: "What is the weather like today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 7
+    name: "EN - Sunny or Rainy"
+    message: "Is it sunny or rainy today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 8
+    name: "EN - Cloudy Check"
+    message: "Is it cloudy today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 9
+    name: "EN - Weather Status"
+    message: "Is the weather okay today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 10
+    name: "EN - Outdoor Advice"
+    message: "Should we go outdoors today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 11
+    name: "EN - 4 Hours Later"
+    message: "What will the weather be like in about 4 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 12
+    name: "EN - 3 PM Humidity"
+    message: "Is it dry around 3 PM?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 13
+    name: "EN - 6 PM Humidity"
+    message: "What is the humidity at 6 PM?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 14
+    name: "EN - 9 PM Humidity"
+    message: "Is it humid around 9 PM?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 15
+    name: "EN - 9 AM Shower"
+    message: "Will there be a shower around 9 AM?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 16
+    name: "EN - 12 PM Rainfall"
+    message: "What will the amount of rainfall at 12 pm?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 17
+    name: "EN - This Week"
+    message: "What will the weather be like this week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 18
+    name: "EN - Tomorrow"
+    message: "What will the weather be like tomorrow?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 19
+    name: "EN - Tomorrow Temperature"
+    message: "Will it be hot tomorrow?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 20
+    name: "EN - Tomorrow Good Weather"
+    message: "Will the weather be good tomorrow?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 21
+    name: "EN - Tokyo AQI Tomorrow"
+    message: "What will the air quality be like in Tokyo tomorrow?"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 22
+    name: "EN - Sydney AQI Next Week"
+    message: "What will the AQI be like in Sydney next week?"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 23
+    name: "EN - Paris Temp Next Week"
+    message: "What will the average temperature be in Paris next week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 24
+    name: "EN - London Temp Day After Tomorrow"
+    message: "Please check the temperature in London the day after tomorrow for me."
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 25
+    name: "EN - NY Sunday Night Temp"
+    message: "What is the night time temperature in New York this Sunday?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 26
+    name: "EN - Hanoi Temp Today"
+    message: "What is the temperature in Hanoi today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 27
+    name: "EN - Paris Fahrenheit"
+    message: "What is the temperature in Paris in degrees Fahrenheit?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 28
+    name: "EN - Current Temp"
+    message: "What is the current temperature?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 29
+    name: "EN - Australia Temp Now"
+    message: "What is the temperature in Australia right now?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 30
+    name: "EN - Humidity Next Week"
+    message: "What will the humidity be like next week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 31
+    name: "EN - Humidity Today Level"
+    message: "Why is it so humid today? What's the humidity level?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 32
+    name: "EN - Dry Air Check"
+    message: "Is the air dry today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 33
+    name: "EN - Plant Humidity Today"
+    message: "Is the humidity good for the plants today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 34
+    name: "EN - Air Humid Check"
+    message: "Is the air humid today?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 35
+    name: "EN - Plant Growth Humidity"
+    message: "Is the humidity today suitable for growing plants?"
+    subIntent: CheckCurrentWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 36
+    name: "EN - Rainfall After 1 Week"
+    message: "What will the rainfall be like after one week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 37
+    name: "EN - Rainfall 2 Weeks"
+    message: "What will the rainfall be like in the next two weeks?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 38
+    name: "EN - Rainfall 3 Hours"
+    message: "What will the rainfall be like in the next 3 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 39
+    name: "EN - Rainfall Weekend"
+    message: "What will the rainfall be like this weekend?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 40
+    name: "EN - Rainfall Early Next Week"
+    message: "What will the rainfall be like at the beginning of next week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 41
+    name: "EN - Hanoi AQI"
+    message: "What is the current AQI level in Hanoi?"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 42
+    name: "EN - London Air Quality"
+    message: "Is the air in London very smoky or dusty?"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 43
+    name: "EN - Hanoi Pollution"
+    message: "What is the air pollution level in Hanoi today?"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 44
+    name: "EN - Beijing Face Mask"
+    message: "Is it necessary to wear a face mask when going out in Bejing right now?"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 45
+    name: "EN - Paris PM10"
+    message: "Is the PM10 concentration in Paris higher than average today?"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
