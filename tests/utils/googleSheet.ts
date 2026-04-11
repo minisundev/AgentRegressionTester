@@ -1,14 +1,15 @@
-import { google } from "googleapis";
+import { google, sheets_v4 } from "googleapis";
 import { JudgeMode, ResultRow, SheetColumns, SheetRow } from "../types/type";
 import { getSheetPrompt } from "./promptLoader";
 import { judgeResponse } from "./ai";
 import { ExternalServiceError } from "../errors";
 import { env } from "../config/env";
 
-export async function appendRowsToSheet(rows: ResultRow[]) {
-    if (rows.length === 0) return;
+let sheetsClient: sheets_v4.Sheets | null = null;
 
-    const sheetId = env.GOOGLE_SHEET_ID!;
+function getSheetsClient(): sheets_v4.Sheets {
+    if (sheetsClient) return sheetsClient;
+
     const clientEmail = env.GOOGLE_SERVICE_ACCOUNT_EMAIL!;
     const privateKey = (env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
 
@@ -17,33 +18,39 @@ export async function appendRowsToSheet(rows: ResultRow[]) {
         key: privateKey,
         scopes: ['https://www.googleapis.com/auth/spreadsheets']
     });
-    const sheets = google.sheets({ version: 'v4', auth });
+    sheetsClient = google.sheets({ version: 'v4', auth });
+    return sheetsClient;
+}
 
+export async function appendRowToSheet(row: ResultRow) {
+    const sheets = getSheetsClient();
+    const sheetId = env.GOOGLE_SHEET_ID!;
     const range = 'Results!A:A';
+
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId: sheetId,
         range,
     });
 
-    const startRow = (response.data.values?.length || 0) + 1;
-    const values = await processResponseForSheet(rows, startRow);
+    const currentRow = (response.data.values?.length || 0) + 1;
+    const values = await processResponseForSheet([row], currentRow);
 
-  try {
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: sheetId,
-      range,
-      valueInputOption: 'USER_ENTERED',
-      requestBody: { values },
-    });
-    console.log(`[SUCCESS] ${rows.length} rows appended to Google Sheet.`);
-  } catch (error) {
-    const serviceError = new ExternalServiceError(
-      'Failed to append rows to Google Sheet',
-      'Google Sheets',
-      error
-    );
-    console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
-  }
+    try {
+        await sheets.spreadsheets.values.append({
+            spreadsheetId: sheetId,
+            range,
+            valueInputOption: 'USER_ENTERED',
+            requestBody: { values },
+        });
+        console.log(`[SHEET] Q${row.id} appended (row ${currentRow})`);
+    } catch (error) {
+        const serviceError = new ExternalServiceError(
+            'Failed to append row to Google Sheet',
+            'Google Sheets',
+            error
+        );
+        console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
+    }
 }
 
 function getPrompt() : string{

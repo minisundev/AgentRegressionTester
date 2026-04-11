@@ -1,18 +1,18 @@
 import { createTestClient, buildRequestBody } from '../client/Client';
 import { AgentResponse, ResultRow, TestCase } from '../types/type';
 import { printSummaryTable } from '../utils/log';
-import { appendRowsToSheet } from '../utils/googleSheet';
+import { appendRowToSheet } from '../utils/googleSheet';
 import { loadAllTestCases } from '../utils/testcaseLoader';
 import { sendSlackReport } from '../utils/slack';
 import { ApiError } from '../errors';
 import { env } from '../config/env';
 
 const client = createTestClient();
+const reportTo = env.REPORT_TO;
 
 describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
   const failures: ResultRow[] = [];
-  const allResults: ResultRow[] = [];
 
   const delay = env.SERVICE_DELAY_SEC;
 
@@ -56,17 +56,23 @@ describe('Agent API Regression', () => {
 
             if (errorMsg) {
               failures.push(result);
-              allResults.push(result);
             } else {
               successes.push(result);
-              allResults.push(result);
+            }
+
+            if (reportTo === 'sheet') {
+              await appendRowToSheet(result);
             }
 
           } catch (err) {
             const duration = Date.now() - start;
             const errResult = handleAxiosError(group.groupName, tc, err, body, duration);
             failures.push(errResult);
-            allResults.push(errResult);
+
+            if (reportTo === 'sheet') {
+              await appendRowToSheet(errResult);
+            }
+
             throw err;
           }
         });
@@ -75,12 +81,7 @@ describe('Agent API Regression', () => {
   }
 
   afterAll(async () => {
-    const reportTo = env.REPORT_TO;
-
-    if (reportTo === 'sheet') {
-      console.log('Reporting results to Google Sheets...');
-      await appendRowsToSheet(allResults);
-    } else {
+    if (reportTo === 'terminal') {
       console.log('\nLocal Test Summary');
       if (successes.length > 0) printSummaryTable("SUCCESSES", successes);
       if (failures.length > 0) printSummaryTable("FAILURES", failures);
