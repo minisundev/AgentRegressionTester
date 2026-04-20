@@ -48,6 +48,7 @@ AI_MODEL="gemini-3-flash-preview"
 
 GOOGLE_SERVICE_ACCOUNT_EMAIL=""
 GOOGLE_SHEET_ID=""
+GOOGLE_SHEET_NAME="Results"
 GOOGLE_PRIVATE_KEY=""
 
 ACCOUNT_ID=""
@@ -117,7 +118,10 @@ SLACK_CHANNEL=""
     
     ```jsx
     GOOGLE_SHEET_ID=""
+    GOOGLE_SHEET_NAME="Results"
     ```
+
+    `GOOGLE_SHEET_NAME`은 결과를 기록할 스프레드시트 탭 이름이며, 미설정 시 `Results`를 사용
     
 - Gemini
     

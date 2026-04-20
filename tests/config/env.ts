@@ -34,6 +34,7 @@ const envSchema = z.object({
 
   // Optional - Google Sheets Configuration (required when REPORT_TO=sheet)
   GOOGLE_SHEET_ID: z.string().optional(),
+  GOOGLE_SHEET_NAME: z.string().trim().min(1, 'GOOGLE_SHEET_NAME must not be empty').default('Results'),
   GOOGLE_SERVICE_ACCOUNT_EMAIL: z.string().optional(),
   GOOGLE_PRIVATE_KEY: z.string().optional(),
   GOOGLETRANSLATE_SOURCE_LANGUAGE: z.string().default('vi'),
