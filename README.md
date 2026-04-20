@@ -122,6 +122,7 @@ SLACK_CHANNEL=""
     ```
 
     `GOOGLE_SHEET_NAME`은 결과를 기록할 스프레드시트 탭 이름이며, 미설정 시 `Results`를 사용
+    해당 탭이 없으면 테스트 실행 중 자동으로 생성
     
 - Gemini
     
