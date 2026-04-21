@@ -1,0 +1,1284 @@
+groupName: FAT_R2_EN
+cases:
+- id: 1
+  name: EN - today's weather
+  message: Today's weather
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 2
+  name: EN - what will the weather be like
+  message: What will the weather be like tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 3
+  name: EN - is it raining in saigon today
+  message: Is it raining in Saigon today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 4
+  name: EN - weather forecast for the day after
+  message: Weather forecast for the day after tomorrow
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 5
+  name: 'EN - what will the weather be like #2'
+  message: What will the weather be like in Hue the day after tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 6
+  name: EN - what's the weather like in da
+  message: What's the weather like in Da Lat right now?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 7
+  name: EN - will it rain in nha trang
+  message: Will it rain in Nha Trang next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 8
+  name: EN - what was the weather like in
+  message: What was the weather like in Hai Phong on February 17th?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 9
+  name: EN - what is the weather like in
+  message: What is the weather like in Tokyo this afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 10
+  name: EN - seoul weather
+  message: Seoul weather
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 11
+  name: 'EN - what is the weather like in #2'
+  message: What is the weather like in Thailand?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 12
+  name: 'EN - what will the weather be like #3'
+  message: What will the weather be like on April 22nd?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 13
+  name: EN - ho chi minh city weather
+  message: Ho Chi Minh City weather
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 14
+  name: EN - weather forecast for the next 6
+  message: Weather forecast for the next 6 hours
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 15
+  name: 'EN - what will the weather be like #4'
+  message: What will the weather be like in Hanoi in 3 hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 16
+  name: EN - what is the weather like at
+  message: What is the weather like at 6 o'clock?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 17
+  name: 'EN - what will the weather be like #5'
+  message: What will the weather be like in Saigon in two hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 18
+  name: EN - what's the weather like in hanoi
+  message: What's the weather like in Hanoi tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 19
+  name: EN - hourly weather
+  message: Hourly weather
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 20
+  name: EN - weather this morning
+  message: Weather this morning
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 21
+  name: EN - weather forecast for ho chi minh
+  message: Weather forecast for Ho Chi Minh City this afternoon.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 22
+  name: EN - weather forecast for japan tonight
+  message: Weather forecast for Japan tonight
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 23
+  name: EN - weather in da lat tonight
+  message: Weather in Da Lat tonight
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 24
+  name: EN - what's the weather like in sydney
+  message: What's the weather like in Sydney this morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 25
+  name: EN - what's the weather like in beijing
+  message: What's the weather like in Beijing this afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 26
+  name: EN - what's the weather like in paris
+  message: What's the weather like in Paris tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 27
+  name: EN - saigon weather
+  message: |-
+    Saigon Weather
+    What is the weather like around 3 PM?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 28
+  name: EN - what was the weather like at
+  message: What was the weather like at 6 PM?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 29
+  name: EN - will it be sunny or rainy
+  message: Will it be sunny or rainy in Da Nang this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 30
+  name: EN - weather this week
+  message: Weather this week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 31
+  name: EN - weather next week
+  message: Weather next week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 32
+  name: EN - will the weather in hoi an
+  message: Will the weather in Hoi An be good next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 33
+  name: EN - weekend weather
+  message: Weekend weather
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 34
+  name: EN - saigon weather forecast for next weekend
+  message: Saigon weather forecast for next weekend.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 35
+  name: EN - what's the weather like in hue
+  message: What's the weather like in Hue this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 36
+  name: 'EN - what will the weather be like #6'
+  message: What will the weather be like the week after next?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 37
+  name: EN - weather for the days of the
+  message: Weather for the days of the week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 38
+  name: EN - what's the weather like in nha
+  message: What's the weather like in Nha Trang this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 39
+  name: 'EN - what will the weather be like #7'
+  message: What will the weather be like in Tokyo this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 40
+  name: 'EN - what''s the weather like in beijing #2'
+  message: What's the weather like in Beijing this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 41
+  name: EN - what is the humidity like today
+  message: What is the humidity like today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 42
+  name: EN - what is the humidity percentage today
+  message: What is the humidity percentage today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 43
+  name: EN - is the humidity high today
+  message: Is the humidity high today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 44
+  name: EN - what is the humidity like in
+  message: What is the humidity like in Hanoi today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 45
+  name: EN - what is the humidity in da
+  message: What is the humidity in Da Nang today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 46
+  name: EN - is it humid in saigon today
+  message: Is it humid in Saigon today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 47
+  name: EN - this week's 6th highest humidity level
+  message: This week's 6th highest humidity level.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 48
+  name: EN - what is the humidity in seoul
+  message: What is the humidity in Seoul today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 49
+  name: EN - what will the humidity be like
+  message: What will the humidity be like tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 50
+  name: EN - humidity the day after tomorrow
+  message: Humidity the day after tomorrow
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 51
+  name: EN - humidity test results after 2 weeks
+  message: Humidity test results after 2 weeks
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 52
+  name: 'EN - what is the humidity like in #2'
+  message: What is the humidity like in New York today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 53
+  name: EN - humidity on april 24th
+  message: Humidity on April 24th
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 54
+  name: 'EN - what will the humidity be like #2'
+  message: What will the humidity be like in Ha Long between 6 am and 10 am tomorrow morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 55
+  name: EN - humidity for the next 6 hours
+  message: Humidity for the next 6 hours
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 56
+  name: 'EN - what will the humidity be like #3'
+  message: What will the humidity be like in 10 hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 57
+  name: EN - humidity forecast for tomorrow afternoon in
+  message: Humidity forecast for tomorrow afternoon in Ho Chi Minh City.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 58
+  name: EN - humidity forecast for saigon tomorrow night
+  message: Humidity forecast for Saigon tomorrow night.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 59
+  name: 'EN - what will the humidity be like #4'
+  message: What will the humidity be like in two hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 60
+  name: EN - what is the humidity like at
+  message: What is the humidity like at 12 noon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 61
+  name: 'EN - what is the humidity like in #3'
+  message: What is the humidity like in Hanoi in the afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 62
+  name: 'EN - what is the humidity in da #2'
+  message: What is the humidity in Da Nang at 12 noon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 63
+  name: 'EN - what is the humidity like in #4'
+  message: What is the humidity like in Da Lat tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 64
+  name: EN - what is the humidity level in
+  message: What is the humidity level in Paris at night?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 65
+  name: EN - what's the humidity like in london
+  message: What's the humidity like in London tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 66
+  name: EN - humidity as of 3 pm today
+  message: Humidity as of 3 PM today
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 67
+  name: EN - humidity tonight
+  message: Humidity tonight
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 68
+  name: EN - saigon humidity tonight
+  message: Saigon humidity tonight
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 69
+  name: EN - humidity for next week
+  message: Humidity for next week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 70
+  name: EN - weekend humidity
+  message: Weekend humidity
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 71
+  name: EN - humidity levels for each day of
+  message: Humidity levels for each day of the week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 72
+  name: 'EN - what will the humidity be like #5'
+  message: What will the humidity be like next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 73
+  name: 'EN - what is the humidity like in #5'
+  message: What is the humidity like in Saigon this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 74
+  name: 'EN - what is the humidity level in #2'
+  message: What is the humidity level in Paris this weekend?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 75
+  name: EN - will the humidity in hanoi be
+  message: Will the humidity in Hanoi be high next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 76
+  name: EN - tomorrow will the humidity and temperature
+  message: Tomorrow, will the humidity and temperature be high?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 77
+  name: EN - humidity for the week after next
+  message: Humidity for the week after next
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 78
+  name: 'EN - humidity for the week after next #2'
+  message: Humidity for the week after next
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 79
+  name: 'EN - humidity for the week after next #3'
+  message: Humidity for the week after next
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 80
+  name: EN - hanoi's humidity this week
+  message: Hanoi's humidity this week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 81
+  name: 'EN - hanoi''s humidity this week #2'
+  message: Hanoi's humidity this week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 82
+  name: 'EN - hanoi''s humidity this week #3'
+  message: Hanoi's humidity this week
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 83
+  name: EN - what is the average humidity in
+  message: What is the average humidity in Da Nang this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 84
+  name: EN - what is the humidity forecast for
+  message: What is the humidity forecast for Phu Quoc tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 85
+  name: EN - what is the temperature today
+  message: What is the temperature today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 86
+  name: EN - what is the current temperature
+  message: What is the current temperature?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 87
+  name: EN - what is the highest temperature today
+  message: What is the highest temperature today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 88
+  name: EN - what is the lowest temperature today
+  message: What is the lowest temperature today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 89
+  name: EN - tomorrow's temperature
+  message: Tomorrow's temperature
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 90
+  name: EN - temperature the day after tomorrow
+  message: Temperature the day after tomorrow
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 91
+  name: EN - what will the temperature be next
+  message: What will the temperature be next Monday?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 92
+  name: EN - yesterday's temperature
+  message: Yesterday's temperature
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 93
+  name: EN - temperature in ho chi minh city
+  message: Temperature in Ho Chi Minh City
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 94
+  name: EN - temperature on april 26th
+  message: Temperature on April 26th
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 95
+  name: EN - what is the temperature in paris
+  message: What is the temperature in Paris today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 96
+  name: EN - what is the perceived temperature today
+  message: What is the perceived temperature today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 97
+  name: EN - what is the temperature in saigon
+  message: What is the temperature in Saigon today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 98
+  name: EN - what is the temperature range today
+  message: What is the temperature range today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 99
+  name: EN - highest temperature in saigon
+  message: Highest temperature in Saigon
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 100
+  name: EN - how did the temperature gradually rise
+  message: How did the temperature gradually rise in Hanoi today between 6 AM and 11 AM?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 101
+  name: EN - what is the lowest temperature expected
+  message: What is the lowest temperature expected in Da Nang tomorrow morning between 4 AM and 7 AM?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 102
+  name: EN - temperature tonight
+  message: Temperature tonight
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 103
+  name: EN - temperature this afternoon
+  message: Temperature this afternoon
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 104
+  name: EN - what's the temperature like in saigon
+  message: What's the temperature like in Saigon tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 105
+  name: EN - temperature forecast for the next 10
+  message: Temperature forecast for the next 10 hours
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 106
+  name: EN - what will the temperature in da
+  message: What will the temperature in Da Lat be like in the next 6 hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 107
+  name: EN - temperature this morning
+  message: Temperature this morning
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 108
+  name: EN - temperature tomorrow afternoon
+  message: Temperature tomorrow afternoon
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 109
+  name: EN - the temperature the day after tomorrow
+  message: The temperature the day after tomorrow
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 110
+  name: 'EN - temperature tonight #2'
+  message: Temperature tonight
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 111
+  name: EN - temperature forecast for next monday morning
+  message: Temperature forecast for next Monday morning in Saigon.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 112
+  name: EN - will it be cold in da
+  message: Will it be cold in Da Lat tomorrow morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 113
+  name: EN - please tell me the temperature in
+  message: Please tell me the temperature in Ho Chi Minh City at noon this Friday.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 114
+  name: EN - will the temperature drop low in
+  message: Will the temperature drop low in Seoul tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 115
+  name: EN - what will the temperature drop to
+  message: What will the temperature drop to in Sapa at dawn tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 116
+  name: EN - what will the nighttime temperature be
+  message: What will the nighttime temperature be in New York this Sunday?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 117
+  name: EN - what's the temperature like in hanoi
+  message: What's the temperature like in Hanoi this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 118
+  name: EN - will the temperature be hot and
+  message: Will the temperature be hot and sunny this week? Can we tolerate it?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 119
+  name: EN - will the temperature in saigon be
+  message: Will the temperature in Saigon be insanely hot next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 120
+  name: EN - what is the average temperature in
+  message: What is the average temperature in Nha Trang this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 121
+  name: 'EN - what is the average temperature in #2'
+  message: What is the average temperature in Hai Phong this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 122
+  name: EN - what will the temperature be like
+  message: What will the temperature be like in Hanoi the week after next?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 123
+  name: EN - weekday temperatures in ho chi minh
+  message: Weekday temperatures in Ho Chi Minh City
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 124
+  name: EN - what's the temperature this weekend
+  message: What's the temperature this weekend?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 125
+  name: EN - what will the rainfall be like
+  message: What will the rainfall be like tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 126
+  name: 'EN - what will the rainfall be like #2'
+  message: What will the rainfall be like the day after tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 127
+  name: 'EN - is it raining in saigon today #2'
+  message: Is it raining in Saigon today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 128
+  name: EN - did it rain in can tho
+  message: Did it rain in Can Tho the day before yesterday?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 129
+  name: EN - is it sunny or rainy in
+  message: Is it sunny or rainy in Seoul today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 130
+  name: EN - is it raining in london today
+  message: Is it raining in London today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 131
+  name: EN - will it rain in saigon on
+  message: Will it rain in Saigon on the afternoon of April 30th?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 132
+  name: EN - will it rain in can tho
+  message: Will it rain in Can Tho on the morning of June 5th?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 133
+  name: 'EN - is it sunny or rainy in #2'
+  message: Is it sunny or rainy in Hue today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 134
+  name: EN - is it raining in kuala lumpur
+  message: Is it raining in Kuala Lumpur today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 135
+  name: EN - what is the probability of rain
+  message: What is the probability of rain today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 136
+  name: EN - is it raining heavily in seoul
+  message: Is it raining heavily in Seoul today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 137
+  name: EN - is there a chance of rain
+  message: Is there a chance of rain the day after tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 138
+  name: EN - will it rain this friday
+  message: Will it rain this Friday?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 139
+  name: EN - will it rain next friday
+  message: Will it rain next Friday?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 140
+  name: EN - will it rain in ho chi
+  message: Will it rain in Ho Chi Minh City the day after tomorrow afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 141
+  name: EN - will it rain in da lat
+  message: Will it rain in Da Lat tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 142
+  name: EN - how much rain will it be
+  message: How much rain will it be this evening?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 143
+  name: EN - how will the rainfall change over
+  message: How will the rainfall change over the next three days?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 144
+  name: 'EN - what will the rainfall be like #3'
+  message: What will the rainfall be like tomorrow morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 145
+  name: 'EN - how much rain will it be #2'
+  message: How much rain will it be this afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 146
+  name: 'EN - will it be sunny or rainy #2'
+  message: Will it be sunny or rainy in Da Nang this week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 147
+  name: EN - will it rain in saigon in
+  message: Will it rain in Saigon in two hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 148
+  name: EN - is it raining in hai phong
+  message: Is it raining in Hai Phong this morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 149
+  name: EN - is it raining in vung tau
+  message: Is it raining in Vung Tau this afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 150
+  name: EN - is it raining in new york
+  message: Is it raining in New York this morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 151
+  name: EN - is it raining in saigon this
+  message: Is it raining in Saigon this afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 152
+  name: EN - will it rain in the next
+  message: Will it rain in the next 10 hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 153
+  name: EN - will it rain tonight
+  message: Will it rain tonight?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 154
+  name: 'EN - will it rain in saigon in #2'
+  message: Will it rain in Saigon in 3 hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 155
+  name: EN - will it rain tomorrow afternoon
+  message: Will it rain tomorrow afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 156
+  name: 'EN - will it rain in can tho #2'
+  message: Will it rain in Can Tho in the next 4 hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 157
+  name: 'EN - what will the rainfall be like #4'
+  message: What will the rainfall be like after one week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 158
+  name: 'EN - what will the rainfall be like #5'
+  message: What will the rainfall be like in the next two weeks?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 159
+  name: EN - will it rain a lot in
+  message: Will it rain a lot in Saigon next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 160
+  name: 'EN - will it rain in can tho #3'
+  message: Will it rain in Can Tho this weekend?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 161
+  name: EN - does it rain in saigon on
+  message: Does it rain in Saigon on weekdays?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 162
+  name: EN - will it rain in hanoi this
+  message: Will it rain in Hanoi this weekend?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 163
+  name: EN - please tell me the probability of
+  message: |-
+    "Please tell me the probability of rain in Ca Mau over the next 3 days."
+
+    "Which day is most likely to rain?"
+
+    "Are there any days when it rains for almost the entire day?"
+
+    "Please summarize which days it's best to avoid going outside."
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 164
+  name: EN - check the probability of rain in
+  message: |-
+    "Check the probability of rain in Ninh Binh today for me."
+
+    "What about the afternoon?"
+
+    "Is it more likely to rain tonight?"
+
+    "If I go out, what time should I avoid?"
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 165
+  name: EN - what is the air quality like
+  message: What is the air quality like in Saigon today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 166
+  name: EN - how is the air quality in
+  message: How is the air quality in Nha Trang today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 167
+  name: 'EN - what is the air quality like #2'
+  message: What is the air quality like in Hanoi now?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 168
+  name: 'EN - what is the air quality like #3'
+  message: What is the air quality like today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 169
+  name: EN - what is the pm2 5 level
+  message: What is the PM2.5 level today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 170
+  name: EN - will the air quality be okay
+  message: Will the air quality be okay the day after tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 171
+  name: EN - what was the air quality like
+  message: What was the air quality like on April 30th?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 172
+  name: EN - what is the aqi in hanoi
+  message: What is the AQI in Hanoi today?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 173
+  name: EN - let me check the air quality
+  message: Let me check the air quality in Da Lat.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 174
+  name: EN - air quality
+  message: Air quality
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 175
+  name: EN - air quality in saigon the day
+  message: Air quality in Saigon the day after tomorrow.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 176
+  name: EN - do i need to wear a
+  message: Do I need to wear a face mask when I go out tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 177
+  name: EN - is the current air quality in
+  message: Is the current air quality in Can Tho good or bad?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 178
+  name: EN - what will the air quality be
+  message: What will the air quality be like tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 179
+  name: 'EN - what will the air quality be #2'
+  message: What will the air quality be like in Tokyo tomorrow?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 180
+  name: 'EN - what will the air quality be #3'
+  message: What will the air quality be like tomorrow afternoon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 181
+  name: EN - the air quality in saigon the
+  message: The air quality in Saigon the day after tomorrow morning.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 182
+  name: 'EN - what will the air quality be #4'
+  message: What will the air quality be like next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 183
+  name: 'EN - what will the air quality be #5'
+  message: What will the air quality be like in 7 days?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 184
+  name: 'EN - what will the air quality be #6'
+  message: What will the air quality be like in Da Lat next week?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 185
+  name: 'EN - what will the air quality be #7'
+  message: What will the air quality be like in New York in 5 days?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 186
+  name: 'EN - what will the air quality be #8'
+  message: What will the air quality be like in two hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 187
+  name: 'EN - what was the air quality like #2'
+  message: What was the air quality like around 9 a.m.?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 188
+  name: 'EN - what was the air quality like #3'
+  message: What was the air quality like at 6 PM?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 189
+  name: 'EN - what is the air quality like #4'
+  message: What is the air quality like this morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 190
+  name: 'EN - what will the air quality be #9'
+  message: What will the air quality be like in Tokyo in 3 hours?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 191
+  name: 'EN - what is the air quality like #5'
+  message: What is the air quality like in New York around 3 PM?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 192
+  name: EN - weekend air quality index
+  message: Weekend Air Quality Index
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 193
+  name: EN - air quality on weekdays
+  message: Air quality on weekdays
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 194
+  name: EN - air quality next weekend
+  message: Air quality next weekend
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 195
+  name: EN - air quality over the next 10
+  message: Air quality over the next 10 hours
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 196
+  name: EN - hourly air quality
+  message: Hourly air quality
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 197
+  name: EN - what is the temperature in hanoi
+  message: |-
+    - What is the temperature in Hanoi today?
+
+    - And what about tomorrow?
+
+    - Specifically, what will the temperature be tomorrow afternoon?
+
+    - Will the temperature drop tomorrow evening?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 198
+  name: EN - could you check the temperature in
+  message: |-
+    - Could you check the temperature in Da Nang this week for me?
+
+    - What about Hue?
+
+    - What's the temperature in Hue this Saturday?
+
+    - Will it be hot at noon on Saturday?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 199
+  name: EN - tell me the temperature in japan
+  message: |-
+    - Tell me the temperature in Japan the day after tomorrow.
+
+    - Specifically, what's the temperature in Tokyo?
+
+    - And what about Osaka?
+
+    - What's the temperature in Osaka at night (9 PM)?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 200
+  name: EN - what was the temperature this morning
+  message: |-
+    - What was the temperature this morning (9:00 AM) in Hai Phong?
+
+    - What about noon (12:00 PM)?
+
+    - What about this afternoon (2:00 PM)?
+
+    - And what about the forecast for tomorrow morning?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 201
+  name: 'EN - what will the weather be like #8'
+  message: |-
+    - What will the weather be like in Da Lat tomorrow?
+
+    - What is the lowest temperature there?
+
+    - Will this temperature change over the weekend?
+
+    - Please check specifically for Sunday.
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 202
+  name: 'EN - what is the weather like in #3'
+  message: |-
+    - What is the weather like in Hanoi?
+    - What is the weather like in Saigon?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 203
+  name: 'EN - tomorrow''s temperature #2'
+  message: |-
+    - Tomorrow's temperature
+    - What is the highest temperature?
+    - What is the lowest temperature?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent
+- id: 204
+  name: EN - weather this weekend
+  message: |-
+    - Weather this weekend
+    - I want to go to Phu Quy Island, will the weather be okay?
+  subIntent: CheckDailyForecast
+  mainIntent: Weather
+  agentType: DailyInfoAgent

@@ -1,0 +1,1409 @@
+groupName: FAT_R2
+cases:
+  - id: 1
+    name: "VI - today weather"
+    message: "Thời tiết hôm nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 2
+    name: "VI - tomorrow weather"
+    message: "Thời tiết ngày mai như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 3
+    name: "VI - today rain in Saigon"
+    message: "Hôm nay Sài Gòn có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 4
+    name: "VI - day after tomorrow weather"
+    message: "Thời tiết ngày mốt"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 5
+    name: "VI - weather in Hue the day after tomorrow"
+    message: "Trời Huế ngày kia ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 6
+    name: "VI - current weather in Da Lat"
+    message: "Đà Lạt trời đang như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 7
+    name: "VI - next week rain in Nha Trang"
+    message: "Nha Trang tuần sau có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 8
+    name: "VI - weather in Hai Phong on specific date"
+    message: "Hải Phòng ngày 17 tháng 2 trời thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 9
+    name: "VI - noon weather in Tokyo today"
+    message: "Thời tiết Tokyo trưa hôm nay ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 10
+    name: "VI - weather in Seoul"
+    message: "Thời tiết Seoul"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 11
+    name: "VI - weather in Thailand"
+    message: "Thời tiết Thái Lan sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 12
+    name: "VI - weather on 22 slash 04"
+    message: "Thời tiết ngày 22/04 như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 13
+    name: "VI - weather in Ho Chi Minh City"
+    message: "Thời tiết Hồ Chí Minh"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 14
+    name: "VI - weather for next 6 hours"
+    message: "Thời tiết 6 giờ tới"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 15
+    name: "VI - weather in Hanoi 3 hours later"
+    message: "Thời tiết Hà Nội 3 tiếng nữa thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 16
+    name: "VI - weather in 6 hours"
+    message: "6 giờ tiết thời tiết như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 17
+    name: "VI - weather in Saigon 2 hours later"
+    message: "Sài Gòn 2 tiếng nữa thời tiết như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 18
+    name: "VI - tonight weather in Hanoi"
+    message: "Tối nay Hà Nội thời tiết như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 19
+    name: "VI - hourly weather"
+    message: "Thời tiết theo giờ"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 20
+    name: "VI - this morning weather"
+    message: "Thời tiết sáng nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 21
+    name: "VI - noon weather today in Ho Chi Minh City"
+    message: "Thời tiết trưa nay tại Hồ Chí Minh"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 22
+    name: "VI - tonight weather in Japan"
+    message: "Thời tiết đêm nay tại Nhật Bản"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 23
+    name: "VI - tonight weather in Da Lat"
+    message: "Thời tiết Đà Lạt tối nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 24
+    name: "VI - this morning weather in Sydney"
+    message: "Sydney sáng nay trời thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 25
+    name: "VI - this afternoon weather in Beijing"
+    message: "Bắc Kinh chiều nay thời tiết thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 26
+    name: "VI - tonight weather in Paris"
+    message: "Paris tối nay thời tiết thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 27
+    name: "VI - weather in Saigon around 3 PM"
+    message: "Thời tiết Sài gòn. Khoảng 3 giờ chiều thời tiết ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 28
+    name: "VI - weather at 6 PM"
+    message: "Lúc 6 giờ tối trời thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 29
+    name: "VI - this week sunny or rainy in Da Nang"
+    message: "Đà Nẵng tuần này nắng hay mưa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 30
+    name: "VI - this week weather"
+    message: "Thời tiết tuần này"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 31
+    name: "VI - next week weather"
+    message: "Thời tiết tuần sau"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 32
+    name: "VI - next week good weather in Hoi An"
+    message: "Hội An tuần sau thời tiết tốt không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 33
+    name: "VI - weekend weather"
+    message: "Thời tiết cuối tuần"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 34
+    name: "VI - next weekend weather in Saigon"
+    message: "Thời tiết Sài Gòn cuối tuần tới"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 35
+    name: "VI - this week weather in Hue"
+    message: "Tuần này Huế thời tiết ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 36
+    name: "VI - weather for the week after next"
+    message: "Tuần sau nữa thời tiết như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 37
+    name: "VI - weather for each day this week"
+    message: "Thời tiết các ngày trong tuần"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 38
+    name: "VI - this week weather in Nha Trang"
+    message: "Nha Trang tuần này thời tiết thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 39
+    name: "VI - this week weather in Tokyo"
+    message: "Tokyo tuần này thời tiết ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 40
+    name: "VI - this week weather in Beijing"
+    message: "Bắc Kinh tuần này thời tiết thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 41
+    name: "VI - humidity today"
+    message: "Hôm nay độ ẩm thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 42
+    name: "VI - humidity percentage today"
+    message: "Độ ẩm hôm nay bao nhiêu phần trăm"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 43
+    name: "VI - whether humidity is high today"
+    message: "Độ ẩm hôm nay cao không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 44
+    name: "VI - humidity in Hanoi today"
+    message: "Hà Nội hôm nay độ ẩm thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 45
+    name: "VI - humidity in Da Nang today"
+    message: "Đà Nẵng hôm nay độ ẩm bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 46
+    name: "VI - whether it is humid in Saigon today"
+    message: "Sài gòn hôm nay có ẩm không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 47
+    name: "VI - humidity this Friday"
+    message: "Độ ẩm thứ 6 tuần này"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 48
+    name: "VI - humidity in Seoul today"
+    message: "Seoul hôm nay độ ẩm bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 49
+    name: "VI - humidity tomorrow"
+    message: "Độ ẩm ngày mai như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 50
+    name: "VI - humidity the day after tomorrow"
+    message: "Độ ẩm ngày kia"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 51
+    name: "VI - humidity two weeks later"
+    message: "Độ ẩm thử 2 tuần sau"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 52
+    name: "VI - humidity in New York today"
+    message: "New York hôm nay độ ẩm thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 53
+    name: "VI - humidity on 24 slash 04"
+    message: "Độ ẩm ngày 24/04"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 54
+    name: "VI - humidity changes in Ha Long tomorrow morning from 6 to 10"
+    message: "Sáng mai từ 6h đến 10h ở Hạ Long độ ẩm thay đổi như thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 55
+    name: "VI - humidity for next 6 hours"
+    message: "Độ ẩm 6 giờ tiếp theo"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 56
+    name: "VI - humidity for next 10 hours"
+    message: "10 giờ tới độ ẩm như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 57
+    name: "VI - humidity at noon tomorrow in Ho Chi Minh City"
+    message: "Độ ẩm trưa mai tại Hồ Chí Minh"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 58
+    name: "VI - humidity tomorrow night in Saigon"
+    message: "Độ ẩm tối mai tại Sài gòn"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 59
+    name: "VI - humidity 2 hours later"
+    message: "2 tiếng nữa độ ẩm thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 60
+    name: "VI - humidity at 12 noon"
+    message: "Lúc 12 giờ trưa độ ẩm thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 61
+    name: "VI - humidity in Hanoi this afternoon"
+    message: "Buổi chiều Hà Nội độ ẩm thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 62
+    name: "VI - humidity at 12 noon in Da Nang"
+    message: "Đà Nẵng lúc 12 giờ trưa độ ẩm bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 63
+    name: "VI - humidity tonight in Da Lat"
+    message: "Đêm nay tại Đà Lạt độ ẩm bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 64
+    name: "VI - humidity in Paris in the evening"
+    message: "Paris buổi tối độ ẩm bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 65
+    name: "VI - humidity in London tonight"
+    message: "London đêm nay độ ẩm thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 66
+    name: "VI - humidity from 3 PM today"
+    message: "Độ ẩm từ 3h chiều nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 67
+    name: "VI - humidity tonight"
+    message: "Độ ẩm đêm nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 68
+    name: "VI - humidity in Saigon tonight"
+    message: "Sài gòn độ ẩm tối nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 69
+    name: "VI - humidity next week"
+    message: "Độ ẩm tuần tới"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 70
+    name: "VI - humidity on the weekend"
+    message: "Độ ẩm cuối tuần"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 71
+    name: "VI - humidity for each day of the week"
+    message: "Độ ẩm các ngày trong tuần"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 72
+    name: "VI - humidity next week"
+    message: "Tuần tới độ ẩm như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 73
+    name: "VI - humidity in Saigon this week"
+    message: "Sài gòn độ ẩm tuần này như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 74
+    name: "VI - humidity in Paris this weekend"
+    message: "Paris cuối tuần độ ẩm bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 75
+    name: "VI - whether humidity will be high in Hanoi next week"
+    message: "Độ ẩm tuần tới Hà Nội cao không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 76
+    name: "VI - whether humidity and temperature will be high tomorrow"
+    message: "Ngày mai độ ẩm và nhiệt độ cao không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 77
+    name: "VI - humidity the week after next"
+    message: "Độ ẩm tuần sau nữa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 78
+    name: "VI - humidity in Hanoi this week"
+    message: "Hà Nội độ ẩm tuần này"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 79
+    name: "VI - average humidity in Da Nang this week"
+    message: "Tuần này ở Đà Nẵng độ ẩm trung bình thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 80
+    name: "VI - forecast humidity in Phu Quoc tomorrow"
+    message: "Độ ẩm ở Phú Quốc ngày mai dự báo ra sao?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 81
+    name: "VI - temperature today"
+    message: "Nhiệt độ hôm nay thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 82
+    name: "VI - current temperature"
+    message: "Nhiệt độ hiện tại là bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 83
+    name: "VI - highest temperature today"
+    message: "Hôm nay nhiệt độ cao nhất là bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 84
+    name: "VI - lowest temperature today"
+    message: "Nhiệt độ thấp nhất hôm nay là mấy độ"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 85
+    name: "VI - temperature tomorrow"
+    message: "Nhiệt độ ngày mai"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 86
+    name: "VI - temperature the day after tomorrow"
+    message: "Nhiệt độ ngày kia"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 87
+    name: "VI - temperature next Monday"
+    message: "Thứ 2 tuần sau nhiệt độ bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 88
+    name: "VI - temperature yesterday"
+    message: "Nhiệt độ hôm qua"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 89
+    name: "VI - temperature in Ho Chi Minh City"
+    message: "Nhiệt độ tại Hồ Chí Minh"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 90
+    name: "VI - temperature on 26 slash 04"
+    message: "Nhiệt độ ngày 26/04"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 91
+    name: "VI - temperature in Paris today"
+    message: "Paris hôm nay nhiệt độ thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 92
+    name: "VI - feels like temperature today"
+    message: "Nhiệt độ cảm giác hôm nay là bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 93
+    name: "VI - temperature in Saigon today"
+    message: "Sài Gòn hôm nay nhiệt độ thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 94
+    name: "VI - temperature range today"
+    message: "Hôm nay nhiệt độ dao động trong khoảng bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 95
+    name: "VI - highest temperature in Saigon"
+    message: "Nhiệt độ cao nhất tại Sài Gòn"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 96
+    name: "VI - temperature trend in Hanoi from 6 to 11 this morning"
+    message: "Hôm nay từ 6h đến 11h sáng ở Hà Nội nhiệt độ tăng dần như thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 97
+    name: "VI - lowest expected temperature in Da Nang tomorrow dawn from 4 to 7"
+    message: "Rạng sáng mai từ 4h đến 7h ở Đà Nẵng nhiệt độ thấp nhất dự kiến là bao nhiêu độ?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 98
+    name: "VI - temperature tonight"
+    message: "Nhiệt độ đêm nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 99
+    name: "VI - temperature at noon today"
+    message: "Nhiệt độ trưa nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 100
+    name: "VI - temperature in Saigon tonight"
+    message: "Tối nay Sài gòn nhiệt độ như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 101
+    name: "VI - temperature for next 10 hours"
+    message: "Nhiệt độ 10 giờ tới"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 102
+    name: "VI - temperature in Da Lat for next 6 hours"
+    message: "6 giờ tới nhiệt độ Đà Lạt như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 103
+    name: "VI - temperature this morning"
+    message: "Nhiệt độ sáng nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 104
+    name: "VI - temperature tomorrow afternoon"
+    message: "Nhiệt độ chiều mai"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 105
+    name: "VI - temperature the day after tomorrow evening"
+    message: "Nhiệt độ tối ngày kia"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 106
+    name: "VI - temperature tonight duplicate"
+    message: "Nhiệt độ đêm nay"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 107
+    name: "VI - temperature in Saigon next Monday morning"
+    message: "Nhiệt độ sáng thứ 2 tuần sau tại Sài gòn"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 108
+    name: "VI - whether it is cold in Da Lat tomorrow morning"
+    message: "Sáng mai nhiệt độ tại Đà Lạt có lạnh không?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 109
+    name: "VI - temperature in Ho Chi Minh City at noon this Friday"
+    message: "Cho tôi biết nhiệt độ ở Thành phố Hồ Chí Minh vào buổi trưa thứ Sáu tuần này."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 110
+    name: "VI - whether temperature in Seoul drops low tonight"
+    message: "Tối nay ở Seoul nhiệt độ có giảm xuống thấp không?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 111
+    name: "VI - lowest temperature in Sapa at dawn tomorrow"
+    message: "Lúc bình minh ngày mai ở Sapa nhiệt độ xuống tới mấy độ?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 112
+    name: "VI - night temperature in New York this Sunday"
+    message: "Nhiệt độ ban đêm ở New York vào Chủ nhật tuần này là bao nhiêu?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 113
+    name: "VI - temperature in Hanoi this week"
+    message: "Tuần này Hà Nội nhiệt độ như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 114
+    name: "VI - whether this week's temperature is very hot"
+    message: "Nhiệt độ tuần này có nắng nóng không, chịu nổi không?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 115
+    name: "VI - whether next week's temperature in Saigon is extremely hot"
+    message: "Nhiệt độ tuần tới Sài gòn có nóng điên không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 116
+    name: "VI - average temperature in Nha Trang this week"
+    message: "Tuần này ở Nha Trang nhiệt độ trung bình bao nhiêu?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 117
+    name: "VI - average temperature in Hai Phong this week"
+    message: "Tuần này ở Hải Phòng nhiệt độ trung bình bao nhiêu?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 118
+    name: "VI - temperature in Hanoi the week after next"
+    message: "Tuần sau nữa nhiệt độ Hà Nội như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 119
+    name: "VI - temperature in Ho Chi Minh City for each day of the week"
+    message: "Các ngày trong tuần nhiệt độ tại Hồ Chí Minh"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 120
+    name: "VI - weekend temperature"
+    message: "Cuối tuần nhiệt độ bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 121
+    name: "VI - precipitation tomorrow"
+    message: "Lượng mưa ngày mai sẽ ra sao?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 122
+    name: "VI - precipitation the day after tomorrow"
+    message: "Lượng mưa ngày kia sẽ thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 123
+    name: "VI - whether it rains in Saigon today"
+    message: "Hôm nay Sài Gòn có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 124
+    name: "VI - whether it rained in Can Tho the day before yesterday"
+    message: "Cần Thơ hôm kia có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 125
+    name: "VI - sunny or rainy in Seoul today"
+    message: "Seoul hôm nay nắng hay mưa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 126
+    name: "VI - whether it rains in London today"
+    message: "London hôm nay có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 127
+    name: "VI - whether it rains in Saigon on April 30 in the afternoon"
+    message: "Sài Gòn ngày 30 tháng 4 buổi chiều có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 128
+    name: "VI - whether it rains in Can Tho on June 5 in the morning"
+    message: "Cần Thơ ngày 5 tháng 6 buổi sáng có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 129
+    name: "VI - sunny or rainy in Hue today"
+    message: "Hôm nay Huế nắng hay mưa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 130
+    name: "VI - whether it rains in Kuala Lumpur today"
+    message: "Hôm nay Kuala Lumpur có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 131
+    name: "VI - rain probability today"
+    message: "Hôm nay xác suất mưa bao nhiêu phần trăm"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 132
+    name: "VI - whether it rains heavily in Seoul today"
+    message: "Seoul hôm nay mưa nhiều không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 133
+    name: "VI - whether there is rain possibility the day after tomorrow"
+    message: "Ngày kia có khả năng mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 134
+    name: "VI - whether it rains this Friday"
+    message: "Thứ 6 tuần này có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 135
+    name: "VI - whether it rains next Friday"
+    message: "Thứ 6 tuần sau có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 136
+    name: "VI - whether it rains in Ho Chi Minh City the afternoon of the day after tomorrow"
+    message: "Chiều ngày kia tại Hồ Chí Minh có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 137
+    name: "VI - whether it rains in Da Lat tonight"
+    message: "Đà Lạt đêm nay có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 138
+    name: "VI - precipitation this evening"
+    message: "Lượng mưa vào buổi tối hôm nay như thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 139
+    name: "VI - precipitation changes over the next 3 days"
+    message: "Lượng mưa trong 3 ngày tới sẽ thay đổi như thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 140
+    name: "VI - precipitation tomorrow morning"
+    message: "Lượng mưa vào buổi sáng ngày mai sẽ thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 141
+    name: "VI - precipitation this afternoon"
+    message: "Lượng mưa vào buổi chiều hôm nay ra sao?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 142
+    name: "VI - sunny or rainy in Da Nang this week"
+    message: "Đà Nẵng tuần này nắng hay mưa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 143
+    name: "VI - whether it rains in Saigon 2 hours later"
+    message: "Sài Gòn 2 tiếng nữa có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 144
+    name: "VI - whether it rains in Hai Phong in the morning"
+    message: "Hải Phòng buổi sáng có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 145
+    name: "VI - whether it rains in Vung Tau in the afternoon"
+    message: "Vũng Tàu buổi chiều có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 146
+    name: "VI - whether it rains in New York in the morning"
+    message: "New York buổi sáng có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 147
+    name: "VI - whether it rains in Saigon this afternoon"
+    message: "Sài Gòn chiều nay mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 148
+    name: "VI - whether it rains in the next 10 hours"
+    message: "10 giờ tới có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 149
+    name: "VI - whether it rains tonight"
+    message: "Tối nay có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 150
+    name: "VI - whether it rains in Saigon 3 hours later"
+    message: "Sài Gòn 3 giờ nữa có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 151
+    name: "VI - whether it rains tomorrow at noon"
+    message: "Trưa mai có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 152
+    name: "VI - whether it rains in Can Tho in the next 4 hours"
+    message: "Cần Thơ 4 giờ tới có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 153
+    name: "VI - precipitation after one week"
+    message: "Lượng mưa sau 1 tuần sẽ ra sao?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 154
+    name: "VI - precipitation in the next 2 weeks"
+    message: "Lượng mưa trong 2 tuần tới sẽ như thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 155
+    name: "VI - whether it rains heavily in Saigon next week"
+    message: "Sài Gòn tuần tới có mưa nhiều không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 156
+    name: "VI - whether it rains in Can Tho this weekend"
+    message: "Cần Thơ cuối tuần này có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 157
+    name: "VI - whether it rains in Saigon on each day of the week"
+    message: "Sài Gòn các ngày trong tuần có mưa không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 158
+    name: "VI - whether it rains in Hanoi on the weekend"
+    message: "Hà Nội có mưa vào cuối tuần không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 159
+    name: "VI - rain probability in Ca Mau over the next 3 days multi turn"
+    message: "Xem giúp mình khả năng mưa ở Cà Mau trong 3 ngày tới. Ngày nào dễ mưa nhất? Có ngày nào mưa kéo dài gần cả ngày không? Tóm tắt giúp mình ngày nào nên hạn chế ra ngoài."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 160
+    name: "VI - rain probability in Ninh Binh today multi turn"
+    message: "Kiểm tra khả năng mưa ở Ninh Bình hôm nay giúp mình. Thế còn buổi chiều thì sao? Tối nay có dễ mưa hơn không? Nếu ra ngoài thì nên tránh khung giờ nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 161
+    name: "VI - air quality in Saigon today"
+    message: "Chất lượng không khí Sài Gòn hôm nay thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 162
+    name: "VI - whether air quality in Nha Trang is good today"
+    message: "Chất lượng không khí ở Nha Trang hôm nay tốt không?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 163
+    name: "VI - current air quality in Hanoi"
+    message: "Tình trạng chất lượng không khí ở Hà Nội bây giờ như thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 164
+    name: "VI - air quality today"
+    message: "Chất lượng không khí hôm nay thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 165
+    name: "VI - PM2.5 today"
+    message: "Hôm nay bụi mịn PM2.5 bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 166
+    name: "VI - whether air quality is okay the day after tomorrow"
+    message: "Chất lượng không khí ngày kia có ok không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 167
+    name: "VI - air quality on 30 slash 4"
+    message: "Chất lượng không khí ngày 30/4 thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 168
+    name: "VI - AQI in Hanoi today"
+    message: "AQI Hà Nội hôm nay thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 169
+    name: "VI - check air quality in Da Lat"
+    message: "Cho tui kiểm tra chất lượng không khí Đà Lạt"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 170
+    name: "VI - air quality generic"
+    message: "Chất lượng không khí sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 171
+    name: "VI - air quality in Saigon the day after tomorrow"
+    message: "Chất lượng không khí ngày kia tại Sài gòn"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 172
+    name: "VI - whether a mask is needed tomorrow"
+    message: "Ngày mai ra đường có cần đeo khẩu trang không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 173
+    name: "VI - whether current air quality in Can Tho is good or bad"
+    message: "Chất lượng không khí hiện tại ở Cần Thơ là tốt hay xấu?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 174
+    name: "VI - air quality tomorrow"
+    message: "Ngày mai chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 175
+    name: "VI - air quality in Tokyo tomorrow"
+    message: "Tokyo ngày mai chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 176
+    name: "VI - air quality tomorrow afternoon"
+    message: "Chiều mai chất lượng không khí như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 177
+    name: "VI - air quality in Saigon the morning of the day after tomorrow"
+    message: "Sáng ngày kia chất lượng không khí tại Sài gòn"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 178
+    name: "VI - air quality next week"
+    message: "Tuần tới chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 179
+    name: "VI - air quality 7 days later"
+    message: "7 ngày nữa chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 180
+    name: "VI - air quality in Da Lat next week"
+    message: "Đà Lạt tuần tới chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 181
+    name: "VI - air quality in New York 5 days later"
+    message: "New York 5 ngày nữa chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 182
+    name: "VI - air quality 2 hours later"
+    message: "2 tiếng nữa chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 183
+    name: "VI - air quality around 9 AM"
+    message: "Khoảng 9 giờ sáng chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 184
+    name: "VI - air quality at 6 PM"
+    message: "Lúc 6 giờ tối chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 185
+    name: "VI - air quality in the morning"
+    message: "Buổi sáng chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 186
+    name: "VI - air quality in Tokyo 3 hours later"
+    message: "Tokyo 3 giờ nữa chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 187
+    name: "VI - air quality in New York around 3 PM"
+    message: "New York khoảng 3 giờ chiều chất lượng không khí thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 188
+    name: "VI - air index on the weekend"
+    message: "Chỉ số không khí cuối tuần"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 189
+    name: "VI - air quality for each day of the week"
+    message: "Chất lượng không khí các ngày trong tuần"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 190
+    name: "VI - air quality next weekend"
+    message: "Chất lượng không khí cuối tuần sau"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 191
+    name: "VI - air quality for next 10 hours"
+    message: "Chất lượng không khí 10 giờ tới"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 192
+    name: "VI - hourly air quality"
+    message: "Chất lượng không khí theo giờ"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 193
+    name: "VI - multi turn temperature in Hanoi today and tomorrow"
+    message: "Nhiệt độ ở Hà Nội hôm nay thế nào? Còn ngày mai thì sao? Cụ thể vào buổi chiều mai nhiệt độ là bao nhiêu? Tối mai thì nhiệt độ có giảm không?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
+
+  - id: 194
+    name: "VI - multi turn temperature in Da Nang and Hue this week"
+    message: "Kiểm tra nhiệt độ ở Đà Nẵng tuần này giúp tôi. Thế còn ở Huế thì sao? Nhiệt độ ở Huế vào thứ Bảy này là bao nhiêu? Buổi trưa thứ Bảy trời có nóng không?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
+
+  - id: 195
+    name: "VI - multi turn temperature in Japan Tokyo and Osaka the day after tomorrow"
+    message: "Cho tôi biết nhiệt độ ở Nhật Bản vào ngày mốt. Cụ thể tại Tokyo là bao nhiêu độ? Thế còn ở Osaka? Nhiệt độ ở Osaka vào ban đêm (21:00) thế nào?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
+
+  - id: 196
+    name: "VI - multi turn temperature in Hai Phong today and tomorrow morning"
+    message: "Nhiệt độ sáng nay (09:00) ở Hải Phòng thế nào? Thế còn buổi trưa (12:00)? Chiều nay (14:00) thì sao? Còn dự báo cho sáng ngày mai?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
+
+  - id: 197
+    name: "VI - multi turn weather and low temperature in Da Lat"
+    message: "Thời tiết ở Đà Lạt ngày mai thế nào? Nhiệt độ thấp nhất ở đó là bao nhiêu? Mức nhiệt độ này vào cuối tuần có thay đổi không? Kiểm tra cụ thể cho ngày Chủ nhật giúp tôi."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
+
+  - id: 198
+    name: "VI - multi turn weather in Hanoi and Saigon"
+    message: "Thời tiết Hà Nội. Sài Gòn như nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
+
+  - id: 199
+    name: "VI - multi turn tomorrow temperature high and low"
+    message: "Nhiệt độ ngày mai. Nhiệt độ cao nhất là bao nhiêu. Nhiệt độ thấp nhất là bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
+
+  - id: 200
+    name: "VI - multi turn weekend weather and travel suitability in Phu Quy"
+    message: "Thời tiết cuối tuần này. Tôi muốn đi chơi Phú Quý thời tiết có ok không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    multiTurn: true
