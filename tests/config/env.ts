@@ -1,6 +1,10 @@
 import { z } from 'zod';
 import 'dotenv/config';
 
+const knownSheetEnvironmentNames = ['dev', 'stg', 'prod', 'local'] as const;
+
+type KnownSheetEnvironmentName = (typeof knownSheetEnvironmentNames)[number];
+
 const envSchema = z.object({
   // Required - API Configuration
   CONTROL_BASE_URL: z.string().url('CONTROL_BASE_URL must be a valid URL'),
@@ -34,7 +38,10 @@ const envSchema = z.object({
 
   // Optional - Google Sheets Configuration (required when REPORT_TO=sheet)
   GOOGLE_SHEET_ID: z.string().optional(),
-  GOOGLE_SHEET_NAME: z.string().trim().min(1, 'GOOGLE_SHEET_NAME must not be empty').default('Results'),
+  GOOGLE_SHEET_NAME: z.preprocess(
+    (value) => typeof value === 'string' && value.trim() === '' ? undefined : value,
+    z.string().trim().min(1, 'GOOGLE_SHEET_NAME must not be empty').optional()
+  ),
   GOOGLE_SERVICE_ACCOUNT_EMAIL: z.string().optional(),
   GOOGLE_PRIVATE_KEY: z.string().optional(),
   GOOGLETRANSLATE_SOURCE_LANGUAGE: z.string().default('vi'),
@@ -45,6 +52,21 @@ const envSchema = z.object({
 });
 
 const refinedSchema = envSchema.superRefine((data, ctx) => {
+  const explicitSheetName = normalizeSheetName(data.GOOGLE_SHEET_NAME);
+  const inferredSheetName = inferSheetNameFromBaseUrl(data.CONTROL_BASE_URL);
+
+  if (
+    explicitSheetName &&
+    isKnownSheetEnvironmentName(explicitSheetName) &&
+    explicitSheetName !== inferredSheetName
+  ) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: `GOOGLE_SHEET_NAME (${explicitSheetName}) does not match CONTROL_BASE_URL environment (${inferredSheetName})`,
+      path: ['GOOGLE_SHEET_NAME'],
+    });
+  }
+
   // When JUDGE_MODE=api, AI_API_KEY is required
   if (data.JUDGE_MODE === 'api' && !data.AI_API_KEY) {
     ctx.addIssue({
@@ -101,9 +123,42 @@ function validateEnv() {
     throw new Error('Invalid environment configuration:\n' + errors);
   }
 
-  return result.data;
+  const data = result.data;
+
+  return {
+    ...data,
+    GOOGLE_SHEET_NAME: normalizeSheetName(data.GOOGLE_SHEET_NAME) ?? inferSheetNameFromBaseUrl(data.CONTROL_BASE_URL),
+  };
 }
 
 export const env = validateEnv();
 
-export type Env = z.infer<typeof refinedSchema>;
+function normalizeSheetName(sheetName?: string): string | undefined {
+  const trimmed = sheetName?.trim();
+  return trimmed ? trimmed : undefined;
+}
+
+function isKnownSheetEnvironmentName(value: string): value is KnownSheetEnvironmentName {
+  return knownSheetEnvironmentNames.includes(value as KnownSheetEnvironmentName);
+}
+
+function inferSheetNameFromBaseUrl(baseUrl: string): KnownSheetEnvironmentName {
+  const hostname = new URL(baseUrl).hostname.toLowerCase();
+
+  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.local')) {
+    return 'local';
+  }
+  if (hostname.includes('staging') || hostname.includes('-stg') || hostname.includes('.stg.')) {
+    return 'stg';
+  }
+  if (hostname.includes('dev') || hostname.includes('.dev.')) {
+    return 'dev';
+  }
+  return 'prod';
+}
+
+type ParsedEnv = z.infer<typeof refinedSchema>;
+
+export type Env = Omit<ParsedEnv, 'GOOGLE_SHEET_NAME'> & {
+  GOOGLE_SHEET_NAME: string;
+};

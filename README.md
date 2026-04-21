@@ -40,7 +40,11 @@ LLM 에이전트 개발은 일반적인 백엔드 개발과 다릅니다. 프롬
 **(보안을 위해 `.env` 파일은 절대 Git에 커밋 금지!)**
 
 ```jsx
-CONTROL_BASE_URL=""
+CONTROL_BASE_URL="" # fallback for legacy commands
+CONTROL_BASE_URL_PROD=""
+CONTROL_BASE_URL_STG=""
+CONTROL_BASE_URL_DEV=""
+CONTROL_BASE_URL_LOCAL=""
 X_API_KEY=""
 
 AI_API_KEY=""
@@ -48,7 +52,13 @@ AI_MODEL="gemini-3-flash-preview"
 
 GOOGLE_SERVICE_ACCOUNT_EMAIL=""
 GOOGLE_SHEET_ID=""
-GOOGLE_SHEET_NAME="Results"
+# Optional fallback for legacy commands
+GOOGLE_SHEET_NAME=""
+# Optional per-profile sheet overrides
+# GOOGLE_SHEET_NAME_PROD="prod"
+# GOOGLE_SHEET_NAME_STG="stg"
+# GOOGLE_SHEET_NAME_DEV="dev"
+# GOOGLE_SHEET_NAME_LOCAL="local"
 GOOGLE_PRIVATE_KEY=""
 
 ACCOUNT_ID=""
@@ -118,11 +128,17 @@ SLACK_CHANNEL=""
     
     ```jsx
     GOOGLE_SHEET_ID=""
-    GOOGLE_SHEET_NAME="Results"
+    GOOGLE_SHEET_NAME="" # legacy fallback
+    GOOGLE_SHEET_NAME_STG="stg"
+    GOOGLE_SHEET_NAME_DEV="dev"
     ```
 
-    `GOOGLE_SHEET_NAME`은 결과를 기록할 스프레드시트 탭 이름이며, 미설정 시 `Results`를 사용
-    해당 탭이 없으면 테스트 실행 중 자동으로 생성
+    `GOOGLE_SHEET_NAME`은 결과를 기록할 스프레드시트 탭 이름입니다.
+    비워두면 `CONTROL_BASE_URL` 기준으로 `stg`, `dev`, `prod`, `local` 중 하나를 자동 사용합니다.
+    해당 탭이 없으면 테스트 실행 중 자동으로 생성됩니다.
+
+    `npm run test:profile -- api:dev` 같은 프로필 실행을 쓸 때는
+    `GOOGLE_SHEET_NAME_<PROFILE>` 값이 있으면 그 값을 우선 사용하고, 없으면 프로필 이름 자체를 시트 탭 이름으로 사용합니다.
     
 - Gemini
     
@@ -159,15 +175,20 @@ SLACK_CHANNEL=""
 ```jsx
 npm install
 
-npm test all
+npm run test:sheet:api -- dev
+npm run test:sheet:internal -- stg
+npm run test:terminal -- prod
+
+Profile shortcut
 
     "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
-    "test:sheet:none": "REPORT_TO=sheet JUDGE_MODE=none npm run test:all",
-    "test:sheet:internal": "REPORT_TO=sheet JUDGE_MODE=sheet npm run test:all",
-    "test:sheet:api": "REPORT_TO=sheet JUDGE_MODE=api npm run test:all",
-    "test:sheet:local": "REPORT_TO=sheet JUDGE_MODE=local npm run test:all",
-    "test:local": "REPORT_TO=terminal JUDGE_MODE=none npm run test:all",
-    "test:local:ai": "REPORT_TO=terminal JUDGE_MODE=local npm run test:all"
+    "test:profile": "node scripts/run-test-profile.js",
+    "test:sheet:none": "REPORT_TO=sheet JUDGE_MODE=none node scripts/run-test-profile.js",
+    "test:sheet:internal": "REPORT_TO=sheet JUDGE_MODE=sheet node scripts/run-test-profile.js",
+    "test:sheet:api": "REPORT_TO=sheet JUDGE_MODE=api node scripts/run-test-profile.js",
+    "test:sheet:local": "REPORT_TO=sheet JUDGE_MODE=local node scripts/run-test-profile.js",
+    "test:terminal": "REPORT_TO=terminal JUDGE_MODE=none node scripts/run-test-profile.js",
+    "test:terminal:ai": "REPORT_TO=terminal JUDGE_MODE=local node scripts/run-test-profile.js"
 ```
 
 ### 4. DEMO
