@@ -41,10 +41,6 @@ LLM 에이전트 개발은 일반적인 백엔드 개발과 다릅니다. 프롬
 
 ```jsx
 CONTROL_BASE_URL="" # fallback for legacy commands
-CONTROL_BASE_URL_PROD=""
-CONTROL_BASE_URL_STG=""
-CONTROL_BASE_URL_DEV=""
-CONTROL_BASE_URL_LOCAL=""
 X_API_KEY=""
 
 AI_API_KEY=""
@@ -54,11 +50,8 @@ GOOGLE_SERVICE_ACCOUNT_EMAIL=""
 GOOGLE_SHEET_ID=""
 # Optional fallback for legacy commands
 GOOGLE_SHEET_NAME=""
-# Optional per-profile sheet overrides
-# GOOGLE_SHEET_NAME_PROD="prod"
-# GOOGLE_SHEET_NAME_STG="stg"
-# GOOGLE_SHEET_NAME_DEV="dev"
-# GOOGLE_SHEET_NAME_LOCAL="local"
+# Optional: override the profile config file path
+TEST_PROFILE_CONFIG="tests/config/profiles.yaml"
 GOOGLE_PRIVATE_KEY=""
 
 ACCOUNT_ID=""
@@ -129,16 +122,15 @@ SLACK_CHANNEL=""
     ```jsx
     GOOGLE_SHEET_ID=""
     GOOGLE_SHEET_NAME="" # legacy fallback
-    GOOGLE_SHEET_NAME_STG="stg"
-    GOOGLE_SHEET_NAME_DEV="dev"
+    TEST_PROFILE_CONFIG="tests/config/profiles.yaml"
     ```
 
     `GOOGLE_SHEET_NAME`은 결과를 기록할 스프레드시트 탭 이름입니다.
-    비워두면 `CONTROL_BASE_URL` 기준으로 `stg`, `dev`, `prod`, `local` 중 하나를 자동 사용합니다.
+    프로필을 지정하지 않고 실행할 때만 이 값을 사용합니다.
     해당 탭이 없으면 테스트 실행 중 자동으로 생성됩니다.
 
-    `npm run test:profile -- api:dev` 같은 프로필 실행을 쓸 때는
-    `GOOGLE_SHEET_NAME_<PROFILE>` 값이 있으면 그 값을 우선 사용하고, 없으면 프로필 이름 자체를 시트 탭 이름으로 사용합니다.
+    프로필 실행은 `tests/config/profiles.yaml`에서 읽습니다.
+    새 환경은 YAML에 추가만 하면 되고, `crow` 같은 이름도 코드 수정 없이 바로 사용할 수 있습니다.
     
 - Gemini
     
@@ -172,15 +164,26 @@ SLACK_CHANNEL=""
 
 ### 3. Quick Start
 
-```jsx
+```bash
 npm install
 
-npm run test:sheet:api -- dev
-npm run test:sheet:internal -- stg
-npm run test:terminal -- prod
+npm run test:sheet:api -- --dev
+npm run test:sheet:internal -- --stg
+npm run test:terminal -- --prod
+```
 
-Profile shortcut
+Profile config: `tests/config/profiles.yaml`
 
+```yaml
+profiles:
+  stg:
+    baseUrl: https://example.com/example
+    sheetName: stg
+```
+
+Legacy-compatible scripts
+
+```json
     "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
     "test:profile": "node scripts/run-test-profile.js",
     "test:sheet:none": "REPORT_TO=sheet JUDGE_MODE=none node scripts/run-test-profile.js",

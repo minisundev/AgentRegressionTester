@@ -1,10 +1,6 @@
 import { z } from 'zod';
 import 'dotenv/config';
 
-const knownSheetEnvironmentNames = ['dev', 'stg', 'prod', 'local'] as const;
-
-type KnownSheetEnvironmentName = (typeof knownSheetEnvironmentNames)[number];
-
 const envSchema = z.object({
   // Required - API Configuration
   CONTROL_BASE_URL: z.string().url('CONTROL_BASE_URL must be a valid URL'),
@@ -52,21 +48,6 @@ const envSchema = z.object({
 });
 
 const refinedSchema = envSchema.superRefine((data, ctx) => {
-  const explicitSheetName = normalizeSheetName(data.GOOGLE_SHEET_NAME);
-  const inferredSheetName = inferSheetNameFromBaseUrl(data.CONTROL_BASE_URL);
-
-  if (
-    explicitSheetName &&
-    isKnownSheetEnvironmentName(explicitSheetName) &&
-    explicitSheetName !== inferredSheetName
-  ) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      message: `GOOGLE_SHEET_NAME (${explicitSheetName}) does not match CONTROL_BASE_URL environment (${inferredSheetName})`,
-      path: ['GOOGLE_SHEET_NAME'],
-    });
-  }
-
   // When JUDGE_MODE=api, AI_API_KEY is required
   if (data.JUDGE_MODE === 'api' && !data.AI_API_KEY) {
     ctx.addIssue({
@@ -127,7 +108,7 @@ function validateEnv() {
 
   return {
     ...data,
-    GOOGLE_SHEET_NAME: normalizeSheetName(data.GOOGLE_SHEET_NAME) ?? inferSheetNameFromBaseUrl(data.CONTROL_BASE_URL),
+    GOOGLE_SHEET_NAME: normalizeSheetName(data.GOOGLE_SHEET_NAME) ?? 'Results',
   };
 }
 
@@ -136,25 +117,6 @@ export const env = validateEnv();
 function normalizeSheetName(sheetName?: string): string | undefined {
   const trimmed = sheetName?.trim();
   return trimmed ? trimmed : undefined;
-}
-
-function isKnownSheetEnvironmentName(value: string): value is KnownSheetEnvironmentName {
-  return knownSheetEnvironmentNames.includes(value as KnownSheetEnvironmentName);
-}
-
-function inferSheetNameFromBaseUrl(baseUrl: string): KnownSheetEnvironmentName {
-  const hostname = new URL(baseUrl).hostname.toLowerCase();
-
-  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.local')) {
-    return 'local';
-  }
-  if (hostname.includes('staging') || hostname.includes('-stg') || hostname.includes('.stg.')) {
-    return 'stg';
-  }
-  if (hostname.includes('dev') || hostname.includes('.dev.')) {
-    return 'dev';
-  }
-  return 'prod';
 }
 
 type ParsedEnv = z.infer<typeof refinedSchema>;
