@@ -1,0 +1,78 @@
+groupName: Weather_VI
+cases:
+  - id: 1
+    name: "VI - weather 14 days later"
+    message: "thời tiết sau 14 ngày"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 2
+    name: "VI - weather 15 days later"
+    message: "thời tiết sau 15 ngày"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 3
+    name: "VI - weather 16 days later"
+    message: "thời tiết sau 16 ngày"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 4
+    name: "VI - sunday weather week after next"
+    message: "thời tiết chủ nhật tuần sau nữa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 5
+    name: "VI - saturday weather week after next"
+    message: "thời tiết thứ bảy tuần sau nữa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 6
+    name: "VI - friday weather week after next"
+    message: "thời tiết thứ sáu tuần sau nữa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 7
+    name: "VI - thursday weather week after next"
+    message: "thời tiết thứ năm tuần sau nữa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 8
+    name: "VI - wednesday weather week after next"
+    message: "thời tiết thứ tư tuần sau nữa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 9
+    name: "VI - wednesday morning weather week after next"
+    message: "thời tiết sáng thứ tư tuần sau nữa"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 10
+    name: "VI - yesterday weather"
+    message: "thời tiết hôm qua"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 11
+    name: "VI - weather 2 hours ago"
+    message: "thời tiết 2 giờ trước"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

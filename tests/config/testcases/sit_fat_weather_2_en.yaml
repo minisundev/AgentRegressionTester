@@ -9,7 +9,7 @@ cases:
 - id: 2
   name: EN - what will the weather be like
   message: What will the weather be like tomorrow?
-  subIntent: CheckDailyForecast
+  subIntent: CheckWeeklyForecast
   mainIntent: Weather
   agentType: DailyInfoAgent
 - id: 3

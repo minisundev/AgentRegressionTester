@@ -1,0 +1,78 @@
+groupName: Weather_EN
+cases:
+  - id: 1
+    name: "EN - weather 14 days later"
+    message: "weather 14 days later"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 2
+    name: "EN - weather 15 days later"
+    message: "weather 15 days later"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 3
+    name: "EN - weather 16 days later"
+    message: "weather 16 days later"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 4
+    name: "EN - sunday weather week after next"
+    message: "sunday weather the week after next"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 5
+    name: "EN - saturday weather week after next"
+    message: "saturday weather the week after next"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 6
+    name: "EN - friday weather week after next"
+    message: "friday weather the week after next"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 7
+    name: "EN - thursday weather week after next"
+    message: "thursday weather the week after next"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 8
+    name: "EN - wednesday weather week after next"
+    message: "wednesday weather the week after next"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 9
+    name: "EN - wednesday morning weather week after next"
+    message: "wednesday morning weather the week after next"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 10
+    name: "EN - yesterday weather"
+    message: "weather yesterday"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 11
+    name: "EN - weather 2 hours ago"
+    message: "weather 2 hours ago"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
