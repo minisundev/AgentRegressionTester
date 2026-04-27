@@ -22,6 +22,7 @@ export function handleSuccess(
     );
   }
 
+  const entity = data.response.entity ? JSON.stringify(data.response.entity) : '';
   const todayCard = data.response.todayCard ? JSON.stringify(data.response.todayCard) : '';
   const card = data.response.weeklyCard
     ? JSON.stringify(data.response.weeklyCard)
@@ -39,6 +40,7 @@ export function handleSuccess(
       subIntent: data.response.subIntent,
       reason: errors.join('; '),
       time: time,
+      entity,
       todayCard,
       card,
     });
@@ -53,6 +55,7 @@ export function handleSuccess(
     mainIntent: data.response.mainIntent,
     subIntent: data.response.subIntent,
     time: time,
+    entity,
     todayCard,
     card,
   });

@@ -1,5 +1,5 @@
 import { google, sheets_v4 } from "googleapis";
-import { JudgeMode, ResultRow, SheetColumns, SheetRow } from "../types/type";
+import { JudgeMode, ResultRow, SheetColumns, SheetRow, WrapColumns } from "../types/type";
 import { getSheetPrompt } from "./promptLoader";
 import { judgeResponse } from "./ai";
 import { ExternalServiceError } from "../errors";
@@ -65,7 +65,7 @@ async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string
     const exists = spreadsheet.data.sheets?.some((sheet) => sheet.properties?.title === sheetName);
     if (exists) return;
 
-    await sheets.spreadsheets.batchUpdate({
+    const addResponse = await sheets.spreadsheets.batchUpdate({
         spreadsheetId,
         requestBody: {
             requests: [
@@ -80,14 +80,40 @@ async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string
         },
     });
 
+    const newSheetId = addResponse.data.replies?.[0]?.addSheet?.properties?.sheetId;
+
     await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: buildSheetRange(sheetName, 'A1:N1'),
+        range: buildSheetRange(sheetName, 'A1:O1'),
         valueInputOption: 'USER_ENTERED',
         requestBody: {
             values: [getSheetHeaders()],
         },
     });
+
+    if (newSheetId !== undefined && newSheetId !== null && WrapColumns.length > 0) {
+        await sheets.spreadsheets.batchUpdate({
+            spreadsheetId,
+            requestBody: {
+                requests: WrapColumns.map((key) => {
+                    const columnIndex = key.charCodeAt(0) - 'A'.charCodeAt(0);
+                    return {
+                        repeatCell: {
+                            range: {
+                                sheetId: newSheetId,
+                                startColumnIndex: columnIndex,
+                                endColumnIndex: columnIndex + 1,
+                            },
+                            cell: {
+                                userEnteredFormat: { wrapStrategy: 'WRAP' },
+                            },
+                            fields: 'userEnteredFormat.wrapStrategy',
+                        },
+                    };
+                }),
+            },
+        });
+    }
 
     console.log(`[SHEET:${sheetName}] created`);
 }
@@ -133,6 +159,7 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             time: r.time ?? 0,
             reason: r.reason ?? '',
             testedAt: new Date().toISOString(),
+            entity: r.entity ?? '',
             todayCard: r.todayCard ?? '',
             card: r.card ?? '',
         };

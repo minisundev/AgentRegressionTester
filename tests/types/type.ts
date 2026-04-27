@@ -15,6 +15,7 @@ export interface AgentResponse {
     mainIntent: string;
     subIntent: string;
     ttsText: string;
+    entity?: Record<string, unknown>;
     todayCard?: Record<string, unknown>;
     weeklyCard?: Record<string, unknown>;
     hourlyCard?: Record<string, unknown>;
@@ -31,6 +32,7 @@ export interface ResultRow {
   subIntent?: string;
   judge?:string;
   time: number;
+  entity?: string;
   todayCard?: string;
   card?: string; // weeklyCard or hourlyCard as JSON
 }
@@ -48,12 +50,15 @@ export const SheetColumns = {
   J: "time",
   K: "reason",
   L: "testedAt",
-  M: "todayCard",
-  N: "card",
+  M: "entity",
+  N: "todayCard",
+  O: "card",
 } as const;
 
 export type SheetColumnKey = keyof typeof SheetColumns;
 export type SheetColumnName = typeof SheetColumns[SheetColumnKey];
+
+export const WrapColumns: ReadonlyArray<SheetColumnKey> = ["F", "M", "N", "O"];
 
 export interface SheetRow {
   group: string;
@@ -68,6 +73,7 @@ export interface SheetRow {
   time: number;
   reason: string;
   testedAt: string;
+  entity: string;
   todayCard: string;
   card: string; // weeklyCard or hourlyCard as JSON
 }

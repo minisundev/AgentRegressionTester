@@ -34,6 +34,7 @@ describe('Agent API Regression', () => {
 
             const errorMsg = validateResponse(data);
 
+            const entity = data.response.entity ? JSON.stringify(data.response.entity) : '';
             const todayCard = data.response.todayCard ? JSON.stringify(data.response.todayCard) : '';
             const card = data.response.weeklyCard
               ? JSON.stringify(data.response.weeklyCard)
@@ -50,6 +51,7 @@ describe('Agent API Regression', () => {
               subIntent: data.response.subIntent,
               time: duration,
               reason: errorMsg,
+              entity,
               todayCard,
               card,
             };
