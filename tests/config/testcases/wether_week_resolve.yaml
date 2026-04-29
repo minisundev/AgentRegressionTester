@@ -1,0 +1,121 @@
+groupName: Weather_Week_Matrix
+cases:
+  # === 1. 이번 주 (this week / tuần này) ===
+  - id: 1
+    name: "EN - this week entire"
+    message: "how is the weather this week"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 2
+    name: "VI - this week entire"
+    message: "thời tiết tuần này như thế nào"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 3
+    name: "EN - this weekend"
+    message: "weather this weekend"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 4
+    name: "VI - this weekend"
+    message: "thời tiết cuối tuần này"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 5
+    name: "EN - this weekdays"
+    message: "weather during the weekdays"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 6
+    name: "VI - this weekdays"
+    message: "thời tiết các ngày trong tuần này"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  # === 2. 다음 주 (next week / tuần sau) ===
+  - id: 7
+    name: "EN - next week entire"
+    message: "weather forecast for next week"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 8
+    name: "VI - next week entire"
+    message: "dự báo thời tiết tuần sau"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 9
+    name: "EN - next weekend"
+    message: "will it be sunny next weekend?"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 10
+    name: "VI - next weekend"
+    message: "cuối tuần sau có nắng không"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 11
+    name: "EN - next weekdays"
+    message: "weather on next week's weekdays"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 12
+    name: "VI - next weekdays"
+    message: "thời tiết ngày thường tuần sau"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  # === 3. 다다음 주 (week after next / tuần sau nữa) ===
+  - id: 13
+    name: "EN - week after next entire"
+    message: "weather for the week after next"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 14
+    name: "VI - week after next entire"
+    message: "thời tiết tuần sau nữa"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 15
+    name: "EN - week after next weekend"
+    message: "what is the weather for the weekend after next"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 16
+    name: "VI - week after next weekend"
+    message: "cuối tuần sau nữa thời tiết thế nào"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 17
+    name: "EN - week after next weekdays"
+    message: "show me the weekdays forecast in two weeks"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 18
+    name: "VI - week after next weekdays"
+    message: "các ngày trong tuần sau nữa có mưa không"
+    subIntent: CheckWeather
+    mainIntent: Weather
+    agentType: DailyInfoAgent
