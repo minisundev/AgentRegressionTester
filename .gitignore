@@ -4,7 +4,8 @@ node_modules/
 # Env
 .env
 *.env
-tests/config/profiles.yaml
+tests/config/settings/profiles.yaml
+tests/config/settings/sheet.yaml
 
 # Dist / build outputs
 dist/

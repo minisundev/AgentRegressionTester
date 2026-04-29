@@ -58,8 +58,6 @@ export const SheetColumns = {
 export type SheetColumnKey = keyof typeof SheetColumns;
 export type SheetColumnName = typeof SheetColumns[SheetColumnKey];
 
-export const WrapColumns: ReadonlyArray<SheetColumnKey> = ["E", "F", "G", "H"];
-
 export interface SheetRow {
   group: string;
   id: string | number;

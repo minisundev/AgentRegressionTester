@@ -160,9 +160,32 @@ SLACK_CHANNEL=""
     ```jsx
     LOCAL_AI_MODEL='gemma2:27b'
     ```
+### 4. Config yaml setting
+
+Wrap sheet config: `tests/config/settings/sheet.yaml`
+어떤 column을 wrap 허용할지 설정(Google Sheet에서)
+
+```yaml
+wrapColumns:
+  - E
+  - F
+```
+
+Profile config: `tests/config/profiles.yaml`
+
+```yaml
+profiles:
+  prod:
+    baseUrl: https://prod.com/api
+    sheetName: prod
+
+  stg:
+    baseUrl: https://stg.com/api
+    sheetName: stg
+```
     
 
-### 3. Quick Start
+### 5. Quick Start
 
 ```bash
 npm install
@@ -170,15 +193,6 @@ npm install
 npm run test:sheet:api -- --dev
 npm run test:sheet:internal -- --stg
 npm run test:terminal -- --prod
-```
-
-Profile config: `tests/config/profiles.yaml`
-
-```yaml
-profiles:
-  stg:
-    baseUrl: https://example.com/example
-    sheetName: stg
 ```
 
 Legacy-compatible scripts
@@ -194,7 +208,7 @@ Legacy-compatible scripts
     "test:terminal:ai": "REPORT_TO=terminal JUDGE_MODE=local node scripts/run-test-profile.js"
 ```
 
-### 4. DEMO
+### 6. DEMO
 테스트가 완료되면 슬랙에 메시지가 전송됩니다.
 <img width="707" height="494" alt="image" src="https://github.com/user-attachments/assets/3f94935d-fb64-49e5-843f-00b3bb323794" />
 

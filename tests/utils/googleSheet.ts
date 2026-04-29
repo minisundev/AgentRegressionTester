@@ -1,5 +1,6 @@
 import { google, sheets_v4 } from "googleapis";
-import { JudgeMode, ResultRow, SheetColumns, SheetRow, WrapColumns } from "../types/type";
+import { JudgeMode, ResultRow, SheetColumns, SheetRow } from "../types/type";
+import { loadSheetConfig } from "./sheetConfigLoader";
 import { getSheetPrompt } from "./promptLoader";
 import { judgeResponse } from "./ai";
 import { ExternalServiceError } from "../errors";
@@ -91,11 +92,12 @@ async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string
         },
     });
 
-    if (newSheetId !== undefined && newSheetId !== null && WrapColumns.length > 0) {
+    const { wrapColumns } = loadSheetConfig();
+    if (newSheetId !== undefined && newSheetId !== null && wrapColumns.length > 0) {
         await sheets.spreadsheets.batchUpdate({
             spreadsheetId,
             requestBody: {
-                requests: WrapColumns.map((key) => {
+                requests: wrapColumns.map((key) => {
                     const columnIndex = key.charCodeAt(0) - 'A'.charCodeAt(0);
                     return {
                         repeatCell: {
