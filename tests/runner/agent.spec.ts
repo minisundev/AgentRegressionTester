@@ -9,6 +9,9 @@ import { env } from '../config/env';
 
 const client = createTestClient();
 const reportTo = env.REPORT_TO;
+const testTimeoutMs = env.TEST_TIMEOUT_SEC * 1000;
+
+jest.setTimeout(testTimeoutMs);
 
 describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
@@ -93,7 +96,7 @@ describe('Agent API Regression', () => {
       console.log('Sending report to Slack...');
       await sendSlackReport(successes, failures);
     }
-  }, env.TEST_TIMEOUT_SEC * 1000);
+  }, testTimeoutMs);
 });
 
 const sleep = (sec: number) => new Promise(resolve => setTimeout(resolve, sec * 1000));
