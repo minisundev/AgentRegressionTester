@@ -6,19 +6,6 @@ const yaml = require('js-yaml');
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
-const judgeModeAliases = {
-  none: 'none',
-  internal: 'sheet',
-  sheet: 'sheet',
-  api: 'api',
-  local: 'local',
-};
-
-const terminalModeAliases = {
-  terminal: 'none',
-  'terminal-ai': 'local',
-};
-
 main();
 
 function main() {
@@ -129,116 +116,20 @@ function resolveExecution(parsed) {
   const reportTo = process.env.REPORT_TO;
   const judgeMode = process.env.JUDGE_MODE;
 
-  if (reportTo && judgeMode) {
-    return {
+  if (!reportTo || !judgeMode) {
+    printUsageAndExit('REPORT_TO and JUDGE_MODE must be set. Use one of the npm test scripts.');
+  }
+
+  return {
+    reportTo,
+    judgeMode,
+    profile: parsed.profileArg ?? parsed.primaryArg,
+    selector: [
       reportTo,
       judgeMode,
-      profile: parsed.profileArg ?? parsed.primaryArg,
-      selector: [
-        reportTo,
-        judgeMode,
-        parsed.profileArg ?? parsed.primaryArg ?? 'default',
-      ].join(':'),
-    };
-  }
-
-  if (!parsed.primaryArg) {
-    printUsageAndExit('Missing mode selector.');
-  }
-
-  return resolveSelection(parsed.primaryArg, parsed.profileArg);
-}
-
-function resolveSelection(selection, profileOverride) {
-  const parts = selection.split(':').map((part) => part.trim()).filter(Boolean);
-
-  if (parts.length === 1) {
-    const [mode] = parts;
-
-    if (!profileOverride) {
-      printUsageAndExit(`Missing profile for selector: ${selection}`);
-    }
-
-    if (terminalModeAliases[mode]) {
-      return {
-        reportTo: 'terminal',
-        judgeMode: terminalModeAliases[mode],
-        profile: profileOverride,
-        selector: `terminal:${terminalModeAliases[mode]}:${profileOverride}`,
-      };
-    }
-
-    return {
-      reportTo: 'sheet',
-      judgeMode: resolveJudgeMode(mode),
-      profile: profileOverride,
-      selector: `sheet:${resolveJudgeMode(mode)}:${profileOverride}`,
-    };
-  }
-
-  if (parts.length === 2) {
-    const [first, second] = parts;
-
-    if (profileOverride) {
-      if (!['sheet', 'terminal'].includes(first)) {
-        printUsageAndExit(`Selector ${selection} already includes a profile. Remove ${profileOverride} or use ${first}:${second} only.`);
-      }
-
-      return {
-        reportTo: first,
-        judgeMode: resolveJudgeMode(second),
-        profile: profileOverride,
-        selector: `${first}:${resolveJudgeMode(second)}:${profileOverride}`,
-      };
-    }
-
-    if (terminalModeAliases[first]) {
-      return {
-        reportTo: 'terminal',
-        judgeMode: terminalModeAliases[first],
-        profile: second,
-        selector: selection,
-      };
-    }
-
-    return {
-      reportTo: 'sheet',
-      judgeMode: resolveJudgeMode(first),
-      profile: second,
-      selector: selection,
-    };
-  }
-
-  if (parts.length === 3) {
-    if (profileOverride) {
-      printUsageAndExit(`Selector ${selection} already includes a profile. Remove --${profileOverride}.`);
-    }
-
-    const [reportToPart, modePart, profile] = parts;
-
-    if (!['sheet', 'terminal'].includes(reportToPart)) {
-      printUsageAndExit(`Unknown report target: ${reportToPart}`);
-    }
-
-    return {
-      reportTo: reportToPart,
-      judgeMode: resolveJudgeMode(modePart),
-      profile,
-      selector: selection,
-    };
-  }
-
-  printUsageAndExit(`Invalid selector: ${selection}`);
-}
-
-function resolveJudgeMode(mode) {
-  const judgeMode = judgeModeAliases[mode];
-
-  if (!judgeMode) {
-    printUsageAndExit(`Unknown judge mode: ${mode}`);
-  }
-
-  return judgeMode;
+      parsed.profileArg ?? parsed.primaryArg ?? 'default',
+    ].join(':'),
+  };
 }
 
 function buildRuntimeEnv(selection) {
@@ -343,8 +234,34 @@ function normalizeProfileEntry(profileName, value, configPath) {
 
 function getProfileConfigPath() {
   const configuredPath = process.env.TEST_PROFILE_CONFIG?.trim();
-  const relativePath = configuredPath || 'tests/config/profiles.yaml';
+  const relativePath = configuredPath || loadUsageConfig().defaultProfilePath;
   return path.resolve(process.cwd(), relativePath);
+}
+
+function getUsageConfigPath() {
+  return path.resolve(process.cwd(), 'tests/config/settings/usage.yaml');
+}
+
+function loadUsageConfig() {
+  try {
+    const contents = fs.readFileSync(getUsageConfigPath(), 'utf8');
+    const data = yaml.load(contents) ?? {};
+    return {
+      defaultProfilePath: data.defaultProfilePath ?? 'tests/config/settings/profiles.yaml',
+      examples: Array.isArray(data.examples) ? data.examples : [],
+      defaultProfileLabel: data.defaultProfileLabel ?? 'Default profile file:',
+      envOverrideLabel: data.envOverrideLabel ?? 'Optional .env override:',
+      envOverrideExample: data.envOverrideExample ?? '',
+    };
+  } catch {
+    return {
+      defaultProfilePath: 'tests/config/settings/profiles.yaml',
+      examples: [],
+      defaultProfileLabel: '',
+      envOverrideLabel: '',
+      envOverrideExample: '',
+    };
+  }
 }
 
 function normalizeProfile(profile) {
@@ -366,22 +283,20 @@ function isPlainObject(value) {
 }
 
 function printUsageAndExit(message) {
+  const config = loadUsageConfig();
+  const profilePath = path.relative(process.cwd(), getProfileConfigPath()) || getProfileConfigPath();
+
   const usage = [
     message,
     '',
     'Usage:',
-    '  npm run test:sheet:api -- dev',
-    '  npm run test:sheet:api -- --crow',
-    '  npm run test:sheet:internal -- --stg',
-    '  npm run test:terminal -- --prod',
-    '  npm run test:profile -- api:dev',
-    '  npm run test:profile -- api --crow',
+    ...config.examples.map((line) => `  ${line}`),
     '',
-    'Default profile file:',
-    '  tests/config/profiles.yaml',
+    config.defaultProfileLabel,
+    `  ${profilePath}`,
     '',
-    'Optional .env override:',
-    '  TEST_PROFILE_CONFIG=/path/to/profiles.yaml',
+    config.envOverrideLabel,
+    `  ${config.envOverrideExample}`,
   ].join('\n');
 
   console.error(usage);

@@ -1,0 +1,11 @@
+defaultProfilePath: 'tests/config/settings/profiles.yaml'
+
+examples:
+  - 'npm run test:sheet:api -- dev'
+  - 'npm run test:sheet:api -- --crow'
+  - 'npm run test:sheet:internal -- --stg'
+  - 'npm run test:terminal -- --prod'
+
+defaultProfileLabel: 'Default profile file:'
+envOverrideLabel: 'Optional .env override:'
+envOverrideExample: 'TEST_PROFILE_CONFIG=/path/to/profiles.yaml'
