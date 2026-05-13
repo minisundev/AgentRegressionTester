@@ -3,6 +3,7 @@ cases:
   - id: 1
     name: "VI - today weather"
     message: "Thời tiết hôm nay"
+    reqTranslation: "Today's weather"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -10,6 +11,7 @@ cases:
   - id: 2
     name: "VI - tomorrow weather"
     message: "Thời tiết ngày mai như nào"
+    reqTranslation: "What will the weather be like tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -17,6 +19,7 @@ cases:
   - id: 3
     name: "VI - today rain in Saigon"
     message: "Hôm nay Sài Gòn có mưa không"
+    reqTranslation: "Is it raining in Saigon today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -24,6 +27,7 @@ cases:
   - id: 4
     name: "VI - day after tomorrow weather"
     message: "Thời tiết ngày mốt"
+    reqTranslation: "Weather forecast for the day after tomorrow"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -31,6 +35,7 @@ cases:
   - id: 5
     name: "VI - weather in Hue the day after tomorrow"
     message: "Trời Huế ngày kia ra sao"
+    reqTranslation: "What will the weather be like in Hue the day after tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -38,6 +43,7 @@ cases:
   - id: 6
     name: "VI - current weather in Da Lat"
     message: "Đà Lạt trời đang như nào"
+    reqTranslation: "What's the weather like in Da Lat right now?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -45,6 +51,7 @@ cases:
   - id: 7
     name: "VI - next week rain in Nha Trang"
     message: "Nha Trang tuần sau có mưa không"
+    reqTranslation: "Will it rain in Nha Trang next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -52,6 +59,7 @@ cases:
   - id: 8
     name: "VI - weather in Hai Phong on specific date"
     message: "Hải Phòng ngày 17 tháng 2 trời thế nào"
+    reqTranslation: "What was the weather like in Hai Phong on February 17th?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -59,6 +67,7 @@ cases:
   - id: 9
     name: "VI - noon weather in Tokyo today"
     message: "Thời tiết Tokyo trưa hôm nay ra sao"
+    reqTranslation: "What is the weather like in Tokyo this afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -66,6 +75,7 @@ cases:
   - id: 10
     name: "VI - weather in Seoul"
     message: "Thời tiết Seoul"
+    reqTranslation: "Seoul weather"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -73,6 +83,7 @@ cases:
   - id: 11
     name: "VI - weather in Thailand"
     message: "Thời tiết Thái Lan sao"
+    reqTranslation: "What is the weather like in Thailand?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -80,6 +91,7 @@ cases:
   - id: 12
     name: "VI - weather on 22 slash 04"
     message: "Thời tiết ngày 22/04 như nào"
+    reqTranslation: "What will the weather be like on April 22nd?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -87,6 +99,7 @@ cases:
   - id: 13
     name: "VI - weather in Ho Chi Minh City"
     message: "Thời tiết Hồ Chí Minh"
+    reqTranslation: "Ho Chi Minh City weather"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -94,6 +107,7 @@ cases:
   - id: 14
     name: "VI - weather for next 6 hours"
     message: "Thời tiết 6 giờ tới"
+    reqTranslation: "Weather forecast for the next 6 hours"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -101,6 +115,7 @@ cases:
   - id: 15
     name: "VI - weather in Hanoi 3 hours later"
     message: "Thời tiết Hà Nội 3 tiếng nữa thế nào"
+    reqTranslation: "What will the weather be like in Hanoi in 3 hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -108,6 +123,7 @@ cases:
   - id: 16
     name: "VI - weather in 6 hours"
     message: "6 giờ tiết thời tiết như nào"
+    reqTranslation: "What is the weather like at 6 o'clock?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -115,6 +131,7 @@ cases:
   - id: 17
     name: "VI - weather in Saigon 2 hours later"
     message: "Sài Gòn 2 tiếng nữa thời tiết như nào"
+    reqTranslation: "What will the weather be like in Saigon in two hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -122,6 +139,7 @@ cases:
   - id: 18
     name: "VI - tonight weather in Hanoi"
     message: "Tối nay Hà Nội thời tiết như nào"
+    reqTranslation: "What's the weather like in Hanoi tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -129,6 +147,7 @@ cases:
   - id: 19
     name: "VI - hourly weather"
     message: "Thời tiết theo giờ"
+    reqTranslation: "Hourly weather"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -136,6 +155,7 @@ cases:
   - id: 20
     name: "VI - this morning weather"
     message: "Thời tiết sáng nay"
+    reqTranslation: "Weather this morning"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -143,6 +163,7 @@ cases:
   - id: 21
     name: "VI - noon weather today in Ho Chi Minh City"
     message: "Thời tiết trưa nay tại Hồ Chí Minh"
+    reqTranslation: "Weather forecast for Ho Chi Minh City this afternoon."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -150,6 +171,7 @@ cases:
   - id: 22
     name: "VI - tonight weather in Japan"
     message: "Thời tiết đêm nay tại Nhật Bản"
+    reqTranslation: "Weather forecast for Japan tonight"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -157,6 +179,7 @@ cases:
   - id: 23
     name: "VI - tonight weather in Da Lat"
     message: "Thời tiết Đà Lạt tối nay"
+    reqTranslation: "Weather in Da Lat tonight"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -164,6 +187,7 @@ cases:
   - id: 24
     name: "VI - this morning weather in Sydney"
     message: "Sydney sáng nay trời thế nào"
+    reqTranslation: "What's the weather like in Sydney this morning?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -171,6 +195,7 @@ cases:
   - id: 25
     name: "VI - this afternoon weather in Beijing"
     message: "Bắc Kinh chiều nay thời tiết thế nào"
+    reqTranslation: "What's the weather like in Beijing this afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -178,6 +203,7 @@ cases:
   - id: 26
     name: "VI - tonight weather in Paris"
     message: "Paris tối nay thời tiết thế nào"
+    reqTranslation: "What's the weather like in Paris tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -185,6 +211,9 @@ cases:
   - id: 27
     name: "VI - weather in Saigon around 3 PM"
     message: "Thời tiết Sài gòn. Khoảng 3 giờ chiều thời tiết ra sao"
+    reqTranslation: |-
+      Saigon Weather
+      What is the weather like around 3 PM?
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -192,6 +221,7 @@ cases:
   - id: 28
     name: "VI - weather at 6 PM"
     message: "Lúc 6 giờ tối trời thế nào"
+    reqTranslation: "What was the weather like at 6 PM?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -199,6 +229,7 @@ cases:
   - id: 29
     name: "VI - this week sunny or rainy in Da Nang"
     message: "Đà Nẵng tuần này nắng hay mưa"
+    reqTranslation: "Will it be sunny or rainy in Da Nang this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -206,6 +237,7 @@ cases:
   - id: 30
     name: "VI - this week weather"
     message: "Thời tiết tuần này"
+    reqTranslation: "Weather this week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -213,6 +245,7 @@ cases:
   - id: 31
     name: "VI - next week weather"
     message: "Thời tiết tuần sau"
+    reqTranslation: "Weather next week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -220,6 +253,7 @@ cases:
   - id: 32
     name: "VI - next week good weather in Hoi An"
     message: "Hội An tuần sau thời tiết tốt không"
+    reqTranslation: "Will the weather in Hoi An be good next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -227,6 +261,7 @@ cases:
   - id: 33
     name: "VI - weekend weather"
     message: "Thời tiết cuối tuần"
+    reqTranslation: "Weekend weather"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -234,6 +269,7 @@ cases:
   - id: 34
     name: "VI - next weekend weather in Saigon"
     message: "Thời tiết Sài Gòn cuối tuần tới"
+    reqTranslation: "Saigon weather forecast for next weekend."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -241,6 +277,7 @@ cases:
   - id: 35
     name: "VI - this week weather in Hue"
     message: "Tuần này Huế thời tiết ra sao"
+    reqTranslation: "What's the weather like in Hue this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -248,6 +285,7 @@ cases:
   - id: 36
     name: "VI - weather for the week after next"
     message: "Tuần sau nữa thời tiết như nào"
+    reqTranslation: "What will the weather be like the week after next?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -255,6 +293,7 @@ cases:
   - id: 37
     name: "VI - weather for each day this week"
     message: "Thời tiết các ngày trong tuần"
+    reqTranslation: "Weather for the days of the week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -262,6 +301,7 @@ cases:
   - id: 38
     name: "VI - this week weather in Nha Trang"
     message: "Nha Trang tuần này thời tiết thế nào"
+    reqTranslation: "What's the weather like in Nha Trang this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -269,6 +309,7 @@ cases:
   - id: 39
     name: "VI - this week weather in Tokyo"
     message: "Tokyo tuần này thời tiết ra sao"
+    reqTranslation: "What will the weather be like in Tokyo this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -276,6 +317,7 @@ cases:
   - id: 40
     name: "VI - this week weather in Beijing"
     message: "Bắc Kinh tuần này thời tiết thế nào"
+    reqTranslation: "What's the weather like in Beijing this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -283,6 +325,7 @@ cases:
   - id: 41
     name: "VI - humidity today"
     message: "Hôm nay độ ẩm thế nào"
+    reqTranslation: "What is the humidity like today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -290,6 +333,7 @@ cases:
   - id: 42
     name: "VI - humidity percentage today"
     message: "Độ ẩm hôm nay bao nhiêu phần trăm"
+    reqTranslation: "What is the humidity percentage today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -297,6 +341,7 @@ cases:
   - id: 43
     name: "VI - whether humidity is high today"
     message: "Độ ẩm hôm nay cao không"
+    reqTranslation: "Is the humidity high today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -304,6 +349,7 @@ cases:
   - id: 44
     name: "VI - humidity in Hanoi today"
     message: "Hà Nội hôm nay độ ẩm thế nào"
+    reqTranslation: "What is the humidity like in Hanoi today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -311,6 +357,7 @@ cases:
   - id: 45
     name: "VI - humidity in Da Nang today"
     message: "Đà Nẵng hôm nay độ ẩm bao nhiêu"
+    reqTranslation: "What is the humidity in Da Nang today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -318,6 +365,7 @@ cases:
   - id: 46
     name: "VI - whether it is humid in Saigon today"
     message: "Sài gòn hôm nay có ẩm không"
+    reqTranslation: "Is it humid in Saigon today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -325,6 +373,7 @@ cases:
   - id: 47
     name: "VI - humidity this Friday"
     message: "Độ ẩm thứ 6 tuần này"
+    reqTranslation: "This week's 6th highest humidity level."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -332,6 +381,7 @@ cases:
   - id: 48
     name: "VI - humidity in Seoul today"
     message: "Seoul hôm nay độ ẩm bao nhiêu"
+    reqTranslation: "What is the humidity in Seoul today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -339,6 +389,7 @@ cases:
   - id: 49
     name: "VI - humidity tomorrow"
     message: "Độ ẩm ngày mai như nào"
+    reqTranslation: "What will the humidity be like tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -346,6 +397,7 @@ cases:
   - id: 50
     name: "VI - humidity the day after tomorrow"
     message: "Độ ẩm ngày kia"
+    reqTranslation: "Humidity the day after tomorrow"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -353,6 +405,7 @@ cases:
   - id: 51
     name: "VI - humidity two weeks later"
     message: "Độ ẩm thử 2 tuần sau"
+    reqTranslation: "Humidity test results after 2 weeks"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -360,6 +413,7 @@ cases:
   - id: 52
     name: "VI - humidity in New York today"
     message: "New York hôm nay độ ẩm thế nào"
+    reqTranslation: "What is the humidity like in New York today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -367,6 +421,7 @@ cases:
   - id: 53
     name: "VI - humidity on 24 slash 04"
     message: "Độ ẩm ngày 24/04"
+    reqTranslation: "Humidity on April 24th"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -374,6 +429,7 @@ cases:
   - id: 54
     name: "VI - humidity changes in Ha Long tomorrow morning from 6 to 10"
     message: "Sáng mai từ 6h đến 10h ở Hạ Long độ ẩm thay đổi như thế nào?"
+    reqTranslation: "What will the humidity be like in Ha Long between 6 am and 10 am tomorrow morning?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -381,6 +437,7 @@ cases:
   - id: 55
     name: "VI - humidity for next 6 hours"
     message: "Độ ẩm 6 giờ tiếp theo"
+    reqTranslation: "Humidity for the next 6 hours"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -388,6 +445,7 @@ cases:
   - id: 56
     name: "VI - humidity for next 10 hours"
     message: "10 giờ tới độ ẩm như nào"
+    reqTranslation: "What will the humidity be like in 10 hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -395,6 +453,7 @@ cases:
   - id: 57
     name: "VI - humidity at noon tomorrow in Ho Chi Minh City"
     message: "Độ ẩm trưa mai tại Hồ Chí Minh"
+    reqTranslation: "Humidity forecast for tomorrow afternoon in Ho Chi Minh City."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -402,6 +461,7 @@ cases:
   - id: 58
     name: "VI - humidity tomorrow night in Saigon"
     message: "Độ ẩm tối mai tại Sài gòn"
+    reqTranslation: "Humidity forecast for Saigon tomorrow night."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -409,6 +469,7 @@ cases:
   - id: 59
     name: "VI - humidity 2 hours later"
     message: "2 tiếng nữa độ ẩm thế nào"
+    reqTranslation: "What will the humidity be like in two hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -416,6 +477,7 @@ cases:
   - id: 60
     name: "VI - humidity at 12 noon"
     message: "Lúc 12 giờ trưa độ ẩm thế nào"
+    reqTranslation: "What is the humidity like at 12 noon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -423,6 +485,7 @@ cases:
   - id: 61
     name: "VI - humidity in Hanoi this afternoon"
     message: "Buổi chiều Hà Nội độ ẩm thế nào"
+    reqTranslation: "What is the humidity like in Hanoi in the afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -430,6 +493,7 @@ cases:
   - id: 62
     name: "VI - humidity at 12 noon in Da Nang"
     message: "Đà Nẵng lúc 12 giờ trưa độ ẩm bao nhiêu"
+    reqTranslation: "What is the humidity in Da Nang at 12 noon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -437,6 +501,7 @@ cases:
   - id: 63
     name: "VI - humidity tonight in Da Lat"
     message: "Đêm nay tại Đà Lạt độ ẩm bao nhiêu"
+    reqTranslation: "What is the humidity like in Da Lat tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -444,6 +509,7 @@ cases:
   - id: 64
     name: "VI - humidity in Paris in the evening"
     message: "Paris buổi tối độ ẩm bao nhiêu"
+    reqTranslation: "What is the humidity level in Paris at night?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -451,6 +517,7 @@ cases:
   - id: 65
     name: "VI - humidity in London tonight"
     message: "London đêm nay độ ẩm thế nào"
+    reqTranslation: "What's the humidity like in London tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -458,6 +525,7 @@ cases:
   - id: 66
     name: "VI - humidity from 3 PM today"
     message: "Độ ẩm từ 3h chiều nay"
+    reqTranslation: "Humidity as of 3 PM today"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -465,6 +533,7 @@ cases:
   - id: 67
     name: "VI - humidity tonight"
     message: "Độ ẩm đêm nay"
+    reqTranslation: "Humidity tonight"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -472,6 +541,7 @@ cases:
   - id: 68
     name: "VI - humidity in Saigon tonight"
     message: "Sài gòn độ ẩm tối nay"
+    reqTranslation: "Saigon humidity tonight"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -479,6 +549,7 @@ cases:
   - id: 69
     name: "VI - humidity next week"
     message: "Độ ẩm tuần tới"
+    reqTranslation: "Humidity for next week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -486,6 +557,7 @@ cases:
   - id: 70
     name: "VI - humidity on the weekend"
     message: "Độ ẩm cuối tuần"
+    reqTranslation: "Weekend humidity"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -493,6 +565,7 @@ cases:
   - id: 71
     name: "VI - humidity for each day of the week"
     message: "Độ ẩm các ngày trong tuần"
+    reqTranslation: "Humidity levels for each day of the week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -500,6 +573,7 @@ cases:
   - id: 72
     name: "VI - humidity next week"
     message: "Tuần tới độ ẩm như nào"
+    reqTranslation: "What will the humidity be like next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -507,6 +581,7 @@ cases:
   - id: 73
     name: "VI - humidity in Saigon this week"
     message: "Sài gòn độ ẩm tuần này như nào"
+    reqTranslation: "What is the humidity like in Saigon this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -514,6 +589,7 @@ cases:
   - id: 74
     name: "VI - humidity in Paris this weekend"
     message: "Paris cuối tuần độ ẩm bao nhiêu"
+    reqTranslation: "What is the humidity level in Paris this weekend?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -521,6 +597,7 @@ cases:
   - id: 75
     name: "VI - whether humidity will be high in Hanoi next week"
     message: "Độ ẩm tuần tới Hà Nội cao không"
+    reqTranslation: "Will the humidity in Hanoi be high next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -528,6 +605,7 @@ cases:
   - id: 76
     name: "VI - whether humidity and temperature will be high tomorrow"
     message: "Ngày mai độ ẩm và nhiệt độ cao không"
+    reqTranslation: "Tomorrow, will the humidity and temperature be high?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -535,6 +613,7 @@ cases:
   - id: 77
     name: "VI - humidity the week after next"
     message: "Độ ẩm tuần sau nữa"
+    reqTranslation: "Humidity for the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -542,6 +621,7 @@ cases:
   - id: 78
     name: "VI - humidity in Hanoi this week"
     message: "Hà Nội độ ẩm tuần này"
+    reqTranslation: "Humidity for the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -549,6 +629,7 @@ cases:
   - id: 79
     name: "VI - average humidity in Da Nang this week"
     message: "Tuần này ở Đà Nẵng độ ẩm trung bình thế nào?"
+    reqTranslation: "Humidity for the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -556,6 +637,7 @@ cases:
   - id: 80
     name: "VI - forecast humidity in Phu Quoc tomorrow"
     message: "Độ ẩm ở Phú Quốc ngày mai dự báo ra sao?"
+    reqTranslation: "Hanoi's humidity this week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -563,6 +645,7 @@ cases:
   - id: 81
     name: "VI - temperature today"
     message: "Nhiệt độ hôm nay thế nào"
+    reqTranslation: "Hanoi's humidity this week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -570,6 +653,7 @@ cases:
   - id: 82
     name: "VI - current temperature"
     message: "Nhiệt độ hiện tại là bao nhiêu"
+    reqTranslation: "Hanoi's humidity this week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -577,6 +661,7 @@ cases:
   - id: 83
     name: "VI - highest temperature today"
     message: "Hôm nay nhiệt độ cao nhất là bao nhiêu"
+    reqTranslation: "What is the average humidity in Da Nang this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -584,6 +669,7 @@ cases:
   - id: 84
     name: "VI - lowest temperature today"
     message: "Nhiệt độ thấp nhất hôm nay là mấy độ"
+    reqTranslation: "What is the humidity forecast for Phu Quoc tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -591,6 +677,7 @@ cases:
   - id: 85
     name: "VI - temperature tomorrow"
     message: "Nhiệt độ ngày mai"
+    reqTranslation: "What is the temperature today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -598,6 +685,7 @@ cases:
   - id: 86
     name: "VI - temperature the day after tomorrow"
     message: "Nhiệt độ ngày kia"
+    reqTranslation: "What is the current temperature?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -605,6 +693,7 @@ cases:
   - id: 87
     name: "VI - temperature next Monday"
     message: "Thứ 2 tuần sau nhiệt độ bao nhiêu"
+    reqTranslation: "What is the highest temperature today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -612,6 +701,7 @@ cases:
   - id: 88
     name: "VI - temperature yesterday"
     message: "Nhiệt độ hôm qua"
+    reqTranslation: "What is the lowest temperature today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -619,6 +709,7 @@ cases:
   - id: 89
     name: "VI - temperature in Ho Chi Minh City"
     message: "Nhiệt độ tại Hồ Chí Minh"
+    reqTranslation: "Tomorrow's temperature"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -626,6 +717,7 @@ cases:
   - id: 90
     name: "VI - temperature on 26 slash 04"
     message: "Nhiệt độ ngày 26/04"
+    reqTranslation: "Temperature the day after tomorrow"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -633,6 +725,7 @@ cases:
   - id: 91
     name: "VI - temperature in Paris today"
     message: "Paris hôm nay nhiệt độ thế nào"
+    reqTranslation: "What will the temperature be next Monday?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -640,6 +733,7 @@ cases:
   - id: 92
     name: "VI - feels like temperature today"
     message: "Nhiệt độ cảm giác hôm nay là bao nhiêu"
+    reqTranslation: "Yesterday's temperature"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -647,6 +741,7 @@ cases:
   - id: 93
     name: "VI - temperature in Saigon today"
     message: "Sài Gòn hôm nay nhiệt độ thế nào"
+    reqTranslation: "Temperature in Ho Chi Minh City"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -654,6 +749,7 @@ cases:
   - id: 94
     name: "VI - temperature range today"
     message: "Hôm nay nhiệt độ dao động trong khoảng bao nhiêu"
+    reqTranslation: "Temperature on April 26th"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -661,6 +757,7 @@ cases:
   - id: 95
     name: "VI - highest temperature in Saigon"
     message: "Nhiệt độ cao nhất tại Sài Gòn"
+    reqTranslation: "What is the temperature in Paris today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -668,6 +765,7 @@ cases:
   - id: 96
     name: "VI - temperature trend in Hanoi from 6 to 11 this morning"
     message: "Hôm nay từ 6h đến 11h sáng ở Hà Nội nhiệt độ tăng dần như thế nào"
+    reqTranslation: "What is the perceived temperature today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -675,6 +773,7 @@ cases:
   - id: 97
     name: "VI - lowest expected temperature in Da Nang tomorrow dawn from 4 to 7"
     message: "Rạng sáng mai từ 4h đến 7h ở Đà Nẵng nhiệt độ thấp nhất dự kiến là bao nhiêu độ?"
+    reqTranslation: "What is the temperature in Saigon today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -682,6 +781,7 @@ cases:
   - id: 98
     name: "VI - temperature tonight"
     message: "Nhiệt độ đêm nay"
+    reqTranslation: "What is the temperature range today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -689,6 +789,7 @@ cases:
   - id: 99
     name: "VI - temperature at noon today"
     message: "Nhiệt độ trưa nay"
+    reqTranslation: "Highest temperature in Saigon"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -696,6 +797,7 @@ cases:
   - id: 100
     name: "VI - temperature in Saigon tonight"
     message: "Tối nay Sài gòn nhiệt độ như nào"
+    reqTranslation: "How did the temperature gradually rise in Hanoi today between 6 AM and 11 AM?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -703,6 +805,7 @@ cases:
   - id: 101
     name: "VI - temperature for next 10 hours"
     message: "Nhiệt độ 10 giờ tới"
+    reqTranslation: "What is the lowest temperature expected in Da Nang tomorrow morning between 4 AM and 7 AM?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -710,6 +813,7 @@ cases:
   - id: 102
     name: "VI - temperature in Da Lat for next 6 hours"
     message: "6 giờ tới nhiệt độ Đà Lạt như nào"
+    reqTranslation: "Temperature tonight"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -717,6 +821,7 @@ cases:
   - id: 103
     name: "VI - temperature this morning"
     message: "Nhiệt độ sáng nay"
+    reqTranslation: "Temperature this afternoon"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -724,6 +829,7 @@ cases:
   - id: 104
     name: "VI - temperature tomorrow afternoon"
     message: "Nhiệt độ chiều mai"
+    reqTranslation: "What's the temperature like in Saigon tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -731,6 +837,7 @@ cases:
   - id: 105
     name: "VI - temperature the day after tomorrow evening"
     message: "Nhiệt độ tối ngày kia"
+    reqTranslation: "Temperature forecast for the next 10 hours"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -738,6 +845,7 @@ cases:
   - id: 106
     name: "VI - temperature tonight duplicate"
     message: "Nhiệt độ đêm nay"
+    reqTranslation: "What will the temperature in Da Lat be like in the next 6 hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -745,6 +853,7 @@ cases:
   - id: 107
     name: "VI - temperature in Saigon next Monday morning"
     message: "Nhiệt độ sáng thứ 2 tuần sau tại Sài gòn"
+    reqTranslation: "Temperature this morning"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -752,6 +861,7 @@ cases:
   - id: 108
     name: "VI - whether it is cold in Da Lat tomorrow morning"
     message: "Sáng mai nhiệt độ tại Đà Lạt có lạnh không?"
+    reqTranslation: "Temperature tomorrow afternoon"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -759,6 +869,7 @@ cases:
   - id: 109
     name: "VI - temperature in Ho Chi Minh City at noon this Friday"
     message: "Cho tôi biết nhiệt độ ở Thành phố Hồ Chí Minh vào buổi trưa thứ Sáu tuần này."
+    reqTranslation: "The temperature the day after tomorrow"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -766,6 +877,7 @@ cases:
   - id: 110
     name: "VI - whether temperature in Seoul drops low tonight"
     message: "Tối nay ở Seoul nhiệt độ có giảm xuống thấp không?"
+    reqTranslation: "Temperature tonight"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -773,6 +885,7 @@ cases:
   - id: 111
     name: "VI - lowest temperature in Sapa at dawn tomorrow"
     message: "Lúc bình minh ngày mai ở Sapa nhiệt độ xuống tới mấy độ?"
+    reqTranslation: "Temperature forecast for next Monday morning in Saigon."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -780,6 +893,7 @@ cases:
   - id: 112
     name: "VI - night temperature in New York this Sunday"
     message: "Nhiệt độ ban đêm ở New York vào Chủ nhật tuần này là bao nhiêu?"
+    reqTranslation: "Will it be cold in Da Lat tomorrow morning?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -787,6 +901,7 @@ cases:
   - id: 113
     name: "VI - temperature in Hanoi this week"
     message: "Tuần này Hà Nội nhiệt độ như nào"
+    reqTranslation: "Please tell me the temperature in Ho Chi Minh City at noon this Friday."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -794,6 +909,7 @@ cases:
   - id: 114
     name: "VI - whether this week's temperature is very hot"
     message: "Nhiệt độ tuần này có nắng nóng không, chịu nổi không?"
+    reqTranslation: "Will the temperature drop low in Seoul tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -801,6 +917,7 @@ cases:
   - id: 115
     name: "VI - whether next week's temperature in Saigon is extremely hot"
     message: "Nhiệt độ tuần tới Sài gòn có nóng điên không"
+    reqTranslation: "What will the temperature drop to in Sapa at dawn tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -808,6 +925,7 @@ cases:
   - id: 116
     name: "VI - average temperature in Nha Trang this week"
     message: "Tuần này ở Nha Trang nhiệt độ trung bình bao nhiêu?"
+    reqTranslation: "What will the nighttime temperature be in New York this Sunday?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -815,6 +933,7 @@ cases:
   - id: 117
     name: "VI - average temperature in Hai Phong this week"
     message: "Tuần này ở Hải Phòng nhiệt độ trung bình bao nhiêu?"
+    reqTranslation: "What's the temperature like in Hanoi this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -822,6 +941,7 @@ cases:
   - id: 118
     name: "VI - temperature in Hanoi the week after next"
     message: "Tuần sau nữa nhiệt độ Hà Nội như nào"
+    reqTranslation: "Will the temperature be hot and sunny this week? Can we tolerate it?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -829,6 +949,7 @@ cases:
   - id: 119
     name: "VI - temperature in Ho Chi Minh City for each day of the week"
     message: "Các ngày trong tuần nhiệt độ tại Hồ Chí Minh"
+    reqTranslation: "Will the temperature in Saigon be insanely hot next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -836,6 +957,7 @@ cases:
   - id: 120
     name: "VI - weekend temperature"
     message: "Cuối tuần nhiệt độ bao nhiêu"
+    reqTranslation: "What is the average temperature in Nha Trang this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -843,6 +965,7 @@ cases:
   - id: 121
     name: "VI - precipitation tomorrow"
     message: "Lượng mưa ngày mai sẽ ra sao?"
+    reqTranslation: "What is the average temperature in Hai Phong this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -850,6 +973,7 @@ cases:
   - id: 122
     name: "VI - precipitation the day after tomorrow"
     message: "Lượng mưa ngày kia sẽ thế nào?"
+    reqTranslation: "What will the temperature be like in Hanoi the week after next?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -857,6 +981,7 @@ cases:
   - id: 123
     name: "VI - whether it rains in Saigon today"
     message: "Hôm nay Sài Gòn có mưa không"
+    reqTranslation: "Weekday temperatures in Ho Chi Minh City"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -864,6 +989,7 @@ cases:
   - id: 124
     name: "VI - whether it rained in Can Tho the day before yesterday"
     message: "Cần Thơ hôm kia có mưa không"
+    reqTranslation: "What's the temperature this weekend?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -871,6 +997,7 @@ cases:
   - id: 125
     name: "VI - sunny or rainy in Seoul today"
     message: "Seoul hôm nay nắng hay mưa"
+    reqTranslation: "What will the rainfall be like tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -878,6 +1005,7 @@ cases:
   - id: 126
     name: "VI - whether it rains in London today"
     message: "London hôm nay có mưa không"
+    reqTranslation: "What will the rainfall be like the day after tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -885,6 +1013,7 @@ cases:
   - id: 127
     name: "VI - whether it rains in Saigon on April 30 in the afternoon"
     message: "Sài Gòn ngày 30 tháng 4 buổi chiều có mưa không"
+    reqTranslation: "Is it raining in Saigon today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -892,6 +1021,7 @@ cases:
   - id: 128
     name: "VI - whether it rains in Can Tho on June 5 in the morning"
     message: "Cần Thơ ngày 5 tháng 6 buổi sáng có mưa không"
+    reqTranslation: "Did it rain in Can Tho the day before yesterday?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -899,6 +1029,7 @@ cases:
   - id: 129
     name: "VI - sunny or rainy in Hue today"
     message: "Hôm nay Huế nắng hay mưa"
+    reqTranslation: "Is it sunny or rainy in Seoul today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -906,6 +1037,7 @@ cases:
   - id: 130
     name: "VI - whether it rains in Kuala Lumpur today"
     message: "Hôm nay Kuala Lumpur có mưa không"
+    reqTranslation: "Is it raining in London today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -913,6 +1045,7 @@ cases:
   - id: 131
     name: "VI - rain probability today"
     message: "Hôm nay xác suất mưa bao nhiêu phần trăm"
+    reqTranslation: "Will it rain in Saigon on the afternoon of April 30th?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -920,6 +1053,7 @@ cases:
   - id: 132
     name: "VI - whether it rains heavily in Seoul today"
     message: "Seoul hôm nay mưa nhiều không"
+    reqTranslation: "Will it rain in Can Tho on the morning of June 5th?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -927,6 +1061,7 @@ cases:
   - id: 133
     name: "VI - whether there is rain possibility the day after tomorrow"
     message: "Ngày kia có khả năng mưa không"
+    reqTranslation: "Is it sunny or rainy in Hue today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -934,6 +1069,7 @@ cases:
   - id: 134
     name: "VI - whether it rains this Friday"
     message: "Thứ 6 tuần này có mưa không"
+    reqTranslation: "Is it raining in Kuala Lumpur today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -941,6 +1077,7 @@ cases:
   - id: 135
     name: "VI - whether it rains next Friday"
     message: "Thứ 6 tuần sau có mưa không"
+    reqTranslation: "What is the probability of rain today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -948,6 +1085,7 @@ cases:
   - id: 136
     name: "VI - whether it rains in Ho Chi Minh City the afternoon of the day after tomorrow"
     message: "Chiều ngày kia tại Hồ Chí Minh có mưa không"
+    reqTranslation: "Is it raining heavily in Seoul today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -955,6 +1093,7 @@ cases:
   - id: 137
     name: "VI - whether it rains in Da Lat tonight"
     message: "Đà Lạt đêm nay có mưa không"
+    reqTranslation: "Is there a chance of rain the day after tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -962,6 +1101,7 @@ cases:
   - id: 138
     name: "VI - precipitation this evening"
     message: "Lượng mưa vào buổi tối hôm nay như thế nào?"
+    reqTranslation: "Will it rain this Friday?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -969,6 +1109,7 @@ cases:
   - id: 139
     name: "VI - precipitation changes over the next 3 days"
     message: "Lượng mưa trong 3 ngày tới sẽ thay đổi như thế nào?"
+    reqTranslation: "Will it rain next Friday?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -976,6 +1117,7 @@ cases:
   - id: 140
     name: "VI - precipitation tomorrow morning"
     message: "Lượng mưa vào buổi sáng ngày mai sẽ thế nào?"
+    reqTranslation: "Will it rain in Ho Chi Minh City the day after tomorrow afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -983,6 +1125,7 @@ cases:
   - id: 141
     name: "VI - precipitation this afternoon"
     message: "Lượng mưa vào buổi chiều hôm nay ra sao?"
+    reqTranslation: "Will it rain in Da Lat tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -990,6 +1133,7 @@ cases:
   - id: 142
     name: "VI - sunny or rainy in Da Nang this week"
     message: "Đà Nẵng tuần này nắng hay mưa"
+    reqTranslation: "How much rain will it be this evening?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -997,6 +1141,7 @@ cases:
   - id: 143
     name: "VI - whether it rains in Saigon 2 hours later"
     message: "Sài Gòn 2 tiếng nữa có mưa không"
+    reqTranslation: "How will the rainfall change over the next three days?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1004,6 +1149,7 @@ cases:
   - id: 144
     name: "VI - whether it rains in Hai Phong in the morning"
     message: "Hải Phòng buổi sáng có mưa không"
+    reqTranslation: "What will the rainfall be like tomorrow morning?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1011,6 +1157,7 @@ cases:
   - id: 145
     name: "VI - whether it rains in Vung Tau in the afternoon"
     message: "Vũng Tàu buổi chiều có mưa không"
+    reqTranslation: "How much rain will it be this afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1018,6 +1165,7 @@ cases:
   - id: 146
     name: "VI - whether it rains in New York in the morning"
     message: "New York buổi sáng có mưa không"
+    reqTranslation: "Will it be sunny or rainy in Da Nang this week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1025,6 +1173,7 @@ cases:
   - id: 147
     name: "VI - whether it rains in Saigon this afternoon"
     message: "Sài Gòn chiều nay mưa không"
+    reqTranslation: "Will it rain in Saigon in two hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1032,6 +1181,7 @@ cases:
   - id: 148
     name: "VI - whether it rains in the next 10 hours"
     message: "10 giờ tới có mưa không"
+    reqTranslation: "Is it raining in Hai Phong this morning?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1039,6 +1189,7 @@ cases:
   - id: 149
     name: "VI - whether it rains tonight"
     message: "Tối nay có mưa không"
+    reqTranslation: "Is it raining in Vung Tau this afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1046,6 +1197,7 @@ cases:
   - id: 150
     name: "VI - whether it rains in Saigon 3 hours later"
     message: "Sài Gòn 3 giờ nữa có mưa không"
+    reqTranslation: "Is it raining in New York this morning?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1053,6 +1205,7 @@ cases:
   - id: 151
     name: "VI - whether it rains tomorrow at noon"
     message: "Trưa mai có mưa không"
+    reqTranslation: "Is it raining in Saigon this afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1060,6 +1213,7 @@ cases:
   - id: 152
     name: "VI - whether it rains in Can Tho in the next 4 hours"
     message: "Cần Thơ 4 giờ tới có mưa không"
+    reqTranslation: "Will it rain in the next 10 hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1067,6 +1221,7 @@ cases:
   - id: 153
     name: "VI - precipitation after one week"
     message: "Lượng mưa sau 1 tuần sẽ ra sao?"
+    reqTranslation: "Will it rain tonight?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1074,6 +1229,7 @@ cases:
   - id: 154
     name: "VI - precipitation in the next 2 weeks"
     message: "Lượng mưa trong 2 tuần tới sẽ như thế nào?"
+    reqTranslation: "Will it rain in Saigon in 3 hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1081,6 +1237,7 @@ cases:
   - id: 155
     name: "VI - whether it rains heavily in Saigon next week"
     message: "Sài Gòn tuần tới có mưa nhiều không"
+    reqTranslation: "Will it rain tomorrow afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1088,6 +1245,7 @@ cases:
   - id: 156
     name: "VI - whether it rains in Can Tho this weekend"
     message: "Cần Thơ cuối tuần này có mưa không"
+    reqTranslation: "Will it rain in Can Tho in the next 4 hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1095,6 +1253,7 @@ cases:
   - id: 157
     name: "VI - whether it rains in Saigon on each day of the week"
     message: "Sài Gòn các ngày trong tuần có mưa không"
+    reqTranslation: "What will the rainfall be like after one week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1102,6 +1261,7 @@ cases:
   - id: 158
     name: "VI - whether it rains in Hanoi on the weekend"
     message: "Hà Nội có mưa vào cuối tuần không"
+    reqTranslation: "What will the rainfall be like in the next two weeks?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1109,6 +1269,7 @@ cases:
   - id: 159
     name: "VI - rain probability in Ca Mau over the next 3 days multi turn"
     message: "Xem giúp mình khả năng mưa ở Cà Mau trong 3 ngày tới. Ngày nào dễ mưa nhất? Có ngày nào mưa kéo dài gần cả ngày không? Tóm tắt giúp mình ngày nào nên hạn chế ra ngoài."
+    reqTranslation: "Will it rain a lot in Saigon next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1116,6 +1277,7 @@ cases:
   - id: 160
     name: "VI - rain probability in Ninh Binh today multi turn"
     message: "Kiểm tra khả năng mưa ở Ninh Bình hôm nay giúp mình. Thế còn buổi chiều thì sao? Tối nay có dễ mưa hơn không? Nếu ra ngoài thì nên tránh khung giờ nào?"
+    reqTranslation: "Will it rain in Can Tho this weekend?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1123,6 +1285,7 @@ cases:
   - id: 161
     name: "VI - air quality in Saigon today"
     message: "Chất lượng không khí Sài Gòn hôm nay thế nào?"
+    reqTranslation: "Does it rain in Saigon on weekdays?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1130,6 +1293,7 @@ cases:
   - id: 162
     name: "VI - whether air quality in Nha Trang is good today"
     message: "Chất lượng không khí ở Nha Trang hôm nay tốt không?"
+    reqTranslation: "Will it rain in Hanoi this weekend?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1137,6 +1301,14 @@ cases:
   - id: 163
     name: "VI - current air quality in Hanoi"
     message: "Tình trạng chất lượng không khí ở Hà Nội bây giờ như thế nào"
+    reqTranslation: |-
+      "Please tell me the probability of rain in Ca Mau over the next 3 days."
+      
+      "Which day is most likely to rain?"
+      
+      "Are there any days when it rains for almost the entire day?"
+      
+      "Please summarize which days it's best to avoid going outside."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1144,6 +1316,14 @@ cases:
   - id: 164
     name: "VI - air quality today"
     message: "Chất lượng không khí hôm nay thế nào"
+    reqTranslation: |-
+      "Check the probability of rain in Ninh Binh today for me."
+      
+      "What about the afternoon?"
+      
+      "Is it more likely to rain tonight?"
+      
+      "If I go out, what time should I avoid?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1151,6 +1331,7 @@ cases:
   - id: 165
     name: "VI - PM2.5 today"
     message: "Hôm nay bụi mịn PM2.5 bao nhiêu"
+    reqTranslation: "What is the air quality like in Saigon today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1158,6 +1339,7 @@ cases:
   - id: 166
     name: "VI - whether air quality is okay the day after tomorrow"
     message: "Chất lượng không khí ngày kia có ok không"
+    reqTranslation: "How is the air quality in Nha Trang today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1165,6 +1347,7 @@ cases:
   - id: 167
     name: "VI - air quality on 30 slash 4"
     message: "Chất lượng không khí ngày 30/4 thế nào"
+    reqTranslation: "What is the air quality like in Hanoi now?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1172,6 +1355,7 @@ cases:
   - id: 168
     name: "VI - AQI in Hanoi today"
     message: "AQI Hà Nội hôm nay thế nào"
+    reqTranslation: "What is the air quality like today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1179,6 +1363,7 @@ cases:
   - id: 169
     name: "VI - check air quality in Da Lat"
     message: "Cho tui kiểm tra chất lượng không khí Đà Lạt"
+    reqTranslation: "What is the PM2.5 level today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1186,6 +1371,7 @@ cases:
   - id: 170
     name: "VI - air quality generic"
     message: "Chất lượng không khí sao"
+    reqTranslation: "Will the air quality be okay the day after tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1193,6 +1379,7 @@ cases:
   - id: 171
     name: "VI - air quality in Saigon the day after tomorrow"
     message: "Chất lượng không khí ngày kia tại Sài gòn"
+    reqTranslation: "What was the air quality like on April 30th?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1200,6 +1387,7 @@ cases:
   - id: 172
     name: "VI - whether a mask is needed tomorrow"
     message: "Ngày mai ra đường có cần đeo khẩu trang không"
+    reqTranslation: "What is the AQI in Hanoi today?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1207,6 +1395,7 @@ cases:
   - id: 173
     name: "VI - whether current air quality in Can Tho is good or bad"
     message: "Chất lượng không khí hiện tại ở Cần Thơ là tốt hay xấu?"
+    reqTranslation: "Let me check the air quality in Da Lat."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1214,6 +1403,7 @@ cases:
   - id: 174
     name: "VI - air quality tomorrow"
     message: "Ngày mai chất lượng không khí thế nào"
+    reqTranslation: "Air quality"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1221,6 +1411,7 @@ cases:
   - id: 175
     name: "VI - air quality in Tokyo tomorrow"
     message: "Tokyo ngày mai chất lượng không khí thế nào"
+    reqTranslation: "Air quality in Saigon the day after tomorrow."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1228,6 +1419,7 @@ cases:
   - id: 176
     name: "VI - air quality tomorrow afternoon"
     message: "Chiều mai chất lượng không khí như nào"
+    reqTranslation: "Do I need to wear a face mask when I go out tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1235,6 +1427,7 @@ cases:
   - id: 177
     name: "VI - air quality in Saigon the morning of the day after tomorrow"
     message: "Sáng ngày kia chất lượng không khí tại Sài gòn"
+    reqTranslation: "Is the current air quality in Can Tho good or bad?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1242,6 +1435,7 @@ cases:
   - id: 178
     name: "VI - air quality next week"
     message: "Tuần tới chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1249,6 +1443,7 @@ cases:
   - id: 179
     name: "VI - air quality 7 days later"
     message: "7 ngày nữa chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like in Tokyo tomorrow?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1256,6 +1451,7 @@ cases:
   - id: 180
     name: "VI - air quality in Da Lat next week"
     message: "Đà Lạt tuần tới chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like tomorrow afternoon?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1263,6 +1459,7 @@ cases:
   - id: 181
     name: "VI - air quality in New York 5 days later"
     message: "New York 5 ngày nữa chất lượng không khí thế nào"
+    reqTranslation: "The air quality in Saigon the day after tomorrow morning."
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1270,6 +1467,7 @@ cases:
   - id: 182
     name: "VI - air quality 2 hours later"
     message: "2 tiếng nữa chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1277,6 +1475,7 @@ cases:
   - id: 183
     name: "VI - air quality around 9 AM"
     message: "Khoảng 9 giờ sáng chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like in 7 days?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1284,6 +1483,7 @@ cases:
   - id: 184
     name: "VI - air quality at 6 PM"
     message: "Lúc 6 giờ tối chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like in Da Lat next week?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1291,6 +1491,7 @@ cases:
   - id: 185
     name: "VI - air quality in the morning"
     message: "Buổi sáng chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like in New York in 5 days?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1298,6 +1499,7 @@ cases:
   - id: 186
     name: "VI - air quality in Tokyo 3 hours later"
     message: "Tokyo 3 giờ nữa chất lượng không khí thế nào"
+    reqTranslation: "What will the air quality be like in two hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1305,6 +1507,7 @@ cases:
   - id: 187
     name: "VI - air quality in New York around 3 PM"
     message: "New York khoảng 3 giờ chiều chất lượng không khí thế nào"
+    reqTranslation: "What was the air quality like around 9 a.m.?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1312,6 +1515,7 @@ cases:
   - id: 188
     name: "VI - air index on the weekend"
     message: "Chỉ số không khí cuối tuần"
+    reqTranslation: "What was the air quality like at 6 PM?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1319,6 +1523,7 @@ cases:
   - id: 189
     name: "VI - air quality for each day of the week"
     message: "Chất lượng không khí các ngày trong tuần"
+    reqTranslation: "What is the air quality like this morning?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1326,6 +1531,7 @@ cases:
   - id: 190
     name: "VI - air quality next weekend"
     message: "Chất lượng không khí cuối tuần sau"
+    reqTranslation: "What will the air quality be like in Tokyo in 3 hours?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1333,6 +1539,7 @@ cases:
   - id: 191
     name: "VI - air quality for next 10 hours"
     message: "Chất lượng không khí 10 giờ tới"
+    reqTranslation: "What is the air quality like in New York around 3 PM?"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1340,6 +1547,7 @@ cases:
   - id: 192
     name: "VI - hourly air quality"
     message: "Chất lượng không khí theo giờ"
+    reqTranslation: "Weekend Air Quality Index"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1347,6 +1555,7 @@ cases:
   - id: 193
     name: "VI - multi turn temperature in Hanoi today and tomorrow"
     message: "Nhiệt độ ở Hà Nội hôm nay thế nào? Còn ngày mai thì sao? Cụ thể vào buổi chiều mai nhiệt độ là bao nhiêu? Tối mai thì nhiệt độ có giảm không?"
+    reqTranslation: "Air quality on weekdays"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1355,6 +1564,7 @@ cases:
   - id: 194
     name: "VI - multi turn temperature in Da Nang and Hue this week"
     message: "Kiểm tra nhiệt độ ở Đà Nẵng tuần này giúp tôi. Thế còn ở Huế thì sao? Nhiệt độ ở Huế vào thứ Bảy này là bao nhiêu? Buổi trưa thứ Bảy trời có nóng không?"
+    reqTranslation: "Air quality next weekend"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1363,6 +1573,7 @@ cases:
   - id: 195
     name: "VI - multi turn temperature in Japan Tokyo and Osaka the day after tomorrow"
     message: "Cho tôi biết nhiệt độ ở Nhật Bản vào ngày mốt. Cụ thể tại Tokyo là bao nhiêu độ? Thế còn ở Osaka? Nhiệt độ ở Osaka vào ban đêm (21:00) thế nào?"
+    reqTranslation: "Air quality over the next 10 hours"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1371,6 +1582,7 @@ cases:
   - id: 196
     name: "VI - multi turn temperature in Hai Phong today and tomorrow morning"
     message: "Nhiệt độ sáng nay (09:00) ở Hải Phòng thế nào? Thế còn buổi trưa (12:00)? Chiều nay (14:00) thì sao? Còn dự báo cho sáng ngày mai?"
+    reqTranslation: "Hourly air quality"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1379,6 +1591,14 @@ cases:
   - id: 197
     name: "VI - multi turn weather and low temperature in Da Lat"
     message: "Thời tiết ở Đà Lạt ngày mai thế nào? Nhiệt độ thấp nhất ở đó là bao nhiêu? Mức nhiệt độ này vào cuối tuần có thay đổi không? Kiểm tra cụ thể cho ngày Chủ nhật giúp tôi."
+    reqTranslation: |-
+      - What is the temperature in Hanoi today?
+      
+      - And what about tomorrow?
+      
+      - Specifically, what will the temperature be tomorrow afternoon?
+      
+      - Will the temperature drop tomorrow evening?
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1387,6 +1607,14 @@ cases:
   - id: 198
     name: "VI - multi turn weather in Hanoi and Saigon"
     message: "Thời tiết Hà Nội. Sài Gòn như nào"
+    reqTranslation: |-
+      - Could you check the temperature in Da Nang this week for me?
+      
+      - What about Hue?
+      
+      - What's the temperature in Hue this Saturday?
+      
+      - Will it be hot at noon on Saturday?
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1395,6 +1623,14 @@ cases:
   - id: 199
     name: "VI - multi turn tomorrow temperature high and low"
     message: "Nhiệt độ ngày mai. Nhiệt độ cao nhất là bao nhiêu. Nhiệt độ thấp nhất là bao nhiêu"
+    reqTranslation: |-
+      - Tell me the temperature in Japan the day after tomorrow.
+      
+      - Specifically, what's the temperature in Tokyo?
+      
+      - And what about Osaka?
+      
+      - What's the temperature in Osaka at night (9 PM)?
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -1403,6 +1639,14 @@ cases:
   - id: 200
     name: "VI - multi turn weekend weather and travel suitability in Phu Quy"
     message: "Thời tiết cuối tuần này. Tôi muốn đi chơi Phú Quý thời tiết có ok không"
+    reqTranslation: |-
+      - What was the temperature this morning (9:00 AM) in Hai Phong?
+      
+      - What about noon (12:00 PM)?
+      
+      - What about this afternoon (2:00 PM)?
+      
+      - And what about the forecast for tomorrow morning?
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent

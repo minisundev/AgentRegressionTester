@@ -3,6 +3,7 @@ cases:
   - id: 1
     name: "VI - weather 14 days later"
     message: "thời tiết sau 14 ngày"
+    reqTranslation: "weather 14 days later"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -10,6 +11,7 @@ cases:
   - id: 2
     name: "VI - weather 15 days later"
     message: "thời tiết sau 15 ngày"
+    reqTranslation: "weather 15 days later"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -17,6 +19,7 @@ cases:
   - id: 3
     name: "VI - weather 16 days later"
     message: "thời tiết sau 16 ngày"
+    reqTranslation: "weather 16 days later"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -24,6 +27,7 @@ cases:
   - id: 4
     name: "VI - sunday weather week after next"
     message: "thời tiết chủ nhật tuần sau nữa"
+    reqTranslation: "sunday weather the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -31,6 +35,7 @@ cases:
   - id: 5
     name: "VI - saturday weather week after next"
     message: "thời tiết thứ bảy tuần sau nữa"
+    reqTranslation: "saturday weather the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -38,6 +43,7 @@ cases:
   - id: 6
     name: "VI - friday weather week after next"
     message: "thời tiết thứ sáu tuần sau nữa"
+    reqTranslation: "friday weather the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -45,6 +51,7 @@ cases:
   - id: 7
     name: "VI - thursday weather week after next"
     message: "thời tiết thứ năm tuần sau nữa"
+    reqTranslation: "thursday weather the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -52,6 +59,7 @@ cases:
   - id: 8
     name: "VI - wednesday weather week after next"
     message: "thời tiết thứ tư tuần sau nữa"
+    reqTranslation: "wednesday weather the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -59,6 +67,7 @@ cases:
   - id: 9
     name: "VI - wednesday morning weather week after next"
     message: "thời tiết sáng thứ tư tuần sau nữa"
+    reqTranslation: "wednesday morning weather the week after next"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -66,6 +75,7 @@ cases:
   - id: 10
     name: "VI - yesterday weather"
     message: "thời tiết hôm qua"
+    reqTranslation: "weather yesterday"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -73,6 +83,7 @@ cases:
   - id: 11
     name: "VI - weather 2 hours ago"
     message: "thời tiết 2 giờ trước"
+    reqTranslation: "weather 2 hours ago"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent

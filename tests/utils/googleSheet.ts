@@ -29,7 +29,7 @@ export async function appendRowToSheet(row: ResultRow) {
     const sheetName = env.GOOGLE_SHEET_NAME;
     const range = buildSheetRange(sheetName, 'A:A');
 
-    await ensureSheetExists(sheets, sheetId, sheetName);
+    const sheetTabId = await ensureSheetExists(sheets, sheetId, sheetName);
 
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId: sheetId,
@@ -46,6 +46,14 @@ export async function appendRowToSheet(row: ResultRow) {
             valueInputOption: 'USER_ENTERED',
             requestBody: { values },
         });
+        if (row.isMultiTurn && sheetTabId !== undefined) {
+            try {
+                await highlightMultiTurnRow(sheets, sheetId, sheetTabId, currentRow);
+            } catch (highlightError) {
+                const message = highlightError instanceof Error ? highlightError.message : String(highlightError);
+                console.warn(`[SHEET:${sheetName}] failed to highlight multi-turn row ${currentRow}: ${message}`);
+            }
+        }
         console.log(`[SHEET:${sheetName}] Q${row.id} appended (row ${currentRow})`);
     } catch (error) {
         const serviceError = new ExternalServiceError(
@@ -57,14 +65,14 @@ export async function appendRowToSheet(row: ResultRow) {
     }
 }
 
-async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string, sheetName: string) {
+async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string, sheetName: string): Promise<number | undefined> {
     const spreadsheet = await sheets.spreadsheets.get({
         spreadsheetId,
-        fields: 'sheets(properties(title))',
+        fields: 'sheets(properties(sheetId,title))',
     });
 
-    const exists = spreadsheet.data.sheets?.some((sheet) => sheet.properties?.title === sheetName);
-    if (exists) return;
+    const existingSheet = spreadsheet.data.sheets?.find((sheet) => sheet.properties?.title === sheetName);
+    if (existingSheet) return existingSheet.properties?.sheetId ?? undefined;
 
     const addResponse = await sheets.spreadsheets.batchUpdate({
         spreadsheetId,
@@ -118,6 +126,43 @@ async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string
     }
 
     console.log(`[SHEET:${sheetName}] created`);
+    return newSheetId ?? undefined;
+}
+
+async function highlightMultiTurnRow(
+    sheets: sheets_v4.Sheets,
+    spreadsheetId: string,
+    sheetId: number,
+    rowNumber: number,
+) {
+    await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        requestBody: {
+            requests: [
+                {
+                    repeatCell: {
+                        range: {
+                            sheetId,
+                            startRowIndex: rowNumber - 1,
+                            endRowIndex: rowNumber,
+                            startColumnIndex: 0,
+                            endColumnIndex: Object.keys(SheetColumns).length,
+                        },
+                        cell: {
+                            userEnteredFormat: {
+                                backgroundColor: {
+                                    red: 0.85,
+                                    green: 0.92,
+                                    blue: 0.83,
+                                },
+                            },
+                        },
+                        fields: 'userEnteredFormat.backgroundColor',
+                    },
+                },
+            ],
+        },
+    });
 }
 
 function getSheetHeaders(): string[] {
@@ -140,6 +185,13 @@ function getPrompt() : string{
     return '';
 }
 
+function getRequestTranslation(row: ResultRow, currentRow: number): string {
+    const translation = row.reqTranslation?.trim();
+    if (translation) return translation;
+
+    return `=GOOGLETRANSLATE(E${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`;
+}
+
 async function processResponseForSheet(rows: ResultRow[], startRow: number): Promise<any[][]> {
     const prompt = getPrompt();
 
@@ -155,7 +207,7 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             subIntent: r.subIntent ?? '',
             request: r.request ?? '',
             response: cleanResponse,
-            reqTranslation: `=GOOGLETRANSLATE(E${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`,
+            reqTranslation: getRequestTranslation(r, currentRow),
             resTranslation: `=GOOGLETRANSLATE(F${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`,
             judge: await judgeResponse(prompt, r.request ?? '', cleanResponse, currentRow),
             time: r.time ?? 0,

@@ -79,6 +79,21 @@ LOCAL_AI_MAX_TOKEN=200 # 답변이 너무 길어지지 않게 제한
 GOOGLETRANSLATE_SOURCE_LANGUAGE="auto"
 GOOGLETRANSLATE_TARGET_LANGUAGE="en"
 
+# Redis stream answer compare watcher
+REDIS_URL="redis://127.0.0.1:6379"
+WEATHER_ANSWER_COMPARE_STREAM_KEY="weather:answer-compare"
+WEATHER_ANSWER_COMPARE_STREAM_GROUP="weather-answer-compare"
+WEATHER_ANSWER_COMPARE_STREAM_CONSUMER="watcher-1"
+READ_EXISTING_PAYLOADS=0
+STREAM_BLOCK_MS=5000
+PENDING_RETRY_INTERVAL_MS=30000
+GEMMA_TEST_LLM_ID=2
+GEMMA_TEST_MODEL="mediaai1/gemma-27b-generation-v3.0.0"
+GPT_TEST_LLM_ID=3
+OLLAMA_URL="http://localhost:11434/v1/chat/completions"
+OLLAMA_MODEL="gemma3:27b"
+GOOGLE_SHEET_TAB="WeatherAnswerCompare"
+
 # Slack Settings
 SLACK_WEBHOOK_URL=""
 SLACK_CHANNEL=""
@@ -122,14 +137,14 @@ SLACK_CHANNEL=""
     ```jsx
     GOOGLE_SHEET_ID=""
     GOOGLE_SHEET_NAME="" # legacy fallback
-    TEST_PROFILE_CONFIG="tests/config/profiles.yaml"
+    TEST_PROFILE_CONFIG="tests/config/settings/profiles.yaml"
     ```
 
     `GOOGLE_SHEET_NAME`은 결과를 기록할 스프레드시트 탭 이름입니다.
     프로필을 지정하지 않고 실행할 때만 이 값을 사용합니다.
     해당 탭이 없으면 테스트 실행 중 자동으로 생성됩니다.
 
-    프로필 실행은 `tests/config/profiles.yaml`에서 읽습니다.
+    프로필 실행은 `tests/config/settings/profiles.yaml`에서 읽습니다.
     새 환경은 YAML에 추가만 하면 되고, `crow` 같은 이름도 코드 수정 없이 바로 사용할 수 있습니다.
     
 - Gemini
@@ -171,7 +186,7 @@ wrapColumns:
   - F
 ```
 
-Profile config: `tests/config/profiles.yaml`
+Profile config: `tests/config/settings/profiles.yaml`
 
 ```yaml
 profiles:
@@ -190,23 +205,36 @@ profiles:
 ```bash
 npm install
 
-npm run test:sheet:api -- --dev
-npm run test:sheet:internal -- --stg
-npm run test:terminal -- --prod
+npm run test:sheet:api:dev
+npm run test:sheet:internal:stg
+npm run test:sheet:local:local
+npm run test:terminal:prod
+node scripts/run-test-profile.js sheet:api:crow
 ```
 
-Legacy-compatible scripts
+Redis stream answer compare watcher
+
+```bash
+npm run watch:weather:answer-compare
+REPORT_TO=sheet npm run watch:weather:answer-compare
+READ_EXISTING_PAYLOADS=1 npm run watch:weather:answer-compare
+```
+
+이 watcher는 `WEATHER_ANSWER_COMPARE_STREAM_KEY` stream의 `payload` 필드(JSON)를 읽어서 GemmaProd, Ollama, GPT 세 모델 응답을 비교하고 terminal 또는 Google Sheet에 기록합니다.
+
+Legacy-compatible selectors
 
 ```json
     "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
     "test:profile": "node scripts/run-test-profile.js",
-    "test:sheet:none": "REPORT_TO=sheet JUDGE_MODE=none node scripts/run-test-profile.js",
-    "test:sheet:internal": "REPORT_TO=sheet JUDGE_MODE=sheet node scripts/run-test-profile.js",
-    "test:sheet:api": "REPORT_TO=sheet JUDGE_MODE=api node scripts/run-test-profile.js",
-    "test:sheet:local": "REPORT_TO=sheet JUDGE_MODE=local node scripts/run-test-profile.js",
-    "test:terminal": "REPORT_TO=terminal JUDGE_MODE=none node scripts/run-test-profile.js",
-    "test:terminal:ai": "REPORT_TO=terminal JUDGE_MODE=local node scripts/run-test-profile.js"
+    "test:sheet:none": "node scripts/run-test-profile.js",
+    "test:sheet:api:dev": "node scripts/run-test-profile.js",
+    "test:sheet:local:local": "node scripts/run-test-profile.js",
+    "test:terminal:prod": "node scripts/run-test-profile.js",
+    "test:terminal:ai:crow": "node scripts/run-test-profile.js"
 ```
+
+기존 `npm run test:sheet:api -- --dev` 같은 `--` 방식도 그대로 지원합니다.
 
 ### 6. DEMO
 테스트가 완료되면 슬랙에 메시지가 전송됩니다.

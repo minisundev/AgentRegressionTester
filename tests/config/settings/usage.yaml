@@ -1,10 +1,11 @@
 defaultProfilePath: 'tests/config/settings/profiles.yaml'
 
 examples:
-  - 'npm run test:sheet:api -- dev'
-  - 'npm run test:sheet:api -- --crow'
-  - 'npm run test:sheet:internal -- --stg'
-  - 'npm run test:terminal -- --prod'
+  - 'npm run test:sheet:api:dev'
+  - 'npm run test:sheet:local:local'
+  - 'npm run test:sheet:internal:stg'
+  - 'npm run test:terminal:prod'
+  - 'node scripts/run-test-profile.js sheet:api:crow'
 
 defaultProfileLabel: 'Default profile file:'
 envOverrideLabel: 'Optional .env override:'

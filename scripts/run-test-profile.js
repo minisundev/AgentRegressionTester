@@ -113,21 +113,37 @@ function setProfileArg(parsed, profileName) {
 }
 
 function resolveExecution(parsed) {
-  const reportTo = process.env.REPORT_TO;
-  const judgeMode = process.env.JUDGE_MODE;
+  const selectorFromArg = parseSelector(parsed.primaryArg, 'argument');
+  const selectorFromLifecycle = selectorFromArg
+    ? null
+    : parseSelector(process.env.npm_lifecycle_event, 'script');
+
+  if (selectorFromArg && parsed.profileArg) {
+    const selectorProfile = selectorFromArg.profile;
+    const flagProfile = normalizeProfile(parsed.profileArg);
+
+    if (selectorProfile && selectorProfile !== flagProfile) {
+      printUsageAndExit(`Profile conflict: selector uses ${selectorProfile}, but --profile uses ${flagProfile}.`);
+    }
+  }
+
+  const reportTo = selectorFromArg?.reportTo ?? selectorFromLifecycle?.reportTo ?? process.env.REPORT_TO;
+  const judgeMode = selectorFromArg?.judgeMode ?? selectorFromLifecycle?.judgeMode ?? process.env.JUDGE_MODE;
+  const selectorProfile = selectorFromArg?.profile ?? selectorFromLifecycle?.profile;
+  const profile = parsed.profileArg ?? selectorProfile ?? (!selectorFromArg ? parsed.primaryArg : undefined);
 
   if (!reportTo || !judgeMode) {
-    printUsageAndExit('REPORT_TO and JUDGE_MODE must be set. Use one of the npm test scripts.');
+    printUsageAndExit('Select a run target with a script name like test:sheet:api:local or pass a selector like sheet:api:local.');
   }
 
   return {
     reportTo,
     judgeMode,
-    profile: parsed.profileArg ?? parsed.primaryArg,
+    profile,
     selector: [
       reportTo,
       judgeMode,
-      parsed.profileArg ?? parsed.primaryArg ?? 'default',
+      profile ?? 'default',
     ].join(':'),
   };
 }
@@ -276,6 +292,94 @@ function normalizeProfile(profile) {
   }
 
   return trimmed;
+}
+
+function parseSelector(selector, source) {
+  const trimmed = selector?.trim().toLowerCase();
+
+  if (!trimmed) {
+    return null;
+  }
+
+  const parts = trimmed.split(':').filter(Boolean);
+  const normalizedParts = parts[0] === 'test' ? parts.slice(1) : parts;
+
+  if (normalizedParts.length === 0) {
+    return null;
+  }
+
+  const reportTo = normalizedParts[0];
+
+  if (reportTo !== 'sheet' && reportTo !== 'terminal') {
+    return null;
+  }
+
+  if (reportTo === 'sheet') {
+    return parseSheetSelector(normalizedParts, source);
+  }
+
+  return parseTerminalSelector(normalizedParts, source);
+}
+
+function parseSheetSelector(parts, source) {
+  if (parts.length < 2) {
+    printUsageAndExit(`Invalid ${source} selector: ${parts.join(':')}`);
+  }
+
+  const judgeMode = normalizeSheetJudgeMode(parts[1], source, parts.join(':'));
+  const profile = parts[2] ? normalizeProfile(parts[2]) : undefined;
+
+  if (parts.length > 3) {
+    printUsageAndExit(`Invalid ${source} selector: ${parts.join(':')}`);
+  }
+
+  return {
+    reportTo: 'sheet',
+    judgeMode,
+    profile,
+  };
+}
+
+function parseTerminalSelector(parts, source) {
+  if (parts.length > 3) {
+    printUsageAndExit(`Invalid ${source} selector: ${parts.join(':')}`);
+  }
+
+  let judgeMode = 'none';
+  let profile;
+
+  if (parts.length >= 2) {
+    if (parts[1] === 'ai') {
+      judgeMode = 'local';
+      profile = parts[2] ? normalizeProfile(parts[2]) : undefined;
+    } else {
+      profile = normalizeProfile(parts[1]);
+    }
+  }
+
+  return {
+    reportTo: 'terminal',
+    judgeMode,
+    profile,
+  };
+}
+
+function normalizeSheetJudgeMode(judgeAlias, source, selector) {
+  const judgeModeMap = {
+    none: 'none',
+    internal: 'sheet',
+    sheet: 'sheet',
+    api: 'api',
+    local: 'local',
+  };
+
+  const judgeMode = judgeModeMap[judgeAlias];
+
+  if (!judgeMode) {
+    printUsageAndExit(`Invalid ${source} selector: ${selector}`);
+  }
+
+  return judgeMode;
 }
 
 function isPlainObject(value) {

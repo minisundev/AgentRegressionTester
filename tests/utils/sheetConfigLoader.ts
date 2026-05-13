@@ -4,7 +4,7 @@ import yaml from 'js-yaml';
 import { SheetColumnKey, SheetColumns } from '../types/type';
 import { ConfigurationError } from '../errors';
 
-const SHEET_CONFIG_PATH = path.resolve(__dirname, '../config/sheet.yaml');
+const SHEET_CONFIG_PATH = path.resolve(__dirname, '../config/settings/sheet.yaml');
 
 interface SheetConfigFile {
   wrapColumns?: string[];

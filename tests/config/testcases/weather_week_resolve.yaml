@@ -4,12 +4,14 @@ cases:
   - id: 1
     name: "EN - this week entire"
     message: "how is the weather this week"
+    reqTranslation: "how is the weather this week"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 2
     name: "VI - this week entire"
     message: "thời tiết tuần này như thế nào"
+    reqTranslation: "how is the weather this week"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -17,12 +19,14 @@ cases:
   - id: 3
     name: "EN - this weekend"
     message: "weather this weekend"
+    reqTranslation: "weather this weekend"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 4
     name: "VI - this weekend"
     message: "thời tiết cuối tuần này"
+    reqTranslation: "weather this weekend"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -30,12 +34,14 @@ cases:
   - id: 5
     name: "EN - this weekdays"
     message: "weather during the weekdays"
+    reqTranslation: "weather during the weekdays"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 6
     name: "VI - this weekdays"
     message: "thời tiết các ngày trong tuần này"
+    reqTranslation: "weather during the weekdays"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -44,12 +50,14 @@ cases:
   - id: 7
     name: "EN - next week entire"
     message: "weather forecast for next week"
+    reqTranslation: "weather forecast for next week"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 8
     name: "VI - next week entire"
     message: "dự báo thời tiết tuần sau"
+    reqTranslation: "weather forecast for next week"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -57,12 +65,14 @@ cases:
   - id: 9
     name: "EN - next weekend"
     message: "will it be sunny next weekend?"
+    reqTranslation: "will it be sunny next weekend?"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 10
     name: "VI - next weekend"
     message: "cuối tuần sau có nắng không"
+    reqTranslation: "will it be sunny next weekend?"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -70,12 +80,14 @@ cases:
   - id: 11
     name: "EN - next weekdays"
     message: "weather on next week's weekdays"
+    reqTranslation: "weather on next week's weekdays"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 12
     name: "VI - next weekdays"
     message: "thời tiết ngày thường tuần sau"
+    reqTranslation: "weather on next week's weekdays"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -84,12 +96,14 @@ cases:
   - id: 13
     name: "EN - week after next entire"
     message: "weather for the week after next"
+    reqTranslation: "weather for the week after next"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 14
     name: "VI - week after next entire"
     message: "thời tiết tuần sau nữa"
+    reqTranslation: "weather for the week after next"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -97,12 +111,14 @@ cases:
   - id: 15
     name: "EN - week after next weekend"
     message: "what is the weather for the weekend after next"
+    reqTranslation: "what is the weather for the weekend after next"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 16
     name: "VI - week after next weekend"
     message: "cuối tuần sau nữa thời tiết thế nào"
+    reqTranslation: "what is the weather for the weekend after next"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
@@ -110,12 +126,14 @@ cases:
   - id: 17
     name: "EN - week after next weekdays"
     message: "show me the weekdays forecast in two weeks"
+    reqTranslation: "show me the weekdays forecast in two weeks"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent
   - id: 18
     name: "VI - week after next weekdays"
     message: "các ngày trong tuần sau nữa có mưa không"
+    reqTranslation: "show me the weekdays forecast in two weeks"
     subIntent: CheckWeather
     mainIntent: Weather
     agentType: DailyInfoAgent

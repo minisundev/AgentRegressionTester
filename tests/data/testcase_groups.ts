@@ -15,9 +15,11 @@ export const CASE_GROUPS = [
   //'fat_daily_chat.yaml',
   //'simplechat_intent.yaml',
   //'simplechat_intent_mixed.yaml',
-  'sit_fat_weather_2.yaml',
-  'sit_fat_weather_2_en.yaml',
-  // 'fat_r2_precipitation.yaml',
+  // 'weather_week_resolve.yaml',
   // 'time_fallback_en.yaml',
   // 'time_fallback_vi.yaml',
+  // 'sit_fat_weather_2.yaml',
+  // 'sit_fat_weather_2_en.yaml',
+  // 'fat_r2_precipitation.yaml',
+  'weather_check.yaml'
 ];

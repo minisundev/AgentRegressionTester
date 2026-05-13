@@ -2,6 +2,8 @@ export interface TestCase {
   id: string | number;
   name: string;
   message: string;
+  reqTranslation?: string;
+  isMultiTurn?: boolean;
   subIntent: string;
   mainIntent: string;
   agentType: string;
@@ -27,6 +29,8 @@ export interface ResultRow {
   id: number | string;
   request: string;
   response: string;
+  reqTranslation?: string;
+  isMultiTurn?: boolean;
   reason?: string;
   mainIntent?: string;
   subIntent?: string;
@@ -65,7 +69,7 @@ export interface SheetRow {
   subIntent: string;
   request: string;
   response: string;
-  reqTranslation: string; //=GOOGLETRANSLATE()
+  reqTranslation: string;
   resTranslation: string; //=GOOGLETRANSLATE()
   judge: string;//=GEMINI()
   time: number;
