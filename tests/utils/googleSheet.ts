@@ -5,6 +5,7 @@ import { getSheetPrompt } from "./promptLoader";
 import { judgeResponse } from "./ai";
 import { ExternalServiceError } from "../errors";
 import { env } from "../config/env";
+import { shouldUseGptResponseTranslation, translateResponseWithGpt } from "./responseTranslator";
 
 let sheetsClient: sheets_v4.Sheets | null = null;
 
@@ -192,6 +193,25 @@ function getRequestTranslation(row: ResultRow, currentRow: number): string {
     return `=GOOGLETRANSLATE(E${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`;
 }
 
+function getResponseTranslationFormula(currentRow: number): string {
+    return `=GOOGLETRANSLATE(F${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`;
+}
+
+async function getResponseTranslation(response: string, currentRow: number): Promise<string> {
+    if (!shouldUseGptResponseTranslation()) {
+        return getResponseTranslationFormula(currentRow);
+    }
+
+    try {
+        const translation = await translateResponseWithGpt(response);
+        return translation || getResponseTranslationFormula(currentRow);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.warn(`[SHEET:${env.GOOGLE_SHEET_NAME}] GPT response translation failed at row ${currentRow}: ${message}`);
+        return getResponseTranslationFormula(currentRow);
+    }
+}
+
 async function processResponseForSheet(rows: ResultRow[], startRow: number): Promise<any[][]> {
     const prompt = getPrompt();
 
@@ -208,7 +228,7 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             request: r.request ?? '',
             response: cleanResponse,
             reqTranslation: getRequestTranslation(r, currentRow),
-            resTranslation: `=GOOGLETRANSLATE(F${currentRow}, "${env.GOOGLETRANSLATE_SOURCE_LANGUAGE}", "${env.GOOGLETRANSLATE_TARGET_LANGUAGE}")`,
+            resTranslation: await getResponseTranslation(cleanResponse, currentRow),
             judge: await judgeResponse(prompt, r.request ?? '', cleanResponse, currentRow),
             time: r.time ?? 0,
             reason: r.reason ?? '',

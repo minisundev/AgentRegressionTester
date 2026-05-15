@@ -21,3 +21,25 @@ export function getSheetPrompt(fileName: string): string {
         return "Judge if the response is accurate. Output: 'Pass | [Reason]' or 'Fail | [Reason]'.";
     }
 }
+
+export function getPromptText(fileName: string, section: string): string {
+    try {
+        const filePath = path.join(PROMPT_DIR, fileName);
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const config = yaml.load(fileContents) as any;
+        const prompt = config?.[section]?.instruction;
+
+        if (typeof prompt !== 'string' || !prompt.trim()) {
+            throw new Error(`Missing ${section}.instruction`);
+        }
+
+        return prompt;
+    } catch (error) {
+        const configError = new ConfigurationError(
+            `Failed to load prompt file: ${fileName}`,
+            path.join(PROMPT_DIR, fileName)
+        );
+        console.error(`[${configError.code}] ${configError.message}`, configError.context);
+        return '';
+    }
+}

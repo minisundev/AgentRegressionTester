@@ -78,6 +78,12 @@ LOCAL_AI_TEMPERATURE=0.1 # 일관된 판정을 위해 낮게 설정
 LOCAL_AI_MAX_TOKEN=200 # 답변이 너무 길어지지 않게 제한
 GOOGLETRANSLATE_SOURCE_LANGUAGE="auto"
 GOOGLETRANSLATE_TARGET_LANGUAGE="en"
+RESPONSE_TRANSLATION_PROVIDER="googletranslate" # googletranslate | gpt
+# Required only when RESPONSE_TRANSLATION_PROVIDER=gpt
+RESPONSE_TRANSLATION_LLM_ID=""
+RESPONSE_TRANSLATION_MAX_TOKEN=1000
+RESPONSE_TRANSLATION_PROMPT_FILE="prompt.translate.yaml"
+# GPT translation reads Redis config:llm:<RESPONSE_TRANSLATION_LLM_ID> using REDIS_URL below.
 
 # Redis stream answer compare watcher
 REDIS_URL="redis://127.0.0.1:6379"

@@ -2,6 +2,7 @@ import axios, { type AxiosInstance } from 'axios';
 import { createTestClient, buildRequestBody } from '../client/Client';
 import { AgentResponse, ResultRow, TestCase } from '../types/type';
 import { handleError, handleSuccess } from './resultHandlers';
+import { getCaseAccountId } from '../utils/accountId';
 
 const client = createTestClient();
 
@@ -12,7 +13,8 @@ export async function run(
   successes: ResultRow[],
   failures: ResultRow[]
 ) {
-  const body = buildRequestBody(tc.message, tc.agentType, tc.mainIntent, tc.subIntent);
+  const accountId = getCaseAccountId(groupName, tc);
+  const body = buildRequestBody(tc.message, tc.agentType, tc.mainIntent, tc.subIntent, accountId);
   const start = Date.now();
 
   try {

@@ -1,0 +1,2 @@
+translate:
+  instruction: "Translate the input text from {{sourceLanguage}} to {{targetLanguage}}. Return only the translation, preserve concise formatting and line breaks when useful, and do not add explanations."

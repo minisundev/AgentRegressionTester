@@ -6,6 +6,7 @@ import { loadAllTestCases } from '../utils/testcaseLoader';
 import { sendSlackReport } from '../utils/slack';
 import { ApiError } from '../errors';
 import { env } from '../config/env';
+import { getCaseAccountId } from '../utils/accountId';
 
 const client = createTestClient();
 const reportTo = env.REPORT_TO;
@@ -28,7 +29,8 @@ describe('Agent API Regression', () => {
             await sleep(delay);
           }
 
-          const body = buildRequestBody(tc.message, tc.agentType, tc.mainIntent, tc.subIntent);
+          const accountId = getCaseAccountId(group.groupName, tc);
+          const body = buildRequestBody(tc.message, tc.agentType, tc.mainIntent, tc.subIntent, accountId);
           const start = Date.now();
 
           try {

@@ -17,9 +17,15 @@ export const createTestClient = () : AxiosInstance => {
   });
 };
 
-export const buildRequestBody = (message: string, agent?:string, mainIntent?: string, subIntent?: string) => {
-  const accountId = env.ACCOUNT_ID;
-  const transactionId = `${accountId}-${Date.now()}`;
+export const buildRequestBody = (
+  message: string,
+  agent?:string,
+  mainIntent?: string,
+  subIntent?: string,
+  accountIdOverride?: string,
+) => {
+  const accountId = accountIdOverride ?? env.ACCOUNT_ID;
+  const transactionId = `${accountId}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   return {
     accountId,
     agentVersion: env.AGENT_VERSION,

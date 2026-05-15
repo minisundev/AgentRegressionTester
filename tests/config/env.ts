@@ -1,6 +1,16 @@
 import { z } from 'zod';
 import 'dotenv/config';
 
+const optionalNumberFromEnv = z.preprocess(
+  (value) => typeof value === 'string' && value.trim() === '' ? undefined : value,
+  z.coerce.number().optional()
+);
+
+const numberFromEnvWithDefault = (defaultValue: number) => z.preprocess(
+  (value) => typeof value === 'string' && value.trim() === '' ? undefined : value,
+  z.coerce.number().default(defaultValue)
+);
+
 const envSchema = z.object({
   // Required - API Configuration
   CONTROL_BASE_URL: z.string().url('CONTROL_BASE_URL must be a valid URL'),
@@ -42,6 +52,17 @@ const envSchema = z.object({
   GOOGLE_PRIVATE_KEY: z.string().optional(),
   GOOGLETRANSLATE_SOURCE_LANGUAGE: z.string().default('vi'),
   GOOGLETRANSLATE_TARGET_LANGUAGE: z.string().default('en'),
+
+  // Optional - response translation
+  RESPONSE_TRANSLATION_PROVIDER: z.enum(['googletranslate', 'sheet', 'gpt']).default('googletranslate'),
+  RESPONSE_TRANSLATION_LLM_ID: optionalNumberFromEnv,
+  RESPONSE_TRANSLATION_MAX_TOKEN: numberFromEnvWithDefault(1000),
+  RESPONSE_TRANSLATION_PROMPT_FILE: z.string().default('prompt.translate.yaml'),
+  REDIS_URL: z.string().optional(),
+  REDIS_ENDPOINT: z.string().optional(),
+  REDIS_PORT: z.string().optional(),
+  REDIS_PASSWD: z.string().optional(),
+  REDIS_SSL: z.string().optional(),
 
   // Optional - Slack Configuration
   SLACK_WEBHOOK_URL: z.string().url().optional(),
@@ -87,6 +108,23 @@ const refinedSchema = envSchema.superRefine((data, ctx) => {
         code: z.ZodIssueCode.custom,
         message: 'GOOGLE_PRIVATE_KEY is required when REPORT_TO=sheet',
         path: ['GOOGLE_PRIVATE_KEY'],
+      });
+    }
+  }
+
+  if (data.RESPONSE_TRANSLATION_PROVIDER === 'gpt') {
+    if (!data.RESPONSE_TRANSLATION_LLM_ID) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'RESPONSE_TRANSLATION_LLM_ID is required when RESPONSE_TRANSLATION_PROVIDER=gpt',
+        path: ['RESPONSE_TRANSLATION_LLM_ID'],
+      });
+    }
+    if (!data.REDIS_URL && (!data.REDIS_ENDPOINT || !data.REDIS_PORT)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'REDIS_URL or REDIS_ENDPOINT + REDIS_PORT is required when RESPONSE_TRANSLATION_PROVIDER=gpt',
+        path: ['REDIS_URL'],
       });
     }
   }
