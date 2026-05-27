@@ -1,0 +1,105 @@
+groupName: Weather
+cases:
+  # ============================================================
+  # Bug type A: "내일(ngày mai)" → 오늘 데이터 or Hourly 테이블 오표시
+  # Expected: Weekly table
+  # ============================================================
+  - id: 1
+    name: "VI - QM - tomorrow Paris weather (expect Weekly table, not Hourly)"
+    message: "Paris sáng mai thời tiết thế nào"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 2
+    name: "VI - QM - tomorrow humidity and high temp (expect Weekly table)"
+    message: "Ngày mai độ ẩm và nhiệt độ cao không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 3
+    name: "VI - QM - tomorrow rainfall (sometimes returns today Hourly)"
+    message: "Lượng mưa ngày mai sẽ ra sao?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 4
+    name: "VI - QM - tomorrow morning rainfall (expect Weekly, Hourly comes)"
+    message: "Lượng mưa vào buổi sáng ngày mai sẽ thế nào?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 5
+    name: "VI - QM - tomorrow noon rain check (answer ok, table Hourly)"
+    message: "Trưa mai có mưa không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 6
+    name: "VI - QM - tomorrow afternoon rainfall (expect Weekly, 100% repro)"
+    message: "Lượng mưa vào buổi chiều hôm nay ra sao?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 7
+    name: "VI - QM - Da Nang tomorrow 4am-7am min temp (expect Weekly table)"
+    message: "Rạng sáng mai từ 4h đến 7h ở Đà Nẵng nhiệt độ thấp nhất dự kiến là bao nhiêu độ?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  # ============================================================
+  # Bug type B: "모레(ngày kia)" → 오늘 데이터 or Hourly 테이블 오표시
+  # Expected: Weekly table
+  # ============================================================
+  - id: 8
+    name: "VI - QM - day after tomorrow rainfall (always returns today Hourly)"
+    message: "Lượng mưa ngày kia sẽ thế nào?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 9
+    name: "VI - QM - HCM day after tomorrow afternoon rain (text ok, table Hourly)"
+    message: "Chiều ngày kia tại Hồ Chí Minh có mưa không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  # ============================================================
+  # Bug type C: "주말(cuối tuần)" → 오늘 Hourly 데이터 리턴
+  # Expected: Weekend (Weekly) result
+  # ============================================================
+  - id: 10
+    name: "VI - QM - this weekend temperature (returns today Hourly instead)"
+    message: "Cuối tuần nhiệt độ bao nhiêu"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  # ============================================================
+  # Bug type D: "이번 주 특정 요일" → 오늘 Hourly 카드 표시
+  # Expected: Weekly card
+  # ============================================================
+  - id: 11
+    name: "VI - QM - this Friday rain check (shows today card, not Weekly)"
+    message: "Thứ 6 tuần này có mưa không"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  # ============================================================
+  # Bug type E: "다음다음 주(tuần sau nữa)" → 14일 이후 데이터 2일 초과 표시
+  # Expected: 14-day limit message, no overflow data
+  # ============================================================
+  - id: 12
+    name: "VI - QM - week after next humidity (table shows 2 days beyond 14-day limit)"
+    message: "Độ ẩm tuần sau nữa"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

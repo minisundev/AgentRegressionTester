@@ -5,7 +5,7 @@
  * GemmaProd, Ollama, and GPT, then prints or appends the comparison row.
  */
 
-import { callGemmaProd, callGpt, callOllama } from '../llm/clients.js';
+import { callGemmaProd, callGpt, callGpt4o, callGpt54, callOllama } from '../llm/clients.js';
 import { ensureWatcherEnv } from '../llm/env.js';
 import {
   ackPayload,
@@ -44,10 +44,12 @@ function inferGroup(subIntent: string): string {
 }
 
 async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
-  const [gemma, ollama, gpt] = await Promise.all([
+  const [gemma, ollama, gpt, gpt4o, gpt54] = await Promise.all([
     callGemmaProd(payload),
     callOllama(payload),
     callGpt(payload),
+    callGpt4o(payload),
+    callGpt54(payload),
   ]);
 
   return {
@@ -71,13 +73,21 @@ async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
     gptResponse: gpt.response,
     gptLatency: gpt.latency,
     gptError: gpt.error ?? '',
+    gpt4oModel: gpt4o.model,
+    gpt4oResponse: gpt4o.response,
+    gpt4oLatency: gpt4o.latency,
+    gpt4oError: gpt4o.error ?? '',
+    gpt54Model: gpt54.model,
+    gpt54Response: gpt54.response,
+    gpt54Latency: gpt54.latency,
+    gpt54Error: gpt54.error ?? '',
     serviceResponse: '',
   };
 }
 
 async function emitRow(row: AnswerCompareRow): Promise<void> {
   console.log(
-    `[compare] ${row.subIntent} trxId=${row.id} gemma=${row.gemmaProdLatency}ms ollama=${row.ollamaLatency}ms gpt=${row.gptLatency}ms`,
+    `[compare] ${row.subIntent} trxId=${row.id} gemma=${row.gemmaProdLatency}ms ollama=${row.ollamaLatency}ms gpt=${row.gptLatency}ms gpt4o=${row.gpt4oLatency}ms gpt54=${row.gpt54Latency}ms`,
   );
 
   if (REPORT_TO === 'sheet') {

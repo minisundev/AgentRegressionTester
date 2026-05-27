@@ -1,4 +1,4 @@
-import { createTestClient, buildRequestBody } from '../client/Client';
+import { createTestClient, buildRequestBody, endAgentChat } from '../client/Client';
 import { AgentResponse, ResultRow, TestCase } from '../types/type';
 import { printSummaryTable } from '../utils/log';
 import { appendRowToSheet } from '../utils/googleSheet';
@@ -83,6 +83,10 @@ describe('Agent API Regression', () => {
             }
 
             throw err;
+          } finally {
+            if (!tc.isMultiTurn) {
+              await endAgentChat(client, body);
+            }
           }
         });
       }

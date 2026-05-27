@@ -32,6 +32,16 @@ function getGptTestLlmId(): number {
   return Number(process.env.GPT_TEST_LLM_ID ?? '3');
 }
 
+function getGpt4oTestLlmId(): number {
+  ensureWatcherEnv();
+  return Number(process.env.GPT_4O_TEST_LLM_ID ?? '4');
+}
+
+function getGpt54TestLlmId(): number {
+  ensureWatcherEnv();
+  return Number(process.env.GPT_5_4_TEST_LLM_ID ?? '5');
+}
+
 function getGemmaTestLlmId(): number {
   ensureWatcherEnv();
   return Number(process.env.GEMMA_TEST_LLM_ID ?? '2');
@@ -148,10 +158,8 @@ export async function callOllama(payload: DumpedPayload): Promise<AnswerModelRes
   }
 }
 
-/** Remote GPT, loaded from config:llm:${GPT_TEST_LLM_ID}. */
-export async function callGpt(payload: DumpedPayload): Promise<AnswerModelResult> {
+async function callGptByLlmId(payload: DumpedPayload, llmId: number): Promise<AnswerModelResult> {
   const start = Date.now();
-  const llmId = getGptTestLlmId();
   const cfg = await getLlmConfigFromRedis(llmId);
   if (!cfg) {
     return {
@@ -188,4 +196,19 @@ export async function callGpt(payload: DumpedPayload): Promise<AnswerModelResult
       error: e instanceof Error ? e.message : String(e),
     };
   }
+}
+
+/** Remote GPT, loaded from config:llm:${GPT_TEST_LLM_ID}. */
+export async function callGpt(payload: DumpedPayload): Promise<AnswerModelResult> {
+  return callGptByLlmId(payload, getGptTestLlmId());
+}
+
+/** Remote GPT-4o, loaded from config:llm:${GPT_4O_TEST_LLM_ID}. */
+export async function callGpt4o(payload: DumpedPayload): Promise<AnswerModelResult> {
+  return callGptByLlmId(payload, getGpt4oTestLlmId());
+}
+
+/** Remote GPT-5.4, loaded from config:llm:${GPT_5_4_TEST_LLM_ID}. */
+export async function callGpt54(payload: DumpedPayload): Promise<AnswerModelResult> {
+  return callGptByLlmId(payload, getGpt54TestLlmId());
 }

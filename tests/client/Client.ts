@@ -17,6 +17,19 @@ export const createTestClient = () : AxiosInstance => {
   });
 };
 
+const AGENT_CHAT_END_URL = env.CONTROL_BASE_URL.replace(/agentChat$/, 'agentChatEnd');
+
+export const endAgentChat = async (
+  client: AxiosInstance,
+  body: ReturnType<typeof buildRequestBody>,
+): Promise<void> => {
+  try {
+    await client.post(AGENT_CHAT_END_URL, body);
+  } catch (err) {
+    console.warn(`[agentChatEnd] tx=${body.transactionId} failed: ${String(err)}`);
+  }
+};
+
 export const buildRequestBody = (
   message: string,
   agent?:string,

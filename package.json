@@ -43,6 +43,7 @@
     "test:terminal:ai:local": "node scripts/run-test-profile.js",
     "test:terminal:ai:crow": "node scripts/run-test-profile.js",
     "watch:weather:answer-compare": "tsx src/runner/weatherAnswerCompare.ts",
+    "llm:list": "tsx scripts/list-llm-configs.ts",
     "typecheck": "tsc --noEmit"
   },
   "author": "Minseon Kim",
