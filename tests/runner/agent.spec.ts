@@ -1,18 +1,31 @@
 import { createTestClient, buildRequestBody, endAgentChat } from '../client/Client';
 import { AgentResponse, ResultRow, TestCase } from '../types/type';
 import { printSummaryTable } from '../utils/log';
-import { appendRowToSheet } from '../utils/googleSheet';
+import { appendRowToSheet, updateRowInSheet } from '../utils/googleSheet';
 import { loadAllTestCases } from '../utils/testcaseLoader';
 import { sendSlackReport } from '../utils/slack';
 import { ApiError } from '../errors';
 import { env } from '../config/env';
 import { getCaseAccountId } from '../utils/accountId';
+import {
+  caseKey,
+  getFailureRow,
+  getRunId,
+  isCompleted,
+  loadCheckpoint,
+  markFailure,
+  markSuccess,
+} from '../utils/checkpoint';
+import { withNetworkRetry } from '../utils/networkRetry';
 
 const client = createTestClient();
 const reportTo = env.REPORT_TO;
 const testTimeoutMs = env.TEST_TIMEOUT_SEC * 1000;
 
 jest.setTimeout(testTimeoutMs);
+
+const runId = getRunId();
+loadCheckpoint(runId);
 
 describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
@@ -23,7 +36,10 @@ describe('Agent API Regression', () => {
   for (const group of loadAllTestCases()) {
     describe(`${group.groupName} API`, () => {
       for (const tc of group.cases) {
-        it(`Q${tc.id} - [${group.groupName}] ${tc.name}`, async () => {
+        const key = caseKey(String(group.groupName), tc.id);
+        const test = isCompleted(key) ? it.skip : it;
+
+        test(`Q${tc.id} - [${group.groupName}] ${tc.name}`, async () => {
           //서버 과부하 방지
           if (delay > 0) {
             await sleep(delay);
@@ -34,7 +50,10 @@ describe('Agent API Regression', () => {
           const start = Date.now();
 
           try {
-            const { data } = await client.post<AgentResponse>('', body);
+            const { data } = await withNetworkRetry(
+              () => client.post<AgentResponse>('', body),
+              { label: `agentChat:Q${tc.id}` },
+            );
             const duration = Date.now() - start;
 
             const errorMsg = validateResponse(data);
@@ -70,7 +89,14 @@ describe('Agent API Regression', () => {
             }
 
             if (reportTo === 'sheet') {
-              await appendRowToSheet(result);
+              const rowNumber = await persistRow(result, key);
+              if (!errorMsg && rowNumber !== undefined) {
+                markSuccess(key);
+              } else if (errorMsg && rowNumber !== undefined) {
+                markFailure(key, rowNumber);
+              }
+            } else if (!errorMsg) {
+              markSuccess(key);
             }
 
           } catch (err) {
@@ -79,7 +105,10 @@ describe('Agent API Regression', () => {
             failures.push(errResult);
 
             if (reportTo === 'sheet') {
-              await appendRowToSheet(errResult);
+              const rowNumber = await persistRow(errResult, key);
+              if (rowNumber !== undefined) {
+                markFailure(key, rowNumber);
+              }
             }
 
             throw err;
@@ -106,6 +135,15 @@ describe('Agent API Regression', () => {
     }
   }, testTimeoutMs);
 });
+
+async function persistRow(result: ResultRow, key: string): Promise<number | undefined> {
+  const existingRow = getFailureRow(key);
+  if (existingRow !== undefined) {
+    const ok = await updateRowInSheet(result, existingRow);
+    return ok ? existingRow : undefined;
+  }
+  return appendRowToSheet(result);
+}
 
 const sleep = (sec: number) => new Promise(resolve => setTimeout(resolve, sec * 1000));
 

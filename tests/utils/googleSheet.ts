@@ -6,6 +6,7 @@ import { judgeResponse } from "./ai";
 import { ExternalServiceError } from "../errors";
 import { env } from "../config/env";
 import { shouldUseGptResponseTranslation, translateResponseWithGpt } from "./responseTranslator";
+import { withNetworkRetry } from "./networkRetry";
 
 let sheetsClient: sheets_v4.Sheets | null = null;
 
@@ -24,29 +25,35 @@ function getSheetsClient(): sheets_v4.Sheets {
     return sheetsClient;
 }
 
-export async function appendRowToSheet(row: ResultRow) {
+export async function appendRowToSheet(row: ResultRow): Promise<number | undefined> {
     const sheets = getSheetsClient();
     const sheetId = env.GOOGLE_SHEET_ID!;
     const sheetName = env.GOOGLE_SHEET_NAME;
     const range = buildSheetRange(sheetName, 'A:A');
 
-    const sheetTabId = await ensureSheetExists(sheets, sheetId, sheetName);
+    const sheetTabId = await withNetworkRetry(
+        () => ensureSheetExists(sheets, sheetId, sheetName),
+        { label: `sheet:ensure:${sheetName}` },
+    );
 
-    const response = await sheets.spreadsheets.values.get({
-        spreadsheetId: sheetId,
-        range,
-    });
+    const response = await withNetworkRetry(
+        () => sheets.spreadsheets.values.get({ spreadsheetId: sheetId, range }),
+        { label: `sheet:get:${sheetName}` },
+    );
 
     const currentRow = (response.data.values?.length || 0) + 1;
     const values = await processResponseForSheet([row], currentRow);
 
     try {
-        await sheets.spreadsheets.values.append({
-            spreadsheetId: sheetId,
-            range,
-            valueInputOption: 'USER_ENTERED',
-            requestBody: { values },
-        });
+        await withNetworkRetry(
+            () => sheets.spreadsheets.values.append({
+                spreadsheetId: sheetId,
+                range,
+                valueInputOption: 'USER_ENTERED',
+                requestBody: { values },
+            }),
+            { label: `sheet:append:${sheetName}` },
+        );
         if (row.isMultiTurn && sheetTabId !== undefined) {
             try {
                 await highlightMultiTurnRow(sheets, sheetId, sheetTabId, currentRow);
@@ -56,6 +63,7 @@ export async function appendRowToSheet(row: ResultRow) {
             }
         }
         console.log(`[SHEET:${sheetName}] Q${row.id} appended (row ${currentRow})`);
+        return currentRow;
     } catch (error) {
         const serviceError = new ExternalServiceError(
             'Failed to append row to Google Sheet',
@@ -63,6 +71,52 @@ export async function appendRowToSheet(row: ResultRow) {
             error
         );
         console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
+        return undefined;
+    }
+}
+
+export async function updateRowInSheet(row: ResultRow, rowNumber: number): Promise<boolean> {
+    const sheets = getSheetsClient();
+    const sheetId = env.GOOGLE_SHEET_ID!;
+    const sheetName = env.GOOGLE_SHEET_NAME;
+    const lastColumn = String.fromCharCode('A'.charCodeAt(0) + Object.keys(SheetColumns).length - 1);
+    const range = buildSheetRange(sheetName, `A${rowNumber}:${lastColumn}${rowNumber}`);
+
+    const sheetTabId = await withNetworkRetry(
+        () => ensureSheetExists(sheets, sheetId, sheetName),
+        { label: `sheet:ensure:${sheetName}` },
+    );
+
+    const values = await processResponseForSheet([row], rowNumber);
+
+    try {
+        await withNetworkRetry(
+            () => sheets.spreadsheets.values.update({
+                spreadsheetId: sheetId,
+                range,
+                valueInputOption: 'USER_ENTERED',
+                requestBody: { values },
+            }),
+            { label: `sheet:update:${sheetName}:row${rowNumber}` },
+        );
+        if (row.isMultiTurn && sheetTabId !== undefined) {
+            try {
+                await highlightMultiTurnRow(sheets, sheetId, sheetTabId, rowNumber);
+            } catch (highlightError) {
+                const message = highlightError instanceof Error ? highlightError.message : String(highlightError);
+                console.warn(`[SHEET:${sheetName}] failed to highlight multi-turn row ${rowNumber}: ${message}`);
+            }
+        }
+        console.log(`[SHEET:${sheetName}] Q${row.id} updated (row ${rowNumber})`);
+        return true;
+    } catch (error) {
+        const serviceError = new ExternalServiceError(
+            'Failed to update row in Google Sheet',
+            'Google Sheets',
+            error
+        );
+        console.error(`[${serviceError.code}] ${serviceError.message}`, serviceError.context);
+        return false;
     }
 }
 
