@@ -79,7 +79,7 @@ export async function updateRowInSheet(row: ResultRow, rowNumber: number): Promi
     const sheets = getSheetsClient();
     const sheetId = env.GOOGLE_SHEET_ID!;
     const sheetName = env.GOOGLE_SHEET_NAME;
-    const lastColumn = String.fromCharCode('A'.charCodeAt(0) + Object.keys(SheetColumns).length - 1);
+    const lastColumn = lastSheetColumn();
     const range = buildSheetRange(sheetName, `A${rowNumber}:${lastColumn}${rowNumber}`);
 
     const sheetTabId = await withNetworkRetry(
@@ -148,7 +148,7 @@ async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string
 
     await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: buildSheetRange(sheetName, 'A1:O1'),
+        range: buildSheetRange(sheetName, `A1:${lastSheetColumn()}1`),
         valueInputOption: 'USER_ENTERED',
         requestBody: {
             values: [getSheetHeaders()],
@@ -224,6 +224,10 @@ function getSheetHeaders(): string[] {
     return Object.keys(SheetColumns).map((key) => SheetColumns[key as keyof typeof SheetColumns]);
 }
 
+function lastSheetColumn(): string {
+    return String.fromCharCode('A'.charCodeAt(0) + Object.keys(SheetColumns).length - 1);
+}
+
 function buildSheetRange(sheetName: string, range: string): string {
     const escapedSheetName = sheetName.replace(/'/g, "''");
     return `'${escapedSheetName}'!${range}`;
@@ -290,6 +294,9 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             entity: r.entity ?? '',
             todayCard: r.todayCard ?? '',
             card: r.card ?? '',
+            mode: r.mode ?? '',
+            ttft: r.ttft ?? '',
+            tokenCount: r.tokenCount ?? '',
         };
 
         return Object.keys(SheetColumns).map((key) => rowData[SheetColumns[key as keyof typeof SheetColumns] as keyof SheetRow]);

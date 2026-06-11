@@ -39,6 +39,9 @@ export interface ResultRow {
   entity?: string;
   todayCard?: string;
   card?: string; // weeklyCard or hourlyCard as JSON
+  mode?: RequestMode; // 'sync' (agentChat) or 'stream' (agentChatStream)
+  ttft?: number; // time-to-first-token in ms (stream only)
+  tokenCount?: number; // number of streamed tokens (stream only)
 }
 
 export const SheetColumns = {
@@ -57,6 +60,9 @@ export const SheetColumns = {
   M: "entity",
   N: "todayCard",
   O: "card",
+  P: "mode",
+  Q: "ttft",
+  R: "tokenCount",
 } as const;
 
 export type SheetColumnKey = keyof typeof SheetColumns;
@@ -78,7 +84,42 @@ export interface SheetRow {
   entity: string;
   todayCard: string;
   card: string; // weeklyCard or hourlyCard as JSON
+  mode: string; // 'sync' or 'stream'
+  ttft: number | string; // time-to-first-token in ms (stream only)
+  tokenCount: number | string; // number of streamed tokens (stream only)
 }
 
 export type ReportTarget = 'terminal' | 'sheet';
 export type JudgeMode = 'none' | 'sheet' | 'api' | 'local';
+export type RequestMode = 'sync' | 'stream';
+
+// Raw SSE event emitted by the agentChatStream endpoint.
+export interface StreamEvent {
+  type: string;
+  transactionId?: string;
+  procTime?: number;
+  message?: {
+    requestMessage?: string;
+    agentType?: string;
+    mainIntent?: string;
+    subIntent?: string;
+    is_token?: string;
+    is_end?: string;
+    token?: string;
+    resultCode?: number;
+    resultMessage?: string;
+    count?: number;
+    list?: string[];
+    todayCard?: Record<string, unknown>;
+    weeklyCard?: Record<string, unknown>;
+    hourlyCard?: Record<string, unknown>;
+    entity?: Record<string, unknown>;
+    [key: string]: unknown;
+  };
+}
+
+export interface StreamMetrics {
+  ttft?: number; // ms from request start to first token
+  tokenCount: number;
+  totalTime: number; // ms from request start to stream end
+}

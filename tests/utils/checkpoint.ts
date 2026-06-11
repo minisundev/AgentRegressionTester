@@ -20,8 +20,9 @@ export function getRunId(): string {
   return `${env.GOOGLE_SHEET_NAME}-${yyyy}-${mm}-${dd}`;
 }
 
-export function caseKey(groupName: string, id: string | number): string {
-  return `${groupName}::${id}`;
+export function caseKey(groupName: string, id: string | number, mode?: string): string {
+  const base = `${groupName}::${id}`;
+  return mode ? `${base}::${mode}` : base;
 }
 
 export function loadCheckpoint(runId: string): void {

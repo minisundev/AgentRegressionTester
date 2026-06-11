@@ -13,6 +13,7 @@ LLM 에이전트 개발은 일반적인 백엔드 개발과 다릅니다. 프롬
 ### Key Features
 
 - **Multi-Environment Support:** Local부터 Production까지 다양한 환경의 API를 한 번에 테스트합니다.
+- **Sync + Streaming 동시 검증:** 각 테스트 케이스를 일반(`agentChat`)과 스트리밍(`agentChatStream`, SSE) 엔드포인트 양쪽으로 호출하여 모드별로 시트에 기록합니다. 스트리밍 행에는 TTFT(첫 토큰까지 시간)와 토큰 수 지표가 함께 남습니다.
 - **AI-Driven Judge:** Google Gemini API 또는 로컬 LLM(Ollama/Gemma2)을 활용하여 응답의 적절성을 자동으로 판독합니다.
 - **Auto Translation:** Google Sheets의 `=GOOGLETRANSLATE`를 활용하여 베트남어 등 외국어 응답을 실시간으로 번역하여 확인합니다.
 - **Slack Integration:** 테스트 완료 후 성공/실패 여부를 슬랙으로 즉시 알림 받아 리얼타임 피드백 루프를 형성합니다.
