@@ -1,0 +1,88 @@
+groupName: Weather
+cases:
+  # ============================================================
+  # Request Cases (Id 1 ~ 12)
+  # ============================================================
+  - id: 1
+    name: "VI - Air Quality - 7 days later"
+    message: "7 ngày nữa chất lượng không khí thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 2
+    name: "VI - Humidity - morning"
+    message: "buổi sáng độ ẩm bao nhiêu"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 3
+    name: "EN - Rainfall - next two weeks"
+    message: "What will the rainfall be like in the next two weeks"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 4
+    name: "VI - Air Quality - midnight 12 AM"
+    message: "Lúc 12 giờ đêm không khí có ô nhiễm không"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 5
+    name: "VI - Temperature - Japan day after tomorrow"
+    message: "Cho tôi biết nhiệt độ ở Nhật Bản vào ngày mốt"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 6
+    name: "VI - Weather - Saigon afternoon"
+    message: "Cho tôi xem thời tiết buổi chiều Sài Gòn Nha"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 7
+    name: "VI - Air Quality - today"
+    message: "Hôm nay chất lượng không khí thế nào"
+    subIntent: CheckAirQuality
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 8
+    name: "VI - Weather - outdoor activity recommendation today"
+    message: "Hôm nay có nên đi chơi ngoài trời không"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 9
+    name: "VI - Weather - New York today"
+    message: "New York hôm nay thời tiết ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 10
+    name: "VI - Weather - Vung Tau morning today"
+    message: "Vũng Tàu trời hôm nay buổi sáng thế nào"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 11
+    name: "VI - Weather - Tokyo noon today"
+    message: "Thời tiết Tokyo trưa hôm nay ra sao"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+
+  - id: 12
+    name: "VI - Weather - Hanoi 3 hours later"
+    message: "Thời tiết Hà Nội 3 tiếng nữa thế nào"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

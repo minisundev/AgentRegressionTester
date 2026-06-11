@@ -18,11 +18,12 @@ export const CASE_GROUPS = [
   // 'weather_week_resolve.yaml',
   // 'time_fallback_en.yaml',
   // 'time_fallback_vi.yaml',
-  'sit_fat_weather_2.yaml',
-  'sit_fat_weather_2_en.yaml',
+  // 'sit_fat_weather_2.yaml',
+  // 'sit_fat_weather_2_en.yaml',
   // 'fat_r2_precipitation.yaml',
   // 'weather_check.yaml',
-  'qm_test_day.yaml',
-  'qm_test_table.yaml',
-  'qm_test_text.yaml'
+  // 'qm_test_day.yaml',
+  // 'qm_test_table.yaml',
+  // 'qm_test_text.yaml',
+  'tc_260611.yaml',
 ];
