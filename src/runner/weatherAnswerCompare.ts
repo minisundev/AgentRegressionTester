@@ -2,10 +2,10 @@
  * Weather answer payload stream consumer.
  *
  * Consumes answer payloads published to Redis Stream, fans each payload out to
- * GemmaProd, Ollama, and GPT, then prints or appends the comparison row.
+ * GemmaProd, GPT-5.4, and Gemini, then prints or appends the comparison row.
  */
 
-import { callGemmaProd, callGpt, callGpt4o, callGpt54, callOllama } from '../llm/clients.js';
+import { callGemini, callGemmaProd, callGpt54 } from '../llm/clients.js';
 import { ensureWatcherEnv } from '../llm/env.js';
 import {
   ackPayload,
@@ -44,12 +44,10 @@ function inferGroup(subIntent: string): string {
 }
 
 async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
-  const [gemma, ollama, gpt, gpt4o, gpt54] = await Promise.all([
+  const [gemma, gpt54, gemini] = await Promise.all([
     callGemmaProd(payload),
-    callOllama(payload),
-    callGpt(payload),
-    callGpt4o(payload),
     callGpt54(payload),
+    callGemini(payload),
   ]);
 
   return {
@@ -65,29 +63,21 @@ async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
     gemmaProdResponse: gemma.response,
     gemmaProdLatency: gemma.latency,
     gemmaProdError: gemma.error ?? '',
-    ollamaModel: ollama.model,
-    ollamaResponse: ollama.response,
-    ollamaLatency: ollama.latency,
-    ollamaError: ollama.error ?? '',
-    gptModel: gpt.model,
-    gptResponse: gpt.response,
-    gptLatency: gpt.latency,
-    gptError: gpt.error ?? '',
-    gpt4oModel: gpt4o.model,
-    gpt4oResponse: gpt4o.response,
-    gpt4oLatency: gpt4o.latency,
-    gpt4oError: gpt4o.error ?? '',
     gpt54Model: gpt54.model,
     gpt54Response: gpt54.response,
     gpt54Latency: gpt54.latency,
     gpt54Error: gpt54.error ?? '',
+    geminiModel: gemini.model,
+    geminiResponse: gemini.response,
+    geminiLatency: gemini.latency,
+    geminiError: gemini.error ?? '',
     serviceResponse: '',
   };
 }
 
 async function emitRow(row: AnswerCompareRow): Promise<void> {
   console.log(
-    `[compare] ${row.subIntent} trxId=${row.id} gemma=${row.gemmaProdLatency}ms ollama=${row.ollamaLatency}ms gpt=${row.gptLatency}ms gpt4o=${row.gpt4oLatency}ms gpt54=${row.gpt54Latency}ms`,
+    `[compare] ${row.subIntent} trxId=${row.id} gemma=${row.gemmaProdLatency}ms gpt54=${row.gpt54Latency}ms gemini=${row.geminiLatency}ms`,
   );
 
   if (REPORT_TO === 'sheet') {

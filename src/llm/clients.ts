@@ -39,7 +39,17 @@ function getGpt4oTestLlmId(): number {
 
 function getGpt54TestLlmId(): number {
   ensureWatcherEnv();
-  return Number(process.env.GPT_5_4_TEST_LLM_ID ?? '5');
+  return Number(process.env.GPT_5_4_TEST_LLM_ID ?? '6');
+}
+
+function getGeminiTestLlmId(): number {
+  ensureWatcherEnv();
+  return Number(process.env.GEMINI_TEST_LLM_ID ?? '8');
+}
+
+/** Defensive: trim and strip stray wrapping quotes from a Redis-stored URL. */
+function sanitizeUrl(url: string): string {
+  return url.trim().replace(/^['"]+|['"]+$/g, '');
 }
 
 function getGemmaTestLlmId(): number {
@@ -211,4 +221,56 @@ export async function callGpt4o(payload: DumpedPayload): Promise<AnswerModelResu
 /** Remote GPT-5.4, loaded from config:llm:${GPT_5_4_TEST_LLM_ID}. */
 export async function callGpt54(payload: DumpedPayload): Promise<AnswerModelResult> {
   return callGptByLlmId(payload, getGpt54TestLlmId());
+}
+
+/**
+ * Google Gemini via the Generative Language REST API (generateContent),
+ * loaded from config:llm:${GEMINI_TEST_LLM_ID}. The stored `url` is the full
+ * generateContent endpoint; `auth_key` is a Google API key sent as
+ * `x-goog-api-key`.
+ */
+export async function callGemini(payload: DumpedPayload): Promise<AnswerModelResult> {
+  const start = Date.now();
+  const llmId = getGeminiTestLlmId();
+  const cfg = await getLlmConfigFromRedis(llmId);
+  if (!cfg) {
+    return {
+      model: `llm_id=${llmId}`,
+      response: '',
+      latency: Date.now() - start,
+      error: `config:llm:${llmId} not found in Redis`,
+    };
+  }
+
+  const geminiModel = cfg.llm_deploy ?? cfg.version ?? `llm_id=${llmId}`;
+
+  try {
+    const res = await axios.post(
+      sanitizeUrl(cfg.url),
+      {
+        system_instruction: { parts: [{ text: payload.prompt }] },
+        contents: [{ role: 'user', parts: [{ text: payload.userMessage }] }],
+        generationConfig: {
+          temperature: payload.llmParams.temperature ?? 0.5,
+          topP: payload.llmParams.topP ?? 1,
+          maxOutputTokens: payload.llmParams.maxOutputTokens ?? DEFAULT_MAX_TOKENS,
+          responseMimeType: 'text/plain',
+        },
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          ...(cfg.auth_key ? { 'x-goog-api-key': cfg.auth_key } : {}),
+        },
+        timeout: HTTP_TIMEOUT_MS,
+      },
+    );
+    const parts = res.data?.candidates?.[0]?.content?.parts;
+    const content = Array.isArray(parts)
+      ? parts.map((part: { text?: string }) => part?.text ?? '').join('')
+      : '';
+    return { model: geminiModel, response: normalizeContent(content), latency: Date.now() - start };
+  } catch (e) {
+    return { model: geminiModel, response: '', latency: Date.now() - start, error: asAxiosError(e) };
+  }
 }

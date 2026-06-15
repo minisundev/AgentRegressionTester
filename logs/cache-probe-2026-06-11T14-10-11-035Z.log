@@ -1,0 +1,51 @@
+================================================================================================
+Gateway Weather-Cache Consistency Probe
+================================================================================================
+baseUrl        : http://vtt-media-ai-dev.altimedia.com/api-gateway-core/v1/external/weather
+queries        : "Hà Nội,VN", "hanoi,VN", "Hanoi,VN"
+endpoints      : current
+rounds         : 2  interval=5s  repeat=2/q
+stopOnDiverge  : false
+x-api-key      : sent
+log file       : /Users/minisun/0_Playground/second/AgentRegressionTester/logs/cache-probe-2026-06-11T14-10-11-035Z.log
+
+
+───── Round 1/2  @ 2026-06-11T14:10:11.663Z ─────
+wall(utc)   | q            | attempt  | status  | id        | coord               | dt(local)   | stale     | temp    | hum   | X-Cache   | Age  
+-------------------------------------------------------------------------------------------------------------------------------------------------
+21:10:11    | Hà Nội,VN    | 1/2      | 200     | 1581130   | 105.8031,21.0188    | 20:26:48    | 2603s     | 27.33   | 75    | HIT       | -    
+21:10:11    | Hà Nội,VN    | 2/2      | 200     | 1581130   | 105.8031,21.0188    | 20:26:48    | 2603s     | 27.33   | 75    | HIT       | -    
+14:10:11    | hanoi,VN     | 1/2      | 401     | -         | -                   | -           | -         | -       | -     | MISS?     | -    
+14:10:11    | hanoi,VN     | 2/2      | 401     | -         | -                   | -           | -         | -       | -     | -         | -    
+21:10:11    | Hanoi,VN     | 1/2      | 200     | 1581130   | 105.7958,21.0228    | 17:07:48    | 14543s    | 30.66   | 58    | HIT       | -    
+21:10:11    | Hanoi,VN     | 2/2      | 200     | 1581130   | 105.7958,21.0228    | 17:07:48    | 14543s    | 30.66   | 58    | HIT       | -    
+
+  *** CACHE FRAGMENTATION DETECTED ***
+
+  [current] DIVERGENCE on id=1581130: 2 distinct dt across spellings, gap=11940s (199.0min)
+      q="Hanoi,VN" dt=1781172468 (17:07:48) temp=30.66 hum=58 coord=105.7958,21.0228 X-Cache=HIT
+      q="Hà Nội,VN" dt=1781184408 (20:26:48) temp=27.33 hum=75 coord=105.8031,21.0188 X-Cache=HIT
+
+───── Round 2/2  @ 2026-06-11T14:10:17.207Z ─────
+wall(utc)   | q            | attempt  | status  | id        | coord               | dt(local)   | stale     | temp    | hum   | X-Cache   | Age  
+-------------------------------------------------------------------------------------------------------------------------------------------------
+21:10:16    | Hà Nội,VN    | 1/2      | 200     | 1581130   | 105.8031,21.0188    | 20:26:48    | 2608s     | 27.33   | 75    | HIT       | -    
+21:10:16    | Hà Nội,VN    | 2/2      | 200     | 1581130   | 105.8031,21.0188    | 20:26:48    | 2608s     | 27.33   | 75    | HIT       | -    
+14:10:16    | hanoi,VN     | 1/2      | 401     | -         | -                   | -           | -         | -       | -     | MISS?     | -    
+14:10:16    | hanoi,VN     | 2/2      | 401     | -         | -                   | -           | -         | -       | -     | -         | -    
+21:10:17    | Hanoi,VN     | 1/2      | 200     | 1581130   | 105.7958,21.0228    | 17:07:48    | 14549s    | 30.66   | 58    | HIT       | -    
+21:10:17    | Hanoi,VN     | 2/2      | 200     | 1581130   | 105.7958,21.0228    | 17:07:48    | 14549s    | 30.66   | 58    | HIT       | -    
+
+  *** CACHE FRAGMENTATION DETECTED ***
+
+  [current] DIVERGENCE on id=1581130: 2 distinct dt across spellings, gap=11940s (199.0min)
+      q="Hanoi,VN" dt=1781172468 (17:07:48) temp=30.66 hum=58 coord=105.7958,21.0228 X-Cache=HIT
+      q="Hà Nội,VN" dt=1781184408 (20:26:48) temp=27.33 hum=75 coord=105.8031,21.0188 X-Cache=HIT
+  frozen: [current] q="Hà Nội,VN" dt still 1781184408 (20:26:48) — cache, not live
+  frozen: [current] q="Hanoi,VN" dt still 1781172468 (17:07:48) — cache, not live
+
+================================================================================================
+DONE. Rounds with cache fragmentation: 2/2
+Verdict: same city id served different dt across q-spellings => cache keyed on raw q. Attach this log.
+Full log: /Users/minisun/0_Playground/second/AgentRegressionTester/logs/cache-probe-2026-06-11T14-10-11-035Z.log
+================================================================================================

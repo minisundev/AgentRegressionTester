@@ -55,10 +55,8 @@ function buildSheetValues(
       ...row,
       messageTranslation: buildTranslateFormula(columnLetters.get('Message')!, currentRow),
       gemmaProdResponseTranslation: buildTranslateFormula(columnLetters.get('GemmaProd Response')!, currentRow),
-      ollamaResponseTranslation: buildTranslateFormula(columnLetters.get('Ollama Response')!, currentRow),
-      gptResponseTranslation: buildTranslateFormula(columnLetters.get('GPT Response')!, currentRow),
-      gpt4oResponseTranslation: buildTranslateFormula(columnLetters.get('GPT-4o Response')!, currentRow),
       gpt54ResponseTranslation: buildTranslateFormula(columnLetters.get('GPT-5.4 Response')!, currentRow),
+      geminiResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini Response')!, currentRow),
       serviceResponseTranslation: buildTranslateFormula(columnLetters.get('Service Response')!, currentRow),
     };
 
