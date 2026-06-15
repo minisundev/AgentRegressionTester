@@ -20,6 +20,16 @@ function normalizeContent(value: unknown): string {
   return typeof value === 'string' ? value.trim() : String(value ?? '');
 }
 
+/**
+ * Coerce a payload llmParam to a finite number, falling back when it is
+ * undefined/null/'' or otherwise non-numeric. Payloads sometimes carry empty
+ * strings for unset params, which `??` does not catch.
+ */
+function numParam(value: unknown, fallback: number): number {
+  const n = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(n) && value !== '' && value !== null ? n : fallback;
+}
+
 function asAxiosError(e: unknown): string {
   if (axios.isAxiosError(e)) {
     return `HTTP ${e.response?.status}: ${JSON.stringify(e.response?.data ?? e.message)}`;
@@ -111,8 +121,8 @@ export async function callGemmaProd(payload: DumpedPayload): Promise<AnswerModel
       {
         model: gemmaModel,
         messages: buildMessages(payload),
-        temperature: payload.llmParams.temperature ?? 0.5,
-        max_tokens: payload.llmParams.maxOutputTokens ?? DEFAULT_MAX_TOKENS,
+        temperature: numParam(payload.llmParams.temperature, 0.5),
+        max_tokens: numParam(payload.llmParams.maxOutputTokens, DEFAULT_MAX_TOKENS),
         generationConfig: {
           response_mime_type: 'text/plain',
         },
@@ -183,15 +193,24 @@ async function callGptByLlmId(payload: DumpedPayload, llmId: number): Promise<An
   const client = createCompatibleClient(cfg);
   const modelLabel = cfg.llm_deploy ?? cfg.version ?? `llm_id=${llmId}`;
 
+  // GPT-5 family uses `max_completion_tokens` (not `max_tokens`) and only
+  // supports the default temperature, so omit the custom sampling params.
+  const isGpt5 = cfg.group.toUpperCase().includes('GPT5');
+  const maxTokens = numParam(payload.llmParams.maxOutputTokens, DEFAULT_MAX_TOKENS);
+
   try {
     const completion = await client.chat.completions.create({
       model: cfg.llm_deploy ?? '',
       messages: buildMessages(payload),
-      temperature: payload.llmParams.temperature ?? 0.5,
-      top_p: payload.llmParams.topP ?? 1,
-      max_tokens: payload.llmParams.maxOutputTokens ?? DEFAULT_MAX_TOKENS,
       stream: false,
       store: false,
+      ...(isGpt5
+        ? { max_completion_tokens: maxTokens }
+        : {
+            temperature: numParam(payload.llmParams.temperature, 0.5),
+            top_p: numParam(payload.llmParams.topP, 1),
+            max_tokens: maxTokens,
+          }),
       ...(payload.llmParams.responseFormat !== 'text'
         ? { response_format: { type: 'json_object' } as const }
         : {}),
@@ -251,9 +270,9 @@ export async function callGemini(payload: DumpedPayload): Promise<AnswerModelRes
         system_instruction: { parts: [{ text: payload.prompt }] },
         contents: [{ role: 'user', parts: [{ text: payload.userMessage }] }],
         generationConfig: {
-          temperature: payload.llmParams.temperature ?? 0.5,
-          topP: payload.llmParams.topP ?? 1,
-          maxOutputTokens: payload.llmParams.maxOutputTokens ?? DEFAULT_MAX_TOKENS,
+          temperature: numParam(payload.llmParams.temperature, 0.5),
+          topP: numParam(payload.llmParams.topP, 1),
+          maxOutputTokens: numParam(payload.llmParams.maxOutputTokens, DEFAULT_MAX_TOKENS),
           responseMimeType: 'text/plain',
         },
       },
@@ -265,10 +284,22 @@ export async function callGemini(payload: DumpedPayload): Promise<AnswerModelRes
         timeout: HTTP_TIMEOUT_MS,
       },
     );
-    const parts = res.data?.candidates?.[0]?.content?.parts;
+    const candidate = res.data?.candidates?.[0];
+    const parts = candidate?.content?.parts;
     const content = Array.isArray(parts)
       ? parts.map((part: { text?: string }) => part?.text ?? '').join('')
       : '';
+    if (!content) {
+      // 200 OK but nothing usable: surface the reason instead of a silent blank.
+      const reason =
+        res.data?.promptFeedback?.blockReason ?? candidate?.finishReason ?? 'no content in response';
+      return {
+        model: geminiModel,
+        response: '',
+        latency: Date.now() - start,
+        error: `empty response (${reason})`,
+      };
+    }
     return { model: geminiModel, response: normalizeContent(content), latency: Date.now() - start };
   } catch (e) {
     return { model: geminiModel, response: '', latency: Date.now() - start, error: asAxiosError(e) };
