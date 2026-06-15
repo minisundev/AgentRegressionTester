@@ -6,7 +6,7 @@ import { ensureWatcherEnv } from './env.js';
 import { getLlmConfigFromRedis } from './redis.js';
 import type { DumpedPayload } from './payloadStore.js';
 
-const DEFAULT_MAX_TOKENS = 800;
+const DEFAULT_MAX_TOKENS = 1024;
 const HTTP_TIMEOUT_MS = 120_000;
 
 function buildMessages(payload: DumpedPayload): { role: 'system' | 'user'; content: string }[] {
@@ -270,10 +270,14 @@ export async function callGemini(payload: DumpedPayload): Promise<AnswerModelRes
         system_instruction: { parts: [{ text: payload.prompt }] },
         contents: [{ role: 'user', parts: [{ text: payload.userMessage }] }],
         generationConfig: {
-          temperature: numParam(payload.llmParams.temperature, 0.5),
-          topP: numParam(payload.llmParams.topP, 1),
+          // Match the production ChatGoogleGenerativeAI client: Gemini 3.5
+          // officially recommends temperature 1.0, and thinking_level "minimal"
+          // (lowest reasoning, not fully off) keeps latency low without letting
+          // reasoning eat maxOutputTokens and truncate the answer.
+          temperature: 1.0,
           maxOutputTokens: numParam(payload.llmParams.maxOutputTokens, DEFAULT_MAX_TOKENS),
           responseMimeType: 'text/plain',
+          thinkingConfig: { thinkingLevel: 'minimal' },
         },
       },
       {
