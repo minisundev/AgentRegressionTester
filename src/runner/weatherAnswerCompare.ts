@@ -2,10 +2,11 @@
  * Weather answer payload stream consumer.
  *
  * Consumes answer payloads published to Redis Stream, fans each payload out to
- * GemmaProd, GPT-5.4, and Gemini, then prints or appends the comparison row.
+ * GPT-5.4 and a 4-way Gemini sweep (temperature {0.7, 1.0} x thinkingLevel
+ * {minimal, low}), then prints or appends the comparison row.
  */
 
-import { callGemini, callGemmaProd, callGpt54 } from '../llm/clients.js';
+import { callGemini, callGpt54 } from '../llm/clients.js';
 import { ensureWatcherEnv } from '../llm/env.js';
 import {
   ackPayload,
@@ -44,10 +45,12 @@ function inferGroup(subIntent: string): string {
 }
 
 async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
-  const [gemma, gpt54, gemini] = await Promise.all([
-    callGemmaProd(payload),
+  const [gpt54, g07Min, g10Min, g07Low, g10Low] = await Promise.all([
     callGpt54(payload),
-    callGemini(payload),
+    callGemini(payload, { temperature: 0.7, thinkingLevel: 'minimal' }),
+    callGemini(payload, { temperature: 1.0, thinkingLevel: 'minimal' }),
+    callGemini(payload, { temperature: 0.7, thinkingLevel: 'low' }),
+    callGemini(payload, { temperature: 1.0, thinkingLevel: 'low' }),
   ]);
 
   return {
@@ -59,25 +62,35 @@ async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
     language: payload.language,
     weatherDataPayload: payload.weatherData,
     userMessage: payload.userMessage,
-    gemmaProdModel: gemma.model,
-    gemmaProdResponse: gemma.response,
-    gemmaProdLatency: gemma.latency,
-    gemmaProdError: gemma.error ?? '',
     gpt54Model: gpt54.model,
     gpt54Response: gpt54.response,
     gpt54Latency: gpt54.latency,
     gpt54Error: gpt54.error ?? '',
-    geminiModel: gemini.model,
-    geminiResponse: gemini.response,
-    geminiLatency: gemini.latency,
-    geminiError: gemini.error ?? '',
+    geminiT07MinModel: g07Min.model,
+    geminiT07MinResponse: g07Min.response,
+    geminiT07MinLatency: g07Min.latency,
+    geminiT07MinError: g07Min.error ?? '',
+    geminiT10MinModel: g10Min.model,
+    geminiT10MinResponse: g10Min.response,
+    geminiT10MinLatency: g10Min.latency,
+    geminiT10MinError: g10Min.error ?? '',
+    geminiT07LowModel: g07Low.model,
+    geminiT07LowResponse: g07Low.response,
+    geminiT07LowLatency: g07Low.latency,
+    geminiT07LowError: g07Low.error ?? '',
+    geminiT10LowModel: g10Low.model,
+    geminiT10LowResponse: g10Low.response,
+    geminiT10LowLatency: g10Low.latency,
+    geminiT10LowError: g10Low.error ?? '',
     serviceResponse: '',
   };
 }
 
 async function emitRow(row: AnswerCompareRow): Promise<void> {
   console.log(
-    `[compare] ${row.subIntent} trxId=${row.id} gemma=${row.gemmaProdLatency}ms gpt54=${row.gpt54Latency}ms gemini=${row.geminiLatency}ms`,
+    `[compare] ${row.subIntent} trxId=${row.id} gpt54=${row.gpt54Latency}ms ` +
+      `gem(t.7/min)=${row.geminiT07MinLatency}ms gem(t1/min)=${row.geminiT10MinLatency}ms ` +
+      `gem(t.7/low)=${row.geminiT07LowLatency}ms gem(t1/low)=${row.geminiT10LowLatency}ms`,
   );
 
   if (REPORT_TO === 'sheet') {

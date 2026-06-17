@@ -54,9 +54,11 @@ function buildSheetValues(
     const rowWithFormulas: AnswerCompareRow = {
       ...row,
       messageTranslation: buildTranslateFormula(columnLetters.get('Message')!, currentRow),
-      gemmaProdResponseTranslation: buildTranslateFormula(columnLetters.get('GemmaProd Response')!, currentRow),
       gpt54ResponseTranslation: buildTranslateFormula(columnLetters.get('GPT-5.4 Response')!, currentRow),
-      geminiResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini Response')!, currentRow),
+      geminiT07MinResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t0.7 minimal Response')!, currentRow),
+      geminiT10MinResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t1.0 minimal Response')!, currentRow),
+      geminiT07LowResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t0.7 low Response')!, currentRow),
+      geminiT10LowResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t1.0 low Response')!, currentRow),
       serviceResponseTranslation: buildTranslateFormula(columnLetters.get('Service Response')!, currentRow),
     };
 

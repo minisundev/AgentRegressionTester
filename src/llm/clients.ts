@@ -242,15 +242,32 @@ export async function callGpt54(payload: DumpedPayload): Promise<AnswerModelResu
   return callGptByLlmId(payload, getGpt54TestLlmId());
 }
 
+/** Per-call Gemini tuning knobs for the parameter sweep. */
+export interface GeminiOptions {
+  /** Sampling temperature. Defaults to 1.0 (Gemini 3.5 recommended). */
+  temperature?: number;
+  /** Reasoning level: 'minimal' | 'low' | 'high'. Defaults to 'minimal'. */
+  thinkingLevel?: string;
+}
+
 /**
  * Google Gemini via the Generative Language REST API (generateContent),
  * loaded from config:llm:${GEMINI_TEST_LLM_ID}. The stored `url` is the full
  * generateContent endpoint; `auth_key` is a Google API key sent as
  * `x-goog-api-key`.
+ *
+ * `opts` overrides temperature/thinkingLevel so the same payload can be swept
+ * across multiple configurations. Defaults mirror the production client
+ * (temperature 1.0, thinking_level "minimal").
  */
-export async function callGemini(payload: DumpedPayload): Promise<AnswerModelResult> {
+export async function callGemini(
+  payload: DumpedPayload,
+  opts: GeminiOptions = {},
+): Promise<AnswerModelResult> {
   const start = Date.now();
   const llmId = getGeminiTestLlmId();
+  const temperature = opts.temperature ?? 1.0;
+  const thinkingLevel = opts.thinkingLevel ?? 'minimal';
   const cfg = await getLlmConfigFromRedis(llmId);
   if (!cfg) {
     return {
@@ -270,14 +287,12 @@ export async function callGemini(payload: DumpedPayload): Promise<AnswerModelRes
         system_instruction: { parts: [{ text: payload.prompt }] },
         contents: [{ role: 'user', parts: [{ text: payload.userMessage }] }],
         generationConfig: {
-          // Match the production ChatGoogleGenerativeAI client: Gemini 3.5
-          // officially recommends temperature 1.0, and thinking_level "minimal"
-          // (lowest reasoning, not fully off) keeps latency low without letting
-          // reasoning eat maxOutputTokens and truncate the answer.
-          temperature: 1.0,
+          // thinkingLevel keeps reasoning from eating maxOutputTokens and
+          // truncating the answer; temperature follows the swept config.
+          temperature,
           maxOutputTokens: numParam(payload.llmParams.maxOutputTokens, DEFAULT_MAX_TOKENS),
           responseMimeType: 'text/plain',
-          thinkingConfig: { thinkingLevel: 'minimal' },
+          thinkingConfig: { thinkingLevel },
         },
       },
       {
