@@ -1,6 +1,6 @@
 import axios from 'axios';
 import OpenAI, { AzureOpenAI } from 'openai';
-import type { AnswerModelResult } from '../types/answerCompare.js';
+import type { AnswerModelResult, CompareCaseParams } from '../types/answerCompare.js';
 import type { LLMEndpointConfig } from '../types/llm.js';
 import { ensureWatcherEnv } from './env.js';
 import { getLlmConfigFromRedis } from './redis.js';
@@ -21,9 +21,9 @@ function normalizeContent(value: unknown): string {
 }
 
 /**
- * Coerce a payload llmParam to a finite number, falling back when it is
- * undefined/null/'' or otherwise non-numeric. Payloads sometimes carry empty
- * strings for unset params, which `??` does not catch.
+ * Coerce a payload llmParam / case override to a finite number, falling back
+ * when it is undefined/null/'' or otherwise non-numeric. Payloads sometimes
+ * carry empty strings for unset params, which `??` does not catch.
  */
 function numParam(value: unknown, fallback: number): number {
   const n = typeof value === 'number' ? value : Number(value);
@@ -37,29 +37,15 @@ function asAxiosError(e: unknown): string {
   return e instanceof Error ? e.message : String(e);
 }
 
-function getGptTestLlmId(): number {
-  ensureWatcherEnv();
-  return Number(process.env.GPT_TEST_LLM_ID ?? '3');
-}
-
-function getGpt4oTestLlmId(): number {
-  ensureWatcherEnv();
-  return Number(process.env.GPT_4O_TEST_LLM_ID ?? '4');
-}
-
-function getGpt54TestLlmId(): number {
-  ensureWatcherEnv();
-  return Number(process.env.GPT_5_4_TEST_LLM_ID ?? '6');
-}
-
-function getGeminiTestLlmId(): number {
-  ensureWatcherEnv();
-  return Number(process.env.GEMINI_TEST_LLM_ID ?? '8');
-}
-
 /** Defensive: trim and strip stray wrapping quotes from a Redis-stored URL. */
 function sanitizeUrl(url: string): string {
   return url.trim().replace(/^['"]+|['"]+$/g, '');
+}
+
+// Default llm_ids per provider. A case's `llmId` (from YAML) overrides these.
+function getGptTestLlmId(): number {
+  ensureWatcherEnv();
+  return Number(process.env.GPT_TEST_LLM_ID ?? '6');
 }
 
 function getGemmaTestLlmId(): number {
@@ -72,14 +58,9 @@ function getGemmaTestModel(): string {
   return process.env.GEMMA_TEST_MODEL ?? 'mediaai1/gemma-27b-generation-v3.0.0';
 }
 
-function getOllamaUrl(): string {
+function getGeminiTestLlmId(): number {
   ensureWatcherEnv();
-  return process.env.OLLAMA_URL ?? 'http://localhost:11434/v1/chat/completions';
-}
-
-function getOllamaModel(): string {
-  ensureWatcherEnv();
-  return process.env.OLLAMA_MODEL ?? 'gemma3:27b';
+  return Number(process.env.GEMINI_TEST_LLM_ID ?? '8');
 }
 
 function createCompatibleClient(cfg: LLMEndpointConfig): OpenAI {
@@ -100,86 +81,17 @@ function createCompatibleClient(cfg: LLMEndpointConfig): OpenAI {
   });
 }
 
-/** Tuned remote Gemma, loaded from config:llm:${GEMMA_TEST_LLM_ID}. */
-export async function callGemmaProd(payload: DumpedPayload): Promise<AnswerModelResult> {
-  const start = Date.now();
-  const llmId = getGemmaTestLlmId();
-  const gemmaModel = getGemmaTestModel();
-  const cfg = await getLlmConfigFromRedis(llmId);
-  if (!cfg) {
-    return {
-      model: `llm_id=${llmId}`,
-      response: '',
-      latency: Date.now() - start,
-      error: `config:llm:${llmId} not found in Redis`,
-    };
-  }
-
-  try {
-    const res = await axios.post(
-      cfg.url,
-      {
-        model: gemmaModel,
-        messages: buildMessages(payload),
-        temperature: numParam(payload.llmParams.temperature, 0.5),
-        max_tokens: numParam(payload.llmParams.maxOutputTokens, DEFAULT_MAX_TOKENS),
-        generationConfig: {
-          response_mime_type: 'text/plain',
-        },
-        transactionId: payload.trxId,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          ...(cfg.auth_key ? { Authorization: `Bearer ${cfg.auth_key}` } : {}),
-        },
-        timeout: HTTP_TIMEOUT_MS,
-      },
-    );
-    const content = res.data?.choices?.[0]?.message?.content ?? res.data?.answer ?? '';
-    return {
-      model: gemmaModel,
-      response: normalizeContent(content),
-      latency: Date.now() - start,
-    };
-  } catch (e) {
-    return {
-      model: gemmaModel,
-      response: '',
-      latency: Date.now() - start,
-      error: asAxiosError(e),
-    };
-  }
+export interface GptOptions {
+  /** Redis config:llm:<id>. Defaults to GPT_TEST_LLM_ID. */
+  llmId?: number;
+  /** Sampling temperature; ignored for GPT-5 family. */
+  temperature?: number;
 }
 
-/** Local Ollama via an OpenAI-compatible endpoint. */
-export async function callOllama(payload: DumpedPayload): Promise<AnswerModelResult> {
+/** OpenAI-compatible GPT (Azure), loaded from config:llm:${llmId}. */
+export async function callGpt(payload: DumpedPayload, opts: GptOptions = {}): Promise<AnswerModelResult> {
   const start = Date.now();
-  const ollamaUrl = getOllamaUrl();
-  const ollamaModel = getOllamaModel();
-  try {
-    const res = await axios.post(
-      ollamaUrl,
-      {
-        model: ollamaModel,
-        messages: buildMessages(payload),
-        temperature: payload.llmParams.temperature ?? 0.5,
-        max_tokens: payload.llmParams.maxOutputTokens ?? DEFAULT_MAX_TOKENS,
-      },
-      {
-        headers: { 'Content-Type': 'application/json' },
-        timeout: HTTP_TIMEOUT_MS,
-      },
-    );
-    const content = res.data?.choices?.[0]?.message?.content ?? '';
-    return { model: ollamaModel, response: normalizeContent(content), latency: Date.now() - start };
-  } catch (e) {
-    return { model: ollamaModel, response: '', latency: Date.now() - start, error: asAxiosError(e) };
-  }
-}
-
-async function callGptByLlmId(payload: DumpedPayload, llmId: number): Promise<AnswerModelResult> {
-  const start = Date.now();
+  const llmId = opts.llmId ?? getGptTestLlmId();
   const cfg = await getLlmConfigFromRedis(llmId);
   if (!cfg) {
     return {
@@ -207,7 +119,7 @@ async function callGptByLlmId(payload: DumpedPayload, llmId: number): Promise<An
       ...(isGpt5
         ? { max_completion_tokens: maxTokens }
         : {
-            temperature: numParam(payload.llmParams.temperature, 0.5),
+            temperature: numParam(opts.temperature ?? payload.llmParams.temperature, 0.5),
             top_p: numParam(payload.llmParams.topP, 1),
             max_tokens: maxTokens,
           }),
@@ -227,23 +139,58 @@ async function callGptByLlmId(payload: DumpedPayload, llmId: number): Promise<An
   }
 }
 
-/** Remote GPT, loaded from config:llm:${GPT_TEST_LLM_ID}. */
-export async function callGpt(payload: DumpedPayload): Promise<AnswerModelResult> {
-  return callGptByLlmId(payload, getGptTestLlmId());
+export interface GemmaOptions {
+  /** Redis config:llm:<id>. Defaults to GEMMA_TEST_LLM_ID. */
+  llmId?: number;
+  temperature?: number;
 }
 
-/** Remote GPT-4o, loaded from config:llm:${GPT_4O_TEST_LLM_ID}. */
-export async function callGpt4o(payload: DumpedPayload): Promise<AnswerModelResult> {
-  return callGptByLlmId(payload, getGpt4oTestLlmId());
+/** Tuned remote Gemma, loaded from config:llm:${llmId}. */
+export async function callGemma(payload: DumpedPayload, opts: GemmaOptions = {}): Promise<AnswerModelResult> {
+  const start = Date.now();
+  const llmId = opts.llmId ?? getGemmaTestLlmId();
+  const gemmaModel = getGemmaTestModel();
+  const cfg = await getLlmConfigFromRedis(llmId);
+  if (!cfg) {
+    return {
+      model: `llm_id=${llmId}`,
+      response: '',
+      latency: Date.now() - start,
+      error: `config:llm:${llmId} not found in Redis`,
+    };
+  }
+
+  try {
+    const res = await axios.post(
+      sanitizeUrl(cfg.url),
+      {
+        model: gemmaModel,
+        messages: buildMessages(payload),
+        temperature: numParam(opts.temperature ?? payload.llmParams.temperature, 0.5),
+        max_tokens: numParam(payload.llmParams.maxOutputTokens, DEFAULT_MAX_TOKENS),
+        generationConfig: {
+          response_mime_type: 'text/plain',
+        },
+        transactionId: payload.trxId,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          ...(cfg.auth_key ? { Authorization: `Bearer ${cfg.auth_key}` } : {}),
+        },
+        timeout: HTTP_TIMEOUT_MS,
+      },
+    );
+    const content = res.data?.choices?.[0]?.message?.content ?? res.data?.answer ?? '';
+    return { model: gemmaModel, response: normalizeContent(content), latency: Date.now() - start };
+  } catch (e) {
+    return { model: gemmaModel, response: '', latency: Date.now() - start, error: asAxiosError(e) };
+  }
 }
 
-/** Remote GPT-5.4, loaded from config:llm:${GPT_5_4_TEST_LLM_ID}. */
-export async function callGpt54(payload: DumpedPayload): Promise<AnswerModelResult> {
-  return callGptByLlmId(payload, getGpt54TestLlmId());
-}
-
-/** Per-call Gemini tuning knobs for the parameter sweep. */
 export interface GeminiOptions {
+  /** Redis config:llm:<id>. Defaults to GEMINI_TEST_LLM_ID. */
+  llmId?: number;
   /** Sampling temperature. Defaults to 1.0 (Gemini 3.5 recommended). */
   temperature?: number;
   /** Reasoning level: 'minimal' | 'low' | 'high'. Defaults to 'minimal'. */
@@ -252,20 +199,16 @@ export interface GeminiOptions {
 
 /**
  * Google Gemini via the Generative Language REST API (generateContent),
- * loaded from config:llm:${GEMINI_TEST_LLM_ID}. The stored `url` is the full
- * generateContent endpoint; `auth_key` is a Google API key sent as
- * `x-goog-api-key`.
+ * loaded from config:llm:${llmId}. The stored `url` is the full generateContent
+ * endpoint; `auth_key` is a Google API key sent as `x-goog-api-key`.
  *
  * `opts` overrides temperature/thinkingLevel so the same payload can be swept
  * across multiple configurations. Defaults mirror the production client
  * (temperature 1.0, thinking_level "minimal").
  */
-export async function callGemini(
-  payload: DumpedPayload,
-  opts: GeminiOptions = {},
-): Promise<AnswerModelResult> {
+export async function callGemini(payload: DumpedPayload, opts: GeminiOptions = {}): Promise<AnswerModelResult> {
   const start = Date.now();
-  const llmId = getGeminiTestLlmId();
+  const llmId = opts.llmId ?? getGeminiTestLlmId();
   const temperature = opts.temperature ?? 1.0;
   const thinkingLevel = opts.thinkingLevel ?? 'minimal';
   const cfg = await getLlmConfigFromRedis(llmId);
@@ -322,5 +265,31 @@ export async function callGemini(
     return { model: geminiModel, response: normalizeContent(content), latency: Date.now() - start };
   } catch (e) {
     return { model: geminiModel, response: '', latency: Date.now() - start, error: asAxiosError(e) };
+  }
+}
+
+/** Dispatch a comparison case to its provider client. */
+export async function runCompareCase(
+  payload: DumpedPayload,
+  c: CompareCaseParams,
+): Promise<AnswerModelResult> {
+  switch (c.provider) {
+    case 'gpt':
+      return callGpt(payload, { llmId: c.llmId, temperature: c.temperature });
+    case 'gemma':
+      return callGemma(payload, { llmId: c.llmId, temperature: c.temperature });
+    case 'gemini':
+      return callGemini(payload, {
+        llmId: c.llmId,
+        temperature: c.temperature,
+        thinkingLevel: c.thinkingLevel,
+      });
+    default:
+      return {
+        model: String(c.provider),
+        response: '',
+        latency: 0,
+        error: `unknown provider: ${c.provider}`,
+      };
   }
 }

@@ -1,8 +1,10 @@
 import { google } from 'googleapis';
 import {
-  AnswerCompareSheetColumns,
+  buildCompareColumns,
   type AnswerCompareRow,
+  type CompareColumn,
 } from '../types/answerCompare.js';
+import { loadCompareCases } from '../config/answerCompareConfig.js';
 import { ensureWatcherEnv } from './env.js';
 
 function getSheetTab(): string {
@@ -45,28 +47,19 @@ function buildTranslateFormula(columnLetter: string, rowNumber: number): string 
 function buildSheetValues(
   rows: AnswerCompareRow[],
   startRow: number,
-  headerLabels: string[],
+  columns: CompareColumn[],
 ): (string | number)[][] {
-  const columnLetters = new Map(headerLabels.map((label, index) => [label, indexToColumnLetter(index)]));
+  const columnLetters = new Map(columns.map((col, index) => [col.header, indexToColumnLetter(index)]));
 
   return rows.map((row, index) => {
     const currentRow = startRow + index;
-    const rowWithFormulas: AnswerCompareRow = {
-      ...row,
-      messageTranslation: buildTranslateFormula(columnLetters.get('Message')!, currentRow),
-      gpt54ResponseTranslation: buildTranslateFormula(columnLetters.get('GPT-5.4 Response')!, currentRow),
-      geminiT07MinResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t0.7 minimal Response')!, currentRow),
-      geminiT10MinResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t1.0 minimal Response')!, currentRow),
-      geminiT07LowResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t0.7 low Response')!, currentRow),
-      geminiT10LowResponseTranslation: buildTranslateFormula(columnLetters.get('Gemini t1.0 low Response')!, currentRow),
-      serviceResponseTranslation: buildTranslateFormula(columnLetters.get('Service Response')!, currentRow),
-    };
-
-    return headerLabels.map((label) => {
-      const field = AnswerCompareSheetColumns[label];
-      const value = field ? rowWithFormulas[field] : '';
-      return value ?? '';
-    }) as (string | number)[];
+    return columns.map((col) => {
+      if (col.translateOf) {
+        const srcLetter = columnLetters.get(col.translateOf)!;
+        return buildTranslateFormula(srcLetter, currentRow);
+      }
+      return col.getValue!(row) ?? '';
+    });
   });
 }
 
@@ -116,7 +109,8 @@ export async function appendAnswerCompareToSheet(rows: AnswerCompareRow[]): Prom
   });
   const sheets = google.sheets({ version: 'v4', auth });
 
-  const headerLabels = Object.keys(AnswerCompareSheetColumns);
+  const columns = buildCompareColumns(loadCompareCases());
+  const headerLabels = columns.map((col) => col.header);
   const allValues: (string | number)[][] = [];
 
   try {
@@ -139,7 +133,7 @@ export async function appendAnswerCompareToSheet(rows: AnswerCompareRow[]): Prom
       allValues.push(headerLabels);
     }
 
-    allValues.push(...buildSheetValues(rows, startRow, headerLabels));
+    allValues.push(...buildSheetValues(rows, startRow, columns));
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,

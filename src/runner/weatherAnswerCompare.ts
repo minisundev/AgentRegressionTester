@@ -2,11 +2,12 @@
  * Weather answer payload stream consumer.
  *
  * Consumes answer payloads published to Redis Stream, fans each payload out to
- * GPT-5.4 and a 4-way Gemini sweep (temperature {0.7, 1.0} x thinkingLevel
- * {minimal, low}), then prints or appends the comparison row.
+ * the cases configured in src/config/answerCompare.yaml (GPT + a Gemini
+ * temperature sweep, etc.), then prints or appends the comparison row.
  */
 
-import { callGemini, callGpt54 } from '../llm/clients.js';
+import { runCompareCase } from '../llm/clients.js';
+import { loadCompareCases } from '../config/answerCompareConfig.js';
 import { ensureWatcherEnv } from '../llm/env.js';
 import {
   ackPayload,
@@ -18,9 +19,11 @@ import {
 } from '../llm/payloadStore.js';
 import { createRedisClient } from '../llm/redis.js';
 import { appendAnswerCompareToSheet } from '../llm/sheets.js';
-import type { AnswerCompareRow } from '../types/answerCompare.js';
+import type { AnswerCompareRow, AnswerModelResult } from '../types/answerCompare.js';
 
 ensureWatcherEnv();
+
+const CASES = loadCompareCases();
 
 const REPORT_TO = process.env.REPORT_TO ?? 'terminal';
 const READ_EXISTING = process.env.READ_EXISTING_PAYLOADS === '1';
@@ -45,13 +48,12 @@ function inferGroup(subIntent: string): string {
 }
 
 async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
-  const [gpt54, g07Min, g10Min, g07Low, g10Low] = await Promise.all([
-    callGpt54(payload),
-    callGemini(payload, { temperature: 0.7, thinkingLevel: 'minimal' }),
-    callGemini(payload, { temperature: 1.0, thinkingLevel: 'minimal' }),
-    callGemini(payload, { temperature: 0.7, thinkingLevel: 'low' }),
-    callGemini(payload, { temperature: 1.0, thinkingLevel: 'low' }),
-  ]);
+  const results = await Promise.all(CASES.map((c) => runCompareCase(payload, c)));
+
+  const resultMap: Record<string, AnswerModelResult> = {};
+  CASES.forEach((c, i) => {
+    resultMap[c.key] = results[i]!;
+  });
 
   return {
     testedAt: new Date().toISOString(),
@@ -62,36 +64,14 @@ async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
     language: payload.language,
     weatherDataPayload: payload.weatherData,
     userMessage: payload.userMessage,
-    gpt54Model: gpt54.model,
-    gpt54Response: gpt54.response,
-    gpt54Latency: gpt54.latency,
-    gpt54Error: gpt54.error ?? '',
-    geminiT07MinModel: g07Min.model,
-    geminiT07MinResponse: g07Min.response,
-    geminiT07MinLatency: g07Min.latency,
-    geminiT07MinError: g07Min.error ?? '',
-    geminiT10MinModel: g10Min.model,
-    geminiT10MinResponse: g10Min.response,
-    geminiT10MinLatency: g10Min.latency,
-    geminiT10MinError: g10Min.error ?? '',
-    geminiT07LowModel: g07Low.model,
-    geminiT07LowResponse: g07Low.response,
-    geminiT07LowLatency: g07Low.latency,
-    geminiT07LowError: g07Low.error ?? '',
-    geminiT10LowModel: g10Low.model,
-    geminiT10LowResponse: g10Low.response,
-    geminiT10LowLatency: g10Low.latency,
-    geminiT10LowError: g10Low.error ?? '',
+    results: resultMap,
     serviceResponse: '',
   };
 }
 
 async function emitRow(row: AnswerCompareRow): Promise<void> {
-  console.log(
-    `[compare] ${row.subIntent} trxId=${row.id} gpt54=${row.gpt54Latency}ms ` +
-      `gem(t.7/min)=${row.geminiT07MinLatency}ms gem(t1/min)=${row.geminiT10MinLatency}ms ` +
-      `gem(t.7/low)=${row.geminiT07LowLatency}ms gem(t1/low)=${row.geminiT10LowLatency}ms`,
-  );
+  const summary = CASES.map((c) => `${c.key}=${row.results[c.key]?.latency ?? '-'}ms`).join(' ');
+  console.log(`[compare] ${row.subIntent} trxId=${row.id} ${summary}`);
 
   if (REPORT_TO === 'sheet') {
     await appendAnswerCompareToSheet([row]);

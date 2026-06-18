@@ -1,0 +1,53 @@
+# Answer-compare cases. Each entry becomes one column group in the comparison
+# sheet, in the order listed here (left -> right). GPT first, then the Gemini
+# temperature sweep.
+#
+# Fields:
+#   key           stable id used to key results (keep unique, no spaces)
+#   label         sheet column-group label
+#   provider      gpt | gemini | gemma
+#   llmId         Redis config:llm:<id> to load endpoint + auth from
+#   temperature   sampling temperature (sweep axis). GPT-5 family ignores this.
+#   thinkingLevel gemini reasoning level: minimal | low | high (gemini only)
+#
+# To add a new model/temperature: copy a block and adjust. No code change needed.
+cases:
+  - key: gpt54
+    label: GPT-5.4
+    provider: gpt
+    llmId: 6
+
+  - key: gemini_t0
+    label: Gemini t0
+    provider: gemini
+    llmId: 8
+    temperature: 0
+    thinkingLevel: minimal
+
+  - key: gemini_t03
+    label: Gemini t0.3
+    provider: gemini
+    llmId: 8
+    temperature: 0.3
+    thinkingLevel: minimal
+
+  - key: gemini_t05
+    label: Gemini t0.5
+    provider: gemini
+    llmId: 8
+    temperature: 0.5
+    thinkingLevel: minimal
+
+  - key: gemini_t07
+    label: Gemini t0.7
+    provider: gemini
+    llmId: 8
+    temperature: 0.7
+    thinkingLevel: minimal
+
+  - key: gemini_t10
+    label: Gemini t1.0
+    provider: gemini
+    llmId: 8
+    temperature: 1.0
+    thinkingLevel: minimal

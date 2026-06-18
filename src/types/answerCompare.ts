@@ -5,88 +5,81 @@ export interface AnswerModelResult {
   error?: string;
 }
 
+export type CompareProvider = 'gpt' | 'gemini' | 'gemma';
+
+/** Runtime knobs handed to a provider client. */
+export interface CompareCaseParams {
+  provider: CompareProvider;
+  /** Redis config:llm:<id> to load the endpoint + auth from. */
+  llmId?: number;
+  /** Sampling temperature (sweep axis). GPT-5 ignores this. */
+  temperature?: number;
+  /** Gemini reasoning level: minimal | low | high. */
+  thinkingLevel?: string;
+}
+
+/** A single comparison column group, as defined in answerCompare.yaml. */
+export interface CompareCase extends CompareCaseParams {
+  /** Stable id, used to key results. */
+  key: string;
+  /** Sheet column-group label, e.g. "Gemini t0.3". */
+  label: string;
+}
+
 export interface AnswerCompareRow {
   testedAt: string;
   group: string;
   id: string | number;
   message: string;
-  messageTranslation?: string;
   subIntent: string;
   language: string;
   weatherDataPayload: string;
   userMessage: string;
-
-  gpt54Model: string;
-  gpt54Response: string;
-  gpt54ResponseTranslation?: string;
-  gpt54Latency: number;
-  gpt54Error: string;
-
-  // Gemini parameter sweep: temperature {0.7, 1.0} x thinkingLevel {minimal, low}.
-  geminiT07MinModel: string;
-  geminiT07MinResponse: string;
-  geminiT07MinResponseTranslation?: string;
-  geminiT07MinLatency: number;
-  geminiT07MinError: string;
-
-  geminiT10MinModel: string;
-  geminiT10MinResponse: string;
-  geminiT10MinResponseTranslation?: string;
-  geminiT10MinLatency: number;
-  geminiT10MinError: string;
-
-  geminiT07LowModel: string;
-  geminiT07LowResponse: string;
-  geminiT07LowResponseTranslation?: string;
-  geminiT07LowLatency: number;
-  geminiT07LowError: string;
-
-  geminiT10LowModel: string;
-  geminiT10LowResponse: string;
-  geminiT10LowResponseTranslation?: string;
-  geminiT10LowLatency: number;
-  geminiT10LowError: string;
-
+  /** Per-case results, keyed by CompareCase.key. */
+  results: Record<string, AnswerModelResult>;
   serviceResponse: string;
-  serviceResponseTranslation?: string;
 }
 
-/** Header label -> row field. Order here is sheet column order. */
-export const AnswerCompareSheetColumns: Record<string, keyof AnswerCompareRow> = {
-  'Tested At': 'testedAt',
-  'Group': 'group',
-  'ID': 'id',
-  'Message': 'message',
-  'Message Translation': 'messageTranslation',
-  'SubIntent': 'subIntent',
-  'Language': 'language',
-  'Weather Data': 'weatherDataPayload',
-  'User Message': 'userMessage',
-  'GPT-5.4 Model': 'gpt54Model',
-  'GPT-5.4 Response': 'gpt54Response',
-  'GPT-5.4 Response Translation': 'gpt54ResponseTranslation',
-  'GPT-5.4 Latency': 'gpt54Latency',
-  'GPT-5.4 Error': 'gpt54Error',
-  'Gemini t0.7 minimal Model': 'geminiT07MinModel',
-  'Gemini t0.7 minimal Response': 'geminiT07MinResponse',
-  'Gemini t0.7 minimal Response Translation': 'geminiT07MinResponseTranslation',
-  'Gemini t0.7 minimal Latency': 'geminiT07MinLatency',
-  'Gemini t0.7 minimal Error': 'geminiT07MinError',
-  'Gemini t1.0 minimal Model': 'geminiT10MinModel',
-  'Gemini t1.0 minimal Response': 'geminiT10MinResponse',
-  'Gemini t1.0 minimal Response Translation': 'geminiT10MinResponseTranslation',
-  'Gemini t1.0 minimal Latency': 'geminiT10MinLatency',
-  'Gemini t1.0 minimal Error': 'geminiT10MinError',
-  'Gemini t0.7 low Model': 'geminiT07LowModel',
-  'Gemini t0.7 low Response': 'geminiT07LowResponse',
-  'Gemini t0.7 low Response Translation': 'geminiT07LowResponseTranslation',
-  'Gemini t0.7 low Latency': 'geminiT07LowLatency',
-  'Gemini t0.7 low Error': 'geminiT07LowError',
-  'Gemini t1.0 low Model': 'geminiT10LowModel',
-  'Gemini t1.0 low Response': 'geminiT10LowResponse',
-  'Gemini t1.0 low Response Translation': 'geminiT10LowResponseTranslation',
-  'Gemini t1.0 low Latency': 'geminiT10LowLatency',
-  'Gemini t1.0 low Error': 'geminiT10LowError',
-  'Service Response': 'serviceResponse',
-  'Service Response Translation': 'serviceResponseTranslation',
-};
+/** One sheet column: either a value pulled from the row, or a GOOGLETRANSLATE of another column. */
+export interface CompareColumn {
+  header: string;
+  /** Value getter for a normal column. */
+  getValue?: (row: AnswerCompareRow) => string | number;
+  /** If set, this column is a GOOGLETRANSLATE of the column with this header. */
+  translateOf?: string;
+}
+
+/**
+ * Build the ordered sheet columns from the configured cases. Layout:
+ *   meta... | (per case: Model, Response, Response Translation, Latency, Error) | Service...
+ */
+export function buildCompareColumns(cases: CompareCase[]): CompareColumn[] {
+  const columns: CompareColumn[] = [
+    { header: 'Tested At', getValue: (r) => r.testedAt },
+    { header: 'Group', getValue: (r) => r.group },
+    { header: 'ID', getValue: (r) => r.id },
+    { header: 'Message', getValue: (r) => r.message },
+    { header: 'Message Translation', translateOf: 'Message' },
+    { header: 'SubIntent', getValue: (r) => r.subIntent },
+    { header: 'Language', getValue: (r) => r.language },
+    { header: 'Weather Data', getValue: (r) => r.weatherDataPayload },
+    { header: 'User Message', getValue: (r) => r.userMessage },
+  ];
+
+  for (const c of cases) {
+    columns.push(
+      { header: `${c.label} Model`, getValue: (r) => r.results[c.key]?.model ?? '' },
+      { header: `${c.label} Response`, getValue: (r) => r.results[c.key]?.response ?? '' },
+      { header: `${c.label} Response Translation`, translateOf: `${c.label} Response` },
+      { header: `${c.label} Latency`, getValue: (r) => r.results[c.key]?.latency ?? '' },
+      { header: `${c.label} Error`, getValue: (r) => r.results[c.key]?.error ?? '' },
+    );
+  }
+
+  columns.push(
+    { header: 'Service Response', getValue: (r) => r.serviceResponse },
+    { header: 'Service Response Translation', translateOf: 'Service Response' },
+  );
+
+  return columns;
+}
