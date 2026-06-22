@@ -127,10 +127,19 @@ export async function appendAnswerCompareToSheet(rows: AnswerCompareRow[]): Prom
       spreadsheetId: sheetId,
       range: headerRange,
     });
-    const hasHeader = (existingHeader.data.values?.[0]?.length ?? 0) > 0;
+    const currentHeader = existingHeader.data.values?.[0]?.map(String) ?? [];
+    const hasHeader = currentHeader.length > 0;
+    const headerMatches = headerLabels.every((label, index) => currentHeader[index] === label);
 
     if (!hasHeader) {
       allValues.push(headerLabels);
+    } else if (!headerMatches || currentHeader.length !== headerLabels.length) {
+      await sheets.spreadsheets.values.update({
+        spreadsheetId: sheetId,
+        range: headerRange,
+        valueInputOption: 'USER_ENTERED',
+        requestBody: { values: [headerLabels] },
+      });
     }
 
     allValues.push(...buildSheetValues(rows, startRow, columns));

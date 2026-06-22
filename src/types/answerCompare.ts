@@ -5,6 +5,35 @@ export interface AnswerModelResult {
   error?: string;
 }
 
+export type EvaluationVerdict = 'pass' | 'fail' | 'borderline';
+
+export type EvaluationCategory =
+  | 'DATA_FIDELITY'
+  | 'TEMPORAL_ALIGNMENT'
+  | 'SUMMARY_AGGREGATION'
+  | 'UNSUPPORTED_INFERENCE'
+  | 'ADVICE_POLICY'
+  | 'AVAILABILITY_HANDLING'
+  | 'FIELD_MAPPING';
+
+export interface AnswerEvaluationIssue {
+  category: EvaluationCategory;
+  severity: 'critical' | 'major' | 'minor';
+  quote: string;
+  problem: string;
+  evidence: string;
+}
+
+export interface AnswerEvaluationResult {
+  verdict: EvaluationVerdict;
+  score: number;
+  categories: EvaluationCategory[];
+  summary: string;
+  issues: AnswerEvaluationIssue[];
+  error?: string;
+  latency?: number;
+}
+
 export type CompareProvider = 'gpt' | 'gemini' | 'gemma';
 
 /** Runtime knobs handed to a provider client. */
@@ -37,6 +66,8 @@ export interface AnswerCompareRow {
   userMessage: string;
   /** Per-case results, keyed by CompareCase.key. */
   results: Record<string, AnswerModelResult>;
+  /** Per-case GPT judge results, keyed by CompareCase.key. */
+  evaluations?: Record<string, AnswerEvaluationResult>;
   serviceResponse: string;
 }
 
@@ -71,6 +102,12 @@ export function buildCompareColumns(cases: CompareCase[]): CompareColumn[] {
       { header: `${c.label} Model`, getValue: (r) => r.results[c.key]?.model ?? '' },
       { header: `${c.label} Response`, getValue: (r) => r.results[c.key]?.response ?? '' },
       { header: `${c.label} Response Translation`, translateOf: `${c.label} Response` },
+      { header: `${c.label} Judge Verdict`, getValue: (r) => r.evaluations?.[c.key]?.verdict ?? '' },
+      { header: `${c.label} Judge Score`, getValue: (r) => r.evaluations?.[c.key]?.score ?? '' },
+      { header: `${c.label} Judge Categories`, getValue: (r) => r.evaluations?.[c.key]?.categories.join(', ') ?? '' },
+      { header: `${c.label} Judge Summary`, getValue: (r) => r.evaluations?.[c.key]?.summary ?? '' },
+      { header: `${c.label} Judge Issues`, getValue: (r) => formatEvaluationIssues(r.evaluations?.[c.key]) },
+      { header: `${c.label} Judge Error`, getValue: (r) => r.evaluations?.[c.key]?.error ?? '' },
       { header: `${c.label} Latency`, getValue: (r) => r.results[c.key]?.latency ?? '' },
       { header: `${c.label} Error`, getValue: (r) => r.results[c.key]?.error ?? '' },
     );
@@ -82,4 +119,15 @@ export function buildCompareColumns(cases: CompareCase[]): CompareColumn[] {
   );
 
   return columns;
+}
+
+function formatEvaluationIssues(evaluation: AnswerEvaluationResult | undefined): string {
+  if (!evaluation?.issues?.length) return '';
+
+  return evaluation.issues
+    .map((issue) => {
+      const quote = issue.quote ? ` quote="${issue.quote}"` : '';
+      return `[${issue.severity}/${issue.category}] ${issue.problem} | evidence: ${issue.evidence}${quote}`;
+    })
+    .join('\n');
 }

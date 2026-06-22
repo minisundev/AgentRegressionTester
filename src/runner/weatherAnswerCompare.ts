@@ -19,6 +19,7 @@ import {
 } from '../llm/payloadStore.js';
 import { createRedisClient } from '../llm/redis.js';
 import { appendAnswerCompareToSheet } from '../llm/sheets.js';
+import { evaluateCompareResults } from '../llm/evaluator.js';
 import type { AnswerCompareRow, AnswerModelResult } from '../types/answerCompare.js';
 
 ensureWatcherEnv();
@@ -55,6 +56,8 @@ async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
     resultMap[c.key] = results[i]!;
   });
 
+  const evaluations = await evaluateCompareResults(payload, CASES, resultMap);
+
   return {
     testedAt: new Date().toISOString(),
     group: inferGroup(payload.subIntent),
@@ -65,13 +68,20 @@ async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
     weatherDataPayload: payload.weatherData,
     userMessage: payload.userMessage,
     results: resultMap,
+    evaluations,
     serviceResponse: '',
   };
 }
 
 async function emitRow(row: AnswerCompareRow): Promise<void> {
   const summary = CASES.map((c) => `${c.key}=${row.results[c.key]?.latency ?? '-'}ms`).join(' ');
-  console.log(`[compare] ${row.subIntent} trxId=${row.id} ${summary}`);
+  const evaluationSummary = row.evaluations
+    ? ` judge=${Object.values(row.evaluations)
+      .filter((evaluation) => evaluation.verdict !== 'pass')
+      .map((evaluation) => evaluation.verdict)
+      .join(',') || 'pass'}`
+    : '';
+  console.log(`[compare] ${row.subIntent} trxId=${row.id} ${summary}${evaluationSummary}`);
 
   if (REPORT_TO === 'sheet') {
     await appendAnswerCompareToSheet([row]);

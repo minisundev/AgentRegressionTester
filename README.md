@@ -100,6 +100,9 @@ GPT_TEST_LLM_ID=3
 OLLAMA_URL="http://localhost:11434/v1/chat/completions"
 OLLAMA_MODEL="gemma3:27b"
 GOOGLE_SHEET_TAB="WeatherAnswerCompare"
+EVALUATE_WITH_GPT=0
+GPT_JUDGE_LLM_ID=3
+EVALUATE_CASE_KEYS="" # optional: gemini_t0,gemini_t03
 
 # Slack Settings
 SLACK_WEBHOOK_URL=""
@@ -218,6 +221,22 @@ npm run test:sheet:local:local
 npm run test:terminal:prod
 node scripts/run-test-profile.js sheet:api:crow
 ```
+
+### Weather Answer GPT Judge
+
+Redis Stream watcher can also ask GPT to judge each candidate answer and append the result to the same Google Sheet.
+
+```bash
+REPORT_TO=sheet EVALUATE_WITH_GPT=1 npm run watch:weather:answer-compare
+```
+
+Optional knobs:
+
+- `GPT_JUDGE_LLM_ID`: Redis `config:llm:<id>` used for the GPT judge. Defaults to `GPT_TEST_LLM_ID`.
+- `EVALUATE_CASE_KEYS`: comma-separated candidate keys to judge, such as `gemini_t0,gemini_t03`. Empty means all configured cases.
+
+Judge columns are added per candidate: verdict, score, categories, summary, issues, and judge error.
+The rubric covers data fidelity, relative date/time alignment, summary/range aggregation, unsupported inference, advice policy, unavailable data handling, and field mapping.
 
 Redis stream answer compare watcher
 
