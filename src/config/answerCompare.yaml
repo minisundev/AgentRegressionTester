@@ -13,9 +13,10 @@
 # To add a new model/temperature: copy a block and adjust. No code change needed.
 cases:
   - key: gpt54
-    label: GPT-5.4
+    label: GPT-5.4 t0
     provider: gpt
     llmId: 6
+    temperature: 0
 
   - key: gemini_t0
     label: Gemini t0

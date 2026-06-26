@@ -23,9 +23,7 @@ const client = createTestClient();
 const reportTo = env.REPORT_TO;
 const testTimeoutMs = env.TEST_TIMEOUT_SEC * 1000;
 
-// Every test case is exercised against both the sync (agentChat) and the
-// streaming (agentChatStream) endpoint, producing one sheet row per mode.
-const REQUEST_MODES: RequestMode[] = ['sync', 'stream'];
+const REQUEST_MODES: RequestMode[] = [env.REQUEST_MODE];
 
 jest.setTimeout(testTimeoutMs);
 
@@ -36,8 +34,6 @@ describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
   const failures: ResultRow[] = [];
 
-  const delay = env.SERVICE_DELAY_SEC;
-
   for (const group of loadAllTestCases()) {
     describe(`${group.groupName} API`, () => {
       for (const tc of group.cases) {
@@ -46,11 +42,6 @@ describe('Agent API Regression', () => {
         const test = allModesDone ? it.skip : it;
 
         test(`Q${tc.id} - [${group.groupName}] ${tc.name}`, async () => {
-          //서버 과부하 방지
-          if (delay > 0) {
-            await sleep(delay);
-          }
-
           const accountId = getCaseAccountId(group.groupName, tc);
           let anyError = false;
 
@@ -195,8 +186,6 @@ async function persistRow(result: ResultRow, key: string): Promise<number | unde
   }
   return appendRowToSheet(result);
 }
-
-const sleep = (sec: number) => new Promise(resolve => setTimeout(resolve, sec * 1000));
 
 function validateResponse(data: AgentResponse): string | undefined {
   const errors: string[] = [];

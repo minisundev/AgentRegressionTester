@@ -6,6 +6,8 @@ examples:
   - 'npm run test:sheet:internal:stg'
   - 'npm run test:terminal:prod'
   - 'node scripts/run-test-profile.js sheet:api:crow'
+  - 'node scripts/run-test-profile.js sheet:api:crow --mode stream'
+  - 'node scripts/run-test-profile.js sheet:gpt:local --mode stream'
 
 defaultProfileLabel: 'Default profile file:'
 envOverrideLabel: 'Optional .env override:'

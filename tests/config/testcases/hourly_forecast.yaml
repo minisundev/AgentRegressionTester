@@ -72,3 +72,21 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+  - id: 13
+    name: "EN - before 10pm"
+    message: "tell me the weather before 10pm"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 14
+    name: "EN - after 4pm"
+    message: "tell me the weather after 9pm"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 15
+    name: "EN - next 3 hours"
+    message: "tell me the weather next 3 hours"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent

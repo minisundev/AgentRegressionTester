@@ -28,7 +28,8 @@ const envSchema = z.object({
 
   // Optional - Test Configuration
   REPORT_TO: z.enum(['terminal', 'sheet']).default('terminal'),
-  JUDGE_MODE: z.enum(['none', 'sheet', 'api', 'local']).default('none'),
+  JUDGE_MODE: z.enum(['none', 'sheet', 'api', 'gpt', 'local']).default('none'),
+  REQUEST_MODE: z.enum(['sync', 'stream']).default('sync'),
   SERVICE_DELAY_SEC: z.string().transform(Number).default(0),
   TEST_TIMEOUT_SEC: z.string().transform(Number).default(3000),
   TODAY: z.string().optional(),
@@ -36,6 +37,8 @@ const envSchema = z.object({
   // Optional - AI Configuration (required when JUDGE_MODE=api)
   AI_API_KEY: z.string().optional(),
   AI_MODEL: z.string().default('gemini-3-flash-preview'),
+  GPT_JUDGE_LLM_ID: optionalNumberFromEnv,
+  GPT_JUDGE_MAX_TOKEN: numberFromEnvWithDefault(12000),
 
   // Optional - Local AI Configuration (required when JUDGE_MODE=local)
   LOCAL_AI_MODEL: z.string().optional(),
@@ -76,6 +79,23 @@ const refinedSchema = envSchema.superRefine((data, ctx) => {
       message: 'AI_API_KEY is required when JUDGE_MODE=api',
       path: ['AI_API_KEY'],
     });
+  }
+
+  if (data.JUDGE_MODE === 'gpt') {
+    if (!data.GPT_JUDGE_LLM_ID) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'GPT_JUDGE_LLM_ID is required when JUDGE_MODE=gpt',
+        path: ['GPT_JUDGE_LLM_ID'],
+      });
+    }
+    if (!data.REDIS_URL && (!data.REDIS_ENDPOINT || !data.REDIS_PORT)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'REDIS_URL or REDIS_ENDPOINT + REDIS_PORT is required when JUDGE_MODE=gpt',
+        path: ['REDIS_URL'],
+      });
+    }
   }
 
   // When JUDGE_MODE=local, LOCAL_AI_MODEL is required

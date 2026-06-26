@@ -1,4 +1,5 @@
 export const CASE_GROUPS = [
+  //'ai_ftc_1001_weather.yaml',
   // 'fat_weather_en.yaml',
   // 'hourly_forecast.yaml',
   // 'uat3_hourly_forecast.yaml',
@@ -18,12 +19,16 @@ export const CASE_GROUPS = [
   // 'weather_week_resolve.yaml',
   // 'time_fallback_en.yaml',
   // 'time_fallback_vi.yaml',
-  'sit_fat_weather_2.yaml',
   // 'sit_fat_weather_2_en.yaml',
   // 'fat_r2_precipitation.yaml',
   // 'weather_check.yaml',
-  'qm_test_day.yaml',
-  'qm_test_table.yaml',
-  'qm_test_text.yaml',
-  'tc_260611.yaml',
+  // '260622_tc.yaml',
+  // 'qm_test_day.yaml',
+  // 'qm_test_table.yaml',
+  // 'qm_test_text.yaml',
+  // 'tc_260611.yaml',
+  // 'ai_ftc_1001_weather.yaml',
+  // 'sit_fat_weather_2.yaml',
+  // 'rangeTypeTester.yaml',
+  '260625_timeRange.yaml'
 ];

@@ -21,6 +21,7 @@ function main() {
       profile: resolved.profile ?? '',
       sheetName: runtimeEnv.GOOGLE_SHEET_NAME ?? '',
       baseUrl: runtimeEnv.CONTROL_BASE_URL ?? '',
+      requestMode: runtimeEnv.REQUEST_MODE,
       profileConfigPath: getProfileConfigPath(),
       passthroughArgs: parsed.passthroughArgs,
     }, null, 2));
@@ -46,6 +47,7 @@ function parseArgs(args) {
     dryRun: false,
     primaryArg: undefined,
     profileArg: undefined,
+    requestMode: undefined,
     passthroughArgs: [],
   };
 
@@ -76,6 +78,21 @@ function parseArgs(args) {
       }
       setProfileArg(parsed, profileName);
       index += 1;
+      continue;
+    }
+
+    if (arg === '--mode') {
+      const mode = args[index + 1];
+      if (!mode) {
+        printUsageAndExit('Missing value after --mode.');
+      }
+      parsed.requestMode = normalizeRequestMode(mode);
+      index += 1;
+      continue;
+    }
+
+    if (arg.startsWith('--mode=')) {
+      parsed.requestMode = normalizeRequestMode(arg.slice('--mode='.length));
       continue;
     }
 
@@ -129,6 +146,7 @@ function resolveExecution(parsed) {
 
   const reportTo = selectorFromArg?.reportTo ?? selectorFromLifecycle?.reportTo ?? process.env.REPORT_TO;
   const judgeMode = selectorFromArg?.judgeMode ?? selectorFromLifecycle?.judgeMode ?? process.env.JUDGE_MODE;
+  const requestMode = parsed.requestMode ?? normalizeRequestMode(process.env.REQUEST_MODE ?? 'sync');
   const selectorProfile = selectorFromArg?.profile ?? selectorFromLifecycle?.profile;
   const profile = parsed.profileArg ?? selectorProfile ?? (!selectorFromArg ? parsed.primaryArg : undefined);
 
@@ -139,6 +157,7 @@ function resolveExecution(parsed) {
   return {
     reportTo,
     judgeMode,
+    requestMode,
     profile,
     selector: [
       reportTo,
@@ -153,6 +172,7 @@ function buildRuntimeEnv(selection) {
     ...process.env,
     REPORT_TO: selection.reportTo,
     JUDGE_MODE: selection.judgeMode,
+    REQUEST_MODE: selection.requestMode,
   };
 
   if (!selection.profile) {
@@ -294,6 +314,16 @@ function normalizeProfile(profile) {
   return trimmed;
 }
 
+function normalizeRequestMode(mode) {
+  const normalized = mode?.trim().toLowerCase();
+
+  if (normalized !== 'sync' && normalized !== 'stream') {
+    printUsageAndExit(`Invalid request mode: ${mode}. Use sync or stream.`);
+  }
+
+  return normalized;
+}
+
 function parseSelector(selector, source) {
   const trimmed = selector?.trim().toLowerCase();
 
@@ -370,6 +400,7 @@ function normalizeSheetJudgeMode(judgeAlias, source, selector) {
     internal: 'sheet',
     sheet: 'sheet',
     api: 'api',
+    gpt: 'gpt',
     local: 'local',
   };
 

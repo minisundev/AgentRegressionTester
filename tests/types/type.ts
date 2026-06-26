@@ -90,7 +90,7 @@ export interface SheetRow {
 }
 
 export type ReportTarget = 'terminal' | 'sheet';
-export type JudgeMode = 'none' | 'sheet' | 'api' | 'local';
+export type JudgeMode = 'none' | 'sheet' | 'api' | 'gpt' | 'local';
 export type RequestMode = 'sync' | 'stream';
 
 // Raw SSE event emitted by the agentChatStream endpoint.

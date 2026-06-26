@@ -47,6 +47,11 @@ X_API_KEY=""
 AI_API_KEY=""
 AI_MODEL="gemini-3-flash-preview"
 
+# GPT judge (Redis config:llm:<id>)
+GPT_JUDGE_LLM_ID=6
+GPT_JUDGE_MAX_TOKEN=12000
+REDIS_URL="redis://127.0.0.1:6379"
+
 GOOGLE_SERVICE_ACCOUNT_EMAIL=""
 GOOGLE_SHEET_ID=""
 # Optional fallback for legacy commands
