@@ -391,4 +391,16 @@ cases:
     mainIntent: Weather
     agentType: DailyInfoAgent
 
+  - id: 62
+    name: "EN - tell me the weather for 16 days (beyond limit)"
+    message: "tell me the weather for 16 days"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
 
+  - id: 63
+    name: "EN - tell me the weather from 2 days ago to 2 days later (past clamp)`"
+    message: "tell me the weather from 2 days ago to 2 days later"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
