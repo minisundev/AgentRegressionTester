@@ -404,3 +404,336 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+# =========================================================================
+  # BLOCK A — CADENCE × timeOfDay, 같은 날 (#78 회귀 핵심)
+  # 기대: cadence가 timeOfDay를 죽이면 안 됨. 윈도우는 now+5가 아니라
+  #       해당 timeOfDay 버킷이어야 함. (parser가 timeOfDay를 살려서 emit)
+  # A블록이 깨지고 I블록(트윈)이 통과하면 → 결함은 cadence override 규칙 자체.
+  # =========================================================================
+  - id: 64
+    name: "VN - 'từng giờ' + 'sáng nay' (morn) [#78 정확 재현] timeOfDay 생존해야"
+    message: "thời tiết sáng nay từng giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 65
+    name: "VN - 'theo giờ' + 'trưa nay' (noon) 버킷 앵커 확인"
+    message: "thời tiết trưa nay theo giờ ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 66
+    name: "VN - 'mỗi tiếng' + 'chiều nay' (afternoon)"
+    message: "thời tiết chiều nay mỗi tiếng ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 67
+    name: "VN - 'từng giờ' + 'tối nay' (eve)"
+    message: "thời tiết tối nay từng giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 68
+    name: "VN - 'theo giờ' + 'đêm nay' (night)"
+    message: "thời tiết đêm nay theo giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 69
+    name: "VN - 'theo từng giờ' + 'rạng sáng' (dawn)"
+    message: "thời tiết rạng sáng theo từng giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 70
+    name: "EN - 'hourly' + 'this morning' (morn)"
+    message: "tell me this morning's weather hourly in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 71
+    name: "EN - 'hour by hour' + 'this afternoon'"
+    message: "tell me this afternoon's weather hour by hour in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 72
+    name: "EN - 'hourly' + 'tonight' (night)"
+    message: "tell me tonight's weather hourly in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 73
+    name: "EN - 'every hour' + 'this evening' (eve)"
+    message: "tell me this evening's weather every hour in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 74
+    name: "EN - 'hourly' + 'at dawn' (dawn)"
+    message: "tell me the weather at dawn hourly in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 75
+    name: "KR - '아침'(morn) + '시간별'(cadence)"
+    message: "하노이 아침 날씨 시간별로 알려줘"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 76
+    name: "KR - '저녁'(eve) + '매시간'(cadence)"
+    message: "하노이 저녁 날씨 매시간 알려줘"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK B — CADENCE × timeOfDay × 내일(offset)
+  # 기대: relativeDays(내일) + timeOfDay(버킷) + cadence(해상도) 세 축 모두 생존.
+  # =========================================================================
+  - id: 77
+    name: "VN - 'từng giờ' + 'sáng mai' (tomorrow morning)"
+    message: "thời tiết sáng mai từng giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 78
+    name: "VN - 'theo giờ' + 'chiều mai' (tomorrow afternoon)"
+    message: "thời tiết chiều mai theo giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 79
+    name: "VN - 'mỗi giờ' + 'tối mai' (tomorrow evening)"
+    message: "thời tiết tối mai mỗi giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 80
+    name: "EN - 'hourly' + 'tomorrow morning'"
+    message: "tell me tomorrow morning's weather hourly in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 81
+    name: "EN - 'hour by hour' + 'tomorrow night'"
+    message: "tell me tomorrow night's weather hour by hour in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 82
+    name: "KR - '내일 아침'(tomorrow morn) + '시간별'(cadence)"
+    message: "내일 아침 하노이 날씨 시간별로 알려줘"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK C — CADENCE × PAST 버킷 (결정론적 과거: dawn/새벽)
+  # 주간에 테스트 돌리면 rạng sáng/새벽은 항상 과거 → requestedUnavailablePast
+  # 커버리지 노트 + 남은 구간만. (cadence가 timeOfDay 살려야 PAST 판정 가능)
+  # =========================================================================
+  - id: 83
+    name: "VN - 'theo giờ' + 'rạng sáng hôm nay' (오늘 새벽, 주간 실행시 PAST)"
+    message: "thời tiết rạng sáng hôm nay theo giờ tại Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 84
+    name: "EN - 'hourly' + 'at dawn today' (PAST 커버리지 노트 기대)"
+    message: "tell me today's weather at dawn hourly in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 85
+    name: "KR - '오늘 새벽'(dawn today) + '시간별' (PAST edge)"
+    message: "오늘 새벽 하노이 날씨 시간별로 알려줘"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK D — CADENCE 표면형 커버리지 (단독)
+  # 기대: 모든 cadence 변형이 default 윈도우 트리거. delta=5, relativeHours=0,
+  #       timeOfDay=null. (#5-4 정상 경로 — 회귀 방지용 앵커)
+  # =========================================================================
+  - id: 86
+    name: "VN - cadence 'hằng giờ' 단독"
+    message: "thời tiết Hà Nội hằng giờ"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 87
+    name: "VN - cadence 'theo khung giờ' 단독"
+    message: "thời tiết theo khung giờ ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 88
+    name: "VN - cadence 'mỗi một tiếng' 단독"
+    message: "thời tiết mỗi một tiếng ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 89
+    name: "EN - cadence 'by the hour' 단독"
+    message: "tell me the weather in Hanoi by the hour"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 90
+    name: "EN - cadence 'an hourly breakdown' 단독"
+    message: "give me an hourly breakdown of Hanoi weather"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 91
+    name: "KR - cadence '한 시간 단위로' 단독"
+    message: "하노이 날씨 한 시간 단위로 알려줘"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK E — CADENCE + 명시적 count/span (우선순위: span > cadence default)
+  # 기대: cadence 있어도 명시 span/count가 이기면 delta=5가 아니라 그 값.
+  # =========================================================================
+  - id: 92
+    name: "VN - 'mỗi giờ' + 'trong 8 tiếng tới' (span=8, cadence default 무시)"
+    message: "thời tiết mỗi giờ trong 8 tiếng tới ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 93
+    name: "EN - 'hourly for the next 8 hours' (delta=8, not 5)"
+    message: "tell me the hourly weather for the next 8 hours in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 94
+    name: "VN - 'theo giờ' + FROM-TO 'từ 9h đến 15h' (from-to span 우선)"
+    message: "thời tiết theo giờ từ 9h đến 15h ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 95
+    name: "EN - 'hour by hour from 9am to 3pm' (from-to 우선)"
+    message: "tell me the weather hour by hour from 9am to 3pm in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK F — CADENCE + specificHour / before-after (앵커 vs 해상도 충돌)
+  # 기대: 시계 앵커는 살고 cadence는 granularity만. before/after default(3) vs
+  #       cadence default(5) 중 어느 쪽이 이기는지 계약 확정 필요.
+  # =========================================================================
+  - id: 96
+    name: "VN - 'theo giờ' + 'sau 15h' (after 3pm, 앵커 specificHour 생존?)"
+    message: "thời tiết theo giờ sau 15h ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 97
+    name: "EN - 'hourly after 2pm' (after default vs cadence default 충돌)"
+    message: "tell me the hourly weather after 2pm in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 98
+    name: "VN - 'theo giờ' + 'trước 20h' (before 8pm, delta<0 방향 확인)"
+    message: "thời tiết theo giờ trước 20h ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK G — CADENCE + 'today' 마커 / relativeDays
+  # 기대: '오늘/hôm nay/today' 명시 + cadence 공존시 relativeDays=0 생존 여부.
+  # =========================================================================
+  - id: 99
+    name: "VN - 'hôm nay' + 'theo giờ' (today marker + cadence)"
+    message: "thời tiết hôm nay theo giờ ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 100
+    name: "EN - 'hourly today' (today marker + cadence)"
+    message: "tell me today's hourly weather in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK H — CADENCE + weatherMetric + timeOfDay (metric도 함께 생존?)
+  # 기대: metric 추출이 timeOfDay-under-cadence 경로에서 죽지 않는지 교차 확인.
+  # =========================================================================
+  - id: 101
+    name: "VN - precipitation + 'sáng nay'(morn) + 'theo giờ' (metric+버킷+cadence)"
+    message: "khả năng mưa sáng nay theo giờ ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 102
+    name: "EN - airQuality + 'this evening'(eve) + 'hourly'"
+    message: "tell me the hourly air quality this evening in Hanoi"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 103
+    name: "VN - humidity + 'chiều nay'(afternoon) + 'từng giờ'"
+    message: "độ ẩm chiều nay từng giờ ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+ 
+  # =========================================================================
+  # BLOCK I — NON-cadence timeOfDay 대조군 (A블록 트윈)
+  # 목적: cadence만 뺀 동일 발화. 이 블록은 통과하는데 A블록이 깨지면
+  #       결함이 timeOfDay 파싱이 아니라 cadence override라는 걸 diff로 확정.
+  # (자동화 리포트에서 A vs I 페어로 비교)
+  # =========================================================================
+  - id: 104
+    name: "VN - 'sáng nay' 단독 (morn) [64 트윈, 통과 기대]"
+    message: "thời tiết sáng nay ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 105
+    name: "VN - 'trưa nay' 단독 (noon) [65 트윈]"
+    message: "thời tiết trưa nay ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 106
+    name: "VN - 'chiều nay' 단독 (afternoon) [66 트윈]"
+    message: "thời tiết chiều nay ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 107
+    name: "VN - 'đêm nay' 단독 (night) [68 트윈]"
+    message: "thời tiết đêm nay ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 108
+    name: "VN - 'rạng sáng' 단독 (dawn) [69 트윈]"
+    message: "thời tiết rạng sáng ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 109
+    name: "VN - 'sáng mai' 단독 (tomorrow morn) [77 트윈]"
+    message: "thời tiết sáng mai ở Hà Nội"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+  - id: 110
+    name: "KR - '아침' 단독 (morn) [75 트윈]"
+    message: "하노이 아침 날씨 알려줘"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
