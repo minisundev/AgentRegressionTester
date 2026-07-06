@@ -16,6 +16,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: 7
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: am
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificHour: 6
       meridiem: "am"
@@ -30,6 +53,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: null
+      delta: 4
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 7
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       location: "Da Nang"
       specificHour: 7
@@ -42,6 +88,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: 4
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificHour: 6
       meridiem: "pm"
@@ -53,6 +122,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificWeekday: "THU"
       delta: 3           # Thu,Fri,Sat  (gap=2 이면 FAIL)
@@ -65,6 +157,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificWeekday: "FRI"
       delta: 3           # Fri,Sat,Sun
@@ -75,6 +190,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 4
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-06-24'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificDate: "2026-06-24"
       delta: 4           # 24,25,26,27 (duration 으로 오분류 시 FAIL)
@@ -86,6 +224,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificWeekday: "SAT"
       delta: 3           # Sat,Sun,Mon (forward wrap)
@@ -96,6 +257,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificWeekday: "MON"
       delta: 3           # Mon,Tue,Wed
@@ -110,6 +294,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: hour
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       delta: 3
       specificHour: null
@@ -121,6 +328,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-06-24'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificDate: "2026-06-24"
       delta: 3               # 24,25,26 (fromTo 아님 → +1 없음)
@@ -131,6 +361,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: day
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       location: "Hanoi"
       delta: 3
@@ -142,6 +395,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 14
+      deltaUnit: day
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       delta: 14              # N*7
       relativeWeeks: null
@@ -156,6 +432,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 7
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificHour: 7
       meridiem: "pm"
@@ -168,6 +467,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: before
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 7
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificHour: 7
       meridiem: "pm"
@@ -179,6 +501,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: before
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-12-25'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificDate: "2026-12-25"
       delta: -3
@@ -189,6 +534,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificWeekday: "THU"
       delta: 3
@@ -202,6 +570,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: hour
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       relativeHours: 3
       delta: null            # span 아님 — delta 잡으면 FAIL
@@ -212,6 +603,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 2
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       relativeHours: 2
       delta: null
@@ -222,6 +636,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 3
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificHour: 3
       meridiem: "pm"
@@ -233,6 +670,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 4
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: am
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
     expect:
       specificHour: 6
       meridiem: "am"

@@ -7,54 +7,261 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 2
     name: "EN - +3h single"
     message: "weather in Hanoi 3 hours later"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 3
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 3
     name: "EN - 2 hours later"
     message: "Tell me the weather in Hanoi 2 hours later from now"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 2
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 4
     name: "EN - from 3h later for 4h (window)"
     message: "Tell me the hourly weather in Hanoi from 3 hours later for 4 hours"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 4
+      deltaUnit: hour
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: 3
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 5
     name: "EN - next 3 hours"
     message: "tell me the weather for the next 3 hours"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 3
+      deltaUnit: hour
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 6
     name: "EN - 2 hours ago (PAST)"
     message: "tell me the weather 2 hours ago"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: PAST_TIME_REQUESTED
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 7
     name: "EN - from 2h ago for 5h (past+overlap clamp)"
     message: "weather from 2 hours ago for the next 5 hours"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 5
+      deltaUnit: hour
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: PAST_TIME_REQUESTED
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 8
     name: "EN - 100h from now (beyond 96h limit)"
     message: "hourly weather 100 hours from now"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: 100
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 9
     name: "EN - from 94h for 5h (near-limit end clamp)"
     message: "weather from 94 hours later for 5 hours"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 5
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 94
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- specificHour + meridiem ---
   - id: 10
@@ -63,48 +270,232 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 2
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 11
     name: "EN - after 2 oclock"
     message: "Tell me the weather after 2 o'clock"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 2
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 12
     name: "EN - at 2am (rollover next day)"
     message: "tell me the weather at 2am"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 2
+      meridiem: am
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 13
     name: "EN - at 8 oclock (no meridiem)"
     message: "tell me the weather at 8 o'clock"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 8
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 14
     name: "EN - at 11 oclock (no meridiem)"
     message: "tell me the weather at 11 o'clock"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 11
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 15
     name: "EN - before 11pm (delta<0)"
     message: "hanoi weather before 11pm"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: before
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 11
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 16
     name: "EN - before 10pm"
     message: "tell me the weather before 10pm"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: before
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 10
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 17
     name: "EN - after 9pm"
     message: "tell me the weather after 9pm"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 9
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- dawn / morning explicit-day PAST edge (핵심) ---
   - id: 18
@@ -113,42 +504,203 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 5
+      meridiem: am
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 19
     name: "KR - 오늘 아침 5시 (explicit today -> PAST edge)"
     message: "오늘 아침 5시 날씨 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 5
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 20
     name: "EN - at 5am (no day -> rollover, never PAST)"
     message: "tell me the weather at 5am"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 5
+      meridiem: am
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 21
     name: "KR - 아침 5시 (no day -> rollover)"
     message: "아침 5시 날씨 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 5
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 22
     name: "EN - tomorrow at 9am (explicit future day + hour)"
     message: "tell me tomorrow's weather at 9am"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 9
+      meridiem: am
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 23
     name: "EN - yesterday at 9am (explicit past day + hour -> PAST)"
     message: "tell me yesterday's weather at 9am"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 9
+      meridiem: am
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: PAST_TIME_REQUESTED
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 24
     name: "KR - 어제 아침 9시 (explicit past day -> PAST)"
     message: "어제 아침 9시 날씨 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 9
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: PAST_TIME_REQUESTED
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- timeOfDay relative to now (runtime clock) ---
   - id: 25
@@ -157,42 +709,203 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 26
     name: "EN - this evening"
     message: "tell me this evening's weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 27
     name: "EN - this morning"
     message: "tell me this morning's weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 28
     name: "EN - at dawn"
     message: "tell me the weather at dawn"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 29
     name: "EN - tell me the weather at afternoon"
     message: "tell me the weather at afternoon"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 30
     name: "KR - 지칭없이 아침일때 오늘처리인지 내일로 가는지 확인"
     message: "아침 날씨 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 31
     name: "EN - tomorrow afternoon 일자 처리 스무스한지 확인"
     message: "tell me tomorrow afternoon's weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
 
   # --- timeOfDay + tomorrow ---
@@ -202,30 +915,145 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 33
     name: "EN - tomorrow dawn"
     message: "tell me tomorrow dawn's weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 34
     name: "KR+EN - tomorrow 낮"
     message: "tell me tomorrow 낮's weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 35
     name: "EN - tomorrow evening"
     message: "tell me tomorrow evening's weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 36
     name: "EN - tomorrow night"
     message: "tell me tomorrow night's weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- DAILY scope: relativeDays  (※ subIntent enum 확인 필요) ---
   - id: 37
@@ -234,30 +1062,145 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 38
     name: "EN - day after tomorrow"
     message: "tell me the weather the day after tomorrow"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 2
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 39
     name: "EN - yesterday (daily, PAST)"
     message: "tell me yesterday's weather"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: PAST_TIME_REQUESTED
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 40
     name: "EN - in 3 days"
     message: "tell me the weather in 3 days"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 3
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 41
     name: "EN - 20 days from now (beyond 14d limit)"
     message: "tell me the weather 20 days from now"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 20
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- DAILY: specificDate ---
   - id: 42
@@ -266,18 +1209,87 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-06-28'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 43
     name: "EN - on a far date (beyond limit)"
     message: "tell me the weather on July 20th"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-07-20'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 44
     name: "EN - on a past date (PAST)"
     message: "tell me the weather on June 20th"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-06-20'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- DAILY: specificWeekday / weeks ---
   - id: 45
@@ -286,36 +1298,174 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 46
     name: "EN - this Saturday"
     message: "tell me the weather this Saturday"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 47
     name: "EN - next Monday"
     message: "tell me the weather next Monday"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 48
     name: "EN - next week"
     message: "tell me the weather next week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 49
     name: "EN - this weekend"
     message: "tell me the weather this weekend"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 50
     name: "EN - weekdays next week"
     message: "tell me the weather on weekdays next week"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: weekdays
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- multilingual (VN) ---
   - id: 51
@@ -324,12 +1474,58 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 52
     name: "VN - tomorrow (daily)"
     message: "thời tiết Hà Nội ngày mai"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- hourly limit boundary (96h), ±1 촘촘 ---
   - id: 53
@@ -338,24 +1534,116 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: 94
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 54
     name: "EN - 95h (< limit)"
     message: "tell me the hourly weather 95 hours from now"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: 95
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 55
     name: "EN - 96h (== limit, 통과해야 함)"
     message: "tell me the hourly weather 96 hours from now"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: 96
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 56
     name: "EN - 97h (> limit, FUTURE_TIME_OUT_OF_RANGE)"
     message: "tell me the hourly weather 97 hours from now"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: 97
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # --- daily limit boundary (14d), ±1 촘촘 ---
   - id: 57
@@ -364,18 +1652,87 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 13
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 58
     name: "EN - 14 days (== limit, 통과해야 함)"
     message: "tell me the weather in 14 days"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 14
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 59
     name: "EN - 15 days (> limit, FUTURE_TIME_OUT_OF_RANGE)"
     message: "tell me the weather in 15 days"
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 15
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 60
     name: "EN - from 10am to 10pm (past clamp)"
@@ -383,6 +1740,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: 13
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 10
+      meridiem: am
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   - id: 61
     name: "EN - from Monday to Saturday (past clamp)"
@@ -390,6 +1770,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: 6
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 62
     name: "EN - tell me the weather for 16 days (beyond limit)"
@@ -397,6 +1800,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: 16
+      deltaUnit: day
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 63
     name: "EN - tell me the weather from 2 days ago to 2 days later (past clamp)`"
@@ -404,6 +1830,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: PAST_TIME_REQUESTED
+      requestedPresentation: null
+    entityMatchMode: exact
 # =========================================================================
   # BLOCK A — CADENCE × timeOfDay, 같은 날 (#78 회귀 핵심)
   # 기대: cadence가 timeOfDay를 죽이면 안 됨. 윈도우는 now+5가 아니라
@@ -416,78 +1865,377 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 65
     name: "VN - 'theo giờ' + 'trưa nay' (noon) 버킷 앵커 확인"
     message: "thời tiết trưa nay theo giờ ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: noon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 66
     name: "VN - 'mỗi tiếng' + 'chiều nay' (afternoon)"
     message: "thời tiết chiều nay mỗi tiếng ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 67
     name: "VN - 'từng giờ' + 'tối nay' (eve)"
     message: "thời tiết tối nay từng giờ tại Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 68
     name: "VN - 'theo giờ' + 'đêm nay' (night)"
     message: "thời tiết đêm nay theo giờ tại Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 69
     name: "VN - 'theo từng giờ' + 'rạng sáng' (dawn)"
     message: "thời tiết rạng sáng theo từng giờ tại Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 70
     name: "EN - 'hourly' + 'this morning' (morn)"
     message: "tell me this morning's weather hourly in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 71
     name: "EN - 'hour by hour' + 'this afternoon'"
     message: "tell me this afternoon's weather hour by hour in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 72
     name: "EN - 'hourly' + 'tonight' (night)"
     message: "tell me tonight's weather hourly in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 73
     name: "EN - 'every hour' + 'this evening' (eve)"
     message: "tell me this evening's weather every hour in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 74
     name: "EN - 'hourly' + 'at dawn' (dawn)"
     message: "tell me the weather at dawn hourly in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 75
     name: "KR - '아침'(morn) + '시간별'(cadence)"
     message: "하노이 아침 날씨 시간별로 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 76
     name: "KR - '저녁'(eve) + '매시간'(cadence)"
     message: "하노이 저녁 날씨 매시간 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK B — CADENCE × timeOfDay × 내일(offset)
@@ -499,36 +2247,174 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 78
     name: "VN - 'theo giờ' + 'chiều mai' (tomorrow afternoon)"
     message: "thời tiết chiều mai theo giờ tại Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 79
     name: "VN - 'mỗi giờ' + 'tối mai' (tomorrow evening)"
     message: "thời tiết tối mai mỗi giờ tại Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 80
     name: "EN - 'hourly' + 'tomorrow morning'"
     message: "tell me tomorrow morning's weather hourly in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 81
     name: "EN - 'hour by hour' + 'tomorrow night'"
     message: "tell me tomorrow night's weather hour by hour in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 82
     name: "KR - '내일 아침'(tomorrow morn) + '시간별'(cadence)"
     message: "내일 아침 하노이 날씨 시간별로 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK C — CADENCE × PAST 버킷 (결정론적 과거: dawn/새벽)
@@ -541,18 +2427,87 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 84
     name: "EN - 'hourly' + 'at dawn today' (PAST 커버리지 노트 기대)"
     message: "tell me today's weather at dawn hourly in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 85
     name: "KR - '오늘 새벽'(dawn today) + '시간별' (PAST edge)"
     message: "오늘 새벽 하노이 날씨 시간별로 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK D — CADENCE 표면형 커버리지 (단독)
@@ -565,36 +2520,174 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 87
     name: "VN - cadence 'theo khung giờ' 단독"
     message: "thời tiết theo khung giờ ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 88
     name: "VN - cadence 'mỗi một tiếng' 단독"
     message: "thời tiết mỗi một tiếng ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 89
     name: "EN - cadence 'by the hour' 단독"
     message: "tell me the weather in Hanoi by the hour"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 90
     name: "EN - cadence 'an hourly breakdown' 단독"
     message: "give me an hourly breakdown of Hanoi weather"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 91
     name: "KR - cadence '한 시간 단위로' 단독"
     message: "하노이 날씨 한 시간 단위로 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK E — CADENCE + 명시적 count/span (우선순위: span > cadence default)
@@ -606,24 +2699,116 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 8
+      deltaUnit: hour
+      rangeRelation: after
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 93
     name: "EN - 'hourly for the next 8 hours' (delta=8, not 5)"
     message: "tell me the hourly weather for the next 8 hours in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 8
+      deltaUnit: hour
+      rangeRelation: after
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 94
     name: "VN - 'theo giờ' + FROM-TO 'từ 9h đến 15h' (from-to span 우선)"
     message: "thời tiết theo giờ từ 9h đến 15h ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 7
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 9
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 95
     name: "EN - 'hour by hour from 9am to 3pm' (from-to 우선)"
     message: "tell me the weather hour by hour from 9am to 3pm in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 7
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 9
+      meridiem: am
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK F — CADENCE + specificHour / before-after (앵커 vs 해상도 충돌)
@@ -636,18 +2821,87 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: after
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 3
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 97
     name: "EN - 'hourly after 2pm' (after default vs cadence default 충돌)"
     message: "tell me the hourly weather after 2pm in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: after
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 2
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 98
     name: "VN - 'theo giờ' + 'trước 20h' (before 8pm, delta<0 방향 확인)"
     message: "thời tiết theo giờ trước 20h ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: before
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 8
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK G — CADENCE + 'today' 마커 / relativeDays
@@ -659,12 +2913,58 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 100
     name: "EN - 'hourly today' (today marker + cadence)"
     message: "tell me today's hourly weather in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK H — CADENCE + weatherMetric + timeOfDay (metric도 함께 생존?)
@@ -676,18 +2976,87 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 102
     name: "EN - airQuality + 'this evening'(eve) + 'hourly'"
     message: "tell me the hourly air quality this evening in Hanoi"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 103
     name: "VN - humidity + 'chiều nay'(afternoon) + 'từng giờ'"
     message: "độ ẩm chiều nay từng giờ ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: hourly
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
  
   # =========================================================================
   # BLOCK I — NON-cadence timeOfDay 대조군 (A블록 트윈)
@@ -701,39 +3070,200 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 105
     name: "VN - 'trưa nay' 단독 (noon) [65 트윈]"
     message: "thời tiết trưa nay ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: noon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 106
     name: "VN - 'chiều nay' 단독 (afternoon) [66 트윈]"
     message: "thời tiết chiều nay ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 107
     name: "VN - 'đêm nay' 단독 (night) [68 트윈]"
     message: "thời tiết đêm nay ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 108
     name: "VN - 'rạng sáng' 단독 (dawn) [69 트윈]"
     message: "thời tiết rạng sáng ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 109
     name: "VN - 'sáng mai' 단독 (tomorrow morn) [77 트윈]"
     message: "thời tiết sáng mai ở Hà Nội"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 110
     name: "KR - '아침' 단독 (morn) [75 트윈]"
     message: "하노이 아침 날씨 알려줘"
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact

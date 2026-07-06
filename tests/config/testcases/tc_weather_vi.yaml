@@ -7,6 +7,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 2
     name: "VI - TC Weather #002"
@@ -19,6 +42,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Lat
+      localizedLocation: Đà Lạt
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 3
     name: "VI - TC Weather #003"
@@ -31,6 +77,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Nha Trang
+      localizedLocation: Nha Trang
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 4
     name: "VI - TC Weather #004"
@@ -39,6 +108,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 5
     name: "VI - TC Weather #005"
@@ -47,6 +139,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-04-22'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 6
     name: "VI - TC Weather #006"
@@ -55,6 +170,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 7
     name: "VI - TC Weather #007"
@@ -63,6 +201,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 6
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 8
     name: "VI - TC Weather #008"
@@ -71,6 +232,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 3
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 9
     name: "VI - TC Weather #009"
@@ -79,6 +263,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Tokyo
+      localizedLocation: Tokyo
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 12
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 10
     name: "VI - TC Weather #010"
@@ -87,6 +294,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 11
     name: "VI - TC Weather #011"
@@ -95,6 +325,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: noon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 12
     name: "VI - TC Weather #012"
@@ -103,6 +356,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 0
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 13
     name: "VI - TC Weather #013"
@@ -111,6 +387,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Sydney
+      localizedLocation: Sydney
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 14
     name: "VI - TC Weather #014"
@@ -119,6 +418,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Paris
+      localizedLocation: Paris
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 15
     name: "VI - TC Weather #015"
@@ -127,6 +449,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 16
     name: "VI - TC Weather #016"
@@ -135,6 +480,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 17
     name: "VI - TC Weather #017"
@@ -147,6 +515,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hoi An
+      localizedLocation: Hội An
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 18
     name: "VI - TC Weather #018"
@@ -155,6 +546,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 19
     name: "VI - TC Weather #019"
@@ -163,6 +577,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 20
     name: "VI - TC Weather #020"
@@ -171,6 +608,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 21
     name: "VI - TC Weather #021"
@@ -179,6 +639,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 22
     name: "VI - TC Weather #022"
@@ -187,6 +670,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 23
     name: "VI - TC Weather #023"
@@ -195,6 +701,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 24
     name: "VI - TC Weather #024"
@@ -203,6 +732,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 25
     name: "VI - TC Weather #025"
@@ -211,6 +763,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 2
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 26
     name: "VI - TC Weather #026"
@@ -219,6 +794,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: 14
+      deltaUnit: day
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 27
     name: "VI - TC Weather #027"
@@ -227,6 +825,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-04-24'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 28
     name: "VI - TC Weather #028"
@@ -235,6 +856,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ha Long
+      localizedLocation: Hạ Long
+      country: null
+      weatherMetric: humidity
+      delta: 5
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 29
     name: "VI - TC Weather #029"
@@ -243,6 +887,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 10
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 30
     name: "VI - TC Weather #030"
@@ -251,6 +918,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: noon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 31
     name: "VI - TC Weather #031"
@@ -259,6 +949,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 32
     name: "VI - TC Weather #032"
@@ -267,6 +980,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 2
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 33
     name: "VI - TC Weather #033"
@@ -275,6 +1011,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 34
     name: "VI - TC Weather #034"
@@ -283,6 +1042,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 35
     name: "VI - TC Weather #035"
@@ -291,6 +1073,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 36
     name: "VI - TC Weather #036"
@@ -299,6 +1104,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 37
     name: "VI - TC Weather #037"
@@ -307,6 +1135,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 38
     name: "VI - TC Weather #038"
@@ -315,6 +1166,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Phu Quoc
+      localizedLocation: Phú Quốc
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 39
     name: "VI - TC Weather #039"
@@ -323,6 +1197,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 40
     name: "VI - TC Weather #040"
@@ -331,6 +1228,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 2
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 41
     name: "VI - TC Weather #041"
@@ -339,6 +1259,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 42
     name: "VI - TC Weather #042"
@@ -347,6 +1290,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 43
     name: "VI - TC Weather #043"
@@ -355,6 +1321,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: 6
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: am
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 44
     name: "VI - TC Weather #044"
@@ -363,6 +1352,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: null
+      delta: 4
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 4
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 45
     name: "VI - TC Weather #045"
@@ -371,6 +1383,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 46
     name: "VI - TC Weather #046"
@@ -379,6 +1414,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: noon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 47
     name: "VI - TC Weather #047"
@@ -387,6 +1445,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 10
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 48
     name: "VI - TC Weather #048"
@@ -395,6 +1476,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Lat
+      localizedLocation: Đà Lạt
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 6
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 49
     name: "VI - TC Weather #049"
@@ -403,6 +1507,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 2
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 50
     name: "VI - TC Weather #050"
@@ -411,6 +1538,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 51
     name: "VI - TC Weather #051"
@@ -419,6 +1569,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 52
     name: "VI - TC Weather #052"
@@ -427,6 +1600,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Lat
+      localizedLocation: Đà Lạt
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 53
     name: "VI - TC Weather #053"
@@ -435,6 +1631,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: noon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 54
     name: "VI - TC Weather #054"
@@ -443,6 +1662,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Sapa
+      localizedLocation: Sapa
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: dawn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 55
     name: "VI - TC Weather #055"
@@ -451,6 +1693,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: New York
+      localizedLocation: New York
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SUN
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 56
     name: "VI - TC Weather #056"
@@ -459,6 +1724,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hai Phong
+      localizedLocation: Hải Phòng
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 57
     name: "VI - TC Weather #057"
@@ -467,6 +1755,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 58
     name: "VI - TC Weather #058"
@@ -475,6 +1786,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 59
     name: "VI - TC Weather #059"
@@ -483,6 +1817,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 60
     name: "VI - TC Weather #060"
@@ -491,6 +1848,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 61
     name: "VI - TC Weather #061"
@@ -499,6 +1879,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 2
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 62
     name: "VI - TC Weather #062"
@@ -507,6 +1910,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 63
     name: "VI - TC Weather #063"
@@ -515,6 +1941,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-04-30'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 64
     name: "VI - TC Weather #064"
@@ -523,6 +1972,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Kuala Lumpur
+      localizedLocation: Kuala Lumpur
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 65
     name: "VI - TC Weather #065"
@@ -531,6 +2003,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 66
     name: "VI - TC Weather #066"
@@ -539,6 +2034,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 67
     name: "VI - TC Weather #067"
@@ -547,6 +2065,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 2
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 68
     name: "VI - TC Weather #068"
@@ -555,6 +2096,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Lat
+      localizedLocation: Đà Lạt
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 69
     name: "VI - TC Weather #069"
@@ -563,6 +2127,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: 3
+      deltaUnit: day
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 70
     name: "VI - TC Weather #070"
@@ -571,6 +2158,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 71
     name: "VI - TC Weather #071"
@@ -579,6 +2189,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 72
     name: "VI - TC Weather #072"
@@ -591,6 +2224,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 73
     name: "VI - TC Weather #073"
@@ -599,6 +2255,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 2
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 74
     name: "VI - TC Weather #074"
@@ -607,6 +2286,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: noon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 75
     name: "VI - TC Weather #075"
@@ -615,6 +2317,29 @@ cases:
     subIntent: CheckHourlyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Can Tho
+      localizedLocation: Cần Thơ
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 4
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 76
     name: "VI - TC Weather #076"
@@ -623,6 +2348,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Sa Pa
+      localizedLocation: Sa Pa
+      country: null
+      weatherMetric: precipitation
+      delta: 10
+      deltaUnit: day
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-07-21'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 77
     name: "VI - TC Weather #077"
@@ -631,6 +2379,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Can Tho
+      localizedLocation: Cần Thơ
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 78
     name: "VI - TC Weather #078"
@@ -639,6 +2410,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 79
     name: "VI - TC Weather #079"
@@ -647,6 +2441,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 80
     name: "VI - TC Weather #080"
@@ -668,6 +2485,29 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ninh Binh
+      localizedLocation: Ninh Bình
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 81
     name: "VI - TC Weather #081"
@@ -676,6 +2516,29 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   - id: 82
     name: "VI - TC Weather #082"
@@ -684,3 +2547,26 @@ cases:
     subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Nha Trang
+      localizedLocation: Nha Trang
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact

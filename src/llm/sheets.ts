@@ -142,7 +142,8 @@ export async function appendAnswerCompareToSheet(rows: AnswerCompareRow[]): Prom
       });
     }
 
-    allValues.push(...buildSheetValues(rows, startRow, columns));
+    const dataStartRow = hasHeader ? startRow : startRow + 1;
+    allValues.push(...buildSheetValues(rows, dataStartRow, columns));
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,

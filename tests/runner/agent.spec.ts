@@ -7,7 +7,7 @@ import { loadAllTestCases } from '../utils/testcaseLoader';
 import { sendSlackReport } from '../utils/slack';
 import { ApiError } from '../errors';
 import { env } from '../config/env';
-import { getCaseAccountId } from '../utils/accountId';
+import { getPooledAccountId } from '../utils/accountId';
 import {
   caseKey,
   getFailureRow,
@@ -18,6 +18,12 @@ import {
   markSuccess,
 } from '../utils/checkpoint';
 import { withNetworkRetry } from '../utils/networkRetry';
+import { closeAgentResponsePublisher, publishAgentResponse } from '../utils/agentResponsePublisher';
+import {
+  evaluateEntityGolden,
+  formatEntityGoldenDifferences,
+  type EntityGoldenResult,
+} from '../utils/entityGolden';
 
 const client = createTestClient();
 const reportTo = env.REPORT_TO;
@@ -30,57 +36,124 @@ jest.setTimeout(testTimeoutMs);
 const runId = getRunId();
 loadCheckpoint(runId);
 
+interface ExecutionUnit {
+  groupName: string;
+  cases: TestCase[];
+  isMultiTurn: boolean;
+}
+
+function isMultiTurnCase(tc: TestCase): boolean {
+  return tc.isMultiTurn === true || tc.multiTurn === true;
+}
+
+function multiTurnKey(groupName: string, tc: TestCase): string {
+  const parentId = String(tc.id).replace(/-\d+$/, '');
+  return `${groupName}:${parentId}`;
+}
+
+function buildExecutionUnits(): ExecutionUnit[] {
+  const units: ExecutionUnit[] = [];
+  const multiTurnUnits = new Map<string, ExecutionUnit>();
+
+  for (const group of loadAllTestCases()) {
+    const groupName = String(group.groupName);
+    for (const tc of group.cases) {
+      if (!isMultiTurnCase(tc)) {
+        units.push({ groupName, cases: [tc], isMultiTurn: false });
+        continue;
+      }
+
+      const key = multiTurnKey(groupName, tc);
+      let unit = multiTurnUnits.get(key);
+      if (!unit) {
+        unit = { groupName, cases: [], isMultiTurn: true };
+        multiTurnUnits.set(key, unit);
+        units.push(unit);
+      }
+      unit.cases.push(tc);
+    }
+  }
+
+  return units;
+}
+
 describe('Agent API Regression', () => {
   const successes: ResultRow[] = [];
   const failures: ResultRow[] = [];
 
-  for (const group of loadAllTestCases()) {
-    describe(`${group.groupName} API`, () => {
-      for (const tc of group.cases) {
-        const allModesDone = REQUEST_MODES.every((mode) =>
-          isCompleted(caseKey(String(group.groupName), tc.id, mode)));
-        const test = allModesDone ? it.skip : it;
+  const units = buildExecutionUnits();
+  const laneCount = Math.max(1, Math.min(env.PARALLEL_ACCOUNT_COUNT, units.length || 1));
+  const laneTails = Array.from({ length: laneCount }, () => Promise.resolve());
+  console.log(`[runner] executing with ${laneCount} isolated account lane(s)`);
 
-        test(`Q${tc.id} - [${group.groupName}] ${tc.name}`, async () => {
-          const accountId = getCaseAccountId(group.groupName, tc);
+  for (const [unitIndex, unit] of units.entries()) {
+    const laneIndex = unitIndex % laneCount;
+    const ids = unit.cases.map((tc) => `Q${tc.id}`).join(', ');
+    const allModesDone = unit.cases.every((tc) => REQUEST_MODES.every((mode) =>
+      isCompleted(caseKey(unit.groupName, tc.id, mode))));
+    const test = allModesDone ? it.skip : it.concurrent;
+
+    test(`${ids} - [${unit.groupName}] ${unit.cases[0]?.name ?? ''}`, async () => {
+      // Calls assigned to one account lane form a promise chain. Other lanes
+      // keep running, while this account is never touched by two units at once.
+      const previous = laneTails[laneIndex]!;
+      let releaseLane!: () => void;
+      laneTails[laneIndex] = new Promise<void>((resolve) => { releaseLane = resolve; });
+      await previous;
+
+      const accountId = getPooledAccountId(laneIndex);
+      const failedCases: string[] = [];
+
+      try {
+        for (const [caseIndex, tc] of unit.cases.entries()) {
           let anyError = false;
 
-          for (const mode of REQUEST_MODES) {
-            const key = caseKey(String(group.groupName), tc.id, mode);
-            if (isCompleted(key)) {
-              continue;
-            }
+          for (const [modeIndex, mode] of REQUEST_MODES.entries()) {
+            const key = caseKey(unit.groupName, tc.id, mode);
+            const alreadyCompleted = isCompleted(key);
+            // A resumed multi-turn unit must replay its earlier turns to rebuild
+            // server context, but those checkpointed rows are not written twice.
+            if (alreadyCompleted && !unit.isMultiTurn) continue;
 
-            const { result, errored } = await executeMode(mode, String(group.groupName), tc, accountId);
+            const isLastMultiTurnRequest = unit.isMultiTurn
+              && caseIndex === unit.cases.length - 1
+              && modeIndex === REQUEST_MODES.length - 1;
+            const { result, errored } = await executeMode(
+              mode,
+              unit.groupName,
+              tc,
+              accountId,
+              isLastMultiTurnRequest,
+            );
             (errored ? failures : successes).push(result);
 
-            if (reportTo === 'sheet') {
+            if (!alreadyCompleted && reportTo === 'sheet') {
               const rowNumber = await persistRow(result, key);
               if (rowNumber !== undefined) {
-                if (errored) {
-                  markFailure(key, rowNumber);
-                } else {
-                  markSuccess(key);
-                }
+                if (errored) markFailure(key, rowNumber);
+                else markSuccess(key);
               }
-            } else if (!errored) {
+            } else if (!alreadyCompleted && !errored) {
               markSuccess(key);
             }
 
-            if (errored) {
-              anyError = true;
-            }
+            anyError ||= errored;
           }
 
-          if (anyError) {
-            throw new Error(`Q${tc.id} [${group.groupName}] failed (see ${reportTo === 'sheet' ? 'sheet' : 'summary'})`);
-          }
-        });
+          if (anyError) failedCases.push(`Q${tc.id} [${unit.groupName}]`);
+        }
+
+        if (failedCases.length > 0) {
+          throw new Error(`${failedCases.join(', ')} failed (see ${reportTo === 'sheet' ? 'sheet' : 'summary'})`);
+        }
+      } finally {
+        releaseLane();
       }
-    });
+    }, testTimeoutMs);
   }
 
   afterAll(async () => {
+    closeAgentResponsePublisher();
     if (reportTo === 'terminal') {
       console.log('\nLocal Test Summary');
       if (successes.length > 0) printSummaryTable("SUCCESSES", successes);
@@ -99,6 +172,7 @@ async function executeMode(
   group: string,
   tc: TestCase,
   accountId: string | undefined,
+  endMultiTurnUnit = false,
 ): Promise<{ result: ResultRow; errored: boolean }> {
   const body = buildRequestBody(tc.message, tc.agentType, tc.mainIntent, tc.subIntent, accountId);
   const start = Date.now();
@@ -127,14 +201,17 @@ async function executeMode(
       duration = Date.now() - start;
     }
 
-    const errorMsg = validateResponse(data);
-    const result = buildResultRow(group, tc, data, duration, mode, errorMsg, ttft, tokenCount);
+    const entityGolden = evaluateEntityGolden(tc, data.response.entity);
+    await publishAgentResponse(body.transactionId, accountId, group, tc, mode, data, entityGolden);
+
+    const errorMsg = validateResponse(data, entityGolden);
+    const result = buildResultRow(group, tc, data, duration, mode, errorMsg, entityGolden, ttft, tokenCount);
     return { result, errored: Boolean(errorMsg) };
   } catch (err) {
     const duration = Date.now() - start;
     return { result: handleAxiosError(group, tc, err, body, duration, mode), errored: true };
   } finally {
-    if (!tc.isMultiTurn) {
+    if (!isMultiTurnCase(tc) || endMultiTurnUnit) {
       await endAgentChat(client, body);
     }
   }
@@ -147,6 +224,7 @@ function buildResultRow(
   time: number,
   mode: RequestMode,
   errorMsg: string | undefined,
+  entityGolden: EntityGoldenResult,
   ttft?: number,
   tokenCount?: number,
 ): ResultRow {
@@ -164,12 +242,15 @@ function buildResultRow(
     request: data.requestMessage,
     response: data.response.message,
     reqTranslation: tc.reqTranslation,
-    isMultiTurn: tc.isMultiTurn,
+    isMultiTurn: isMultiTurnCase(tc),
     mainIntent: data.response.mainIntent,
     subIntent: data.response.subIntent,
     time,
     reason: errorMsg,
     entity,
+    expectedEntity: entityGolden.expected === undefined ? '' : JSON.stringify(entityGolden.expected),
+    entityGoldenStatus: entityGolden.status,
+    entityGoldenDiff: formatEntityGoldenDifferences(entityGolden),
     todayCard,
     card,
     mode,
@@ -187,10 +268,13 @@ async function persistRow(result: ResultRow, key: string): Promise<number | unde
   return appendRowToSheet(result);
 }
 
-function validateResponse(data: AgentResponse): string | undefined {
+function validateResponse(data: AgentResponse, entityGolden: EntityGoldenResult): string | undefined {
   const errors: string[] = [];
   if (data.resultCode !== 200) errors.push(`Code:${data.resultCode}`);
   if (data.response.mainIntent !== 'Weather') errors.push(`Intent:${data.response.mainIntent}`);
+  if (entityGolden.status === 'FAIL') {
+    errors.push(`EntityGolden:${formatEntityGoldenDifferences(entityGolden)}`);
+  }
   return errors.length > 0 ? errors.join('; ') : undefined;
 }
 

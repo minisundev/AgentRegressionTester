@@ -9,42 +9,203 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 2
     name: "VI - num - humidity Tuesday this week"
     message: "Độ ẩm thứ 3 tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: TUE
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 3
     name: "VI - num - humidity Wednesday this week"
     message: "Độ ẩm thứ 4 tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: WED
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 4
     name: "VI - num - humidity Thursday this week"
     message: "Độ ẩm thứ 5 tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 5
     name: "VI - num - humidity Friday this week"
     message: "Độ ẩm thứ 6 tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 6
     name: "VI - num - humidity Saturday this week"
     message: "Độ ẩm thứ 7 tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 7
     name: "VI - num - humidity Sunday this week"
     message: "Độ ẩm chủ nhật tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SUN
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # ============================================================
   # Number combination - tuần sau (next week)
@@ -55,42 +216,203 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 9
     name: "VI - num - humidity Tuesday next week"
     message: "Độ ẩm thứ 3 tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: TUE
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 10
     name: "VI - num - humidity Wednesday next week"
     message: "Độ ẩm thứ 4 tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: WED
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 11
     name: "VI - num - humidity Thursday next week"
     message: "Độ ẩm thứ 5 tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 12
     name: "VI - num - humidity Friday next week"
     message: "Độ ẩm thứ 6 tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 13
     name: "VI - num - humidity Saturday next week"
     message: "Độ ẩm thứ 7 tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 14
     name: "VI - num - humidity Sunday next week"
     message: "Độ ẩm chủ nhật tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SUN
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # ============================================================
   # Number combination - tuần tới nữa (week after next)
@@ -101,42 +423,203 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 16
     name: "VI - num - humidity Tuesday week after next"
     message: "Độ ẩm thứ 3 tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: TUE
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 17
     name: "VI - num - humidity Wednesday week after next"
     message: "Độ ẩm thứ 4 tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: WED
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 18
     name: "VI - num - humidity Thursday week after next"
     message: "Độ ẩm thứ 5 tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 19
     name: "VI - num - humidity Friday week after next"
     message: "Độ ẩm thứ 6 tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 20
     name: "VI - num - humidity Saturday week after next"
     message: "Độ ẩm thứ 7 tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 21
     name: "VI - num - humidity Sunday week after next (expect 14-day limit error)"
     message: "Độ ẩm chủ nhật tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SUN
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # ============================================================
   # Text combination - tuần này (this week)
@@ -147,36 +630,174 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 23
     name: "VI - txt - humidity Tuesday this week"
     message: "Độ ẩm thứ Ba tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: TUE
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 24
     name: "VI - txt - humidity Wednesday this week"
     message: "Độ ẩm thứ Tư tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: WED
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 25
     name: "VI - txt - humidity Thursday this week"
     message: "Độ ẩm thứ Năm tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 26
     name: "VI - txt - humidity Friday this week"
     message: "Độ ẩm thứ Sáu tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 27
     name: "VI - txt - humidity Saturday this week"
     message: "Độ ẩm thứ Bảy tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # ============================================================
   # Text combination - tuần sau (next week)
@@ -187,36 +808,174 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 29
     name: "VI - txt - humidity Tuesday next week"
     message: "Độ ẩm thứ Ba tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: TUE
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 30
     name: "VI - txt - humidity Wednesday next week"
     message: "Độ ẩm thứ Tư tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: WED
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 31
     name: "VI - txt - humidity Thursday next week"
     message: "Độ ẩm thứ Năm tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 32
     name: "VI - txt - humidity Friday next week"
     message: "Độ ẩm thứ Sáu tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 33
     name: "VI - txt - humidity Saturday next week"
     message: "Độ ẩm thứ Bảy tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # ============================================================
   # Text combination - tuần tới nữa (week after next)
@@ -227,36 +986,174 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 35
     name: "VI - txt - humidity Tuesday week after next"
     message: "Độ ẩm thứ Ba tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: TUE
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 36
     name: "VI - txt - humidity Wednesday week after next"
     message: "Độ ẩm thứ Tư tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: WED
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 37
     name: "VI - txt - humidity Thursday week after next"
     message: "Độ ẩm thứ Năm tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: THU
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 38
     name: "VI - txt - humidity Friday week after next"
     message: "Độ ẩm thứ Sáu tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 39
     name: "VI - txt - humidity Saturday week after next"
     message: "Độ ẩm thứ Bảy tuần tới nữa"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SAT
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
 
   # ============================================================
   # QM bug repro cases
@@ -267,27 +1164,142 @@ cases:
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 41
     name: "VI - QM - Friday this week returns today evening data"
     message: "Độ ẩm thứ 6 tuần này"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 42
     name: "VI - QM - typo thử→thứ returns today instead of next Monday"
     message: "Độ ẩm thử 2 tuần sau"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 43
     name: "VI - QM - next Monday temp misrecognized as 14-day limit"
     message: "Thứ 2 tuần sau nhiệt độ bao nhiêu"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
   - id: 44
     name: "VI - QM - next Monday morning Saigon misrecognized as Friday"
     message: "Nhiệt độ sáng thứ 2 tuần sau tại Sài gòn"
     subIntent: CheckWeeklyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact

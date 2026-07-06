@@ -15,6 +15,7 @@ export interface DumpedPayload {
 
 export interface StreamPayloadEntry {
   streamId: string;
+  rawPayload: string;
   payload: DumpedPayload;
 }
 
@@ -50,7 +51,11 @@ function parseEntries(response: StreamResponse | null): StreamPayloadEntry[] {
       if (!rawPayload) return [];
 
       try {
-        return [{ streamId, payload: JSON.parse(rawPayload) as DumpedPayload }];
+        return [{
+          streamId,
+          rawPayload,
+          payload: JSON.parse(rawPayload) as DumpedPayload,
+        }];
       } catch {
         return [];
       }

@@ -1,4 +1,7 @@
 import type { Config } from 'jest';
+import 'dotenv/config';
+
+const configuredConcurrency = Number(process.env.PARALLEL_ACCOUNT_COUNT ?? '5');
 
 const config: Config = {
   preset: 'ts-jest',
@@ -14,6 +17,9 @@ const config: Config = {
   moduleDirectories: ['node_modules', 'src'],
 
   testTimeout: 15000,
+  maxConcurrency: Number.isInteger(configuredConcurrency) && configuredConcurrency > 0
+    ? configuredConcurrency
+    : 5,
 };
 
 export default config;

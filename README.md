@@ -61,6 +61,8 @@ TEST_PROFILE_CONFIG="tests/config/profiles.yaml"
 GOOGLE_PRIVATE_KEY=""
 
 ACCOUNT_ID=""
+# Number of isolated account lanes used for parallel testcase execution.
+PARALLEL_ACCOUNT_COUNT=5
 AGENT_VERSION=""
 DEVICE_ID=""
 OS_APP_TYPE=""
@@ -96,6 +98,11 @@ REDIS_URL="redis://127.0.0.1:6379"
 WEATHER_ANSWER_COMPARE_STREAM_KEY="weather:answer-compare"
 WEATHER_ANSWER_COMPARE_STREAM_GROUP="weather-answer-compare"
 WEATHER_ANSWER_COMPARE_STREAM_CONSUMER="watcher-1"
+WEATHER_AGENT_RESPONSE_STREAM_KEY="weather:agent-response"
+PUBLISH_AGENT_RESPONSE_STREAM=0
+JOIN_AGENT_RESPONSE_STREAM=0
+AGENT_RESPONSE_CACHE_TTL_SEC=3600
+AGENT_RESPONSE_JOIN_TIMEOUT_MS=10000
 READ_EXISTING_PAYLOADS=0
 STREAM_BLOCK_MS=5000
 PENDING_RETRY_INTERVAL_MS=30000
@@ -106,6 +113,7 @@ OLLAMA_URL="http://localhost:11434/v1/chat/completions"
 OLLAMA_MODEL="gemma3:27b"
 GOOGLE_SHEET_TAB="WeatherAnswerCompare"
 EVALUATE_WITH_GPT=0
+EVALUATE_PAYLOAD_WITH_GPT=0
 GPT_JUDGE_LLM_ID=3
 EVALUATE_CASE_KEYS="" # optional: gemini_t0,gemini_t03
 
@@ -225,6 +233,8 @@ npm run test:sheet:internal:stg
 npm run test:sheet:local:local
 npm run test:terminal:prod
 node scripts/run-test-profile.js sheet:api:crow
+
+npm run test:profile -- sheet:gpt:local --mode sync
 ```
 
 ### Weather Answer GPT Judge
@@ -242,6 +252,12 @@ Optional knobs:
 
 Judge columns are added per candidate: verdict, score, categories, summary, issues, and judge error.
 The rubric covers data fidelity, relative date/time alignment, summary/range aggregation, unsupported inference, advice policy, unavailable data handling, and field mapping.
+
+Set `EVALUATE_PAYLOAD_WITH_GPT=1` to independently judge the dumped pre-LLM payload against the user query. The sheet receives payload verdict/score, expected and actual intent, per-policy checks, issues, errors, and latency. Missing entity/card/context fields are marked `NA` rather than failed.
+
+For an end-to-end audit, set `PUBLISH_AGENT_RESPONSE_STREAM=1` in the regression runner and `JOIN_AGENT_RESPONSE_STREAM=1` in the answer-compare watcher. The runner publishes API response snapshots to `WEATHER_AGENT_RESPONSE_STREAM_KEY`; the watcher joins them to LLM dumps by `transactionId/trxId`. The combined judge can then verify response entity and cards against the normalized LLM weather data and records API entity/today/hourly/weekly cards in the same sheet row. Snapshots are cached only for the configured TTL to make the asynchronous stream join reliable.
+
+Entity goldens are paired inline with each YAML testcase using `expectedEntity:`. Matching defaults to subset mode: every declared semantic field is strict, while unrelated entity fields are ignored. Set `entityMatchMode: exact` only for a full-shape contract test. Legacy `expect:` blocks are not treated as current goldens because they describe an older parser contract. Optional leaf matchers are `{ $any: true }`, `{ $regex: "..." }`, and `{ $oneOf: [...] }`. Golden status, expected JSON, and field-level differences are written to both the normal regression sheet and the combined model sheet; a mismatch fails the testcase.
 
 Redis stream answer compare watcher
 

@@ -9,6 +9,14 @@ import { shouldUseGptResponseTranslation, translateResponseWithGpt } from "./res
 import { withNetworkRetry } from "./networkRetry";
 
 let sheetsClient: sheets_v4.Sheets | null = null;
+let sheetWriteQueue: Promise<void> = Promise.resolve();
+const headerSyncedSheets = new Set<string>();
+
+function enqueueSheetWrite<T>(write: () => Promise<T>): Promise<T> {
+    const result = sheetWriteQueue.then(write, write);
+    sheetWriteQueue = result.then(() => undefined, () => undefined);
+    return result;
+}
 
 function getSheetsClient(): sheets_v4.Sheets {
     if (sheetsClient) return sheetsClient;
@@ -26,6 +34,10 @@ function getSheetsClient(): sheets_v4.Sheets {
 }
 
 export async function appendRowToSheet(row: ResultRow): Promise<number | undefined> {
+    return enqueueSheetWrite(() => appendRowToSheetUnlocked(row));
+}
+
+async function appendRowToSheetUnlocked(row: ResultRow): Promise<number | undefined> {
     const sheets = getSheetsClient();
     const sheetId = env.GOOGLE_SHEET_ID!;
     const sheetName = env.GOOGLE_SHEET_NAME;
@@ -76,6 +88,10 @@ export async function appendRowToSheet(row: ResultRow): Promise<number | undefin
 }
 
 export async function updateRowInSheet(row: ResultRow, rowNumber: number): Promise<boolean> {
+    return enqueueSheetWrite(() => updateRowInSheetUnlocked(row, rowNumber));
+}
+
+async function updateRowInSheetUnlocked(row: ResultRow, rowNumber: number): Promise<boolean> {
     const sheets = getSheetsClient();
     const sheetId = env.GOOGLE_SHEET_ID!;
     const sheetName = env.GOOGLE_SHEET_NAME;
@@ -121,13 +137,25 @@ export async function updateRowInSheet(row: ResultRow, rowNumber: number): Promi
 }
 
 async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string, sheetName: string): Promise<number | undefined> {
+    const headerKey = `${spreadsheetId}:${sheetName}`;
     const spreadsheet = await sheets.spreadsheets.get({
         spreadsheetId,
         fields: 'sheets(properties(sheetId,title))',
     });
 
     const existingSheet = spreadsheet.data.sheets?.find((sheet) => sheet.properties?.title === sheetName);
-    if (existingSheet) return existingSheet.properties?.sheetId ?? undefined;
+    if (existingSheet) {
+        if (!headerSyncedSheets.has(headerKey)) {
+            await sheets.spreadsheets.values.update({
+                spreadsheetId,
+                range: buildSheetRange(sheetName, `A1:${lastSheetColumn()}1`),
+                valueInputOption: 'RAW',
+                requestBody: { values: [getSheetHeaders()] },
+            });
+            headerSyncedSheets.add(headerKey);
+        }
+        return existingSheet.properties?.sheetId ?? undefined;
+    }
 
     const addResponse = await sheets.spreadsheets.batchUpdate({
         spreadsheetId,
@@ -154,6 +182,7 @@ async function ensureSheetExists(sheets: sheets_v4.Sheets, spreadsheetId: string
             values: [getSheetHeaders()],
         },
     });
+    headerSyncedSheets.add(headerKey);
 
     const { wrapColumns } = loadSheetConfig();
     if (newSheetId !== undefined && newSheetId !== null && wrapColumns.length > 0) {
@@ -292,6 +321,9 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             reason: r.reason ?? '',
             testedAt: new Date().toISOString(),
             entity: r.entity ?? '',
+            expectedEntity: r.expectedEntity ?? '',
+            entityGoldenStatus: r.entityGoldenStatus ?? 'NA',
+            entityGoldenDiff: r.entityGoldenDiff ?? '',
             todayCard: r.todayCard ?? '',
             card: r.card ?? '',
             mode: r.mode ?? '',

@@ -33,3 +33,13 @@ export function getCaseAccountId(groupName: string, tc: TestCase): string {
     // context between cases so logs stay grouped under a few traceable accounts.
     return `${base}-${runId}-w${workerId}`;
 }
+
+/**
+ * Returns one of the bounded account IDs used by the parallel test lanes.
+ * A lane owns its account for the whole run, so a multi-turn unit cannot have
+ * its context reset by another concurrently executing case.
+ */
+export function getPooledAccountId(slot: number): string {
+    const normalizedSlot = Math.max(0, Math.trunc(slot));
+    return `${getBaseAccountId()}-${runId}-a${normalizedSlot + 1}`;
+}

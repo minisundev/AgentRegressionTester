@@ -42,3 +42,16 @@ READ_EXISTING_PAYLOADS=1 npm run watch:weather:answer-compare
 ```
 
 The producer payload is expected in Redis Stream field `payload` as JSON.
+When sheet reporting is enabled, the `payload` JSON and its `prompt`
+are appended in the `Dumped Payload` and `Prompt` columns.
+Credential-like payload fields (for example `auth_key`) are redacted first.
+
+Set `EVALUATE_PAYLOAD_WITH_GPT=1` to append an independent payload-policy
+evaluation (intent, entity/time extraction, card/data scope, fallback, clamping,
+and multi-turn inheritance) to the same row.
+
+For combined API-response + LLM-payload audits, enable
+`PUBLISH_AGENT_RESPONSE_STREAM=1` in the test runner and
+`JOIN_AGENT_RESPONSE_STREAM=1` in this watcher. Records are joined by
+`transactionId`/`trxId`; entity and all card types are written beside the
+payload-policy evaluation.

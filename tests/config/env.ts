@@ -23,6 +23,7 @@ const envSchema = z.object({
   ACCEPT_LANGUAGE: z.string().default('vi'),
   TRACE_ID: z.string().default('default-trace-id'),
   ACCOUNT_ID: z.string().optional(),
+  PARALLEL_ACCOUNT_COUNT: z.coerce.number().int().min(1).max(50).default(5),
   AGENT_VERSION: z.string().optional(),
   LANGUAGE: z.string().default('vietnamese'),
 
@@ -66,6 +67,9 @@ const envSchema = z.object({
   REDIS_PORT: z.string().optional(),
   REDIS_PASSWD: z.string().optional(),
   REDIS_SSL: z.string().optional(),
+  PUBLISH_AGENT_RESPONSE_STREAM: z.enum(['0', '1']).default('0'),
+  WEATHER_AGENT_RESPONSE_STREAM_KEY: z.string().default('weather:agent-response'),
+  AGENT_RESPONSE_CACHE_TTL_SEC: numberFromEnvWithDefault(3600),
 
   // Optional - Slack Configuration
   SLACK_WEBHOOK_URL: z.string().url().optional(),

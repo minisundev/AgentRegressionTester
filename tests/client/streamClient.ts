@@ -59,6 +59,16 @@ export async function runAgentChatStream(
 
   const handleEvent = (event: StreamEvent) => {
     const msg = event.message ?? {};
+
+    // Structured response fields are not guaranteed to arrive only in DATA.
+    // In particular, validation/error paths may attach the parsed entity to
+    // INTENT or END. Preserve them regardless of the SSE event type.
+    for (const key of ['entity', 'todayCard', 'hourlyCard', 'weeklyCard'] as const) {
+      const value = parseRecord(msg[key]);
+      if (value) dataMessage[key] = value;
+    }
+    if (typeof msg.resultCode === 'number') resultCode = msg.resultCode;
+
     switch (event.type) {
       case 'START':
         if (typeof msg.requestMessage === 'string') requestMessage = msg.requestMessage;
@@ -109,6 +119,21 @@ export async function runAgentChatStream(
   };
 
   return { data, metrics: { ttft, tokenCount, totalTime } };
+}
+
+function parseRecord(value: unknown): Record<string, unknown> | undefined {
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    return value as Record<string, unknown>;
+  }
+  if (typeof value !== 'string') return undefined;
+  try {
+    const parsed = JSON.parse(value);
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+      ? parsed as Record<string, unknown>
+      : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 async function consumeSse(stream: Readable, onEvent: (event: StreamEvent) => void): Promise<void> {

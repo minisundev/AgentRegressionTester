@@ -20,13 +20,16 @@ import {
 import { createRedisClient } from '../llm/redis.js';
 import { appendAnswerCompareToSheet } from '../llm/sheets.js';
 import { evaluateCompareResults } from '../llm/evaluator.js';
+import { evaluatePayloadWithGpt, getOriginalUserQuery } from '../llm/payloadEvaluator.js';
+import { serializePayloadForExternalUse } from '../llm/payloadSanitizer.js';
+import { waitForAgentResponse } from '../llm/agentResponseStore.js';
 import type { AnswerCompareRow, AnswerModelResult } from '../types/answerCompare.js';
 
 ensureWatcherEnv();
 
 const CASES = loadCompareCases();
 
-const REPORT_TO = process.env.REPORT_TO ?? 'terminal';
+const REPORT_TO = process.env.ANSWER_COMPARE_REPORT_TO ?? process.env.REPORT_TO ?? 'terminal';
 const READ_EXISTING = process.env.READ_EXISTING_PAYLOADS === '1';
 const STREAM_BLOCK_MS = Number(process.env.STREAM_BLOCK_MS ?? '5000');
 const PENDING_RETRY_INTERVAL_MS = Number(process.env.PENDING_RETRY_INTERVAL_MS ?? '30000');
@@ -48,28 +51,42 @@ function inferGroup(subIntent: string): string {
   }
 }
 
-async function compareOne(payload: DumpedPayload): Promise<AnswerCompareRow> {
-  const results = await Promise.all(CASES.map((c) => runCompareCase(payload, c)));
+async function compareOne(
+  payload: DumpedPayload,
+  redis: ReturnType<typeof createRedisClient>,
+): Promise<AnswerCompareRow> {
+  const reportPayload = serializePayloadForExternalUse(payload);
+  const resultsPromise = Promise.all(CASES.map((c) => runCompareCase(payload, c)));
+  const agentResponse = await waitForAgentResponse(redis, payload.trxId);
+  const payloadEvaluationPromise = evaluatePayloadWithGpt(payload, reportPayload, agentResponse);
+  const results = await resultsPromise;
 
   const resultMap: Record<string, AnswerModelResult> = {};
   CASES.forEach((c, i) => {
     resultMap[c.key] = results[i]!;
   });
 
-  const evaluations = await evaluateCompareResults(payload, CASES, resultMap);
+  const [evaluations, payloadEvaluation] = await Promise.all([
+    evaluateCompareResults(payload, CASES, resultMap),
+    payloadEvaluationPromise,
+  ]);
 
   return {
     testedAt: new Date().toISOString(),
     group: inferGroup(payload.subIntent),
     id: payload.trxId,
-    message: payload.userMessage,
+    message: getOriginalUserQuery(payload),
     subIntent: payload.subIntent,
     language: payload.language,
     weatherDataPayload: payload.weatherData,
     userMessage: payload.userMessage,
+    dumpedPayload: reportPayload,
+    prompt: payload.prompt,
+    agentResponse,
     results: resultMap,
     evaluations,
-    serviceResponse: '',
+    payloadEvaluation,
+    serviceResponse: agentResponse?.response.message ?? '',
   };
 }
 
@@ -81,7 +98,11 @@ async function emitRow(row: AnswerCompareRow): Promise<void> {
       .map((evaluation) => evaluation.verdict)
       .join(',') || 'pass'}`
     : '';
-  console.log(`[compare] ${row.subIntent} trxId=${row.id} ${summary}${evaluationSummary}`);
+  const payloadSummary = row.payloadEvaluation
+    ? ` payloadJudge=${row.payloadEvaluation.verdict}:${row.payloadEvaluation.score}`
+    : '';
+  const joinSummary = row.agentResponse ? ' joined=api+payload' : ' joined=payload-only';
+  console.log(`[compare] ${row.subIntent} trxId=${row.id} ${summary}${evaluationSummary}${payloadSummary}${joinSummary}`);
 
   if (REPORT_TO === 'sheet') {
     await appendAnswerCompareToSheet([row]);
@@ -125,7 +146,7 @@ async function main(): Promise<void> {
         const payload = entry.payload;
 
         try {
-          const row = await compareOne(payload);
+          const row = await compareOne(payload, redis);
           await emitRow(row);
           await ackPayload(redis, entry.streamId);
         } catch (error) {

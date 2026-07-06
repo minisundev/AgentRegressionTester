@@ -34,6 +34,47 @@ export interface AnswerEvaluationResult {
   latency?: number;
 }
 
+export type PayloadEvaluationCategory =
+  | 'INTENT_ROUTING'
+  | 'ENTITY_EXTRACTION'
+  | 'DATA_SCOPE'
+  | 'CARD_SELECTION'
+  | 'CARD_CONTENT'
+  | 'TIME_OF_DAY_MAPPING'
+  | 'NEXT_TIME_FALLBACK'
+  | 'RANGE_CLAMPING'
+  | 'MULTI_TURN_INHERITANCE'
+  | 'CROSS_STAGE_CONSISTENCY';
+
+export interface PayloadEvaluationCheck {
+  category: PayloadEvaluationCategory;
+  status: 'PASS' | 'FAIL' | 'BORDERLINE' | 'NA';
+  expected: string;
+  actual: string;
+  evidence: string;
+}
+
+export interface PayloadEvaluationIssue {
+  category: PayloadEvaluationCategory;
+  severity: 'critical' | 'major' | 'minor';
+  problem: string;
+  expected: string;
+  actual: string;
+  evidence: string;
+}
+
+export interface PayloadEvaluationResult {
+  verdict: 'pass' | 'fail' | 'borderline' | 'not_evaluable';
+  score: number;
+  expectedIntent: 'CheckHourlyForecast' | 'CheckDailyForecast' | 'CheckWeeklyForecast' | 'unknown';
+  actualIntent: string;
+  checks: PayloadEvaluationCheck[];
+  summary: string;
+  issues: PayloadEvaluationIssue[];
+  error?: string;
+  latency?: number;
+}
+
 export type CompareProvider = 'gpt' | 'gemini' | 'gemma';
 
 /** Runtime knobs handed to a provider client. */
@@ -64,10 +105,15 @@ export interface AnswerCompareRow {
   language: string;
   weatherDataPayload: string;
   userMessage: string;
+  /** Redis payload JSON with credential-like fields redacted. */
+  dumpedPayload: string;
+  prompt: string;
+  agentResponse?: import('../llm/agentResponseStore.js').AgentResponseSnapshot;
   /** Per-case results, keyed by CompareCase.key. */
   results: Record<string, AnswerModelResult>;
   /** Per-case GPT judge results, keyed by CompareCase.key. */
   evaluations?: Record<string, AnswerEvaluationResult>;
+  payloadEvaluation?: PayloadEvaluationResult;
   serviceResponse: string;
 }
 
@@ -116,9 +162,54 @@ export function buildCompareColumns(cases: CompareCase[]): CompareColumn[] {
   columns.push(
     { header: 'Service Response', getValue: (r) => r.serviceResponse },
     { header: 'Service Response Translation', translateOf: 'Service Response' },
+    // Keep new metadata at the end so existing model/result columns do not move.
+    { header: 'Dumped Payload', getValue: (r) => r.dumpedPayload },
+    { header: 'Prompt', getValue: (r) => r.prompt },
+    { header: 'API Result Code', getValue: (r) => r.agentResponse?.resultCode ?? '' },
+    { header: 'API Entity', getValue: (r) => stringifyCell(r.agentResponse?.response.entity) },
+    { header: 'Expected Entity', getValue: (r) => stringifyCell(r.agentResponse?.entityGolden?.expected) },
+    { header: 'Entity Golden Status', getValue: (r) => r.agentResponse?.entityGolden?.status ?? '' },
+    { header: 'Entity Golden Diff', getValue: (r) => formatAgentEntityGoldenDiff(r) },
+    { header: 'API Today Card', getValue: (r) => stringifyCell(r.agentResponse?.response.todayCard) },
+    { header: 'API Hourly Card', getValue: (r) => stringifyCell(r.agentResponse?.response.hourlyCard) },
+    { header: 'API Weekly Card', getValue: (r) => stringifyCell(r.agentResponse?.response.weeklyCard) },
+    { header: 'Payload Judge Verdict', getValue: (r) => r.payloadEvaluation?.verdict ?? '' },
+    { header: 'Payload Judge Score', getValue: (r) => r.payloadEvaluation?.score ?? '' },
+    { header: 'Payload Expected Intent', getValue: (r) => r.payloadEvaluation?.expectedIntent ?? '' },
+    { header: 'Payload Actual Intent', getValue: (r) => r.payloadEvaluation?.actualIntent ?? '' },
+    { header: 'Payload Judge Checks', getValue: (r) => formatPayloadChecks(r.payloadEvaluation) },
+    { header: 'Payload Judge Summary', getValue: (r) => r.payloadEvaluation?.summary ?? '' },
+    { header: 'Payload Judge Issues', getValue: (r) => formatPayloadIssues(r.payloadEvaluation) },
+    { header: 'Payload Judge Error', getValue: (r) => r.payloadEvaluation?.error ?? '' },
+    { header: 'Payload Judge Latency', getValue: (r) => r.payloadEvaluation?.latency ?? '' },
   );
 
   return columns;
+}
+
+function stringifyCell(value: unknown): string {
+  if (value === undefined || value === null) return '';
+  return typeof value === 'string' ? value : JSON.stringify(value);
+}
+
+function formatAgentEntityGoldenDiff(row: AnswerCompareRow): string {
+  return row.agentResponse?.entityGolden?.differences
+    .map((difference) => `${difference.path}: expected=${stringifyCell(difference.expected)}, actual=${stringifyCell(difference.actual)} (${difference.problem})`)
+    .join('\n') ?? '';
+}
+
+function formatPayloadChecks(evaluation: PayloadEvaluationResult | undefined): string {
+  if (!evaluation?.checks.length) return '';
+  return evaluation.checks
+    .map((check) => `[${check.status}/${check.category}] expected=${check.expected} | actual=${check.actual} | evidence=${check.evidence}`)
+    .join('\n');
+}
+
+function formatPayloadIssues(evaluation: PayloadEvaluationResult | undefined): string {
+  if (!evaluation?.issues.length) return '';
+  return evaluation.issues
+    .map((issue) => `[${issue.severity}/${issue.category}] ${issue.problem} | expected=${issue.expected} | actual=${issue.actual} | evidence=${issue.evidence}`)
+    .join('\n');
 }
 
 function formatEvaluationIssues(evaluation: AnswerEvaluationResult | undefined): string {

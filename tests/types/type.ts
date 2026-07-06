@@ -4,6 +4,14 @@ export interface TestCase {
   message: string;
   reqTranslation?: string;
   isMultiTurn?: boolean;
+  /** Legacy spelling used by some testcase files. */
+  multiTurn?: boolean;
+  /** Entity golden fields paired inline with this testcase. */
+  expectedEntity?: Record<string, unknown> | null;
+  /** Legacy parser expectation metadata; not used as a current entity golden. */
+  expect?: Record<string, unknown>;
+  /** Defaults to subset; exact is available for full-shape contract tests. */
+  entityMatchMode?: 'exact' | 'subset';
   subIntent: string;
   mainIntent: string;
   agentType: string;
@@ -37,6 +45,9 @@ export interface ResultRow {
   judge?:string;
   time: number;
   entity?: string;
+  expectedEntity?: string;
+  entityGoldenStatus?: 'PASS' | 'FAIL' | 'NA';
+  entityGoldenDiff?: string;
   todayCard?: string;
   card?: string; // weeklyCard or hourlyCard as JSON
   mode?: RequestMode; // 'sync' (agentChat) or 'stream' (agentChatStream)
@@ -63,6 +74,9 @@ export const SheetColumns = {
   P: "mode",
   Q: "ttft",
   R: "tokenCount",
+  S: "expectedEntity",
+  T: "entityGoldenStatus",
+  U: "entityGoldenDiff",
 } as const;
 
 export type SheetColumnKey = keyof typeof SheetColumns;
@@ -82,6 +96,9 @@ export interface SheetRow {
   reason: string;
   testedAt: string;
   entity: string;
+  expectedEntity: string;
+  entityGoldenStatus: string;
+  entityGoldenDiff: string;
   todayCard: string;
   card: string; // weeklyCard or hourlyCard as JSON
   mode: string; // 'sync' or 'stream'
