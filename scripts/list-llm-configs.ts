@@ -1,5 +1,5 @@
-import { createRedisClient } from '../src/llm/redis.js';
-import type { LLMEndpointConfig } from '../src/types/llm.js';
+import { createRedisClient } from '../packages/model_payload_test/llm/redis.js';
+import type { LLMEndpointConfig } from '../packages/model_payload_test/types/llm.js';
 
 const VERBOSE = process.argv.includes('--verbose') || process.argv.includes('-v');
 const PATTERN = process.env.LLM_CONFIG_PATTERN ?? 'config:llm:*';

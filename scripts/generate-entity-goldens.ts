@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
-import { callGpt } from '../src/llm/clients';
-import type { DumpedPayload } from '../src/llm/payloadStore';
-import type { TestCase } from '../tests/types/type';
+import { callGpt } from '../packages/model_payload_test/llm/clients';
+import type { DumpedPayload } from '../packages/model_payload_test/llm/payloadStore';
+import type { TestCase } from '../packages/e2e_regression/types/type';
 
 const DIR = path.resolve(process.cwd(), 'tests/config/testcases');
 const PROMPT_FILE = process.env.ENTITY_PARSER_PROMPT_FILE

@@ -1,0 +1,1086 @@
+groupName: TC_Weather_EN
+cases:
+  - id: 1
+    name: "EN - TC Weather #001"
+    message: "What's the weather like in London right now?"
+    reqTranslation: "지금 런던 날씨는 어떤가요?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: London
+      localizedLocation: London
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 2
+    name: "EN - TC Weather #002"
+    message: "Will it be sunny or rainy in Da Nang this week?"
+    reqTranslation: "이번 주 다낭은 맑을까요, 아니면 비가 올까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 3
+    name: "EN - TC Weather #003"
+    message: "Saigon weather forecast for next weekend."
+    reqTranslation: "다음 주말 사이공 날씨 예보 알려주세요."
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 4
+    name: "EN - TC Weather #004"
+    message: "What will the weather be like the week after next week?"
+    reqTranslation: "다다음 주 날씨는 어떨까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 5
+    name: "EN - TC Weather #005"
+    message: "What's the weather like in Moscow this week?"
+    reqTranslation: "이번 주 모스크바 날씨는 어떤가요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Moscow
+      localizedLocation: Moscow
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 6
+    name: "EN - TC Weather #006"
+    message: "What will the weather be like in Tokyo this week?"
+    reqTranslation: "이번 주 도쿄 날씨는 어떨까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Tokyo
+      localizedLocation: Tokyo
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 7
+    name: "EN - TC Weather #007"
+    message: "What is the humidity like today?"
+    reqTranslation: "오늘 습도는 어떤가요?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 8
+    name: "EN - TC Weather #008"
+    message: "This Friday highest humidity level."
+    reqTranslation: "이번 금요일 최고 습도 수준입니다."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 9
+    name: "EN - TC Weather #009"
+    message: "What is the humidity in Seoul today?"
+    reqTranslation: "오늘 서울의 습도는 얼마인가요?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 10
+    name: "EN - TC Weather #010"
+    message: "Humidity forecast for Saigon tomorrow night."
+    reqTranslation: "내일 밤 사이공의 습도 예보는 어떻게 되나요?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 11
+    name: "EN - TC Weather #011"
+    message: "What is the humidity in Dana at 12 PM noon?"
+    reqTranslation: "정오 12시에 다나의 습도는 얼마인가요?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Dana
+      localizedLocation: Dana
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 12
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 12
+    name: "EN - TC Weather #012"
+    message: "Weekend humidity"
+    reqTranslation: "주말 습도"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 13
+    name: "EN - TC Weather #013"
+    message: "Tomorrow, will the humidity and temperature be high?"
+    reqTranslation: "내일은 습도와 온도가 높을까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 14
+    name: "EN - TC Weather #014"
+    message: "Humidity for the week after next"
+    reqTranslation: "다다음 주의 습도"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 15
+    name: "EN - TC Weather #015"
+    message: "What is the humidity forecast for Phu Quoc tomorrow?"
+    reqTranslation: "내일 푸꾸옥의 습도 예보는 어떻게 되나요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Phu Quoc
+      localizedLocation: Phú Quốc
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 16
+    name: "EN - TC Weather #016"
+    message: "What is the temperature today?"
+    reqTranslation: "오늘 기온은 몇 도인가요?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 17
+    name: "EN - TC Weather #017"
+    message: "What is the current temperature?"
+    reqTranslation: "현재 온도가 어떻게 되나요?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 18
+    name: "EN - TC Weather #018"
+    message: "What is the highest temperature today?"
+    reqTranslation: "오늘 최고 기온은 얼마인가요?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 19
+    name: "EN - TC Weather #019"
+    message: "What is the lowest temperature today?"
+    reqTranslation: "오늘 최저 기온은 얼마인가요?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 20
+    name: "EN - TC Weather #020"
+    message: "Highest temperature in Saigon"
+    reqTranslation: "사이공의 최고 기온"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 21
+    name: "EN - TC Weather #021"
+    message: "Temperature tomorrow afternoon"
+    reqTranslation: "내일 오후 기온"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 22
+    name: "EN - TC Weather #022"
+    message: "Temperature forecast for next Monday morning in Saigon."
+    reqTranslation: "다음 주 월요일 아침 사이공의 기온 예보는 어떻게 되나요?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: MON
+      relativeWeeks: 1
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 23
+    name: "EN - TC Weather #023"
+    message: "Please tell me the temperature in Ho Chi Minh City at noon this Friday."
+    reqTranslation: "이번 주 금요일 정오에 호치민시의 온도를 알려주세요."
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 12
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 24
+    name: "EN - TC Weather #024"
+    message: "What will the nighttime temperature be in New York this Sunday?"
+    reqTranslation: "이번 일요일 뉴욕의 밤 기온은 어떻게 될까요?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: New York
+      localizedLocation: New York
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: SUN
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 25
+    name: "EN - TC Weather #025"
+    message: "What will the temperature be like in Hanoi the week after next?"
+    reqTranslation: "다다음 주 하노이의 기온은 어떨 것 같아요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 26
+    name: "EN - TC Weather #026"
+    message: "Weekday temperatures in Ho Chi Minh City"
+    reqTranslation: "호치민시의 평일 기온"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: weekdays
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 27
+    name: "EN - TC Weather #027"
+    message: "What's the temperature this weekend?"
+    reqTranslation: "이번 주말 기온은 어떻게 되나요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 28
+    name: "EN - TC Weather #028"
+    message: "What will the rainfall be like tomorrow?"
+    reqTranslation: "내일 강수량은 어떨까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 29
+    name: "EN - TC Weather #029"
+    message: "Will it rain in Saigon on the afternoon of April 30th?"
+    reqTranslation: "4월 30일 오후에 사이공에 비가 올까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: '2026-04-30'
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 30
+    name: "EN - TC Weather #030"
+    message: "Will it rain this Friday?"
+    reqTranslation: "이번 금요일에 비가 올까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: FRI
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 31
+    name: "EN - TC Weather #031"
+    message: "Will it rain in Ho Chi Minh City the day after tomorrow afternoon?"
+    reqTranslation: "모레 오후에 호치민시에서 비가 올까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 2
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 32
+    name: "EN - TC Weather #032"
+    message: "How will the rainfall change over the next three days?"
+    reqTranslation: "앞으로 3일 동안 강수량이 어떻게 변할까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: 3
+      deltaUnit: day
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 33
+    name: "EN - TC Weather #033"
+    message: "Will it rain tomorrow afternoon?"
+    reqTranslation: "내일 오후에 비가 올까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 34
+    name: "EN - TC Weather #034"
+    message: "Does it rain in San Andreas on weekdays?"
+    reqTranslation: "샌 안드레아스에서는 평일에 비가 오나요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: San Andreas
+      localizedLocation: San Andreas
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: weekdays
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+
+  - id: 35
+    name: "EN - TC Weather #035"
+    message: "Will it rain in Hanoi this weekend?"
+    reqTranslation: "이번 주말 하노이에 비가 올까요?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact

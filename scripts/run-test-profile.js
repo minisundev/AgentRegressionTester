@@ -275,7 +275,7 @@ function getProfileConfigPath() {
 }
 
 function getUsageConfigPath() {
-  return path.resolve(process.cwd(), 'tests/config/settings/usage.yaml');
+  return path.resolve(process.cwd(), 'packages/e2e_regression/config/settings/usage.yaml');
 }
 
 function loadUsageConfig() {
@@ -283,7 +283,7 @@ function loadUsageConfig() {
     const contents = fs.readFileSync(getUsageConfigPath(), 'utf8');
     const data = yaml.load(contents) ?? {};
     return {
-      defaultProfilePath: data.defaultProfilePath ?? 'tests/config/settings/profiles.yaml',
+      defaultProfilePath: data.defaultProfilePath ?? 'packages/e2e_regression/config/settings/profiles.yaml',
       examples: Array.isArray(data.examples) ? data.examples : [],
       defaultProfileLabel: data.defaultProfileLabel ?? 'Default profile file:',
       envOverrideLabel: data.envOverrideLabel ?? 'Optional .env override:',
@@ -291,7 +291,7 @@ function loadUsageConfig() {
     };
   } catch {
     return {
-      defaultProfilePath: 'tests/config/settings/profiles.yaml',
+      defaultProfilePath: 'packages/e2e_regression/config/settings/profiles.yaml',
       examples: [],
       defaultProfileLabel: '',
       envOverrideLabel: '',

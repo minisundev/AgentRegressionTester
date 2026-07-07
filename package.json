@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
+    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js packages/e2e_regression/runner --config jest.config.ts",
     "test:profile": "node scripts/run-test-profile.js",
     "test:sheet:none": "node scripts/run-test-profile.js",
     "test:sheet:none:prod": "node scripts/run-test-profile.js",
@@ -42,8 +42,8 @@
     "test:terminal:ai:dev": "node scripts/run-test-profile.js",
     "test:terminal:ai:local": "node scripts/run-test-profile.js",
     "test:terminal:ai:crow": "node scripts/run-test-profile.js",
-    "watch:weather:answer-compare": "tsx src/runner/weatherAnswerCompare.ts",
-    "probe:cache": "tsx tests/tools/cacheConsistencyProbe.ts",
+    "watch:weather:answer-compare": "tsx packages/model_payload_test/runner/weatherAnswerCompare.ts",
+    "probe:cache": "tsx packages/cache_probe/cacheConsistencyProbe.ts",
     "llm:list": "tsx scripts/list-llm-configs.ts",
     "typecheck": "tsc --noEmit"
   },

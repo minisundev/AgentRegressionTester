@@ -8,13 +8,13 @@ const config: Config = {
   testEnvironment: 'node',
 
   // 테스트 파일 위치
-  testMatch: ['**/tests/**/*.spec.ts'],
+  testMatch: ['**/packages/e2e_regression/**/*.spec.ts'],
 
   // 로그 너무 길어지면 테스트 찾기 어려우니 false로 할까 하다가 그냥 true로 둠
   verbose: true,
   
   // 프로젝트 경로
-  moduleDirectories: ['node_modules', 'src'],
+  moduleDirectories: ['node_modules', 'packages/model_payload_test'],
 
   testTimeout: 15000,
   maxConcurrency: Number.isInteger(configuredConcurrency) && configuredConcurrency > 0

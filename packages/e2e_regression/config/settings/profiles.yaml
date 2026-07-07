@@ -1,0 +1,20 @@
+profiles:
+  prod:
+    baseUrl: https://vtt-media-ai.altimedia.com/aia-control/v1/agentChat
+    sheetName: prod
+
+  stg:
+    baseUrl: https://vtt-media-ai-staging.altimedia.com/aia-control/v1/agentChat
+    sheetName: stg_260627_time_resolver
+
+  dev:
+    baseUrl: https://vtt-media-ai-dev.altimedia.com/aia-control/v1/agentChat
+    sheetName: dev_260704
+
+  local:
+    baseUrl: http://localhost:8080/aia-control/v1/agentChat
+    sheetName: local_260706_time_resolver_final_test
+
+  crow:
+    baseUrl: https://agent.crow.ai.kr/aia-control/v1/agentChat
+    sheetName: crow_260706_time_resolve_test

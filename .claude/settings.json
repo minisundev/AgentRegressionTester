@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(sed -i '' \"s|'\\\\.\\\\./model_payload_test/|'../packages/model_payload_test/|g; s|'\\\\.\\\\./e2e_regression/|'../packages/e2e_regression/|g\" scripts/generate-entity-goldens.ts)",
+      "Bash(sed -i '' \"s|'\\\\.\\\\./model_payload_test/|'../packages/model_payload_test/|g\" scripts/list-llm-configs.ts)",
+      "Bash(sed -i '' \"s|'e2e_regression/config/settings/|'packages/e2e_regression/config/settings/|g\" scripts/run-test-profile.js)",
+      "Bash(sed -i '' \"s|jest.js e2e_regression/runner|jest.js packages/e2e_regression/runner|; s|tsx model_payload_test/runner/|tsx packages/model_payload_test/runner/|; s|tsx e2e_regression/tools/|tsx packages/e2e_regression/tools/|\" package.json)",
+      "Bash(sed -i '' \"s|npx tsx e2e_regression/tools/|npx tsx packages/e2e_regression/tools/|\" packages/e2e_regression/tools/cacheConsistencyProbe.ts)",
+      "Bash(git rm *)",
+      "Bash(sed -i '' \"s|tsx packages/e2e_regression/tools/cacheConsistencyProbe.ts|tsx packages/cache_probe/cacheConsistencyProbe.ts|\" package.json)",
+      "Bash(sed -i '' \"s|npx tsx packages/e2e_regression/tools/cacheConsistencyProbe.ts|npx tsx packages/cache_probe/cacheConsistencyProbe.ts|\" packages/cache_probe/cacheConsistencyProbe.ts)",
+      "Bash(grep -rnE \"['\\\\\"\\\\`][^'\\\\\"\\\\`]*logs/|/logs\\\\b|logsDir|LOG_DIR\" --include=\"*.ts\" --include=\"*.js\" .)"
+    ]
+  }
+}
