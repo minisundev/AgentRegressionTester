@@ -2263,12 +2263,12 @@ cases:
       localizedLocation: null
       country: null
       weatherMetric: all
-      delta: null
-      deltaUnit: null
+      delta: 4
+      deltaUnit: hour
       rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
-      relativeHours: 0
+      relativeHours: null
       specificHour: null
       meridiem: null
       relativeDays: null
