@@ -1743,7 +1743,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 6
-      meridiem: null
+      meridiem: am
       relativeDays: 1
       specificDate: null
       specificWeekday: null
@@ -1768,7 +1768,7 @@ cases:
       weatherMetric: humidity
       delta: 6
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null
@@ -3021,7 +3021,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 4
-      meridiem: null
+      meridiem: am
       relativeDays: 1
       specificDate: null
       specificWeekday: null
@@ -3159,12 +3159,12 @@ cases:
       localizedLocation: Đà Lạt
       country: null
       weatherMetric: all
-      delta: null
-      deltaUnit: null
+      delta: 6
+      deltaUnit: hour
       rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
-      relativeHours: 6
+      relativeHours: null
       specificHour: null
       meridiem: null
       relativeDays: null
@@ -3664,7 +3664,7 @@ cases:
       specificDate: null
       specificWeekday: null
       relativeWeeks: 0
-      weekPart: null
+      weekPart: whole
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
@@ -4526,7 +4526,7 @@ cases:
       weatherMetric: precipitation
       delta: 10
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null
@@ -4640,12 +4640,12 @@ cases:
       localizedLocation: Cần Thơ
       country: null
       weatherMetric: precipitation
-      delta: null
-      deltaUnit: null
+      delta: 4
+      deltaUnit: hour
       rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
-      relativeHours: 4
+      relativeHours: null
       specificHour: null
       meridiem: null
       relativeDays: null
@@ -5955,7 +5955,7 @@ cases:
       weatherMetric: airQuality
       delta: 10
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null
@@ -7809,7 +7809,7 @@ cases:
       weatherMetric: all
       delta: 1
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null

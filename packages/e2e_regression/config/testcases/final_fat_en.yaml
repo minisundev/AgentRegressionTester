@@ -827,7 +827,7 @@ cases:
       weatherMetric: all
       delta: 97
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null

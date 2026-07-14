@@ -1,34 +1,38 @@
-# 시간 표현 엔티티 해석 — 베트남팀 확인 요청 케이스
+# 시간 표현 엔티티 해석 — 확인 결과 (2026-07-14 확정)
 
-작성: 2026-07-14. `tới` 계열 표현의 anchor 기준을 확정하기 위한 확인 문서.
-결정된 원칙(2026-07-14): **`after`(한 칸 밀기)는 단어 `tới`가 아니라 의미 구조에 매핑한다.**
+`tới` 계열 표현의 anchor 기준 확인 문서. **모든 항목 결정 완료** — 확정 정책은
+`spec/weather_agent_policy.md` #4-1에 반영됨. 이 문서는 결정 기록용.
 
-- 일/주 단위 예보 기간 표현 → anchor: next calendar unit (오늘 제외, 내일부터)
-- 시간 단위 rolling window → anchor: current instant (지금 포함)
+## 결정된 케이스
 
-## 확인 요청 케이스
-
-| # | 발화 | 현재 해석 (엔티티) | 확인할 것 |
+| # | 발화 | 확정 해석 (엔티티) | 근거 |
 |---|---|---|---|
-| 1 | `24 giờ tới` (bare, trong 없음) | 단일 시점 오프셋 `relativeHours=24` | 기상 보도 관용구로는 "지금부터 24시간" duration이 일반적. bare여도 duration으로 볼지? |
-| 2 | `3 ngày tới` | `delta=3, deltaUnit=day, rangeRelation=after` (내일부터 3일) | 내일부터 3일 맞는지 (baochinhphu 용례: 5/15 기사에서 `trong 2 ngày tới` = 16–17/5) |
-| 3 | `trong vòng 2 ngày tới` | `delta=2, deltaUnit=day, rangeRelation=after` (내일부터) | 마감/윈도우 표현으로 "지금부터 48시간"으로 읽히는 용례도 있음. 일 단위도 `trong vòng`이 붙으면 now-anchor인지? |
-| 4 | `tuần tới` | `relativeWeeks=1` (다음 월요일부터 7일) | 주 단위는 boundary 기준 확정 — 이견 없는지 확인만 |
-| 5 | `hôm nay và ngày mai` | 오늘 포함 명시형 → `rangeRelation=from` (오늘부터 2일) | 오늘 포함 명시 시 from 처리 맞는지 |
+| 1 | `24 giờ tới` (bare) | **duration** — `delta=24, deltaUnit=hour, rangeRelation=null` (지금부터 24시간) | 기상 보도 관용구. bare여도 시간 단위 `tới`는 rolling window |
+| 2 | `3 ngày tới` | `delta=3, deltaUnit=day, rangeRelation=after` (내일부터 3일) | 고객사 확정 (`trong 2 ngày tới` = 내일–모레). 리졸버가 after로 하루 밀어줌 |
+| 3 | `trong vòng 2 ngày tới` | `delta=2, deltaUnit=day, rangeRelation=after` (내일부터) | 일 단위는 trong vòng이 붙어도 밀기 유지 |
+| 4 | `tuần tới` | `relativeWeeks=1` (다음 월요일부터 7일) | boundary 기준 확정 |
+| 5 | `hôm nay và ngày mai` | `rangeRelation=from` (오늘부터 2일) | 오늘 명시적 포함 |
 
-## 확정된 케이스 (참고)
+- `trong vòng 4 giờ tới` → `delta=4, deltaUnit=hour, rangeRelation=null` (지금 포함 rolling).
+  "지금 포함" ≠ "현재 hour bucket 포함" — hourlyCard 정시(3시간 단위 올림) 정렬은 데이터 문제.
+- 단일 시점 오프셋은 `N giờ nữa` / `sau N giờ` / `in N hours` → `relativeHours=N`.
 
-- `trong vòng 4 giờ tới` → `delta=4, deltaUnit=hour, rangeRelation=null` (지금 포함 rolling 4시간). VOV 용례: 08:10 관측 직후 "trong vòng 4 giờ tới" = 현재 시점부터의 구간.
-  - 단, "지금 포함" ≠ "현재 hour bucket을 카드에 포함". hourlyCard가 정시(3시간 단위 올림)로 정렬되는 것은 언어 해석이 아니라 데이터 정렬 문제.
-- `10 giờ tới độ ẩm...` (bare) → `relativeHours=10` 단일 시점 (1번 케이스와 함께 재확인 필요)
+## 기타 컨벤션 — 결정 완료
 
-## 기타 컨벤션 확인 필요 (엔티티 골든 정규화 대기 중)
+1. **시각 범위의 meridiem**: 마커(sáng/trưa/am/pm)나 24h형이 있으면 당연히 적용 (엔티티
+   프롬프트 #11 룰 그대로). 골든만 정규화함 (9건 am, 24h형 2건은 원래 맞았음).
+2. **`các ngày trong tuần (này/sau)`**: **whole로 통일**. 프롬프트 #17에도 반영.
+3. **localizedLocation**: 헤더 언어(accept-language) 따라감 — vi면 성조 복원(`Vũng Tàu`),
+   지역명(`Miền Trung`)은 디폴트 도시 치환 없이 그대로. 프롬프트 #1-2 룰대로 골든 정규화함.
+4. **한국어 "낮"**: 프롬프트에 한국어 규칙 추가하지 않음 (한국어는 프롬프트에서 제외 방침).
 
-1. **시각 범위의 meridiem**: `từ 6h đến 11h sáng` 같은 범위에서 meridiem을 시작 시각 기준으로 설정할지, 범위에서는 항상 null로 둘지. (골든이 파일마다 갈림, 11건)
-2. **`các ngày trong tuần (này/sau)`**: whole / weekdays / null 중 무엇인지. (골든 whole 6건 vs null 7건)
-3. **localizedLocation 표기**: 무성조 입력("Vung Tau") 시 성조 복원 여부; 지역명("Miền Trung") 처리 — 유지 vs 디폴트 도시 치환. (골든 충돌)
-4. **한국어 "낮"**: timeOfDay 매핑 (noon? afternoon? null?)
+## 개편 방향 메모 (백엔드/스키마)
 
-향후 개편 방향 메모: 엔티티에 `granularity`(hour/day/week) + `anchor`(now / next_boundary)를
-분리하고 최종적으로 `[start_ts, end_ts]`로 정규화하면 1·3번 같은 케이스가 자연스럽게 분리됨.
-현재는 rangeRelation(after=next boundary, null/from=now-anchored)으로 근사 중.
+엔티티에 `granularity`(hour/day/week) + `anchor`(now / next_boundary) 분리, 최종
+`[start_ts, end_ts]` 정규화 구조 검토. 현재는 rangeRelation(after=next boundary,
+null/from=now-anchored)으로 근사하며, 밀기 실행은 aia-service 리졸버(timeRange) 담당.
+
+## 부수 발견 (2026-07-14)
+
+- `fat_r2_precipitation.yaml`에 id 125–164가 영어/베트남어 블록으로 중복돼 있었음 →
+  영어 블록을 225–264로 리넘버링 (중복 id는 체크포인트 키 충돌로 케이스가 조용히 스킵됨).

@@ -132,7 +132,7 @@ cases:
       weatherMetric: all
       delta: 3
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null
@@ -2708,7 +2708,7 @@ cases:
       weatherMetric: all
       delta: 8
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: hourly
       timeOfDay: null
       relativeHours: null
@@ -2737,7 +2737,7 @@ cases:
       weatherMetric: all
       delta: 8
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: hourly
       timeOfDay: null
       relativeHours: null
@@ -3277,8 +3277,8 @@ cases:
     expectedEntity:
       reasoning:
         $any: true
-      location: Hanoi
-      localizedLocation: Hà Nội
+      location: "Mien Trung"
+      localizedLocation: "Miền Trung"
       country: null
       weatherMetric: all
       delta: null

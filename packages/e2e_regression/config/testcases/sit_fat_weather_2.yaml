@@ -419,7 +419,7 @@ cases:
       weatherMetric: all
       delta: 6
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null
@@ -1692,7 +1692,7 @@ cases:
       weatherMetric: humidity
       delta: 6
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null
@@ -1723,7 +1723,7 @@ cases:
       weatherMetric: humidity
       delta: 10
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null
@@ -2999,7 +2999,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 4
-      meridiem: null
+      meridiem: am
       relativeDays: 1
       specificDate: null
       specificWeekday: null
@@ -3116,12 +3116,12 @@ cases:
       localizedLocation: null
       country: null
       weatherMetric: all
-      delta: null
-      deltaUnit: null
+      delta: 10
+      deltaUnit: hour
       rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
-      relativeHours: 10
+      relativeHours: null
       specificHour: null
       meridiem: null
       relativeDays: null
@@ -3147,12 +3147,12 @@ cases:
       localizedLocation: Đà Lạt
       country: null
       weatherMetric: all
-      delta: null
-      deltaUnit: null
+      delta: 6
+      deltaUnit: hour
       rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
-      relativeHours: 6
+      relativeHours: null
       specificHour: null
       meridiem: null
       relativeDays: null
@@ -4573,12 +4573,12 @@ cases:
       localizedLocation: null
       country: null
       weatherMetric: precipitation
-      delta: null
-      deltaUnit: null
+      delta: 10
+      deltaUnit: hour
       rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
-      relativeHours: 10
+      relativeHours: null
       specificHour: null
       meridiem: null
       relativeDays: null
@@ -4697,12 +4697,12 @@ cases:
       localizedLocation: Cần Thơ
       country: null
       weatherMetric: precipitation
-      delta: null
-      deltaUnit: null
+      delta: 4
+      deltaUnit: hour
       rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
-      relativeHours: 4
+      relativeHours: null
       specificHour: null
       meridiem: null
       relativeDays: null
@@ -5922,7 +5922,7 @@ cases:
       weatherMetric: airQuality
       delta: 10
       deltaUnit: hour
-      rangeRelation: after
+      rangeRelation: null
       requestedGranularity: null
       timeOfDay: null
       relativeHours: null

@@ -82,6 +82,24 @@ Night: 21:00~05:59
 3. 중간에 잘리는 시간 예보 정책
     1. 범위로 요청되었고 앞부분/뒷부분이 예보가능한 범위에서 잘리는 경우 가능한 부분만 예보함
 
+# 4-1. 시간 표현(tới 계열) anchor 정책 — 2026-07-14 확정
+
+`after`(한 칸 밀기)는 단어 `tới`가 아니라 의미 구조에 매핑한다.
+
+- **일/주 단위 예보 기간 표현** → anchor: next calendar unit (오늘 제외, 내일부터)
+    - `3 ngày tới` = 내일부터 3일 (`delta=3, deltaUnit=day, rangeRelation=after`) — 고객사 확정: `trong 2 ngày tới` = 내일–모레
+    - `trong vòng N ngày tới`도 동일하게 after (일 단위는 밀기 유지가 에러율 최저)
+    - `tuần tới` = 다음 월요일부터 7일 (`relativeWeeks=1`)
+- **시간 단위 rolling window** → anchor: current instant (지금 포함)
+    - `trong (vòng) N giờ tới`, bare `N giờ/tiếng tới`, `next N hours` 전부 duration
+      (`delta=N, deltaUnit=hour, rangeRelation=null`) — 지금 포함, after 금지
+    - 단, "지금 포함" ≠ "현재 hour bucket을 카드에 포함" (hourlyCard 정시 올림은 데이터 정렬 문제)
+    - 단일 시점 오프셋은 `N giờ nữa` / `sau N giờ` / `in N hours` → `relativeHours=N`
+- **오늘 포함 명시형** (`hôm nay và ngày mai`, `today and the next 3 days`) → `rangeRelation=from` (오늘부터)
+- `các ngày trong tuần (này/sau/sau nữa)` = 그 주 전체 → `weekPart=whole`
+- 밀기 실행 레이어: 엔티티 프롬프트는 라벨링만(`after/from/null`), 실제 +1 계산은
+  aia-service 리졸버(timeRange)가 수행. `after`=anchor 배타, `from`/`null`=now/anchor 포함.
+
 # 5. 응답 내용
 
 ## 5-1. 공기질 질문

@@ -406,7 +406,7 @@ cases:
     weatherMetric: all
     delta: 6
     deltaUnit: hour
-    rangeRelation: after
+    rangeRelation: null
     requestedGranularity: null
     timeOfDay: null
     relativeHours: null
@@ -1640,7 +1640,7 @@ cases:
     weatherMetric: humidity
     delta: 6
     deltaUnit: hour
-    rangeRelation: after
+    rangeRelation: null
     requestedGranularity: null
     timeOfDay: null
     relativeHours: null
@@ -3140,7 +3140,7 @@ cases:
     weatherMetric: all
     delta: 10
     deltaUnit: hour
-    rangeRelation: after
+    rangeRelation: null
     requestedGranularity: null
     timeOfDay: null
     relativeHours: null
@@ -3170,7 +3170,7 @@ cases:
     weatherMetric: all
     delta: 6
     deltaUnit: hour
-    rangeRelation: after
+    rangeRelation: null
     requestedGranularity: null
     timeOfDay: null
     relativeHours: null
@@ -4550,7 +4550,7 @@ cases:
     weatherMetric: precipitation
     delta: 10
     deltaUnit: hour
-    rangeRelation: after
+    rangeRelation: null
     requestedGranularity: null
     timeOfDay: null
     relativeHours: null
@@ -4670,7 +4670,7 @@ cases:
     weatherMetric: precipitation
     delta: 4
     deltaUnit: hour
-    rangeRelation: after
+    rangeRelation: null
     requestedGranularity: null
     timeOfDay: null
     relativeHours: null
@@ -5868,7 +5868,7 @@ cases:
     weatherMetric: airQuality
     delta: 10
     deltaUnit: hour
-    rangeRelation: after
+    rangeRelation: null
     requestedGranularity: null
     timeOfDay: null
     relativeHours: null
