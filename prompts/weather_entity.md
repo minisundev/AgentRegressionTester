@@ -497,12 +497,20 @@ Examples:
 - "for 4 days before 12/25"→ rangeRelation = "before"
 
 ##8-5. Future-oriented duration ranges
-Only when no explicit inclusive start marker is present, set `rangeRelation = "after"`
-for a period strictly following the current boundary.
+The anchor of a future duration depends on the TIME UNIT, because days are
+discrete calendar blocks while hours are a rolling stream:
 
-Strong patterns:
-- English: "next N hours", "next N days", "next few days", "coming days", "upcoming days"
-- Vietnamese: `trong N giờ/ngày/tuần tới`, `N ngày/tuần tới`, `sắp tới`, `tiếp theo`, `kế tiếp`
+(a) DAY/WEEK-unit durations → `rangeRelation = "after"` (exclusive of today;
+the "upcoming" days have not started yet, so the range begins on the NEXT
+calendar day).
+- English: "next N days", "next few days", "coming days", "upcoming days", "next N weeks"
+- Vietnamese: `trong N ngày/tuần tới`, `N ngày/tuần tới`, `sắp tới`, `tiếp theo`, `kế tiếp`
+
+(b) HOUR-unit durations → a rolling window anchored at the CURRENT INSTANT,
+inclusive of now. Set `delta`/`deltaUnit` and keep `rangeRelation = null`.
+Never push an hour-unit duration to the next hour/day with "after".
+- English: "next N hours", "for the next N hours", "within N hours"
+- Vietnamese: `trong N giờ/tiếng tới`, `trong vòng N giờ/tiếng tới`
 
 Bare `N giờ/tiếng tới` (no `trong`) is NOT a duration pattern — it is a single-point
 hour offset (see #9). Do NOT translate bare Vietnamese "N giờ tới" into English
@@ -510,13 +518,14 @@ hour offset (see #9). Do NOT translate bare Vietnamese "N giờ tới" into Engl
 
 Examples:
 - "Xem giúp mình khả năng mưa ở Cà Mau trong 3 ngày tới"→ rangeRelation = "after"
-- "Thời tiết trong 5 giờ tới"→ rangeRelation = "after"
+- "Thời tiết trong 5 giờ tới"→ delta = 5→ deltaUnit = "hour"→ rangeRelation = null
+- "Dự báo thời tiết trong vòng 4 giờ tới"→ delta = 4→ deltaUnit = "hour"→ rangeRelation = null
 
 Contrast:
 - "next 3 days"→ rangeRelation = "after"
 - "3 days from today"→ rangeRelation = "from"
 - "today and the next 3 days"→ rangeRelation = "from"
-- "trong 10 giờ tới"→ delta = 10→ deltaUnit = "hour"→ rangeRelation = "after"
+- "trong 10 giờ tới"→ delta = 10→ deltaUnit = "hour"→ rangeRelation = null
 - "10 giờ tới" (no "trong")→ relativeHours = 10→ delta = null→ rangeRelation = null
 
 ##8-6. Null: no range relationship
@@ -967,7 +976,7 @@ Before producing the JSON, verify all of the following:
 14. A multi-week duration uses `delta` and `deltaUnit = "day"`, not `relativeWeeks`.
 15. Only explicitly stated semantic information is extracted.
 16. No numeric `delta` was inferred from vague quantity words such as "a few", "several", "some", or "vài".
-17. Future-oriented duration modifiers such as `tới`, `sắp tới`, `tiếp theo`, and `kế tiếp` produced `rangeRelation = "after"` unless the present was explicitly included — EXCEPT bare single-point hour offsets ("N giờ tới" / "N tiếng tới" / "N giờ nữa" without "trong"), which keep `relativeHours = N` with `delta = null` and `rangeRelation = null` (see #9).
+17. Future-oriented duration modifiers such as `tới`, `sắp tới`, `tiếp theo`, and `kế tiếp` produced `rangeRelation = "after"` ONLY for DAY/WEEK-unit durations. HOUR-unit durations ("trong (vòng) N giờ/tiếng tới", "next N hours") are rolling windows anchored at the current instant: `delta = N`, `deltaUnit = "hour"`, `rangeRelation = null` (see #8-5). Bare single-point hour offsets ("N giờ tới" / "N tiếng tới" / "N giờ nữa" without "trong") keep `relativeHours = N` with `delta = null` and `rangeRelation = null` (see #9).
 18. Bare `N giờ/tiếng tới` was NOT extracted as `delta` + `rangeRelation = "after"`.
 19. `from` and `to` include their anchor; `after` and `before` exclude their anchor; null means no boundary relationship.
 20. A Vietnamese current-month segment uses its mapped `specificDate`, `delta = 10`, `deltaUnit = "day"`, and `rangeRelation = "from"`.

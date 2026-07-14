@@ -3838,7 +3838,7 @@ cases:
       specificWeekday: null
       relativeWeeks: null
       weekPart: null
-      fallback: null
+      fallback: PAST_TIME_REQUESTED
       requestedPresentation: null
     entityMatchMode: exact
   - id: 435
@@ -3896,7 +3896,7 @@ cases:
       specificWeekday: null
       relativeWeeks: null
       weekPart: null
-      fallback: null
+      fallback: PAST_TIME_REQUESTED
       requestedPresentation: null
     entityMatchMode: exact
   - id: 437
@@ -6771,7 +6771,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 12
-      meridiem: null
+      meridiem: pm
       relativeDays: null
       specificDate: null
       specificWeekday: FRI

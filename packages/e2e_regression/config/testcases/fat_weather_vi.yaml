@@ -2036,7 +2036,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 8
-      meridiem: null
+      meridiem: am
       relativeDays: 1
       specificDate: null
       specificWeekday: null
@@ -5861,7 +5861,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 9
-      meridiem: null
+      meridiem: pm
       relativeDays: 0
       specificDate: null
       specificWeekday: null
@@ -7498,7 +7498,7 @@ cases:
       specificDate: null
       specificWeekday: null
       relativeWeeks: 1
-      weekPart: null
+      weekPart: weekdays
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
@@ -8947,7 +8947,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 12
-      meridiem: null
+      meridiem: pm
       relativeDays: null
       specificDate: null
       specificWeekday: FRI
@@ -9564,7 +9564,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 12
-      meridiem: null
+      meridiem: pm
       relativeDays: null
       specificDate: null
       specificWeekday: null

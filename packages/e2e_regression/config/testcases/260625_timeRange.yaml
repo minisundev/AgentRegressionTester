@@ -547,7 +547,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 5
-      meridiem: null
+      meridiem: am
       relativeDays: 0
       specificDate: null
       specificWeekday: null
@@ -605,7 +605,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 5
-      meridiem: null
+      meridiem: am
       relativeDays: null
       specificDate: null
       specificWeekday: null
@@ -692,7 +692,7 @@ cases:
       timeOfDay: null
       relativeHours: null
       specificHour: 9
-      meridiem: null
+      meridiem: am
       relativeDays: null
       specificDate: null
       specificWeekday: null
@@ -2834,7 +2834,7 @@ cases:
       requestedGranularity: hourly
       timeOfDay: null
       relativeHours: null
-      specificHour: 3
+      specificHour: 15
       meridiem: pm
       relativeDays: null
       specificDate: null
@@ -2892,7 +2892,7 @@ cases:
       requestedGranularity: hourly
       timeOfDay: null
       relativeHours: null
-      specificHour: 8
+      specificHour: 20
       meridiem: pm
       relativeDays: null
       specificDate: null
@@ -3289,7 +3289,7 @@ cases:
       relativeHours: null
       specificHour: 9
       meridiem: pm
-      relativeDays: null
+      relativeDays: 0
       specificDate: null
       specificWeekday: null
       relativeWeeks: null
@@ -3316,11 +3316,11 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: night
+      timeOfDay: null
       relativeHours: null
       specificHour: 9
       meridiem: pm
-      relativeDays: null
+      relativeDays: 0
       specificDate: null
       specificWeekday: null
       relativeWeeks: null
@@ -3346,7 +3346,7 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: morn
+      timeOfDay: null
       relativeHours: null
       specificHour: 7
       meridiem: am
@@ -3376,7 +3376,7 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: afternoon
+      timeOfDay: null
       relativeHours: null
       specificHour: 3
       meridiem: pm
@@ -3406,11 +3406,11 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: afternoon
+      timeOfDay: null
       relativeHours: null
       specificHour: 5
       meridiem: pm
-      relativeDays: null
+      relativeDays: 0
       specificDate: null
       specificWeekday: null
       relativeWeeks: null
@@ -3436,7 +3436,7 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: dawn
+      timeOfDay: null
       relativeHours: null
       specificHour: 4
       meridiem: am
@@ -3466,11 +3466,11 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: night
+      timeOfDay: null
       relativeHours: null
       specificHour: 8
       meridiem: pm
-      relativeDays: null
+      relativeDays: 0
       specificDate: null
       specificWeekday: null
       relativeWeeks: null
@@ -3496,7 +3496,7 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: eve
+      timeOfDay: null
       relativeHours: null
       specificHour: 6
       meridiem: pm
@@ -3526,11 +3526,11 @@ cases:
       deltaUnit: null
       rangeRelation: null
       requestedGranularity: null
-      timeOfDay: noon
+      timeOfDay: null
       relativeHours: null
       specificHour: 12
       meridiem: pm
-      relativeDays: null
+      relativeDays: 0
       specificDate: null
       specificWeekday: null
       relativeWeeks: null
