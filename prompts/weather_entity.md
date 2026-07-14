@@ -117,7 +117,6 @@ Detection:
   - "tell me tomorrow morning's weather" / "tell me tomorrow night's weather"→ weatherMetric = "all"
   - "tell me this morning's weather"→ weatherMetric = "all"
   - "what is the weather for the weekend after next"→ weatherMetric = "all"
-  - "아침 5시 날씨 알려줘"→ weatherMetric = "all"
   - "Tell me the weather after 2 o'clock"→ weatherMetric = "all"
 
 Priority (if multiple mentioned): airQuality > humidity > precipitation > all
@@ -300,6 +299,7 @@ A point offset requests one forecast point located a certain amount of time from
 Set `delta` for a duration:
 - "for the next 3 hours"→ delta = 3
 - "trong 3 giờ tới"→ delta = 3
+- "3 giờ tới" / "24 giờ tới" / "10 tiếng tới" (bare hour-unit `tới`)→ delta = 3 / 24 / 10
 - "next 5 days"→ delta = 5
 - "trong 3 ngày tới"→ delta = 3
 - "next two weeks" / "2 tuần tới"→ delta = 14
@@ -307,12 +307,12 @@ Set `delta` for a duration:
 Do not set `delta` for a point offset:
 - "in 3 hours" / "after 2 hours"→ delta = null
 - "2 giờ nữa" / "sau 6 giờ"→ delta = null
-- "3 giờ tới" / "10 giờ tới" / "3 tiếng tới" / "10 tiếng tới" (bare, no "trong")→ delta = null
 - "in 3 days" / "3 days from now"→ delta = null
 - "sau 3 ngày" / "3 ngày nữa"→ delta = null
 
-Vietnamese hour discriminator: bare `N giờ/tiếng tới` is a single-point offset (see #9).
-Only a duration preposition such as `trong` / `trong vòng` / `suốt` makes it a duration.
+Vietnamese hour discriminator: `N giờ/tiếng tới` (with or without `trong`) is a
+DURATION — weather reporting uses it as "the coming N hours" from now. Only the
+point-offset forms `N giờ/tiếng nữa` and `sau N giờ` are single-point offsets (see #9).
 
 Vague upcoming periods still have no numeric count:
 - "next few days"→ delta = null
@@ -510,23 +510,20 @@ calendar day).
 inclusive of now. Set `delta`/`deltaUnit` and keep `rangeRelation = null`.
 Never push an hour-unit duration to the next hour/day with "after".
 - English: "next N hours", "for the next N hours", "within N hours"
-- Vietnamese: `trong N giờ/tiếng tới`, `trong vòng N giờ/tiếng tới`
-
-Bare `N giờ/tiếng tới` (no `trong`) is NOT a duration pattern — it is a single-point
-hour offset (see #9). Do NOT translate bare Vietnamese "N giờ tới" into English
-"next N hours" and then apply the English pattern.
+- Vietnamese: `N giờ/tiếng tới` (bare), `trong N giờ/tiếng tới`, `trong vòng N giờ/tiếng tới`
 
 Examples:
 - "Xem giúp mình khả năng mưa ở Cà Mau trong 3 ngày tới"→ rangeRelation = "after"
 - "Thời tiết trong 5 giờ tới"→ delta = 5→ deltaUnit = "hour"→ rangeRelation = null
 - "Dự báo thời tiết trong vòng 4 giờ tới"→ delta = 4→ deltaUnit = "hour"→ rangeRelation = null
+- "24 giờ tới có mưa không"→ delta = 24→ deltaUnit = "hour"→ rangeRelation = null
 
 Contrast:
 - "next 3 days"→ rangeRelation = "after"
 - "3 days from today"→ rangeRelation = "from"
 - "today and the next 3 days"→ rangeRelation = "from"
-- "trong 10 giờ tới"→ delta = 10→ deltaUnit = "hour"→ rangeRelation = null
-- "10 giờ tới" (no "trong")→ relativeHours = 10→ delta = null→ rangeRelation = null
+- "trong 10 giờ tới" / "10 giờ tới"→ delta = 10→ deltaUnit = "hour"→ rangeRelation = null
+- "10 giờ nữa" / "sau 10 giờ" (point offset)→ relativeHours = 10→ delta = null→ rangeRelation = null
 
 ##8-6. Null: no range relationship
 Use `rangeRelation = null` only when the user did not express a boundary relationship.
@@ -539,8 +536,10 @@ Examples:
 Single-point relative offsets also use null:
 - "after 2 hours" / "in 3 hours" / "3 hours from now"→ rangeRelation = null
 - "20 days from now"→ relativeDays = 20→ delta = null→ rangeRelation = null
-- "3 giờ tới" / "10 giờ tới"→ rangeRelation = null
 - "sau 3 ngày" / "3 ngày nữa"→ rangeRelation = null
+
+Hour-unit rolling durations also use null (see #8-5(b)):
+- "3 giờ tới" / "trong 10 giờ tới" / "next 6 hours"→ rangeRelation = null
 
 Do NOT set `rangeRelation` from future-tense words alone:
 - "will", `sẽ`, bare `sắp`, `sau này`, `tương lai`
@@ -555,19 +554,21 @@ relativeHours = a relative hour offset from now, expressed as a plain number.
 
 Vietnamese ("tiếng" = colloquial "giờ", treat identically):
 - "2 tiếng nữa" / "2 giờ nữa" → relativeHours = 2
-- "3 tiếng tới" / "3 giờ tới" → relativeHours = 3
+- "sau 3 giờ" / "sau 3 tiếng" → relativeHours = 3
 - "giờ sau" / "giờ tiếp theo" → relativeHours = 1
 
-Contrast (bare offset vs `trong` duration):
-- "10 giờ tới độ ẩm như thế nào" → relativeHours = 10, delta = null, rangeRelation = null
-- "trong 10 giờ tới độ ẩm như thế nào" → relativeHours = null, delta = 10, deltaUnit = "hour", rangeRelation = "after"
+Contrast (point offset `nữa`/`sau` vs duration `tới`):
+- "10 giờ nữa độ ẩm như thế nào" → relativeHours = 10, delta = null, rangeRelation = null
+- "10 giờ tới độ ẩm như thế nào" / "trong 10 giờ tới..." → relativeHours = null, delta = 10, deltaUnit = "hour", rangeRelation = null
 
 English:
 - "in 3 hours" → relativeHours = 3
 - "after 2 hours" → relativeHours = 2
 
-A "within N hours" expression is a duration range, NOT a single-point offset. Do NOT set relativeHours = 0 for it (see #4-3); extract it via #6, #7, and #8:
-- "within the next 4 hours" / "trong vòng 4 giờ/tiếng tới" → relativeHours = null → delta = 4 → deltaUnit = "hour" → rangeRelation = "after"
+Any `N giờ/tiếng tới` or "within N hours" expression is a rolling duration, NOT a
+single-point offset. Do NOT set relativeHours = 0 for it (see #4-3); extract it
+via #6, #7, and #8:
+- "within the next 4 hours" / "trong vòng 4 giờ/tiếng tới" / "4 giờ tới" → relativeHours = null → delta = 4 → deltaUnit = "hour" → rangeRelation = null
 
 If no relative hour expression is found: relativeHours = null
 
@@ -922,6 +923,8 @@ Examples:
 weekPart captures broad, predefined day groupings within a week.
 MUST be one of: "whole" | "weekdays" | "weekend" | null.
 "whole" covers the entire single week and is set for the entire week expressions listed in #16-2 and #16-4.
+Vietnamese "các ngày trong tuần (này/sau/sau nữa)" means the days of that week as a
+whole, NOT the working-day block → weekPart = "whole" (with the week's relativeWeeks).
 
 CRITICAL RULE:
 When weekPart is detected, do NOT attempt to calculate `delta` or `specificWeekday`. Just extract the weekPart and let the backend handle the exact date ranges. 
@@ -976,8 +979,8 @@ Before producing the JSON, verify all of the following:
 14. A multi-week duration uses `delta` and `deltaUnit = "day"`, not `relativeWeeks`.
 15. Only explicitly stated semantic information is extracted.
 16. No numeric `delta` was inferred from vague quantity words such as "a few", "several", "some", or "vài".
-17. Future-oriented duration modifiers such as `tới`, `sắp tới`, `tiếp theo`, and `kế tiếp` produced `rangeRelation = "after"` ONLY for DAY/WEEK-unit durations. HOUR-unit durations ("trong (vòng) N giờ/tiếng tới", "next N hours") are rolling windows anchored at the current instant: `delta = N`, `deltaUnit = "hour"`, `rangeRelation = null` (see #8-5). Bare single-point hour offsets ("N giờ tới" / "N tiếng tới" / "N giờ nữa" without "trong") keep `relativeHours = N` with `delta = null` and `rangeRelation = null` (see #9).
-18. Bare `N giờ/tiếng tới` was NOT extracted as `delta` + `rangeRelation = "after"`.
+17. Future-oriented duration modifiers such as `tới`, `sắp tới`, `tiếp theo`, and `kế tiếp` produced `rangeRelation = "after"` ONLY for DAY/WEEK-unit durations. HOUR-unit durations ("N giờ/tiếng tới" bare, "trong (vòng) N giờ/tiếng tới", "next N hours") are rolling windows anchored at the current instant: `delta = N`, `deltaUnit = "hour"`, `rangeRelation = null` (see #8-5). Point offsets ("N giờ nữa", "sau N giờ", "in N hours") keep `relativeHours = N` with `delta = null` and `rangeRelation = null` (see #9).
+18. No `N giờ/tiếng tới` expression was extracted with `rangeRelation = "after"`.
 19. `from` and `to` include their anchor; `after` and `before` exclude their anchor; null means no boundary relationship.
 20. A Vietnamese current-month segment uses its mapped `specificDate`, `delta = 10`, `deltaUnit = "day"`, and `rangeRelation = "from"`.
 

@@ -1,5 +1,19 @@
 # prompts/ CHANGELOG
 
+## 2026-07-14 — weather_entity.md: bare `N giờ tới` duration 전환 + whole/한국어 정리 (직접 수정)
+
+- 변경: bare `N giờ/tiếng tới`를 단일 시점(relativeHours=N)에서 **rolling duration**
+  (`delta=N, deltaUnit=hour, rangeRelation=null`)으로 전환 — #6-2/#8-5/#8-6/#9/#19-17·18 일괄.
+  단일 시점 오프셋은 `N giờ nữa`/`sau N giờ`/`in N hours`만. `các ngày trong tuần` →
+  weekPart=whole 규칙 추가(#17). 한국어 예시 제거(#3 — 한국어는 프롬프트 제외 방침).
+- 이유: 베트남팀/고객사 확정 — 기상 관용구로 bare `N giờ tới`는 "지금부터 N시간" duration
+  (spec/weather_agent_policy.md #4-1, spec/time_semantics_open_questions.md).
+- 골든 동기 수정: bare tới 16건 duration 전환, hour-unit `after` 27건 → null,
+  các ngày 4건 whole, 범위 meridiem 9건, 지역명/성조 lloc 6건,
+  fat_r2 중복 id 40건 리넘버링(영어 블록 125–164 → 225–264).
+- 검증: 라이브 스팟체크 — "10 giờ tới có mưa không" → `delta=10/hour, rel=null` ✓,
+  "2 giờ nữa trời thế nào" → `relativeHours=2` ✓.
+
 ## 2026-07-14 — weather_entity.md: 시간 단위 duration의 after 제거 (직접 수정)
 
 - 변경: #8-5를 단위별로 분리 — 일/주 단위 duration(`trong N ngày/tuần tới`, `next N days`)은
