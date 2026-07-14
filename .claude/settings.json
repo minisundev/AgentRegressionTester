@@ -10,7 +10,8 @@
       "Bash(git rm *)",
       "Bash(sed -i '' \"s|tsx packages/e2e_regression/tools/cacheConsistencyProbe.ts|tsx packages/cache_probe/cacheConsistencyProbe.ts|\" package.json)",
       "Bash(sed -i '' \"s|npx tsx packages/e2e_regression/tools/cacheConsistencyProbe.ts|npx tsx packages/cache_probe/cacheConsistencyProbe.ts|\" packages/cache_probe/cacheConsistencyProbe.ts)",
-      "Bash(grep -rnE \"['\\\\\"\\\\`][^'\\\\\"\\\\`]*logs/|/logs\\\\b|logsDir|LOG_DIR\" --include=\"*.ts\" --include=\"*.js\" .)"
+      "Bash(grep -rnE \"['\\\\\"\\\\`][^'\\\\\"\\\\`]*logs/|/logs\\\\b|logsDir|LOG_DIR\" --include=\"*.ts\" --include=\"*.js\" .)",
+      "Bash(awk '/SheetColumns/{f=1} f{print} /\\\\}/{if\\(f\\)c++; if\\(c>=1 && f && /\\\\};?$/\\){exit}}' packages/e2e_regression/types/type.ts)"
     ]
   }
 }

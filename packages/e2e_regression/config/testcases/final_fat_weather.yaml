@@ -1,11 +1,9 @@
-groupName: Weather_Week_Matrix
+groupName: Final_FAT_Weather
 cases:
-  # === 1. 이번 주 (this week / tuần này) ===
   - id: 1
-    name: "EN - this week entire"
-    message: "how is the weather this week"
-    reqTranslation: "how is the weather this week"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #001"
+    message: Chỉ số PM10
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
@@ -14,7 +12,7 @@ cases:
       location: null
       localizedLocation: null
       country: null
-      weatherMetric: all
+      weatherMetric: airQuality
       delta: null
       deltaUnit: null
       rangeRelation: null
@@ -26,16 +24,15 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 0
-      weekPart: whole
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
   - id: 2
-    name: "VI - this week entire"
-    message: "thời tiết tuần này như thế nào"
-    reqTranslation: "how is the weather this week"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #002"
+    message: Chỉ số AQI
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
@@ -44,7 +41,7 @@ cases:
       location: null
       localizedLocation: null
       country: null
-      weatherMetric: all
+      weatherMetric: airQuality
       delta: null
       deltaUnit: null
       rangeRelation: null
@@ -56,17 +53,15 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 0
-      weekPart: whole
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
-
   - id: 3
-    name: "EN - this weekend"
-    message: "weather this weekend"
-    reqTranslation: "weather this weekend"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #003"
+    message: Chất lượng không khí hiện tại
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
@@ -75,7 +70,7 @@ cases:
       location: null
       localizedLocation: null
       country: null
-      weatherMetric: all
+      weatherMetric: airQuality
       delta: null
       deltaUnit: null
       rangeRelation: null
@@ -87,23 +82,80 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 0
-      weekPart: weekend
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
   - id: 4
-    name: "VI - this weekend"
-    message: "thời tiết cuối tuần này"
-    reqTranslation: "weather this weekend"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #004"
+    message: Nhiệt độ cao nhất tại Lào
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
       reasoning:
         $any: true
-      location: null
-      localizedLocation: null
+      location: Vientiane
+      localizedLocation: Vientiane
+      country: LA
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 5
+    name: "Final_FAT Weather #005"
+    message: Hôm nay ở Mỹ bao nhiêu độ
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Washington
+      localizedLocation: Washington
+      country: US
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 6
+    name: "Final_FAT Weather #006"
+    message: Nha Trang có lạnh không
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Nha Trang
+      localizedLocation: Nha Trang
       country: null
       weatherMetric: all
       delta: null
@@ -117,17 +169,160 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 0
-      weekPart: weekend
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
-
-  - id: 5
-    name: "EN - this weekdays"
-    message: "weather during the weekdays"
-    reqTranslation: "weather during the weekdays"
-    subIntent: CheckWeather
+  - id: 7
+    name: "Final_FAT Weather #007"
+    message: Hoôm nay có mưa không
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 8
+    name: "Final_FAT Weather #008"
+    message: Đà Lạt có lạnh không
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Lat
+      localizedLocation: Đà Lạt
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 9
+    name: "Final_FAT Weather #009"
+    message: Thái Lan có mưa lắm không
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Bangkok
+      localizedLocation: Bangkok
+      country: TH
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 10
+    name: "Final_FAT Weather #010"
+    message: Hàn Quốc có bị mưa không
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: KR
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 11
+    name: "Final_FAT Weather #011"
+    message: Trời không khí như nào
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 12
+    name: "Final_FAT Weather #012"
+    message: Trời có nắng không
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
@@ -149,231 +344,14 @@ cases:
       specificDate: null
       specificWeekday: null
       relativeWeeks: null
-      weekPart: weekdays
-      fallback: null
-      requestedPresentation: null
-    entityMatchMode: exact
-  - id: 6
-    name: "VI - this weekdays"
-    message: "thời tiết các ngày trong tuần này"
-    reqTranslation: "weather during the weekdays"
-    subIntent: CheckWeather
-    mainIntent: Weather
-    agentType: DailyInfoAgent
-    expectedEntity:
-      reasoning:
-        $any: true
-      location: null
-      localizedLocation: null
-      country: null
-      weatherMetric: all
-      delta: null
-      deltaUnit: null
-      rangeRelation: null
-      requestedGranularity: null
-      timeOfDay: null
-      relativeHours: null
-      specificHour: null
-      meridiem: null
-      relativeDays: null
-      specificDate: null
-      specificWeekday: null
-      relativeWeeks: 0
       weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
-
-  # === 2. 다음 주 (next week / tuần sau) ===
-  - id: 7
-    name: "EN - next week entire"
-    message: "weather forecast for next week"
-    reqTranslation: "weather forecast for next week"
-    subIntent: CheckWeather
-    mainIntent: Weather
-    agentType: DailyInfoAgent
-    expectedEntity:
-      reasoning:
-        $any: true
-      location: null
-      localizedLocation: null
-      country: null
-      weatherMetric: all
-      delta: null
-      deltaUnit: null
-      rangeRelation: null
-      requestedGranularity: null
-      timeOfDay: null
-      relativeHours: null
-      specificHour: null
-      meridiem: null
-      relativeDays: null
-      specificDate: null
-      specificWeekday: null
-      relativeWeeks: 1
-      weekPart: whole
-      fallback: null
-      requestedPresentation: null
-    entityMatchMode: exact
-  - id: 8
-    name: "VI - next week entire"
-    message: "dự báo thời tiết tuần sau"
-    reqTranslation: "weather forecast for next week"
-    subIntent: CheckWeather
-    mainIntent: Weather
-    agentType: DailyInfoAgent
-    expectedEntity:
-      reasoning:
-        $any: true
-      location: null
-      localizedLocation: null
-      country: null
-      weatherMetric: all
-      delta: null
-      deltaUnit: null
-      rangeRelation: null
-      requestedGranularity: null
-      timeOfDay: null
-      relativeHours: null
-      specificHour: null
-      meridiem: null
-      relativeDays: null
-      specificDate: null
-      specificWeekday: null
-      relativeWeeks: 1
-      weekPart: whole
-      fallback: null
-      requestedPresentation: null
-    entityMatchMode: exact
-
-  - id: 9
-    name: "EN - next weekend"
-    message: "will it be sunny next weekend?"
-    reqTranslation: "will it be sunny next weekend?"
-    subIntent: CheckWeather
-    mainIntent: Weather
-    agentType: DailyInfoAgent
-    expectedEntity:
-      reasoning:
-        $any: true
-      location: null
-      localizedLocation: null
-      country: null
-      weatherMetric: all
-      delta: null
-      deltaUnit: null
-      rangeRelation: null
-      requestedGranularity: null
-      timeOfDay: null
-      relativeHours: null
-      specificHour: null
-      meridiem: null
-      relativeDays: null
-      specificDate: null
-      specificWeekday: null
-      relativeWeeks: 1
-      weekPart: weekend
-      fallback: null
-      requestedPresentation: null
-    entityMatchMode: exact
-  - id: 10
-    name: "VI - next weekend"
-    message: "cuối tuần sau có nắng không"
-    reqTranslation: "will it be sunny next weekend?"
-    subIntent: CheckWeather
-    mainIntent: Weather
-    agentType: DailyInfoAgent
-    expectedEntity:
-      reasoning:
-        $any: true
-      location: null
-      localizedLocation: null
-      country: null
-      weatherMetric: all
-      delta: null
-      deltaUnit: null
-      rangeRelation: null
-      requestedGranularity: null
-      timeOfDay: null
-      relativeHours: null
-      specificHour: null
-      meridiem: null
-      relativeDays: null
-      specificDate: null
-      specificWeekday: null
-      relativeWeeks: 1
-      weekPart: weekend
-      fallback: null
-      requestedPresentation: null
-    entityMatchMode: exact
-
-  - id: 11
-    name: "EN - next weekdays"
-    message: "weather on next week's weekdays"
-    reqTranslation: "weather on next week's weekdays"
-    subIntent: CheckWeather
-    mainIntent: Weather
-    agentType: DailyInfoAgent
-    expectedEntity:
-      reasoning:
-        $any: true
-      location: null
-      localizedLocation: null
-      country: null
-      weatherMetric: all
-      delta: null
-      deltaUnit: null
-      rangeRelation: null
-      requestedGranularity: null
-      timeOfDay: null
-      relativeHours: null
-      specificHour: null
-      meridiem: null
-      relativeDays: null
-      specificDate: null
-      specificWeekday: null
-      relativeWeeks: 1
-      weekPart: weekdays
-      fallback: null
-      requestedPresentation: null
-    entityMatchMode: exact
-  - id: 12
-    name: "VI - next weekdays"
-    message: "thời tiết ngày thường tuần sau"
-    reqTranslation: "weather on next week's weekdays"
-    subIntent: CheckWeather
-    mainIntent: Weather
-    agentType: DailyInfoAgent
-    expectedEntity:
-      reasoning:
-        $any: true
-      location: null
-      localizedLocation: null
-      country: null
-      weatherMetric: all
-      delta: null
-      deltaUnit: null
-      rangeRelation: null
-      requestedGranularity: null
-      timeOfDay: null
-      relativeHours: null
-      specificHour: null
-      meridiem: null
-      relativeDays: null
-      specificDate: null
-      specificWeekday: null
-      relativeWeeks: 1
-      weekPart: weekdays
-      fallback: null
-      requestedPresentation: null
-    entityMatchMode: exact
-
-  # === 3. 다다음 주 (week after next / tuần sau nữa) ===
   - id: 13
-    name: "EN - week after next entire"
-    message: "weather for the week after next"
-    reqTranslation: "weather for the week after next"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #013"
+    message: Trời có nhiều mây không
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
@@ -394,23 +372,22 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 2
-      weekPart: whole
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
   - id: 14
-    name: "VI - week after next entire"
-    message: "thời tiết tuần sau nữa"
-    reqTranslation: "weather for the week after next"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #014"
+    message: Bắc Giang có lạnh lắm không
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
       reasoning:
         $any: true
-      location: null
-      localizedLocation: null
+      location: Bac Giang
+      localizedLocation: Bắc Giang
       country: null
       weatherMetric: all
       delta: null
@@ -424,26 +401,24 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 2
-      weekPart: whole
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
-
   - id: 15
-    name: "EN - week after next weekend"
-    message: "what is the weather for the weekend after next"
-    reqTranslation: "what is the weather for the weekend after next"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #015"
+    message: Không khí tại Hồ Chí Minh có trong lành không
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
       reasoning:
         $any: true
-      location: null
-      localizedLocation: null
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
       country: null
-      weatherMetric: all
+      weatherMetric: airQuality
       delta: null
       deltaUnit: null
       rangeRelation: null
@@ -455,25 +430,24 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 2
-      weekPart: weekend
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
   - id: 16
-    name: "VI - week after next weekend"
-    message: "cuối tuần sau nữa thời tiết thế nào"
-    reqTranslation: "what is the weather for the weekend after next"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #016"
+    message: Các chỉ số không khí ở Hà Nội có ổn không
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
       reasoning:
         $any: true
-      location: null
-      localizedLocation: null
+      location: Hanoi
+      localizedLocation: Hà Nội
       country: null
-      weatherMetric: all
+      weatherMetric: airQuality
       delta: null
       deltaUnit: null
       rangeRelation: null
@@ -485,17 +459,15 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 2
-      weekPart: weekend
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
-
   - id: 17
-    name: "EN - week after next weekdays"
-    message: "show me the weekdays forecast in two weeks"
-    reqTranslation: "show me the weekdays forecast in two weeks"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #017"
+    message: Thời tiết đang như nào
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
@@ -516,16 +488,15 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 2
-      weekPart: weekdays
+      relativeWeeks: null
+      weekPart: null
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
   - id: 18
-    name: "VI - week after next weekdays"
-    message: "các ngày trong tuần sau nữa có mưa không"
-    reqTranslation: "show me the weekdays forecast in two weeks"
-    subIntent: CheckWeather
+    name: "Final_FAT Weather #018"
+    message: Thời tiết có mát mẻ không
+    subIntent: CheckDailyForecast
     mainIntent: Weather
     agentType: DailyInfoAgent
     expectedEntity:
@@ -534,7 +505,7 @@ cases:
       location: null
       localizedLocation: null
       country: null
-      weatherMetric: precipitation
+      weatherMetric: all
       delta: null
       deltaUnit: null
       rangeRelation: null
@@ -546,7 +517,65 @@ cases:
       relativeDays: null
       specificDate: null
       specificWeekday: null
-      relativeWeeks: 2
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 19
+    name: "Final_FAT Weather #019"
+    message: Hôm nay trời đẹp không
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 20
+    name: "Final_FAT Weather #020"
+    message: Thời tiết hôm nay đẹp không
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
       weekPart: null
       fallback: null
       requestedPresentation: null

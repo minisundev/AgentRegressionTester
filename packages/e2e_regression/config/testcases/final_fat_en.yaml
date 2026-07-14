@@ -1,0 +1,1804 @@
+groupName: Final_FAT_EN
+cases:
+  - id: 1
+    name: "Final_FAT EN Daily #01"
+    message: "PM10 index."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 2
+    name: "Final_FAT EN Daily #02"
+    message: "AQI index."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 3
+    name: "Final_FAT EN Daily #03"
+    message: "Current air quality."
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 4
+    name: "Final_FAT EN Daily #04"
+    message: "What's the highest temperature in Laos today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Vientiane
+      localizedLocation: Vientiane
+      country: LA
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 5
+    name: "Final_FAT EN Daily #05"
+    message: "What's the temperature in the United States today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Washington
+      localizedLocation: Washington
+      country: US
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 6
+    name: "Final_FAT EN Daily #06"
+    message: "Is it cold in Nha Trang?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Nha Trang
+      localizedLocation: Nha Trang
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 7
+    name: "Final_FAT EN Daily #07"
+    message: "Will it rain today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 8
+    name: "Final_FAT EN Daily #08"
+    message: "Is it cold in Da Nang?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 9
+    name: "Final_FAT EN Daily #09"
+    message: "Is it raining a lot in Thailand?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Bangkok
+      localizedLocation: Bangkok
+      country: TH
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 10
+    name: "Final_FAT EN Daily #10"
+    message: "Is it raining in South Korea?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: KR
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 11
+    name: "Final_FAT EN Daily #11"
+    message: "How's the air quality today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 12
+    name: "Final_FAT EN Daily #12"
+    message: "Is it sunny today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 13
+    name: "Final_FAT EN Daily #13"
+    message: "Is it cloudy today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 14
+    name: "Final_FAT EN Daily #14"
+    message: "Is it very cold in Bac Ninh?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Bac Ninh
+      localizedLocation: Bắc Ninh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 15
+    name: "Final_FAT EN Daily #15"
+    message: "Is the air clean in Ho Chi Minh City?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 16
+    name: "Final_FAT EN Daily #16"
+    message: "Is the air quality in Hanoi good?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: airQuality
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 17
+    name: "Final_FAT EN Daily #17"
+    message: "How's the weather right now?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 18
+    name: "Final_FAT EN Daily #18"
+    message: "Is the weather nice and cool?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 19
+    name: "Final_FAT EN Daily #19"
+    message: "Is it a nice day today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 20
+    name: "Final_FAT EN Daily #20"
+    message: "Is the weather nice today?"
+    subIntent: CheckDailyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 21
+    name: "Final_FAT EN Hourly #01"
+    message: "What's the weather going to be like in 6 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 6
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 22
+    name: "Final_FAT EN Hourly #02"
+    message: "What's the weather going to be like in Hanoi in 3 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 3
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 23
+    name: "Final_FAT EN Hourly #03"
+    message: "What's the weather going to be like in Seoul in 2 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Seoul
+      localizedLocation: Seoul
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 2
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 24
+    name: "Final_FAT EN Hourly #04"
+    message: "What's the weather going to be like in Ho Chi Minh City at 6 PM today?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: pm
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 25
+    name: "Final_FAT EN Hourly #05"
+    message: "What's the weather like in Tokyo at noon?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Tokyo
+      localizedLocation: Tokyo
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 12
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 26
+    name: "Final_FAT EN Hourly #06"
+    message: "How's the weather this morning?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 27
+    name: "Final_FAT EN Hourly #07"
+    message: "How's the weather in Ho Chi Minh City this afternoon?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 28
+    name: "Final_FAT EN Hourly #08"
+    message: "How's the weather in Japan tonight?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Tokyo
+      localizedLocation: Tokyo
+      country: JP
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: night
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 29
+    name: "Final_FAT EN Hourly #09"
+    message: "What's the weather forecast for the next 97 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: 97
+      deltaUnit: hour
+      rangeRelation: after
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 30
+    name: "Final_FAT EN Hourly #10"
+    message: "How's the weather in Sydney this morning?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Sydney
+      localizedLocation: Sydney
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 31
+    name: "Final_FAT EN Hourly #11"
+    message: "What's the weather going to be like in Paris tomorrow morning?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Paris
+      localizedLocation: Paris
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: morn
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 32
+    name: "Final_FAT EN Hourly #12"
+    message: "What's the weather going to be like at 6 PM?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 33
+    name: "Final_FAT EN Hourly #13"
+    message: "How will the humidity change in Hạ Long between 6 AM and 10 AM tomorrow?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ha Long
+      localizedLocation: Hạ Long
+      country: null
+      weatherMetric: humidity
+      delta: 5
+      deltaUnit: hour
+      rangeRelation: from
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 6
+      meridiem: am
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 34
+    name: "Final_FAT EN Hourly #14"
+    message: "What will the humidity be like in 10 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 10
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 35
+    name: "Final_FAT EN Hourly #15"
+    message: "What's the humidity going to be like in Ho Chi Minh City tomorrow afternoon?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: afternoon
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 36
+    name: "Final_FAT EN Hourly #16"
+    message: "What's the humidity going to be like in Ho Chi Minh City tomorrow evening?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 37
+    name: "Final_FAT EN Hourly #17"
+    message: "What will the humidity be like in 2 hours?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: 2
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 38
+    name: "Final_FAT EN Hourly #18"
+    message: "What's the humidity like at noon?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 12
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 39
+    name: "Final_FAT EN Hourly #19"
+    message: "What's the humidity in Đà Nẵng at noon?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: 12
+      meridiem: pm
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 40
+    name: "Final_FAT EN Hourly #20"
+    message: "What's the humidity like in Paris this evening?"
+    subIntent: CheckHourlyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Paris
+      localizedLocation: Paris
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: eve
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 0
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 41
+    name: "Final_FAT EN Weekly #01"
+    message: "Will it be sunny or rainy in Đà Nẵng this week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: "42-1"
+    name: "Final_FAT EN Weekly #02 turn 1"
+    message: "Will the weather be nice in Hội An next week?"
+    isMultiTurn: true
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hoi An
+      localizedLocation: Hội An
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: "42-2"
+    name: "Final_FAT EN Weekly #02 turn 2"
+    message: "How's the weather this weekend?"
+    isMultiTurn: true
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 43
+    name: "Final_FAT EN Weekly #03"
+    message: "How's the weather the weekend after next?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 44
+    name: "Final_FAT EN Weekly #04"
+    message: "How's the weather in Ho Chi Minh City next weekend?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: "45-1"
+    name: "Final_FAT EN Weekly #05 turn 1"
+    message: "How's the weather in Huế this week?"
+    isMultiTurn: true
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hue
+      localizedLocation: Huế
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: "45-2"
+    name: "Final_FAT EN Weekly #05 turn 2"
+    message: "What about the week after next?"
+    isMultiTurn: true
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: null
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 46
+    name: "Final_FAT EN Weekly #06"
+    message: "How's the weather the weekend after next?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 47
+    name: "Final_FAT EN Weekly #07"
+    message: "What's the weather like each day this week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: daily
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 48
+    name: "Final_FAT EN Weekly #08"
+    message: "What's the humidity like each day this week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: daily
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 49
+    name: "Final_FAT EN Weekly #09"
+    message: "What's the humidity going to be like in Paris this weekend?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Paris
+      localizedLocation: Paris
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 50
+    name: "Final_FAT EN Weekly #10"
+    message: "Will it be hot and humid tomorrow?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 51
+    name: "Final_FAT EN Weekly #11"
+    message: "What's the humidity going to be like the week after next?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 52
+    name: "Final_FAT EN Weekly #12"
+    message: "What's the average humidity in Đà Nẵng this week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Da Nang
+      localizedLocation: Đà Nẵng
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 53
+    name: "Final_FAT EN Weekly #13"
+    message: "What's the humidity forecast for Phú Quốc tomorrow?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Phu Quoc
+      localizedLocation: Phú Quốc
+      country: null
+      weatherMetric: humidity
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: 1
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: null
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 54
+    name: "Final_FAT EN Weekly #14"
+    message: "What's the average temperature in Hải Phòng next week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hai Phong
+      localizedLocation: Hải Phòng
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 1
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 55
+    name: "Final_FAT EN Weekly #15"
+    message: "How's the weather going to be in Hanoi the week after next?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 2
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 56
+    name: "Final_FAT EN Weekly #16"
+    message: "What's the temperature going to be in Ho Chi Minh City each day this week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: daily
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: null
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 57
+    name: "Final_FAT EN Weekly #17"
+    message: "What's the temperature going to be this weekend?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: null
+      localizedLocation: null
+      country: null
+      weatherMetric: all
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 58
+    name: "Final_FAT EN Weekly #18"
+    message: "Is it going to rain in Cần Thơ this weekend?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Can Tho
+      localizedLocation: Cần Thơ
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 59
+    name: "Final_FAT EN Weekly #19"
+    message: "Is it going to rain in Ho Chi Minh City this week?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Ho Chi Minh City
+      localizedLocation: Hồ Chí Minh
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: whole
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact
+  - id: 60
+    name: "Final_FAT EN Weekly #20"
+    message: "Is it going to rain in Hanoi this weekend?"
+    subIntent: CheckWeeklyForecast
+    mainIntent: Weather
+    agentType: DailyInfoAgent
+    expectedEntity:
+      reasoning:
+        $any: true
+      location: Hanoi
+      localizedLocation: Hà Nội
+      country: null
+      weatherMetric: precipitation
+      delta: null
+      deltaUnit: null
+      rangeRelation: null
+      requestedGranularity: null
+      timeOfDay: null
+      relativeHours: null
+      specificHour: null
+      meridiem: null
+      relativeDays: null
+      specificDate: null
+      specificWeekday: null
+      relativeWeeks: 0
+      weekPart: weekend
+      fallback: null
+      requestedPresentation: null
+    entityMatchMode: exact

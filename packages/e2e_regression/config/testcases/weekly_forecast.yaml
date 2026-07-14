@@ -54,7 +54,7 @@ cases:
       specificDate: null
       specificWeekday: null
       relativeWeeks: 0
-      weekPart: null
+      weekPart: whole
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact
@@ -83,7 +83,7 @@ cases:
       specificDate: null
       specificWeekday: null
       relativeWeeks: 1
-      weekPart: null
+      weekPart: whole
       fallback: null
       requestedPresentation: null
     entityMatchMode: exact

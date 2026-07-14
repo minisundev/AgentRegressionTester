@@ -16,6 +16,13 @@ const config: Config = {
   // 프로젝트 경로
   moduleDirectories: ['node_modules', 'packages/model_payload_test'],
 
+  // model_payload_test는 NodeNext식 `.js` 확장자 import를 쓰는데, e2e_regression이
+  // 이를 ts-jest(commonjs)로 끌어쓰면 `.js`를 못 푼다. 상대경로 `.js`를 스트립해
+  // 실제 `.ts` 소스로 해석되게 한다.
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
+
   testTimeout: 15000,
   maxConcurrency: Number.isInteger(configuredConcurrency) && configuredConcurrency > 0
     ? configuredConcurrency

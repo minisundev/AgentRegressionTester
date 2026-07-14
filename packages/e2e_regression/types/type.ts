@@ -48,18 +48,6 @@ export interface ResultRow {
   expectedEntity?: string;
   entityGoldenStatus?: 'PASS' | 'FAIL' | 'NA';
   entityGoldenDiff?: string;
-  payloadStatus?: 'FOUND' | 'NOT_APPLICABLE' | 'MISSING';
-  dumpedPayload?: string;
-  llmPrompt?: string;
-  weatherDataPayload?: string;
-  payloadJudgeVerdict?: string;
-  payloadJudgeScore?: number | string;
-  payloadExpectedIntent?: string;
-  payloadActualIntent?: string;
-  payloadJudgeChecks?: string;
-  payloadJudgeSummary?: string;
-  payloadJudgeIssues?: string;
-  payloadJudgeError?: string;
   todayCard?: string;
   card?: string; // weeklyCard or hourlyCard as JSON
   mode?: RequestMode; // 'sync' (agentChat) or 'stream' (agentChatStream)
@@ -89,18 +77,6 @@ export const SheetColumns = {
   S: "expectedEntity",
   T: "entityGoldenStatus",
   U: "entityGoldenDiff",
-  V: "payloadStatus",
-  W: "dumpedPayload",
-  X: "llmPrompt",
-  Y: "weatherDataPayload",
-  Z: "payloadJudgeVerdict",
-  AA: "payloadJudgeScore",
-  AB: "payloadExpectedIntent",
-  AC: "payloadActualIntent",
-  AD: "payloadJudgeChecks",
-  AE: "payloadJudgeSummary",
-  AF: "payloadJudgeIssues",
-  AG: "payloadJudgeError",
 } as const;
 
 export type SheetColumnKey = keyof typeof SheetColumns;
@@ -123,18 +99,6 @@ export interface SheetRow {
   expectedEntity: string;
   entityGoldenStatus: string;
   entityGoldenDiff: string;
-  payloadStatus: string;
-  dumpedPayload: string;
-  llmPrompt: string;
-  weatherDataPayload: string;
-  payloadJudgeVerdict: string;
-  payloadJudgeScore: number | string;
-  payloadExpectedIntent: string;
-  payloadActualIntent: string;
-  payloadJudgeChecks: string;
-  payloadJudgeSummary: string;
-  payloadJudgeIssues: string;
-  payloadJudgeError: string;
   todayCard: string;
   card: string; // weeklyCard or hourlyCard as JSON
   mode: string; // 'sync' or 'stream'

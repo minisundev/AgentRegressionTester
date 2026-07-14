@@ -17,4 +17,4 @@ profiles:
 
   crow:
     baseUrl: https://agent.crow.ai.kr/aia-control/v1/agentChat
-    sheetName: crow_260706_time_resolve_test
+    sheetName: crow_260707_final_test

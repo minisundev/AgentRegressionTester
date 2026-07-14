@@ -1,4 +1,4 @@
-defaultProfilePath: 'tests/config/settings/profiles.yaml'
+defaultProfilePath: 'packages/e2e_regression/config/settings/profiles.yaml'
 
 examples:
   - 'npm run test:sheet:api:dev'

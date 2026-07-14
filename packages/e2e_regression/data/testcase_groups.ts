@@ -31,4 +31,6 @@ export const CASE_GROUPS = [
   'ai_ftc_1001_weather.yaml',
   'sit_fat_weather_2.yaml',
   'sit_fat_weather_2_en.yaml',
+  'final_fat_weather.yaml',
+  'final_fat_en.yaml',
 ];

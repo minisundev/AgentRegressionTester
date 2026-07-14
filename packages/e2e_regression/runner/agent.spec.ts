@@ -24,11 +24,6 @@ import {
   formatEntityGoldenDifferences,
   type EntityGoldenResult,
 } from '../utils/entityGolden';
-import {
-  auditPayloadForResponse,
-  closePayloadAudit,
-  type PayloadAuditResult,
-} from '../utils/payloadAudit';
 
 const client = createTestClient();
 const reportTo = env.REPORT_TO;
@@ -159,7 +154,6 @@ describe('Agent API Regression', () => {
 
   afterAll(async () => {
     closeAgentResponsePublisher();
-    closePayloadAudit();
     if (reportTo === 'terminal') {
       console.log('\nLocal Test Summary');
       if (successes.length > 0) printSummaryTable("SUCCESSES", successes);
@@ -212,18 +206,7 @@ async function executeMode(
       : evaluateEntityGolden(tc, data.response.entity);
     await publishAgentResponse(body.transactionId, accountId, group, tc, mode, data, entityGolden);
 
-    const payloadAudit = await auditPayloadForResponse(
-      body.transactionId,
-      accountId,
-      group,
-      tc,
-      mode,
-      data,
-    );
-    let errorMsg = validateResponse(data, entityGolden);
-    if (payloadAudit.status === 'MISSING') {
-      errorMsg = [errorMsg, `PayloadDump:${payloadAudit.error || 'missing'}`].filter(Boolean).join('; ');
-    }
+    const errorMsg = validateResponse(data, entityGolden);
     const result = buildResultRow(
       group,
       tc,
@@ -232,7 +215,6 @@ async function executeMode(
       mode,
       errorMsg,
       entityGolden,
-      payloadAudit,
       ttft,
       tokenCount,
     );
@@ -255,7 +237,6 @@ function buildResultRow(
   mode: RequestMode,
   errorMsg: string | undefined,
   entityGolden: EntityGoldenResult,
-  payloadAudit: PayloadAuditResult,
   ttft?: number,
   tokenCount?: number,
 ): ResultRow {
@@ -282,18 +263,6 @@ function buildResultRow(
     expectedEntity: entityGolden.expected === undefined ? '' : JSON.stringify(entityGolden.expected),
     entityGoldenStatus: entityGolden.status,
     entityGoldenDiff: formatEntityGoldenDifferences(entityGolden),
-    payloadStatus: payloadAudit.status,
-    dumpedPayload: payloadAudit.dumpedPayload,
-    llmPrompt: payloadAudit.prompt,
-    weatherDataPayload: payloadAudit.weatherData,
-    payloadJudgeVerdict: payloadAudit.verdict,
-    payloadJudgeScore: payloadAudit.score,
-    payloadExpectedIntent: payloadAudit.expectedIntent,
-    payloadActualIntent: payloadAudit.actualIntent,
-    payloadJudgeChecks: payloadAudit.checks,
-    payloadJudgeSummary: payloadAudit.summary,
-    payloadJudgeIssues: payloadAudit.issues,
-    payloadJudgeError: payloadAudit.error,
     todayCard,
     card,
     mode,
