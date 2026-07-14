@@ -11,7 +11,28 @@
       "Bash(sed -i '' \"s|tsx packages/e2e_regression/tools/cacheConsistencyProbe.ts|tsx packages/cache_probe/cacheConsistencyProbe.ts|\" package.json)",
       "Bash(sed -i '' \"s|npx tsx packages/e2e_regression/tools/cacheConsistencyProbe.ts|npx tsx packages/cache_probe/cacheConsistencyProbe.ts|\" packages/cache_probe/cacheConsistencyProbe.ts)",
       "Bash(grep -rnE \"['\\\\\"\\\\`][^'\\\\\"\\\\`]*logs/|/logs\\\\b|logsDir|LOG_DIR\" --include=\"*.ts\" --include=\"*.js\" .)",
-      "Bash(awk '/SheetColumns/{f=1} f{print} /\\\\}/{if\\(f\\)c++; if\\(c>=1 && f && /\\\\};?$/\\){exit}}' packages/e2e_regression/types/type.ts)"
+      "Bash(awk '/SheetColumns/{f=1} f{print} /\\\\}/{if\\(f\\)c++; if\\(c>=1 && f && /\\\\};?$/\\){exit}}' packages/e2e_regression/types/type.ts)",
+      "Bash(npm run test:*)",
+      "Bash(npm run optimize:prompt*)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run llm:list*)",
+      "Bash(npm run watch:weather:answer-compare*)",
+      "Bash(curl http://localhost:8083/*)",
+      "Bash(curl -s http://localhost:8083/*)",
+      "Bash(curl -sS http://localhost:8083/*)",
+      "Bash(curl -X POST http://localhost:8083/*)",
+      "Bash(curl -s -X POST http://localhost:8083/*)",
+      "Bash(curl -sS -X POST http://localhost:8083/*)",
+      "Bash(curl http://localhost:8082/*)",
+      "Bash(curl -s http://localhost:8082/*)",
+      "Bash(curl -X POST http://localhost:8082/*)",
+      "Bash(curl -s -X POST http://localhost:8082/*)",
+      "Bash(redis-cli GET *)",
+      "Bash(redis-cli --raw GET *)",
+      "Bash(redis-cli KEYS *)",
+      "Bash(redis-cli --raw KEYS *)",
+      "Bash(redis-cli XLEN *)",
+      "Bash(redis-cli --raw XLEN *)"
     ]
   }
 }

@@ -90,11 +90,25 @@ npm run optimize:prompt -- --test-args "-t weather_week"   # baseline 범위 축
 
 ## 끝난 뒤
 
-best 프롬프트가 `prompts/*.md`와 Redis에 남는다.
+best 프롬프트가 `prompts/*.md`와 Redis에 남고, **채택된 변경의 이유(LLM 분석)가
+`prompts/CHANGELOG.md`에 자동 기록된다** (최신 항목이 위, git 커밋되는 영구 기록).
+`runs/`는 gitignore된 로컬 실험 로그이므로, 영구히 남는 것은 프롬프트 파일 + CHANGELOG다.
 
 ```bash
-git diff prompts/                 # 리뷰
-git add prompts/ && git commit    # 채택
+git diff prompts/                              # 리뷰 (프롬프트 + CHANGELOG)
+git add prompts/ && git commit                 # 채택 — 커밋 메시지 규칙은 CLAUDE.md 참고
 # 마음에 안 들면:
 git checkout prompts/ && curl -X POST localhost:8083/promptUpdate -d '{}'
 ```
+
+커밋 메시지 형식:
+
+```
+prompt(weather_entity): <무엇을 왜 — 한 줄>
+
+- fail <before> → <after> (<측정 범위>)
+- 상세: prompts/CHANGELOG.md
+```
+
+AI 에이전트(Claude Code 등)로 이 루프를 자율 실행시키는 방법은 루트 README의
+"AI 에이전트로 자동화하기" 섹션과 `.claude/skills/improve-prompts/` 참고.

@@ -183,8 +183,45 @@ async function main() {
   if (!finalBest || finalBest.label === 'baseline') {
     console.log('[optimizer] 개선안이 채택되지 않아 원본 프롬프트가 유지됩니다.');
   } else {
+    appendChangelog(cfg, runDir, history);
     console.log(`[optimizer] 최종 채택: ${finalBest.label} — git diff prompts/${cfg.promptFile} 로 확인 후 커밋하세요.`);
+    console.log(`[optimizer] 변경 이유가 prompts/CHANGELOG.md 에 기록되었습니다. 커밋에 함께 담으세요.`);
   }
+}
+
+// 채택된 변경의 "왜/어떻게"를 git으로 남는 영구 기록에 추가한다 (최신 항목이 위).
+function appendChangelog(cfg: OptimizerConfig, runDir: string, history: IterationRecord[]): void {
+  const accepted = history.filter((h) => h.accepted && h.label !== 'baseline');
+  if (accepted.length === 0) return;
+
+  const analyses = accepted.map((h) => {
+    let analysis = '(analysis 없음)';
+    try {
+      analysis = fs.readFileSync(path.join(runDir, `${h.label}.analysis.md`), 'utf8').trim();
+    } catch { /* run 디렉토리가 지워졌어도 changelog는 남긴다 */ }
+    return `### ${h.label} (${h.note ?? ''})\n\n${analysis}`;
+  });
+
+  const entry = [
+    `## ${new Date().toISOString().slice(0, 10)} — ${cfg.promptFile}`,
+    '',
+    `- run: \`${path.relative(ROOT, runDir)}\``,
+    `- 결과: ${history.map((h) => `${h.label} ${h.accepted ? '채택' : '기각'}(${h.note ?? ''})`).join(' → ')}`,
+    '',
+    ...analyses,
+    '',
+  ].join('\n');
+
+  const changelogPath = path.join(PROMPTS_DIR, 'CHANGELOG.md');
+  const header = '# Prompt Changelog\n\n프롬프트가 왜/어떻게 바뀌었는지의 영구 기록. prompt_optimizer가 개선안을 채택할 때 자동으로 추가되며, 수동 수정 시에도 같은 형식으로 직접 추가한다. 최신 항목이 위.\n\n';
+
+  let existingEntries = '';
+  if (fs.existsSync(changelogPath)) {
+    const current = fs.readFileSync(changelogPath, 'utf8');
+    const firstEntry = current.indexOf('\n## ');
+    existingEntries = firstEntry >= 0 ? current.slice(firstEntry + 1) : '';
+  }
+  fs.writeFileSync(changelogPath, header + entry + '\n' + existingEntries, 'utf8');
 }
 
 function historyBestFile(history: IterationRecord[]): string {

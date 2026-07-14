@@ -49,7 +49,8 @@ LLM 에이전트 개발은 일반적인 백엔드 개발과 다릅니다. 프롬
 | [`packages/cache_probe`](packages/cache_probe/README.md) | api-gateway 날씨 캐시 정합성 증거 수집 프로브 | 포렌식 도구 |
 
 프롬프트 원본은 레포 루트 `prompts/*.md` + 매핑 선언 `prompts/manifest.yaml`,
-에이전트 정책 문서는 `spec/weather_agent_policy.md`에 있다.
+에이전트 정책 문서는 `spec/weather_agent_policy.md`,
+프롬프트 변경 이력(왜/어떻게)은 `prompts/CHANGELOG.md`에 있다.
 
 ---
 
@@ -134,6 +135,9 @@ npm run optimize:prompt -- --prompt weather_answer.md --iterations 5 --repeat 3 
 # 끝나면: git diff prompts/ 로 리뷰 후 커밋
 ```
 
+개선안이 채택되면 변경 이유(LLM 분석)가 `prompts/CHANGELOG.md`에 자동 기록된다.
+커밋 시 함께 담을 것 (커밋 메시지 규칙은 CLAUDE.md 참고).
+
 ### DB → Redis 동기화 (db_to_redis)
 
 ```bash
@@ -190,6 +194,33 @@ npm run typecheck                                      # 전체 타입체크
 - **시트 wrap 설정**: `packages/e2e_regression/config/settings/sheet.yaml`의 `wrapColumns`(기본 E,F,G,H)
 
 각 패키지가 읽는 env의 전체 목록은 각 패키지 README의 환경변수 표 참고.
+
+---
+
+## AI 에이전트(Claude Code / Codex CLI)로 자동화하기
+
+이 레포는 CLI 에이전트가 "테스트 돌리고 프롬프트 개선해줘" 한 마디로 전체 루프를
+자율 수행할 수 있도록 세팅되어 있다:
+
+| 파일 | 역할 |
+|---|---|
+| `CLAUDE.md` (= `AGENTS.md` 심링크) | 에이전트가 세션 시작 시 자동으로 읽는 운영 가이드. 핵심 사실, 명령어, 금지 규칙(동시 실행 금지, promptUpdate 필수, 백엔드 실패 구분, flaky 무시 등), 커밋 메시지 규칙 |
+| `.claude/skills/improve-prompts/` | 프롬프트 개선 플레이북 스킬. Claude Code에서 `/improve-prompts`로 호출하거나 "프롬프트 개선해줘"라고 하면 자동 발동. 사전 확인 → 진단 → 개선 → 기록 → 보고 순서 강제 |
+| `prompts/CHANGELOG.md` | 프롬프트 변경의 "왜/어떻게" 영구 기록 (최신이 위). prompt_optimizer가 개선안을 채택하면 자동 append, 수동 수정 시엔 같은 형식으로 직접 추가 |
+| `.claude/settings.json` | 워크플로 명령 권한 allowlist (`npm run test/optimize/typecheck/llm:list`, `curl localhost:8083/8082`, 읽기 전용 `redis-cli`). 쓰기성 명령은 의도적으로 제외 — 물어보고 실행 |
+
+### 프롬프트 변경 커밋 규칙
+
+프롬프트 커밋에는 반드시 "왜"가 남아야 한다:
+
+```
+prompt(weather_entity): tuần này 표현의 weekPart 오추출 수정
+
+- fail 5 → 2 (Weather_Week_Matrix 기준)
+- 근거/분석: prompts/CHANGELOG.md 및 packages/prompt_optimizer/runs/<run디렉토리>
+```
+
+프롬프트 변경과 코드 변경은 커밋을 분리한다. 상세 규칙은 `CLAUDE.md` 참고.
 
 ---
 

@@ -19,7 +19,7 @@ judge:
 
     # Product policies you MUST account for (do not fail answers that follow them)
     - Forecast data only covers up to 14 days from Now. When a requested period extends beyond that limit, the assistant answers ONLY the available part of the range (e.g. "week after next" may legitimately cover just its first one or two days). Do not mark H5 FAIL for such clamping.
-    - Weeks start on MONDAY. "next week" = the Monday after Now through Sunday; "next week's weekdays" = that Monday through Friday. Compute weekday arithmetic carefully from the given Now/Today before flagging H5.
+    - Weeks start on MONDAY. Weekly ranges follow product policy, not calendar intuition: "this week" (tuần này) = TOMORROW through the next 7 days; "next week" (tuần sau) = the upcoming Monday through 7 days; "the week after next" (tuần sau nữa) = the Monday after next through 7 days (clamped by the 14-day limit). "next week's weekdays" = that Monday through Friday. Compute weekday arithmetic carefully from the given Now/Today before flagging H5.
     - When a requested past-or-elapsed time falls before Now, the assistant may answer the nearest upcoming equivalent time per the fallback policy; judge the dates it states, not the fallback itself.
 
     # Checklist
