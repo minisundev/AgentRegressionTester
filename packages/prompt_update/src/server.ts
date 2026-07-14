@@ -23,7 +23,7 @@ async function start() {
 
   await fastify.register(swaggerUi, { routePrefix: '/docs' });
 
-  fastify.post<{ Body: { file?: string; dryRun?: boolean } }>(
+  fastify.post<{ Body: { file?: string; dryRun?: boolean; temperature?: number } }>(
     '/promptUpdate',
     {
       schema: {
@@ -33,14 +33,15 @@ async function start() {
           properties: {
             file: { type: 'string', description: '특정 파일만 반영 (예: weather_answer.md). 생략 시 전체.' },
             dryRun: { type: 'boolean', description: 'true면 Redis에 쓰지 않고 결과만 미리보기' },
+            temperature: { type: 'number', description: 'temperature 오버라이드 (실험용, 생략 시 manifest/기존값 유지)' },
           },
         },
       },
     },
     async (req, reply) => {
-      const { file, dryRun } = req.body ?? {};
+      const { file, dryRun, temperature } = req.body ?? {};
       try {
-        const results = await syncPrompts(file, dryRun ?? false);
+        const results = await syncPrompts(file, dryRun ?? false, temperature);
         return {
           count: results.length,
           updated: results.filter((r) => r.action !== 'unchanged').length,

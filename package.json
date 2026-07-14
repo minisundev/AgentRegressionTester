@@ -45,6 +45,7 @@
     "watch:weather:answer-compare": "tsx packages/model_payload_test/runner/weatherAnswerCompare.ts",
     "probe:cache": "tsx packages/cache_probe/cacheConsistencyProbe.ts",
     "llm:list": "tsx scripts/list-llm-configs.ts",
+    "optimize:prompt": "tsx packages/prompt_optimizer/src/index.ts",
     "typecheck": "tsc --noEmit"
   },
   "author": "Minseon Kim",

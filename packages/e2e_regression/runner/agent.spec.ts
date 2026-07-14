@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { createTestClient, buildRequestBody, endAgentChat } from '../client/Client';
 import { runAgentChatStream } from '../client/streamClient';
 import { AgentResponse, RequestMode, ResultRow, TestCase } from '../types/type';
@@ -159,6 +161,19 @@ describe('Agent API Regression', () => {
 
   afterAll(async () => {
     closeAgentResponsePublisher();
+    if (env.RESULT_JSON_PATH) {
+      const resultPath = path.resolve(env.RESULT_JSON_PATH);
+      fs.mkdirSync(path.dirname(resultPath), { recursive: true });
+      fs.writeFileSync(resultPath, JSON.stringify({
+        runId,
+        finishedAt: new Date().toISOString(),
+        passCount: successes.length,
+        failCount: failures.length,
+        successes,
+        failures,
+      }, null, 2), 'utf8');
+      console.log(`[runner] results written to ${resultPath}`);
+    }
     if (reportTo === 'terminal') {
       console.log('\nLocal Test Summary');
       if (successes.length > 0) printSummaryTable("SUCCESSES", successes);

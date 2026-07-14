@@ -23,6 +23,7 @@ export interface StatusRow {
   file: string;
   exists: boolean;
   llm_id: string | null;
+  temperature: number | null;
   inSync: boolean;
 }
 
@@ -66,7 +67,8 @@ async function syncEntry(
   entry: PromptEntry,
   manifest: Manifest,
   promptsDir: string,
-  dryRun: boolean
+  dryRun: boolean,
+  temperatureOverride?: number
 ): Promise<SyncResult[]> {
   const redis = getClient();
   const promptText = readPromptFile(promptsDir, entry.file);
@@ -81,7 +83,7 @@ async function syncEntry(
     const payload: LlmPromptPayload = {
       llm_id: llmId ?? existing?.llm_id ?? null,
       prompt_text: promptText,
-      temperature: entry.temperature ?? manifest.defaults?.temperature ?? existing?.temperature ?? 0,
+      temperature: temperatureOverride ?? entry.temperature ?? manifest.defaults?.temperature ?? existing?.temperature ?? 0,
       version: existing?.version ?? 'local',
     };
 
@@ -112,7 +114,11 @@ async function syncEntry(
   return results;
 }
 
-export async function syncPrompts(fileFilter?: string, dryRun = false): Promise<SyncResult[]> {
+export async function syncPrompts(
+  fileFilter?: string,
+  dryRun = false,
+  temperatureOverride?: number
+): Promise<SyncResult[]> {
   const promptsDir = getPromptsDir();
   const manifest = loadManifest(promptsDir);
 
@@ -126,7 +132,7 @@ export async function syncPrompts(fileFilter?: string, dryRun = false): Promise<
 
   const results: SyncResult[] = [];
   for (const entry of entries) {
-    results.push(...(await syncEntry(entry, manifest, promptsDir, dryRun)));
+    results.push(...(await syncEntry(entry, manifest, promptsDir, dryRun, temperatureOverride)));
   }
   return results;
 }
@@ -148,6 +154,7 @@ export async function getStatus(): Promise<StatusRow[]> {
         file: entry.file,
         exists: existing !== null,
         llm_id: existing?.llm_id ?? null,
+        temperature: existing?.temperature ?? null,
         inSync: existing?.prompt_text === promptText,
       });
     }

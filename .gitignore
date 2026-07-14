@@ -27,4 +27,8 @@ Thumbs.db
 
 # Test checkpoint
 .checkpoint.json
+
+# prompt_optimizer run artifacts
+packages/prompt_optimizer/runs/
+packages/e2e_regression/config/testcases/optimizer_focus.yaml
 .entity-golden-generation.json

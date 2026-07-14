@@ -73,6 +73,15 @@ const envSchema = z.object({
 
   // Optional - Slack Configuration
   SLACK_WEBHOOK_URL: z.string().url().optional(),
+
+  // Optional - machine-readable run results (used by prompt_optimizer)
+  RESULT_JSON_PATH: z.string().optional(),
+
+  // Optional - comma-separated testcase yaml files overriding CASE_GROUPS (used by prompt_optimizer)
+  TESTCASE_FILES: z.string().optional(),
+
+  // Optional - alternate checkpoint file path (used by prompt_optimizer to avoid clobbering .checkpoint.json)
+  CHECKPOINT_FILE: z.string().optional(),
 });
 
 const refinedSchema = envSchema.superRefine((data, ctx) => {

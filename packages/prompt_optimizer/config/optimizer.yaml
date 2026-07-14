@@ -1,0 +1,27 @@
+# prompt_optimizer 기본 설정 (CLI 플래그로 덮어쓰기 가능)
+
+# 개선 대상 프롬프트 (prompts/manifest.yaml에 등록된 파일)
+promptFile: weather_entity.md
+
+# 테스트 실행 선택자 (scripts/run-test-profile.js 형식, terminal[:ai][:profile])
+selector: terminal:local
+
+# jest에 넘길 추가 인자 (예: ["-t", "weather_week"] 로 케이스 범위 축소)
+testArgs: []
+
+# 최대 개선 시도 횟수 (baseline 측정 제외)
+maxIterations: 3
+
+# prompt_update 서버
+promptUpdateUrl: http://localhost:8083
+
+# focus 케이스 반복 측정 횟수 — 매번 실패해야 "진짜 실패"로 분류
+repeats: 3
+
+# 안정성 프로브에서 추가로 시험할 프롬프트 temperature (예: [0, 0.7])
+# 비워두면 현재 temperature로만 측정. 프로브 후 원래 값으로 복원됨.
+probeTemps: []
+
+# 수정안 생성 LLM (루트 .env의 AI_API_KEY 사용)
+model: gemini-3-flash-preview
+temperature: 0.3

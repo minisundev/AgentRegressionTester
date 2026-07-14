@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["packages/model_payload_test", "packages/e2e_regression", "packages/cache_probe", "scripts", "*.ts"],
-  "exclude": ["node_modules", "**/node_modules", "**/dist", "packages/db_to_redis"]
+  "include": ["packages/model_payload_test", "packages/e2e_regression", "packages/cache_probe", "packages/prompt_optimizer", "scripts", "*.ts"],
+  "exclude": ["node_modules", "**/node_modules", "**/dist", "packages/db_to_redis", "packages/prompt_update"]
 }

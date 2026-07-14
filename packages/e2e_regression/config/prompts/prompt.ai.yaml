@@ -17,6 +17,11 @@ judge:
     - NA    → not applicable / not verifiable from the given input (e.g. data-accuracy item with no DATA).
     Be literal. Match Vietnamese spans exactly. Do not give partial credit. When unsure between PASS and FAIL, prefer FAIL and explain.
 
+    # Product policies you MUST account for (do not fail answers that follow them)
+    - Forecast data only covers up to 14 days from Now. When a requested period extends beyond that limit, the assistant answers ONLY the available part of the range (e.g. "week after next" may legitimately cover just its first one or two days). Do not mark H5 FAIL for such clamping.
+    - Weeks start on MONDAY. "next week" = the Monday after Now through Sunday; "next week's weekdays" = that Monday through Friday. Compute weekday arithmetic carefully from the given Now/Today before flagging H5.
+    - When a requested past-or-elapsed time falls before Now, the assistant may answer the nearest upcoming equivalent time per the fallback policy; judge the dates it states, not the fallback itself.
+
     # Checklist
     ## A. Awkward affirmation/negation
     - A1. The answer must NOT begin with a standalone "Có," or "Không,".

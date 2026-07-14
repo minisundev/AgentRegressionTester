@@ -1,23 +1,11 @@
-# README
-
-## Agent Regression Tester
+# Agent Regression Tester
 
 > LLM 에이전트의 불확실한 응답 품질을 자동화된 파이프라인으로 검증하고 관리합니다.
-> 
 
 ### Why This Project?
 
 LLM 에이전트 개발은 일반적인 백엔드 개발과 다릅니다. 프롬프트 한 줄, 소스코드 한 줄의 수정이 수백 개의 테스트 케이스에 어떤 영향을 줄지 예측하기 어렵습니다.
-이 프로젝트는 "딱 떨어지지 않는 LLM 응답"을 효율적으로 검증하기 위해 시작되었습니다. 매일 반복되는 수동 테스트와 번역 작업을 자동화하여, 개발자가 **본질적인 제품의 가치**에 집중할 수 있도록 돕습니다.
-
-### Key Features
-
-- **Multi-Environment Support:** Local부터 Production까지 다양한 환경의 API를 한 번에 테스트합니다.
-- **Sync + Streaming 동시 검증:** 각 테스트 케이스를 일반(`agentChat`)과 스트리밍(`agentChatStream`, SSE) 엔드포인트 양쪽으로 호출하여 모드별로 시트에 기록합니다. 스트리밍 행에는 TTFT(첫 토큰까지 시간)와 토큰 수 지표가 함께 남습니다.
-- **AI-Driven Judge:** Google Gemini API 또는 로컬 LLM(Ollama/Gemma2)을 활용하여 응답의 적절성을 자동으로 판독합니다.
-- **Auto Translation:** Google Sheets의 `=GOOGLETRANSLATE`를 활용하여 베트남어 등 외국어 응답을 실시간으로 번역하여 확인합니다.
-- **Slack Integration:** 테스트 완료 후 성공/실패 여부를 슬랙으로 즉시 알림 받아 리얼타임 피드백 루프를 형성합니다.
-- **Universal Framework:** 날씨, 음악, 일정 등 모든 도메인의 에이전트 테스트에 적용 가능한 범용적인 구조를 제공합니다.
+이 프로젝트는 "딱 떨어지지 않는 LLM 응답"을 효율적으로 검증하기 위해 시작되었습니다. 매일 반복되는 수동 테스트와 번역 작업을 자동화하고, 나아가 **테스트 → 프롬프트 수정 → 반영 → 재측정**의 개선 루프 전체를 자동화합니다.
 
 ### Impact
 
@@ -26,281 +14,192 @@ LLM 에이전트 개발은 일반적인 백엔드 개발과 다릅니다. 프롬
 
 ---
 
-## Setup & Installation
+## 시스템 구성
 
-### 1. Requirements
-
-- Node.js (Jest)
-- [Ollama](https://ollama.com/) (Local LLM 사용 시)
-- Google Cloud Platform (Google Sheets API 사용 시)
-
-### 2. Environment Variables (`.env`)
-
-프로젝트 루트에 `.env` 파일을 생성하고 아래 형식을 참고하여 설정. 
-
-**(보안을 위해 `.env` 파일은 절대 Git에 커밋 금지!)**
-
-```jsx
-CONTROL_BASE_URL="" # fallback for legacy commands
-X_API_KEY=""
-
-AI_API_KEY=""
-AI_MODEL="gemini-3-flash-preview"
-
-# GPT judge (Redis config:llm:<id>)
-GPT_JUDGE_LLM_ID=6
-GPT_JUDGE_MAX_TOKEN=12000
-REDIS_URL="redis://127.0.0.1:6379"
-
-GOOGLE_SERVICE_ACCOUNT_EMAIL=""
-GOOGLE_SHEET_ID=""
-# Optional fallback for legacy commands
-GOOGLE_SHEET_NAME=""
-# Optional: override the profile config file path
-TEST_PROFILE_CONFIG="tests/config/profiles.yaml"
-GOOGLE_PRIVATE_KEY=""
-
-ACCOUNT_ID=""
-# Number of isolated account lanes used for parallel testcase execution.
-PARALLEL_ACCOUNT_COUNT=5
-AGENT_VERSION=""
-DEVICE_ID=""
-OS_APP_TYPE=""
-OS_APP_VERSION=""
-ACCEPT_LANGUAGE=""
-TRACE_ID=""
-LANGUAGE=""
-
-TEST_TIMEOUT="120000"
-
-# [Service Delay]
-SERVICE_DELAY_SEC=1
-# [Judge Delay]
-# for Gemini API
-DELAY_API=12
-# for local Ollama
-DELAY_LOCAL=0
-
-LOCAL_AI_MODEL='gemma2:27b'
-LOCAL_AI_TEMPERATURE=0.1 # 일관된 판정을 위해 낮게 설정
-LOCAL_AI_MAX_TOKEN=200 # 답변이 너무 길어지지 않게 제한
-GOOGLETRANSLATE_SOURCE_LANGUAGE="auto"
-GOOGLETRANSLATE_TARGET_LANGUAGE="en"
-RESPONSE_TRANSLATION_PROVIDER="googletranslate" # googletranslate | gpt
-# Required only when RESPONSE_TRANSLATION_PROVIDER=gpt
-RESPONSE_TRANSLATION_LLM_ID=""
-RESPONSE_TRANSLATION_MAX_TOKEN=1000
-RESPONSE_TRANSLATION_PROMPT_FILE="prompt.translate.yaml"
-# GPT translation reads Redis config:llm:<RESPONSE_TRANSLATION_LLM_ID> using REDIS_URL below.
-
-# Redis stream answer compare watcher
-REDIS_URL="redis://127.0.0.1:6379"
-WEATHER_ANSWER_COMPARE_STREAM_KEY="weather:answer-compare"
-WEATHER_ANSWER_COMPARE_STREAM_GROUP="weather-answer-compare"
-WEATHER_ANSWER_COMPARE_STREAM_CONSUMER="watcher-1"
-WEATHER_AGENT_RESPONSE_STREAM_KEY="weather:agent-response"
-PUBLISH_AGENT_RESPONSE_STREAM=0
-JOIN_AGENT_RESPONSE_STREAM=0
-AGENT_RESPONSE_CACHE_TTL_SEC=3600
-AGENT_RESPONSE_JOIN_TIMEOUT_MS=10000
-READ_EXISTING_PAYLOADS=0
-STREAM_BLOCK_MS=5000
-PENDING_RETRY_INTERVAL_MS=30000
-GEMMA_TEST_LLM_ID=2
-GEMMA_TEST_MODEL="mediaai1/gemma-27b-generation-v3.0.0"
-GPT_TEST_LLM_ID=3
-OLLAMA_URL="http://localhost:11434/v1/chat/completions"
-OLLAMA_MODEL="gemma3:27b"
-GOOGLE_SHEET_TAB="WeatherAnswerCompare"
-EVALUATE_WITH_GPT=0
-EVALUATE_PAYLOAD_WITH_GPT=0
-GPT_JUDGE_LLM_ID=3
-EVALUATE_CASE_KEYS="" # optional: gemini_t0,gemini_t03
-
-# Slack Settings
-SLACK_WEBHOOK_URL=""
-SLACK_CHANNEL=""
+```
+                        ┌──────────────────────────────────────────────┐
+                        │              에이전트 서버 (외부)              │
+                        │   agentChat / agentChatStream  ← Redis 참조   │
+                        └───────▲──────────────────────────▲───────────┘
+                                │ API 호출                  │ llm_prompt:* / config:llm:*
+  ┌─────────────────────────────┴───┐              ┌───────┴────────────────────────┐
+  │ e2e_regression                  │              │ Redis                          │
+  │ YAML 케이스 → API 호출 → 검증    │              │   ▲ 파일 sync    ▲ DB sync      │
+  │ (entity golden, judge)          │              │ prompt_update   db_to_redis    │
+  │ → 시트/슬랙/터미널/JSON 리포트   │              │ (prompts/*.md)  (PostgreSQL)   │
+  └───────▲─────────────────────────┘              └────────────────────────────────┘
+          │ 실패 수집 / 재측정
+  ┌───────┴─────────────────────────┐   ┌────────────────────────────────────────┐
+  │ prompt_optimizer                │   │ model_payload_test                     │
+  │ 실패 분석 → LLM 수정안           │   │ LLM 직전 payload 스트림 소비            │
+  │ → prompt_update로 반영 → 재측정  │   │ → 멀티모델/온도 비교 + GPT judge        │
+  └─────────────────────────────────┘   └────────────────────────────────────────┘
+                                        ┌────────────────────────────────────────┐
+                                        │ cache_probe: 게이트웨이 캐시 정합성 프로브 │
+                                        └────────────────────────────────────────┘
 ```
 
-### 3. How to fill in .env file
+| 패키지 | 역할 | 상세 |
+|---|---|---|
+| [`packages/e2e_regression`](packages/e2e_regression/README.md) | E2E 회귀 러너 — YAML 케이스로 에이전트 API 검증, 시트/슬랙 리포트 | 이 레포의 중심 |
+| [`packages/prompt_update`](packages/prompt_update/README.md) | `prompts/*.md` 파일 → Redis 프롬프트 실시간 반영 서버 (8083) | 파일이 소스 오브 트루스 |
+| [`packages/prompt_optimizer`](packages/prompt_optimizer/README.md) | 프롬프트 자동 개선 루프 (실패 수집 → LLM 수정안 → 반영 → 재측정 → 채택/롤백) | flaky 분리, 온도 프로브 포함 |
+| [`packages/db_to_redis`](packages/db_to_redis/README.md) | PostgreSQL(CMS) → Redis 동기화 서버 (8082) | 캐시/프롬프트/LLM 설정 |
+| [`packages/model_payload_test`](packages/model_payload_test/README.md) | LLM 직전 payload를 스트림으로 받아 멀티모델/온도 비교 + judge | 상시 watcher |
+| [`packages/cache_probe`](packages/cache_probe/README.md) | api-gateway 날씨 캐시 정합성 증거 수집 프로브 | 포렌식 도구 |
 
-- Google Sheets API Key
-    
-    https://console.cloud.google.com/welcome/new
-    <img width="1000" height="371" alt="image" src="https://github.com/user-attachments/assets/dbf06aef-1113-4bec-b4c8-b9a855654396" />
-    <img width="1266" height="818" alt="image" src="https://github.com/user-attachments/assets/c9776b1b-2934-4e3b-9c9e-3a2d675a13db" />
-        Enable Google Sheets API
-        
-    <img width="1102" height="398" alt="image" src="https://github.com/user-attachments/assets/18896a9d-9318-4f98-8981-452fd920fe38" />
-    <img width="1712" height="828" alt="image" src="https://github.com/user-attachments/assets/c1ec1aec-a23a-4971-b09d-0b700650a736" />
-        
-    Credentials 탭 클릭 → Create Credentials → Service Account
-    Service Accounts→ Keys→ Create private key→ Json
-    다운로드된 JSON 파일에서
-    - `client_email` → Service Account 이메일
-    - `private_key` → Private Key
-        
-    이 두 개를 `.env`에 세팅
-        
-    ```jsx
-    GOOGLE_SERVICE_ACCOUNT_EMAIL=""
-    GOOGLE_PRIVATE_KEY=""
-    ```
-    
-- Google Sheets ID
-    
-    google docs로 파일을 만든 후
-    
-    주소를 복사하여
-    
-    [https://docs.google.com/spreadsheets/d/](https://docs.google.com/spreadsheets/d/) + GOOGLE_SHEET_ID +  /edit?gid=0#gid=0
-    
-    이 구조로 되어있으니 GOOGLE_SHEET_ID를 추출하고 .env에 설정
-    
-    ```jsx
-    GOOGLE_SHEET_ID=""
-    GOOGLE_SHEET_NAME="" # legacy fallback
-    TEST_PROFILE_CONFIG="tests/config/settings/profiles.yaml"
-    ```
-
-    `GOOGLE_SHEET_NAME`은 결과를 기록할 스프레드시트 탭 이름입니다.
-    프로필을 지정하지 않고 실행할 때만 이 값을 사용합니다.
-    해당 탭이 없으면 테스트 실행 중 자동으로 생성됩니다.
-
-    프로필 실행은 `tests/config/settings/profiles.yaml`에서 읽습니다.
-    새 환경은 YAML에 추가만 하면 되고, `crow` 같은 이름도 코드 수정 없이 바로 사용할 수 있습니다.
-    
-- Gemini
-    
-    https://ai.google.dev/gemini-api/docs/models
-    여기 가서 모델 고르기
-
-  <img width="3016" height="1558" alt="image" src="https://github.com/user-attachments/assets/0aa2dfa6-4fc3-4d10-90e6-2342023185f5" />
-
-    
-    .env에 설정
-    
-    ```jsx
-    AI_MODEL="gemini-3-flash-preview"
-    ```
-    
-- Ollama
-    1. [Ollama 공식 홈페이지](https://ollama.com/)에서 다운로드 후 설치
-    2. 모델 고르기
-    3. 다운받기
-    
-    ```jsx
-    ollama pull gemma2:9b
-    ```
-    
-    1. .env 설정
-    
-    ```jsx
-    LOCAL_AI_MODEL='gemma2:27b'
-    ```
-### 4. Config yaml setting
-
-Wrap sheet config: `tests/config/settings/sheet.yaml`
-어떤 column을 wrap 허용할지 설정(Google Sheet에서)
-
-```yaml
-wrapColumns:
-  - E
-  - F
-```
-
-Profile config: `tests/config/settings/profiles.yaml`
-
-```yaml
-profiles:
-  prod:
-    baseUrl: https://prod.com/api
-    sheetName: prod
-
-  stg:
-    baseUrl: https://stg.com/api
-    sheetName: stg
-```
-    
-
-### 5. Quick Start
-
-```bash
-npm install
-
-npm run test:sheet:api:dev
-npm run test:sheet:internal:stg
-npm run test:sheet:local:local
-npm run test:terminal:prod
-node scripts/run-test-profile.js sheet:api:crow
-
-npm run test:profile -- sheet:gpt:local --mode sync
-```
-
-### Weather Answer GPT Judge
-
-Redis Stream watcher can also ask GPT to judge each candidate answer and append the result to the same Google Sheet.
-
-```bash
-REPORT_TO=sheet EVALUATE_WITH_GPT=1 npm run watch:weather:answer-compare
-```
-
-Optional knobs:
-
-- `GPT_JUDGE_LLM_ID`: Redis `config:llm:<id>` used for the GPT judge. Defaults to `GPT_TEST_LLM_ID`.
-- `EVALUATE_CASE_KEYS`: comma-separated candidate keys to judge, such as `gemini_t0,gemini_t03`. Empty means all configured cases.
-
-Judge columns are added per candidate: verdict, score, categories, summary, issues, and judge error.
-The rubric covers data fidelity, relative date/time alignment, summary/range aggregation, unsupported inference, advice policy, unavailable data handling, and field mapping.
-
-Set `EVALUATE_PAYLOAD_WITH_GPT=1` to independently judge the dumped pre-LLM payload against the user query. The sheet receives payload verdict/score, expected and actual intent, per-policy checks, issues, errors, and latency. Missing entity/card/context fields are marked `NA` rather than failed.
-
-For an end-to-end audit, set `PUBLISH_AGENT_RESPONSE_STREAM=1` in the regression runner and `JOIN_AGENT_RESPONSE_STREAM=1` in the answer-compare watcher. The runner publishes API response snapshots to `WEATHER_AGENT_RESPONSE_STREAM_KEY`; the watcher joins them to LLM dumps by `transactionId/trxId`. The combined judge can then verify response entity and cards against the normalized LLM weather data and records API entity/today/hourly/weekly cards in the same sheet row. Snapshots are cached only for the configured TTL to make the asynchronous stream join reliable.
-
-The normal sync regression command also joins its own successful request to the Redis dump and writes payload, prompt, weather data, and the GPT payload-policy evaluation into the same result row. Requests rejected before the LLM stage (non-200 product result codes such as unavailable past weather) are marked `payloadStatus=NOT_APPLICABLE`; when that response also omits entity, entity golden status is `NA` rather than a false missing-field failure.
-
-Entity goldens are paired inline with each YAML testcase using `expectedEntity:`. Matching defaults to subset mode: every declared semantic field is strict, while unrelated entity fields are ignored. Set `entityMatchMode: exact` only for a full-shape contract test. Legacy `expect:` blocks are not treated as current goldens because they describe an older parser contract. Optional leaf matchers are `{ $any: true }`, `{ $regex: "..." }`, and `{ $oneOf: [...] }`. Golden status, expected JSON, and field-level differences are written to both the normal regression sheet and the combined model sheet; a mismatch fails the testcase.
-
-Redis stream answer compare watcher
-
-```bash
-npm run watch:weather:answer-compare
-REPORT_TO=sheet npm run watch:weather:answer-compare
-READ_EXISTING_PAYLOADS=1 npm run watch:weather:answer-compare
-```
-
-이 watcher는 `WEATHER_ANSWER_COMPARE_STREAM_KEY` stream의 `payload` 필드(JSON)를 읽어서 GemmaProd, Ollama, GPT 세 모델 응답을 비교하고 terminal 또는 Google Sheet에 기록합니다.
-
-Legacy-compatible selectors
-
-```json
-    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/runner --config jest.config.ts",
-    "test:profile": "node scripts/run-test-profile.js",
-    "test:sheet:none": "node scripts/run-test-profile.js",
-    "test:sheet:api:dev": "node scripts/run-test-profile.js",
-    "test:sheet:local:local": "node scripts/run-test-profile.js",
-    "test:terminal:prod": "node scripts/run-test-profile.js",
-    "test:terminal:ai:crow": "node scripts/run-test-profile.js"
-```
-
-기존 `npm run test:sheet:api -- --dev` 같은 `--` 방식도 그대로 지원합니다.
-
-### 6. DEMO
-테스트가 완료되면 슬랙에 메시지가 전송됩니다.
-<img width="707" height="494" alt="image" src="https://github.com/user-attachments/assets/3f94935d-fb64-49e5-843f-00b3bb323794" />
-
-나의 구글 시트에 들어가보면 다음과같이 잘 정리된 테스트 케이스들이 있고 나는 Fail인 것만 검토를 하면 됩니다.
-<img width="1210" height="540" alt="image" src="https://github.com/user-attachments/assets/9a4ee244-7cf9-4697-a294-2c3b95c417a9" />
-
+프롬프트 원본은 레포 루트 `prompts/*.md` + 매핑 선언 `prompts/manifest.yaml`,
+에이전트 정책 문서는 `spec/weather_agent_policy.md`에 있다.
 
 ---
 
-## System Architecture
+## Setup
 
-1. **Jest/Axios**: 설정된 환경별로 테스트 케이스(JSON) 기반 API 호출 수행.
-2. **Local AI (Gemma2)**: 수집된 응답 데이터가 질문 의도에 부합하는지 1차 판독.
-3. **Google Sheet**: 결과를 시트로 전송하여 자동 번역 및 시각화 수행.
-4. **Slack Webhook**: 전체 리포트 요약을 개발자에게 전송.
+### 1. 설치
+
+```bash
+npm install                                # 루트 (e2e_regression, optimizer, watcher, probe 공용)
+cd packages/prompt_update && npm install   # 서버 패키지는 개별 설치
+cd packages/db_to_redis && npm install
+```
+
+### 2. `.env` 설정
+
+루트 `.env`(예시는 아래 "환경변수 채우는 법" 참고)와 각 서버 패키지의 `.env`(`.env.example` 참고)를 작성한다.
+**`.env`는 절대 커밋 금지.**
+
+필수 최소 셋:
+
+```bash
+# 루트 .env
+CONTROL_BASE_URL="http://localhost:8080/aia-control/v1/agentChat"   # 프로필 미사용 시 폴백
+X_API_KEY=""
+AI_API_KEY=""            # Gemini (judge, prompt_optimizer)
+REDIS_URL="redis://127.0.0.1:6379"
+# 시트 리포트를 쓰려면: GOOGLE_SHEET_ID / GOOGLE_SERVICE_ACCOUNT_EMAIL / GOOGLE_PRIVATE_KEY
+# 슬랙 알림을 쓰려면: SLACK_WEBHOOK_URL
+```
+
+### 3. 환경(프로필) 정의 — `packages/e2e_regression/config/settings/profiles.yaml`
+
+```yaml
+profiles:
+  local:
+    baseUrl: http://localhost:8080/aia-control/v1/agentChat
+    sheetName: local_260714
+  stg:
+    baseUrl: https://…-staging…/aia-control/v1/agentChat
+    sheetName: stg_260627
+```
+
+새 환경은 여기에 추가만 하면 코드 수정 없이 `test:*:<프로필>`로 바로 쓸 수 있다.
+
+---
+
+## 실행 치트시트
+
+### 회귀 테스트 (e2e_regression)
+
+선택자: `terminal[:ai][:프로필]` 또는 `sheet:<judge>[:프로필]` (judge = none|internal|api|gpt|local)
+
+```bash
+npm run test:terminal:local                            # 터미널 리포트
+npm run test:sheet:none:local                          # 시트 기록, judge 없음
+npm run test:profile -- sheet:gpt:local --mode sync    # GPT judge
+npm run test:profile -- sheet:api:stg --mode stream    # Gemini judge + 스트리밍(TTFT 측정)
+npm run test:profile -- terminal:local -- -t "패턴"    # jest -t 필터
+```
+
+- 활성 케이스 파일 목록: `packages/e2e_regression/data/testcase_groups.ts`의 `CASE_GROUPS`
+- 이어 돌리기: 같은 날 재실행하면 `.checkpoint.json` 기준으로 성공 케이스 skip, 실패만 재시도
+
+### 프롬프트 수정 → 실시간 반영 (prompt_update)
+
+```bash
+cd packages/prompt_update && npm run dev               # 서버 기동 (8083)
+
+# prompts/weather_answer.md 수정 후:
+curl -X POST localhost:8083/promptUpdate -H 'Content-Type: application/json' -d '{}'
+curl localhost:8083/status                             # 파일↔Redis 일치/llm_id 확인
+```
+
+### 프롬프트 자동 개선 (prompt_optimizer)
+
+전제: 에이전트 서버 + prompt_update 서버(8083) 실행 중. **수동 테스트 런과 동시 실행 금지.**
+
+```bash
+npm run optimize:prompt -- --analyze-only              # 실패 수집 + flaky/진짜 실패 분류만
+npm run optimize:prompt                                # 개선 루프 (기본 weather_entity.md, 3회)
+npm run optimize:prompt -- --prompt weather_answer.md --iterations 5 --repeat 3 --temps 0,0.7
+# 끝나면: git diff prompts/ 로 리뷰 후 커밋
+```
+
+### DB → Redis 동기화 (db_to_redis)
+
+```bash
+cd packages/db_to_redis && npm run dev                 # 서버 기동 (8082)
+curl -X POST localhost:8082/dbToRedis -H 'Content-Type: application/json' -d '{"type": "prompt"}'
+```
+
+주의: 전체 동기화(`{}`)는 프롬프트/llm_id를 DB 값으로 되돌린다 → 이후 `POST localhost:8083/promptUpdate`로 복구.
+
+### 모델 비교 watcher (model_payload_test)
+
+```bash
+npm run watch:weather:answer-compare                   # 터미널
+REPORT_TO=sheet EVALUATE_WITH_GPT=1 npm run watch:weather:answer-compare   # 시트 + judge
+```
+
+end-to-end 감사: 회귀 러너에 `PUBLISH_AGENT_RESPONSE_STREAM=1`, watcher에 `JOIN_AGENT_RESPONSE_STREAM=1`.
+
+### 캐시 프로브 (cache_probe)
+
+```bash
+npm run probe:cache
+CACHE_PROBE_ROUNDS=0 CACHE_PROBE_STOP_ON_DIVERGENCE=1 npm run probe:cache   # 무한, 발견 시 중단
+```
+
+### 유틸 스크립트
+
+```bash
+npm run llm:list                                       # Redis config:llm:* 목록 (llm_id ↔ 모델 확인)
+npm run llm:list -- --verbose                          # 전체 JSON 포함
+tsx scripts/generate-entity-goldens.ts                 # entity golden 일괄 생성
+                                                       # ⚠ testcase YAML을 직접 수정함. ENTITY_PARSER_PROMPT_FILE 지정 필요
+npm run typecheck                                      # 전체 타입체크
+```
+
+---
+
+## 환경변수 채우는 법
+
+- **Google Sheets API**
+
+    https://console.cloud.google.com/welcome/new 에서 프로젝트 생성 → Google Sheets API Enable
+    → Credentials → Create Credentials → Service Account → Keys → Create private key (JSON)
+
+    다운로드된 JSON에서 `client_email` → `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `private_key` → `GOOGLE_PRIVATE_KEY`.
+    스프레드시트를 만들고 URL의 `https://docs.google.com/spreadsheets/d/<이 부분>/edit`을 `GOOGLE_SHEET_ID`에.
+    해당 시트를 서비스 계정 이메일에 편집자로 공유해야 한다.
+    결과 탭 이름은 프로필의 `sheetName`이 우선하며, 탭이 없으면 자동 생성된다.
+
+- **Gemini**: https://ai.google.dev/gemini-api/docs/models 에서 모델 선택 → `AI_MODEL`, API 키 → `AI_API_KEY`
+
+- **Ollama** (JUDGE_MODE=local용): https://ollama.com 설치 → `ollama pull gemma2:27b` → `LOCAL_AI_MODEL='gemma2:27b'`
+
+- **시트 wrap 설정**: `packages/e2e_regression/config/settings/sheet.yaml`의 `wrapColumns`(기본 E,F,G,H)
+
+각 패키지가 읽는 env의 전체 목록은 각 패키지 README의 환경변수 표 참고.
+
+---
+
+## DEMO
+
+테스트가 완료되면 슬랙에 메시지가 전송됩니다.
+<img width="707" height="494" alt="slack report" src="https://github.com/user-attachments/assets/3f94935d-fb64-49e5-843f-00b3bb323794" />
+
+구글 시트에는 케이스별 결과가 정리되어 Fail인 것만 검토하면 됩니다.
+<img width="1210" height="540" alt="sheet report" src="https://github.com/user-attachments/assets/9a4ee244-7cf9-4697-a294-2c3b95c417a9" />
 
 ---
 

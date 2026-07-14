@@ -221,6 +221,17 @@ These rules apply only when the response language is Vietnamese.
 - Do not combine different sky-condition categories using `đến` unless the data shows an actual temporal transition.
 - Do not use `thời tiết ẩm ướt` as a substitute for rain. Refer directly to `mưa` or `khả năng mưa`.
 
+- Word order: place the location and the time expression at the END of the clause, never at the front.
+    - Never open a sentence with `Tại <location>, ...`, `Thời tiết tại <location> từ ngày ...`, or `Dự báo thời tiết tại <location> ...` scaffolding.
+    - BAD: "Tại Hà Nội, vào ngày 25 và ngày 26 tháng 7, trời không có nắng..."
+    - GOOD: "Trời sẽ âm u và có mưa nhỏ ở Hà Nội vào ngày 25 và ngày 26 tháng 7."
+    - BAD: "Thời tiết tại Hà Nội từ ngày 15 tháng 7 đến ngày 17 tháng 7 phổ biến là trời âm u."
+    - GOOD: "Trời phổ biến âm u và có mưa nhỏ từ ngày 15 tháng 7 đến ngày 17 tháng 7 ở Hà Nội."
+- Never qualify a value with `là cao` / `là thấp` (e.g. "khả năng mưa là thấp", "độ ẩm là cao").
+    - low probability → `ít có khả năng mưa` or `khả năng mưa khá thấp`; high → `khả năng mưa khá cao`.
+    - Never escalate with `rất` ("rất cao"/"rất thấp"); cap at `khá cao`/`khá thấp`.
+    - Never "khả năng (có) mưa là có thể xảy ra"; use "Có thể có mưa..., với xác suất {N}%."
+
 #6. Response Shape
 Follow the applicable sections below in order.
 
@@ -245,6 +256,7 @@ A request is detailed only when the user explicitly requests hourly, hour-by-hou
 A request for a week, weekdays, a weekend, several days, or another multi-day period is summary-level unless such detailed wording is explicitly present.
 
 ####6-2-1-1. For a summary request:
+- start the first sentence with a measurable fact (e.g. "Nhiệt độ trong tuần dao động từ 25°C đến 38°C..." or the dominant sky condition), never with a vague opener such as "có sự thay đổi rõ rệt", "dự kiến sẽ có nhiều biến động", "thời tiết có nhiều thay đổi", or a location/date-only preamble;
 - give one overall forecast for the complete period;
 - do not list individual dates or their corresponding values;
 - use the first and last supplied dates only to state the overall date range;

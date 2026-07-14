@@ -40,7 +40,10 @@ export function loadTestCaseGroup(fileName: string): TestCaseGroup {
 }
 
 export function loadAllTestCases(): TestCaseGroup[] {
-  const testCaseFiles = CASE_GROUPS;
+  // TESTCASE_FILES lets prompt_optimizer point a run at an ad-hoc case file
+  // (e.g. optimizer_focus.yaml) without editing CASE_GROUPS.
+  const override = process.env.TESTCASE_FILES?.split(',').map((f) => f.trim()).filter(Boolean);
+  const testCaseFiles = override && override.length > 0 ? override : CASE_GROUPS;
 
   const groups: TestCaseGroup[] = [];
 

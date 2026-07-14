@@ -2,7 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import { env } from '../config/env';
 
-const CHECKPOINT_PATH = path.resolve(process.cwd(), '.checkpoint.json');
+// CHECKPOINT_FILE lets prompt_optimizer isolate its runs from a concurrently
+// running manual test session — both writing .checkpoint.json corrupts each other.
+const CHECKPOINT_PATH = path.resolve(process.cwd(), env.CHECKPOINT_FILE ?? '.checkpoint.json');
 
 interface CheckpointFile {
   runId: string;

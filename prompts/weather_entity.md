@@ -110,6 +110,16 @@ Detection:
   - "Tell me the weather" / "What is the temperature?"→ weatherMetric = "all"
   - "Cho tôi biết thời tiết" / "Nhiệt độ bao nhiêu?"→ weatherMetric = "all"
 
+  A date, weekday, daypart, or possessive time qualifier does NOT remove the
+  general-weather reading. Any "<time>'s weather" / "weather + time expression"
+  utterance is still an explicit general-weather request → "all", never null:
+  - "tell me tonight's weather"→ weatherMetric = "all"
+  - "tell me tomorrow morning's weather" / "tell me tomorrow night's weather"→ weatherMetric = "all"
+  - "tell me this morning's weather"→ weatherMetric = "all"
+  - "what is the weather for the weekend after next"→ weatherMetric = "all"
+  - "아침 5시 날씨 알려줘"→ weatherMetric = "all"
+  - "Tell me the weather after 2 o'clock"→ weatherMetric = "all"
+
 Priority (if multiple mentioned): airQuality > humidity > precipitation > all
 
 Default: null
@@ -519,8 +529,14 @@ Examples:
 
 Single-point relative offsets also use null:
 - "after 2 hours" / "in 3 hours" / "3 hours from now"→ rangeRelation = null
+- "20 days from now"→ relativeDays = 20→ delta = null→ rangeRelation = null
 - "3 giờ tới" / "10 giờ tới"→ rangeRelation = null
 - "sau 3 ngày" / "3 ngày nữa"→ rangeRelation = null
+
+A relative-offset start anchor keeps rangeRelation null even when a duration
+follows. "from" applies only to explicit clock/calendar anchors (see #8-1):
+- "from 3 hours later for 4 hours"→ relativeHours = 3→ delta = 4→ deltaUnit = "hour"→ rangeRelation = null
+- "from 7pm for 4 hours"→ specificHour = 7→ delta = 4→ rangeRelation = "from"
 
 Do NOT set `rangeRelation` from future-tense words alone:
 - "will", `sẽ`, bare `sắp`, `sau này`, `tương lai`
@@ -624,6 +640,12 @@ Examples:
 "lúc 8 giờ" → null
 "9h" → null
 
+This also holds for clock ranges made of bare hours: never guess a daypart from
+the numeric span itself.
+Examples:
+"từ 6 giờ đến 12 giờ" → meridiem = null (no marker; 6 and 12 are ambiguous)
+"from 7 to 10" → meridiem = null
+
 ##11-3. Vague meridiem with timeOfDay
 Mapping Examples:
 ###11-3-1. dawn → "am"
@@ -719,6 +741,12 @@ Examples:
 - "đêm nay"→ relativeDays = 0→ timeOfDay = "night"
 - "sáng mai"→ relativeDays = 1→ timeOfDay = "morn"
 - "tomorrow afternoon"→ relativeDays = 1→ timeOfDay = "afternoon"
+
+English "tonight" maps to "night" per #12-3-6. Do NOT first translate it to
+Vietnamese "tối nay" and then apply the "eve" mapping — classify the user's
+original wording directly:
+- "tell me tonight's weather"→ relativeDays = 0→ timeOfDay = "night"
+- "tối nay" (Vietnamese input)→ relativeDays = 0→ timeOfDay = "eve"
 
 Do not infer `relativeDays = 0` from a bare time-of-day expression.
 - "in the evening"→ timeOfDay = "eve"→ relativeDays = null
@@ -910,6 +938,11 @@ Expressions referring to the working days as a single continuous block.
 - English: weekdays, on weekdays, during the week, workdays, working days
 - Vietnamese: giữa tuần, từ thứ Hai đến thứ Sáu, thứ Hai đến thứ Sáu, ngày thường, các ngày thường, ngày làm việc, các ngày làm việc
 → weekPart = "weekdays"
+
+Vietnamese "các ngày trong tuần (này/sau/sau nữa)" means "the days of that week",
+NOT the working-day block. It only selects the week itself:
+- "thời tiết các ngày trong tuần này"→ relativeWeeks = 0→ weekPart = null
+- "các ngày trong tuần sau nữa có mưa không"→ relativeWeeks = 2→ weekPart = null
 
 #18. fallback
 Set: "fallback": "PAST_TIME_REQUESTED"
