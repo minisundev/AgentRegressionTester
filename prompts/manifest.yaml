@@ -1,0 +1,28 @@
+# prompts/*.md 파일 → Redis llm_prompt 키 매핑
+#
+# llm_id 를 여기 고정해두면 sync 때마다 강제 적용된다.
+# (db_to_redis 전체 동기화가 llm_id를 GPT로 되돌려도, 다시 sync 하면 복구됨)
+#
+# 현재 config:llm 매핑 참고:
+#   3 = GPT4 (2025-01-01-preview)
+#   8 = GEMINI (gemini-3.5-flash)
+defaults:
+  llm_id: "8"
+
+prompts:
+  - file: weather_answer.md
+    promptType: ANSWER
+    llm_id: "8"
+    targets:
+      - Weather:CheckDailyForecast
+      - Weather:CheckWeeklyForecast
+      - Weather:CheckHourlyForecast
+
+  # ENTITY는 현재 Redis 상태 그대로 GPT4(3) 유지 — Gemini로 바꾸려면 "8"로 수정
+  - file: weather_entity.md
+    promptType: ENTITY
+    llm_id: "3"
+    targets:
+      - Weather:CheckDailyForecast
+      - Weather:CheckWeeklyForecast
+      - Weather:CheckHourlyForecast

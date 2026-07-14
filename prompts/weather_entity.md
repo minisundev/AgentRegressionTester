@@ -45,12 +45,12 @@ Apply the FIRST matching case:
 if location is null:
 location=null → localizedLocation=null
 
-###1-2-2. OUTPUT_LANGUAGE={language} is 'en'
+###1-2-2. If {language} is "english" (If OUTPUT_LANGUAGE is "english")
 Return the recognized standard English name. (normally identical to `location`).
 English Examples:
 - location="Ho Chi Minh City" → localizedLocation="Ho Chi Minh City"
 
-###1-2-3. if OUTPUT_LANGUAGE={language} is 'vi'
+###1-2-3. If {language} is "vietnamese" (If OUTPUT_LANGUAGE is "vietnamese")
 Vietnamese localizedLocation Rules:
 ####1-2-3-1.Vietnamese-native place → Vietnamese spelling WITH diacritics.
 Examples:
@@ -67,7 +67,7 @@ Examples:
 ####1-2-3-3.Unknown place→ KEEP the Latin/English spelling exactly.
 - For an unknown place with no recognized English name, copy the ASCII-normalized location.
 Examples:
-- location="Dana", GIVEN_LANGUAGE=vi → "Dana"(unknown → romanized as-is)
+- location="Dana", OUTPUT_LANGUAGE="vietnamese" → "Dana"(unknown → romanized as-is)
 
 #2. country (ISO 3166-1 alpha-2)
 country MUST be a 2-letter ISO 3166-1 alpha-2 code, or null.
@@ -297,8 +297,12 @@ Set `delta` for a duration:
 Do not set `delta` for a point offset:
 - "in 3 hours" / "after 2 hours"→ delta = null
 - "2 giờ nữa" / "sau 6 giờ"→ delta = null
+- "3 giờ tới" / "10 giờ tới" / "3 tiếng tới" / "10 tiếng tới" (bare, no "trong")→ delta = null
 - "in 3 days" / "3 days from now"→ delta = null
 - "sau 3 ngày" / "3 ngày nữa"→ delta = null
+
+Vietnamese hour discriminator: bare `N giờ/tiếng tới` is a single-point offset (see #9).
+Only a duration preposition such as `trong` / `trong vòng` / `suốt` makes it a duration.
 
 Vague upcoming periods still have no numeric count:
 - "next few days"→ delta = null
@@ -385,6 +389,7 @@ Examples:
 
 When the expression is a single-point hour offset and `delta` is null:
 - "in 3 hours" / "2 giờ nữa"→ deltaUnit = null
+- "10 giờ tới" / "10 tiếng tới" (bare, no "trong")→ deltaUnit = null
 
 ##7-3. Day unit
 Set `deltaUnit = "day"` when each forecast point represents one calendar day.
@@ -489,6 +494,10 @@ Strong patterns:
 - English: "next N hours", "next N days", "next few days", "coming days", "upcoming days"
 - Vietnamese: `trong N giờ/ngày/tuần tới`, `N ngày/tuần tới`, `sắp tới`, `tiếp theo`, `kế tiếp`
 
+Bare `N giờ/tiếng tới` (no `trong`) is NOT a duration pattern — it is a single-point
+hour offset (see #9). Do NOT translate bare Vietnamese "N giờ tới" into English
+"next N hours" and then apply the English pattern.
+
 Examples:
 - "Xem giúp mình khả năng mưa ở Cà Mau trong 3 ngày tới"→ rangeRelation = "after"
 - "Thời tiết trong 5 giờ tới"→ rangeRelation = "after"
@@ -497,6 +506,8 @@ Contrast:
 - "next 3 days"→ rangeRelation = "after"
 - "3 days from today"→ rangeRelation = "from"
 - "today and the next 3 days"→ rangeRelation = "from"
+- "trong 10 giờ tới"→ delta = 10→ deltaUnit = "hour"→ rangeRelation = "after"
+- "10 giờ tới" (no "trong")→ relativeHours = 10→ delta = null→ rangeRelation = null
 
 ##8-6. Null: no range relationship
 Use `rangeRelation = null` only when the user did not express a boundary relationship.
@@ -508,6 +519,7 @@ Examples:
 
 Single-point relative offsets also use null:
 - "after 2 hours" / "in 3 hours" / "3 hours from now"→ rangeRelation = null
+- "3 giờ tới" / "10 giờ tới"→ rangeRelation = null
 - "sau 3 ngày" / "3 ngày nữa"→ rangeRelation = null
 
 Do NOT set `rangeRelation` from future-tense words alone:
@@ -524,13 +536,18 @@ relativeHours = a relative hour offset from now, expressed as a plain number.
 Vietnamese ("tiếng" = colloquial "giờ", treat identically):
 - "2 tiếng nữa" / "2 giờ nữa" → relativeHours = 2
 - "3 tiếng tới" / "3 giờ tới" → relativeHours = 3
-- "trong vòng 4 giờ/tiếng tới" → relativeHours = 0
 - "giờ sau" / "giờ tiếp theo" → relativeHours = 1
+
+Contrast (bare offset vs `trong` duration):
+- "10 giờ tới độ ẩm như thế nào" → relativeHours = 10, delta = null, rangeRelation = null
+- "trong 10 giờ tới độ ẩm như thế nào" → relativeHours = null, delta = 10, deltaUnit = "hour", rangeRelation = "after"
 
 English:
 - "in 3 hours" → relativeHours = 3
 - "after 2 hours" → relativeHours = 2
-- "within the next 4 hours" → relativeHours = 0
+
+A "within N hours" expression is a duration range, NOT a single-point offset. Do NOT set relativeHours = 0 for it (see #4-3); extract it via #6, #7, and #8:
+- "within the next 4 hours" / "trong vòng 4 giờ/tiếng tới" → relativeHours = null → delta = 4 → deltaUnit = "hour" → rangeRelation = "after"
 
 If no relative hour expression is found: relativeHours = null
 
@@ -821,8 +838,7 @@ When relativeWeeks is set:
   are handled here as offsets.
 
 ##16-2. Entire week expressions
-CRITICAL RULE FOR #16-2: When these entire single-week expressions are matched, set weekPart = "whole". NEVER extract them as "weekdays".
-EXCEPTION: the generic day-listing phrases "các ngày trong tuần" / "ngày trong tuần" set weekPart = null (they are not a whole-week request).
+CRITICAL RULE FOR #16-2: When these entire week expressions are matched, you MUST set weekPart = "whole". NEVER extract them as "weekdays".
 
 English:
 - "this week" → relativeWeeks = 0
@@ -857,7 +873,7 @@ Vietnamese:
 - "từng ngày tuần sau nữa" / "theo ngày tuần sau nữa" → relativeWeeks = 2
 
 Rules:
-- Set weekPart = null. Never set weekPart = "weekdays" or specificWeekday.
+- Set weekPart = "whole". Never set weekPart = "weekdays" or specificWeekday.
 - If no week modifier is present, default to relativeWeeks = 0.
 - Takes priority over #17-2 when both a daily-breakdown trigger and a week modifier appear.
 
@@ -873,7 +889,7 @@ Examples:
 #17. weekPart
 weekPart captures broad, predefined day groupings within a week.
 MUST be one of: "whole" | "weekdays" | "weekend" | null.
-- "whole" = an entire single week ("this week" / "next week" / "cả tuần này" / "tuần sau" ...). See #16-2.
+"whole" covers the entire single week and is set for the entire week expressions listed in #16-2 and #16-4.
 
 CRITICAL RULE:
 When weekPart is detected, do NOT attempt to calculate `delta` or `specificWeekday`. Just extract the weekPart and let the backend handle the exact date ranges. 
@@ -928,9 +944,10 @@ Before producing the JSON, verify all of the following:
 14. A multi-week duration uses `delta` and `deltaUnit = "day"`, not `relativeWeeks`.
 15. Only explicitly stated semantic information is extracted.
 16. No numeric `delta` was inferred from vague quantity words such as "a few", "several", "some", or "vài".
-17. Future-oriented duration modifiers such as `tới`, `sắp tới`, `tiếp theo`, and `kế tiếp` produced `rangeRelation = "after"` unless the present was explicitly included.
-18. `from` and `to` include their anchor; `after` and `before` exclude their anchor; null means no boundary relationship.
-19. A Vietnamese current-month segment uses its mapped `specificDate`, `delta = 10`, `deltaUnit = "day"`, and `rangeRelation = "from"`.
+17. Future-oriented duration modifiers such as `tới`, `sắp tới`, `tiếp theo`, and `kế tiếp` produced `rangeRelation = "after"` unless the present was explicitly included — EXCEPT bare single-point hour offsets ("N giờ tới" / "N tiếng tới" / "N giờ nữa" without "trong"), which keep `relativeHours = N` with `delta = null` and `rangeRelation = null` (see #9).
+18. Bare `N giờ/tiếng tới` was NOT extracted as `delta` + `rangeRelation = "after"`.
+19. `from` and `to` include their anchor; `after` and `before` exclude their anchor; null means no boundary relationship.
+20. A Vietnamese current-month segment uses its mapped `specificDate`, `delta = 10`, `deltaUnit = "day"`, and `rangeRelation = "from"`.
 
 #20. Output format
 Output ONLY one valid JSON object with exactly these fields:
@@ -955,3 +972,5 @@ Output ONLY one valid JSON object with exactly these fields:
 	"weekPart": "whole" | "weekdays" | "weekend" | null,
 	"fallback": "PAST_TIME_REQUESTED" | null
 }
+
+#21.OUTPUT_LANGUAGE = {language}

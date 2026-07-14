@@ -9,6 +9,7 @@ const TESTCASE_DIR = path.resolve(__dirname, '../config/testcases');
 
 interface TestCaseGroup {
   groupName: string;
+  sourceFile: string;
   cases: TestCase[];
 }
 
@@ -25,6 +26,7 @@ export function loadTestCaseGroup(fileName: string): TestCaseGroup {
 
     return {
       groupName: data.groupName,
+      sourceFile: fileName,
       cases: data.cases,
     };
   } catch (error) {

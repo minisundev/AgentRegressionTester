@@ -38,6 +38,10 @@ loadCheckpoint(runId);
 
 interface ExecutionUnit {
   groupName: string;
+  // Several yaml files reuse the same groupName (e.g. "Weather"), so checkpoint
+  // keys must be namespaced by source file or their cases collide and overwrite
+  // each other's completion state and sheet rows.
+  checkpointGroup: string;
   cases: TestCase[];
   isMultiTurn: boolean;
 }
@@ -46,9 +50,9 @@ function isMultiTurnCase(tc: TestCase): boolean {
   return tc.isMultiTurn === true || tc.multiTurn === true;
 }
 
-function multiTurnKey(groupName: string, tc: TestCase): string {
+function multiTurnKey(checkpointGroup: string, tc: TestCase): string {
   const parentId = String(tc.id).replace(/-\d+$/, '');
-  return `${groupName}:${parentId}`;
+  return `${checkpointGroup}:${parentId}`;
 }
 
 function buildExecutionUnits(): ExecutionUnit[] {
@@ -57,16 +61,17 @@ function buildExecutionUnits(): ExecutionUnit[] {
 
   for (const group of loadAllTestCases()) {
     const groupName = String(group.groupName);
+    const checkpointGroup = `${group.sourceFile}::${groupName}`;
     for (const tc of group.cases) {
       if (!isMultiTurnCase(tc)) {
-        units.push({ groupName, cases: [tc], isMultiTurn: false });
+        units.push({ groupName, checkpointGroup, cases: [tc], isMultiTurn: false });
         continue;
       }
 
-      const key = multiTurnKey(groupName, tc);
+      const key = multiTurnKey(checkpointGroup, tc);
       let unit = multiTurnUnits.get(key);
       if (!unit) {
-        unit = { groupName, cases: [], isMultiTurn: true };
+        unit = { groupName, checkpointGroup, cases: [], isMultiTurn: true };
         multiTurnUnits.set(key, unit);
         units.push(unit);
       }
@@ -90,7 +95,7 @@ describe('Agent API Regression', () => {
     const laneIndex = unitIndex % laneCount;
     const ids = unit.cases.map((tc) => `Q${tc.id}`).join(', ');
     const allModesDone = unit.cases.every((tc) => REQUEST_MODES.every((mode) =>
-      isCompleted(caseKey(unit.groupName, tc.id, mode))));
+      isCompleted(caseKey(unit.checkpointGroup, tc.id, mode))));
     const test = allModesDone ? it.skip : it.concurrent;
 
     test(`${ids} - [${unit.groupName}] ${unit.cases[0]?.name ?? ''}`, async () => {
@@ -109,7 +114,7 @@ describe('Agent API Regression', () => {
           let anyError = false;
 
           for (const [modeIndex, mode] of REQUEST_MODES.entries()) {
-            const key = caseKey(unit.groupName, tc.id, mode);
+            const key = caseKey(unit.checkpointGroup, tc.id, mode);
             const alreadyCompleted = isCompleted(key);
             // A resumed multi-turn unit must replay its earlier turns to rebuild
             // server context, but those checkpointed rows are not written twice.

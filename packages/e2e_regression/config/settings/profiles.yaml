@@ -13,7 +13,7 @@ profiles:
 
   local:
     baseUrl: http://localhost:8080/aia-control/v1/agentChat
-    sheetName: local_260706_time_resolver_final_test
+    sheetName: local_260714_entity_prompt_eval
 
   crow:
     baseUrl: https://agent.crow.ai.kr/aia-control/v1/agentChat

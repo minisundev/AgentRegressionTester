@@ -94,6 +94,18 @@ function getGptClient(config: GptEndpointConfig): OpenAI {
     return gptClient;
 }
 
+// env.TODAY exists to mock the reference date; when unset, derive it from the
+// real clock so the judge never sees a stale weekday/date pair.
+function todayLabel(): string {
+    if (env.TODAY) return env.TODAY;
+    const now = new Date();
+    const weekday = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][now.getDay()];
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    return `${weekday},${yyyy}.${mm}.${dd}`;
+}
+
 async function judgeResponseByGpt(prompt: string, request: string, response: string): Promise<string> {
     try {
         const config = await getGptConfig();
@@ -110,7 +122,7 @@ async function judgeResponseByGpt(prompt: string, request: string, response: str
                         `Request: ${request}`,
                         `Response: ${response}`,
                         `Now: ${new Date().toISOString().split('T')[0]}`,
-                        env.TODAY ? `Today: ${env.TODAY}` : '',
+                        `Today: ${todayLabel()}`,
                     ].filter(Boolean).join('\n'),
                 },
             ],
@@ -159,7 +171,7 @@ async function judgeResponseByLocalAI(prompt: string, request: string, response:
         const content = `${prompt} [Target to Evaluate]
             Request: ${request}
             Response: ${response}
-            Now: ${new Date().toISOString().split('T')[0]} , ${env.TODAY} // TODAY=MON,TUE,WED,THU,FRI,SAT,SUN
+            Now: ${new Date().toISOString().split('T')[0]} , ${todayLabel()} // TODAY=MON,TUE,WED,THU,FRI,SAT,SUN
             `.trim();
         const res = await axios.post('http://localhost:11434/api/generate', {
             model: env.LOCAL_AI_MODEL,

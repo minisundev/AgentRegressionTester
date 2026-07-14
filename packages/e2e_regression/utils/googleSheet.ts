@@ -33,11 +33,36 @@ function getSheetsClient(): sheets_v4.Sheets {
     return sheetsClient;
 }
 
-export async function appendRowToSheet(row: ResultRow): Promise<number | undefined> {
-    return enqueueSheetWrite(() => appendRowToSheetUnlocked(row));
+// Judge/translation LLM calls are precomputed BEFORE entering the sheet write
+// queue; running them inside the queue serialized every row's GPT calls and
+// capped throughput at one case per ~20s regardless of lane parallelism.
+interface PrecomputedAiCells {
+    judge?: string;
+    resTranslation?: string;
 }
 
-async function appendRowToSheetUnlocked(row: ResultRow): Promise<number | undefined> {
+async function precomputeAiCells(row: ResultRow): Promise<PrecomputedAiCells> {
+    const cleanResponse = row.response?.replace(/\n/g, ' ').trim() ?? '';
+    const judgeMode: JudgeMode = env.JUDGE_MODE;
+
+    const [judge, resTranslation] = await Promise.all([
+        (judgeMode === 'api' || judgeMode === 'gpt' || judgeMode === 'local')
+            ? judgeResponse(getPrompt(), row.request ?? '', cleanResponse, 0)
+            : Promise.resolve(undefined),
+        shouldUseGptResponseTranslation()
+            ? translateResponseWithGpt(cleanResponse).catch(() => undefined)
+            : Promise.resolve(undefined),
+    ]);
+
+    return { judge, resTranslation: resTranslation || undefined };
+}
+
+export async function appendRowToSheet(row: ResultRow): Promise<number | undefined> {
+    const precomputed = await precomputeAiCells(row);
+    return enqueueSheetWrite(() => appendRowToSheetUnlocked(row, precomputed));
+}
+
+async function appendRowToSheetUnlocked(row: ResultRow, precomputed?: PrecomputedAiCells): Promise<number | undefined> {
     const sheets = getSheetsClient();
     const sheetId = env.GOOGLE_SHEET_ID!;
     const sheetName = env.GOOGLE_SHEET_NAME;
@@ -54,7 +79,7 @@ async function appendRowToSheetUnlocked(row: ResultRow): Promise<number | undefi
     );
 
     const currentRow = (response.data.values?.length || 0) + 1;
-    const values = await processResponseForSheet([row], currentRow);
+    const values = await processResponseForSheet([row], currentRow, precomputed);
 
     try {
         await withNetworkRetry(
@@ -88,10 +113,11 @@ async function appendRowToSheetUnlocked(row: ResultRow): Promise<number | undefi
 }
 
 export async function updateRowInSheet(row: ResultRow, rowNumber: number): Promise<boolean> {
-    return enqueueSheetWrite(() => updateRowInSheetUnlocked(row, rowNumber));
+    const precomputed = await precomputeAiCells(row);
+    return enqueueSheetWrite(() => updateRowInSheetUnlocked(row, rowNumber, precomputed));
 }
 
-async function updateRowInSheetUnlocked(row: ResultRow, rowNumber: number): Promise<boolean> {
+async function updateRowInSheetUnlocked(row: ResultRow, rowNumber: number, precomputed?: PrecomputedAiCells): Promise<boolean> {
     const sheets = getSheetsClient();
     const sheetId = env.GOOGLE_SHEET_ID!;
     const sheetName = env.GOOGLE_SHEET_NAME;
@@ -103,7 +129,7 @@ async function updateRowInSheetUnlocked(row: ResultRow, rowNumber: number): Prom
         { label: `sheet:ensure:${sheetName}` },
     );
 
-    const values = await processResponseForSheet([row], rowNumber);
+    const values = await processResponseForSheet([row], rowNumber, precomputed);
 
     try {
         await withNetworkRetry(
@@ -306,7 +332,7 @@ async function getResponseTranslation(response: string, currentRow: number): Pro
     }
 }
 
-async function processResponseForSheet(rows: ResultRow[], startRow: number): Promise<any[][]> {
+async function processResponseForSheet(rows: ResultRow[], startRow: number, precomputed?: PrecomputedAiCells): Promise<any[][]> {
     const prompt = getPrompt();
 
     // Promise<any[]>[]
@@ -322,8 +348,8 @@ async function processResponseForSheet(rows: ResultRow[], startRow: number): Pro
             request: r.request ?? '',
             response: cleanResponse,
             reqTranslation: getRequestTranslation(r, currentRow),
-            resTranslation: await getResponseTranslation(cleanResponse, currentRow),
-            judge: await judgeResponse(prompt, r.request ?? '', cleanResponse, currentRow),
+            resTranslation: precomputed?.resTranslation ?? await getResponseTranslation(cleanResponse, currentRow),
+            judge: precomputed?.judge ?? await judgeResponse(prompt, r.request ?? '', cleanResponse, currentRow),
             time: r.time ?? 0,
             reason: r.reason ?? '',
             testedAt: new Date().toISOString(),
