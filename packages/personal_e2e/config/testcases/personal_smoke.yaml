@@ -1,0 +1,604 @@
+# aia-personal 스모크 테스트.
+# expectedEntity 없음 — 이 에이전트는 턴을 진행하며 슬롯(entity)을 채우므로
+# 러너가 턴별 entity / slot_complete / CONVERSATION_LOCK 을 관찰·기록만 한다.
+# 턴별 mainIntent/subIntent 는 상위 NLU 가 넣어주던 값이라 테스트가 직접 지정해야 한다.
+# mock: 은 단말 콜백(GET_COUNT / CHECK_DUPLICATE / GET_USER_QUERY) 응답 목업.
+groupName: Personal_Smoke
+cases:
+  # ───────── Calendar / CreateEvent ─────────
+  - id: CAL-C01
+    name: "Calendar create - Họp 10h"
+    language: vietnamese
+    turns:
+      - message: "Đặt lịch Họp 10h"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: CAL-C02
+    name: "Calendar create - 슬롯필링 (날짜→시간)"
+    language: vietnamese
+    turns:
+      - message: "Đặt lịch đi làm sáng mai"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+      - message: "9 giờ"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: CAL-C03
+    name: "Calendar create - 2일 반복"
+    language: vietnamese
+    turns:
+      - message: "Đặt lịch Họp khách hàng mỗi 2 ngày"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: CAL-C04
+    name: "Calendar create - mùng 5 12시"
+    language: vietnamese
+    turns:
+      - message: "Tạo lịch đi ăn trưa ngày mùng 5 lúc 12 giờ"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: CAL-C05
+    name: "Calendar create - 음력 m1/04"
+    language: vietnamese
+    turns:
+      - message: "Tạo lịch đi lễ vào ngày m1/04 âm lịch năm nay"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: CAL-C06
+    name: "Calendar create - 연 반복 슬롯필링 (날짜 후속)"
+    language: vietnamese
+    turns:
+      - message: "Hãy lập lịch khám sức khỏe định kỳ cho tôi vào lúc 1 giờ chiều, cứ 1 năm một lần."
+        mainIntent: Calendar
+        subIntent: CreateEvent
+      - message: "Hôm nay"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: CAL-C07
+    name: "Calendar create - 음력 15/06/2026"
+    language: vietnamese
+    turns:
+      - message: "Tạo lịch đi lễ ngày 15/06/2026 âm lịch"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: CAL-C08
+    name: "Calendar create - EN 매주 월요일"
+    language: english
+    turns:
+      - message: 'Schedule "Weekend coffee" every Monday'
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  # ───────── Calendar / ViewEvent ─────────
+  - id: CAL-V01
+    name: "Calendar view - 음력 15일"
+    language: vietnamese
+    turns:
+      - message: "Xem lịch 15 âm lịch năm nay"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+
+  - id: CAL-V02
+    name: "Calendar view - 8/5 오전"
+    language: vietnamese
+    turns:
+      - message: "Kiểm tra buổi sáng mùng 5 tháng 8 có lịch gì không"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+
+  - id: CAL-V03
+    name: "Calendar view - 다가오는 일정"
+    language: vietnamese
+    turns:
+      - message: "Sắp tới có lịch gì không"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+
+  - id: CAL-V04
+    name: "Calendar view - 내일 8시"
+    language: vietnamese
+    turns:
+      - message: "8 giờ sáng mai có lịch gì không"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+
+  - id: CAL-V05
+    name: "Calendar view - 오늘 9시 이벤트"
+    language: vietnamese
+    turns:
+      - message: "Tôi có sự kiện nào lúc 9 giờ sáng nay không?"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+
+  - id: CAL-V06
+    name: "Calendar view - 모레 회의"
+    language: vietnamese
+    turns:
+      - message: "Xem lịch họp ngày kìa"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+
+  # ───────── Calendar / RemoveEvent ─────────
+  - id: CAL-R01
+    name: "Calendar remove - 14:30 (단일 → CONFIRM)"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch lúc 14:30"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-101"
+              title: "Họp nhóm"
+              date: "2026-07-15"
+              time: "14:30"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Ừ"
+        note: "listCount==1 → 바로 CONFIRM 재질의 → 예 응답으로 완결"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+
+  - id: CAL-R02
+    name: "Calendar remove - 목록에서 번호 선택 (중간 노이즈 턴 포함)"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch hôm nay"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-201"
+              title: "Ăn trưa"
+              date: "2026-07-15"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+            - itemId: "evt-202"
+              title: "Họp khách hàng"
+              date: "2026-07-15"
+              time: "15:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "6x1"
+        note: "의미 없는 입력 — 에이전트가 되묻는지 확인"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+      - message: "Xóa lịch số 1"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+      - message: "Ừ"
+        note: "대상 확정 후 CONFIRM 응답 — entity.items 에 itemId 가 와야 함"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+
+  - id: CAL-R03
+    name: "Calendar remove - 26/3"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch ngày 26/3"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+
+  - id: CAL-R04
+    name: "Calendar remove - 오늘 점심 일정 (단일 → CONFIRM)"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch ăn trưa hôm nay"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-301"
+              title: "Ăn trưa"
+              date: "2026-07-15"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Ừ"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+
+  - id: CAL-R05
+    name: "Calendar remove - 제목+날짜"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch Đi chơi ngày 26/3"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+
+  - id: CAL-R06
+    name: "Calendar remove - EN 전체 삭제 (목록 → CONFIRM)"
+    language: english
+    turns:
+      - message: "Delete my whole calendar"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-401"
+              title: "Team sync"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+            - itemId: "evt-402"
+              title: "Dentist"
+              date: "2026-07-18"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Yes, delete all of them"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+
+  # ───────── Reminder / Create ─────────
+  - id: REM-C01
+    name: "Reminder create - 이번 달 예산 점검"
+    language: vietnamese
+    turns:
+      - message: "Nhắc tôi xem lại ngân sách trong tháng này"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: REM-C02
+    name: "Reminder create - 매월 말일 + 후속 발화"
+    language: vietnamese
+    turns:
+      - message: "Nhắc tôi mỗi tháng vào ngày cuối cùng bắt đầu từ tháng 1 năm 2028"
+        mainIntent: Reminder
+        subIntent: Create
+      - message: "8h sáng đi họp"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: REM-C03
+    name: "Reminder create - EN 예산 리뷰"
+    language: english
+    turns:
+      - message: "Remind me to review the budget this month"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: REM-C04
+    name: "Reminder create - EN 슬롯필링 (rent)"
+    language: english
+    turns:
+      - message: "Remind me to pay rent on the first day of the month"
+        mainIntent: Reminder
+        subIntent: Create
+      - message: "7:30 next month"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: REM-C05
+    name: "Reminder create - EN 매월 말일 2028.1 시작"
+    language: english
+    turns:
+      - message: "Remind me every month on the last day, starting from January 2028"
+        mainIntent: Reminder
+        subIntent: Create
+
+  # ───────── Reminder / ViewList ─────────
+  - id: REM-V01
+    name: "Reminder view - 오늘 6시"
+    language: vietnamese
+    turns:
+      - message: "Hôm nay có nhắc nhở lúc 6 giờ không"
+        mainIntent: Reminder
+        subIntent: ViewList
+
+  - id: REM-V02
+    name: "Reminder view - EN 오늘"
+    language: english
+    turns:
+      - message: "View today's reminders"
+        mainIntent: Reminder
+        subIntent: ViewList
+
+  - id: REM-V03
+    name: "Reminder view - EN 다음 달"
+    language: english
+    turns:
+      - message: "View next month's reminders"
+        mainIntent: Reminder
+        subIntent: ViewList
+
+  - id: REM-V04
+    name: "Reminder view - EN 내년"
+    language: english
+    turns:
+      - message: "View next year's reminders"
+        mainIntent: Reminder
+        subIntent: ViewList
+
+  # ───────── Reminder / Remove ─────────
+  - id: REM-R01
+    name: "Reminder remove - 오늘 저녁 7시 (단일 → CONFIRM)"
+    language: vietnamese
+    turns:
+      - message: "Xóa nhắc nhở lúc 7 giờ tối nay giúp mình."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-501"
+              title: "Uống thuốc"
+              date: "2026-07-15"
+              time: "19:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Ừ"
+        mainIntent: Reminder
+        subIntent: Remove
+
+  - id: REM-R02
+    name: "Reminder remove - EN 내년 3월"
+    language: english
+    turns:
+      - message: "Delete reminders for next March"
+        mainIntent: Reminder
+        subIntent: Remove
+
+  - id: REM-R03
+    name: "Reminder remove - EN 다음 달 20일"
+    language: english
+    turns:
+      - message: "Delete reminders for the 20th of next month"
+        mainIntent: Reminder
+        subIntent: Remove
+
+  - id: REM-R04
+    name: "Reminder remove - EN 3시"
+    language: english
+    turns:
+      - message: "Delete the 3 o'clock reminder"
+        mainIntent: Reminder
+        subIntent: Remove
+
+  - id: REM-R05
+    name: "Reminder remove - EN 제목 지정 (Watch TV360)"
+    language: english
+    turns:
+      - message: 'Please delete the "Watch TV360" reminder.'
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-601"
+              title: "Watch TV360"
+              date: "2026-07-16"
+              time: "20:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Yes"
+        mainIntent: Reminder
+        subIntent: Remove
+
+  # ───────── Reminder / Remove — 전체 삭제 paraphrase 10종 ─────────
+  - id: REM-RA01
+    name: "Reminder remove all - delete all"
+    language: english
+    turns:
+      - message: "Delete all of my reminders."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA02
+    name: "Reminder remove all - remove every"
+    language: english
+    turns:
+      - message: "Please remove every reminder I have."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA03
+    name: "Reminder remove all - clear whole list"
+    language: english
+    turns:
+      - message: "Clear my whole reminder list."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA04
+    name: "Reminder remove all - erase all"
+    language: english
+    turns:
+      - message: "Erase all the reminders on my list."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA05
+    name: "Reminder remove all - wipe out"
+    language: english
+    turns:
+      - message: "Wipe out every single reminder, please."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA06
+    name: "Reminder remove all - get rid of"
+    language: english
+    turns:
+      - message: "Get rid of all my reminders completely."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA07
+    name: "Reminder remove all - cancel every"
+    language: english
+    turns:
+      - message: "Cancel every reminder I've saved."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA08
+    name: "Reminder remove all - clean out"
+    language: english
+    turns:
+      - message: "Clean out all of my current reminders."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA09
+    name: "Reminder remove all - dismiss every"
+    language: english
+    turns:
+      - message: "Dismiss every reminder I've got."
+        mainIntent: Reminder
+        subIntent: Remove
+  - id: REM-RA10
+    name: "Reminder remove all - purge list"
+    language: english
+    turns:
+      - message: "Purge my entire reminder list."
+        mainIntent: Reminder
+        subIntent: Remove
+
+  # ───────── Alarm ─────────
+  - id: ALM-R01
+    name: "Alarm remove - 다음 주말"
+    language: vietnamese
+    turns:
+      - message: "Xóa báo thức cuối tuần sau"
+        mainIntent: Alarm
+        subIntent: Remove
+
+  - id: ALM-R02
+    name: "Alarm remove - 주간 알람"
+    language: vietnamese
+    turns:
+      - message: "Xóa báo thức tuần"
+        mainIntent: Alarm
+        subIntent: Remove
+
+  - id: ALM-V01
+    name: "Alarm view - EN 모레"
+    language: english
+    turns:
+      - message: "Show alarms the day after tomorrow"
+        mainIntent: Alarm
+        subIntent: ViewList
+
+  # 시트의 한 셀에 있던 긴 시나리오 — 생성→비활성화→삭제 흐름을 한 대화로 진행.
+  # 너무 길면 케이스를 쪼개서 써도 된다 (턴마다 subIntent 만 맞으면 됨).
+  - id: ALM-M01
+    name: "Alarm 시나리오 - 생성/비활성/삭제 연속"
+    language: english
+    turns:
+      - message: "Set alarm at 9 AM every fortnight"
+        mainIntent: Alarm
+        subIntent: Create
+      - message: "Set alarm for me at 5 PM for the next 3 days"
+        mainIntent: Alarm
+        subIntent: Create
+      - message: "Disable the weekend alarms please"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+      - message: "Turn off the weekday alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+      - message: "Disable all active alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+      - message: "Turn off the 7:00 AM daily alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+      - message: "Delete this weekend's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete next weekend's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete this week's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete next week's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete the alarm for the week after next week"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete the weekly alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete this month's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete next month's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete the alarm for June"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Delete the two weekly alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+      - message: "Turn the alarm off"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+
+  - id: ALM-D01
+    name: "Alarm disable - 지금 당장"
+    language: english
+    turns:
+      - message: "Turn off the alarm right now"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+
+  - id: ALM-C01
+    name: "Alarm create - 슬롯필링 (숫자만 후속 입력)"
+    language: english
+    turns:
+      - message: "Create an alarm"
+        mainIntent: Alarm
+        subIntent: Create
+      - message: "2"
+        mainIntent: Alarm
+        subIntent: Create
+
+  - id: ALM-D02
+    name: "Alarm disable - 5 PM (단일 → CONFIRM)"
+    language: english
+    turns:
+      - message: "Disable the 5 PM alarm"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-701"
+              time: "17:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Yes"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+
+  - id: ALM-M02
+    name: "Alarm 시나리오 - 7AM 데일리 끄고 two weekly 삭제 (CONFIRM 포함)"
+    language: english
+    turns:
+      - message: "Turn off the 7:00 AM daily alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-801"
+              time: "07:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Yes"
+        note: "listCount==1 → CONFIRM 재질의에 대한 응답"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+      - message: "Delete the two weekly alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-802"
+              time: "09:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Yes"
+        mainIntent: Alarm
+        subIntent: Remove

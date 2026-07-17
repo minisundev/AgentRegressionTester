@@ -1,0 +1,1826 @@
+# AI-FTC 시트 1:1 매핑 (case id = 시트 행 번호).
+# 실행: PERSONAL_CASE_GROUPS=ai_ftc_personal.yaml npm run test:personal
+#
+# 시트 파리티를 위해 턴은 시트 셀 그대로 — CONFIRM("Ừ"/"Yes") 턴을 추가하지 않았다.
+# 따라서 삭제/비활성 케이스는 확인 재질의(LOCK) 상태로 끝나는 게 정상이며,
+# 러너는 resultCode==200 이면 PASS 로 본다. 완결형 플로우는 personal_smoke.yaml 참고.
+#
+# mock.list 는 단말 시뮬레이터의 GET_USER_QUERY 응답 (서버는 단말이 걸러준 결과를 신뢰).
+# 발화에 제목이 있으면 제목을 맞춰줬고, 없으면 generic 아이템 1개.
+#
+# FTC → subIntent 매핑:
+#   1401 CreateEvent / 1402 ViewEvent / 1403·1404 RemoveEvent / 1405 CloseScreen
+#   1301 Create / 1302 ViewList / 1303·1304 Remove
+#   1201 Create / 1202 ViewList / 1203 DeactivateSetting / 1205 Remove / 1208 StopRinging
+groupName: AI_FTC_Personal
+cases:
+  # ═════ AI-FTC-1401 Calendar Create (VI) ═════
+  - id: 5
+    name: "1401 VI - Đặt lịch Họp 10h"
+    language: vietnamese
+    turns:
+      - message: "Đặt lịch Họp 10h"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: 6
+    name: "1401 VI - 슬롯필링 sáng mai → 9 giờ"
+    language: vietnamese
+    turns:
+      - message: "Đặt lịch đi làm sáng mai"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+      - message: "9 giờ"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: 7
+    name: "1401 VI - mỗi 2 ngày 반복"
+    language: vietnamese
+    turns:
+      - message: "Đặt lịch Họp khách hàng mỗi 2 ngày"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: 8
+    name: "1401 VI - mùng 5 lúc 12 giờ"
+    language: vietnamese
+    turns:
+      - message: "Tạo lịch đi ăn trưa ngày mùng 5 lúc 12 giờ"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: 9
+    name: "1401 VI - 음력 m1/04"
+    language: vietnamese
+    turns:
+      - message: "Tạo lịch đi lễ vào ngày m1/04 âm lịch năm nay"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: 10
+    name: "1401 VI - 연 반복 → Hôm nay"
+    language: vietnamese
+    turns:
+      - message: "Hãy lập lịch khám sức khỏe định kỳ cho tôi vào lúc 1 giờ chiều, cứ 1 năm một lần."
+        mainIntent: Calendar
+        subIntent: CreateEvent
+      - message: "Hôm nay"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: 11
+    name: "1401 VI - 음력 15/06/2026"
+    language: vietnamese
+    turns:
+      - message: "Tạo lịch đi lễ ngày 15/06/2026 âm lịch"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  # ═════ AI-FTC-1402 Calendar View (VI) ═════
+  - id: 13
+    name: "1402 VI - 음력 15일 조회"
+    language: vietnamese
+    turns:
+      - message: "Xem lịch 15 âm lịch năm nay"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+        mock:
+          list:
+            - itemId: "evt-13"
+              title: "Đi lễ"
+              date: "2026-08-27"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 14
+    name: "1402 VI - 8/5 오전 조회"
+    language: vietnamese
+    turns:
+      - message: "Kiểm tra buổi sáng mùng 5 tháng 8 có lịch gì không"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+        mock:
+          list:
+            - itemId: "evt-14"
+              title: "Họp nhóm"
+              date: "2026-08-05"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 15
+    name: "1402 VI - 다가오는 일정"
+    language: vietnamese
+    turns:
+      - message: "Sắp tới có lịch gì không"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+        mock:
+          list:
+            - itemId: "evt-15"
+              title: "Họp khách hàng"
+              date: "2026-07-17"
+              time: "15:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 16
+    name: "1402 VI - 내일 8시"
+    language: vietnamese
+    turns:
+      - message: "8 giờ sáng mai có lịch gì không"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+        mock:
+          list:
+            - itemId: "evt-16"
+              title: "Đi làm"
+              date: "2026-07-16"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 17
+    name: "1402 VI - 오늘 9시 이벤트"
+    language: vietnamese
+    turns:
+      - message: "Tôi có sự kiện nào lúc 9 giờ sáng nay không?"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+        mock:
+          list:
+            - itemId: "evt-17"
+              title: "Họp"
+              date: "2026-07-15"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 18
+    name: "1402 VI - 모레 회의"
+    language: vietnamese
+    turns:
+      - message: "Xem lịch họp ngày kìa"
+        mainIntent: Calendar
+        subIntent: ViewEvent
+        mock:
+          list:
+            - itemId: "evt-18"
+              title: "Họp"
+              date: "2026-07-17"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  # ═════ AI-FTC-1403 Calendar Remove (VI) ═════
+  - id: 19
+    name: "1403 VI - 14:30 삭제"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch lúc 14:30"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-19"
+              title: "Họp nhóm"
+              date: "2026-07-15"
+              time: "14:30"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 20
+    name: "1403 VI - 목록 → 노이즈(6x1) → 번호 선택"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch hôm nay"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-20a"
+              title: "Ăn trưa"
+              date: "2026-07-15"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+            - itemId: "evt-20b"
+              title: "Họp khách hàng"
+              date: "2026-07-15"
+              time: "15:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "6x1"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+      - message: "Xóa lịch số 1"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+
+  - id: 21
+    name: "1403 VI - 26/3 삭제"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch ngày 26/3"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-21"
+              title: "Họp"
+              date: "2027-03-26"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 22
+    name: "1403 VI - 오늘 점심 삭제"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch ăn trưa hôm nay"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-22"
+              title: "Ăn trưa"
+              date: "2026-07-15"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 23
+    name: "1403 VI - Đi chơi 26/3 삭제"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch Đi chơi ngày 26/3"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-23"
+              title: "Đi chơi"
+              date: "2027-03-26"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 24
+    name: "1403 VI - 요일 정정 멀티턴 (thứ hai→thứ sáu)"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch thứ hai"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-24a"
+              title: "Họp"
+              date: "2026-07-20"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Thứ sáu"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-24b"
+              title: "Họp"
+              date: "2026-07-17"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Xóa lịch thứ sáu"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-24b"
+              title: "Họp"
+              date: "2026-07-17"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 25
+    name: "1403 VI - 음력 15일 삭제 → 날짜 구체화"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch đi lễ vào ngày 15 âm lịch"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-25"
+              title: "Đi lễ"
+              date: "2026-07-28"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "15 tháng 6 năm nay âm lịch"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-25"
+              title: "Đi lễ"
+              date: "2026-07-28"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 26
+    name: "1403 VI - 이번 주 삭제 → 다음 주 삭제 (주제 전환)"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch tuần này"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-26a"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Xóa lịch tuần sau"
+        note: "LOCK 중 새 요청 — 364405 또는 재질의 처리 관찰"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-26b"
+              title: "Họp"
+              date: "2026-07-22"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 27
+    name: "1403 VI - gặp đối tác 30/4 삭제"
+    language: vietnamese
+    turns:
+      - message: "Xóa lịch gặp đối tác ngày 30/4"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-27"
+              title: "Gặp đối tác"
+              date: "2027-04-30"
+              time: "14:00"
+              recurring: "N"
+              isActive: "Y"
+
+  # ═════ AI-FTC-1401 Calendar Create (EN) ═════
+  - id: 28
+    name: "1401 EN - Weekend coffee every Monday"
+    language: english
+    turns:
+      - message: 'Schedule "Weekend coffee" every Monday'
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  - id: 29
+    name: "1401 EN - 제목 → 시간 3턴 슬롯필링"
+    language: english
+    turns:
+      - message: "Please schedule this for me."
+        mainIntent: Calendar
+        subIntent: CreateEvent
+      - message: "“Attend parent-teacher meeting.”"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+      - message: "4pm on Friday"
+        mainIntent: Calendar
+        subIntent: CreateEvent
+
+  # ═════ AI-FTC-1403 Calendar Remove (EN) ═════
+  - id: 31
+    name: "1403 EN - Yoga event"
+    language: english
+    turns:
+      - message: "Delete the Yoga event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-31"
+              title: "Yoga"
+              date: "2026-07-16"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 32
+    name: "1403 EN - lunch event"
+    language: english
+    turns:
+      - message: "Delete the lunch event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-32"
+              title: "Lunch"
+              date: "2026-07-15"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 33
+    name: "1403 EN - Meeting event"
+    language: english
+    turns:
+      - message: "Delete the Meeting event for me"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-33"
+              title: "Meeting"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 34
+    name: "1403 EN - Lunch with Jane"
+    language: english
+    turns:
+      - message: 'Delete the "Lunch with Jane" event for me'
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-34"
+              title: "Lunch with Jane"
+              date: "2026-07-17"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 35
+    name: "1403 EN - 10am event"
+    language: english
+    turns:
+      - message: "Delete the event at 10am"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-35"
+              title: "Meeting"
+              date: "2026-07-15"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 36
+    name: "1403 EN - 2pm event"
+    language: english
+    turns:
+      - message: "Delete the event at 2pm"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-36"
+              title: "Meeting"
+              date: "2026-07-15"
+              time: "14:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 37
+    name: "1403 EN - 1pm event"
+    language: english
+    turns:
+      - message: "Delete the event at 1pm"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-37"
+              title: "Lunch"
+              date: "2026-07-15"
+              time: "13:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 38
+    name: "1403 EN - 9am event"
+    language: english
+    turns:
+      - message: "Delete the event at 9am"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-38"
+              title: "Standup"
+              date: "2026-07-15"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 39
+    name: "1403 EN - 10 o'clock event"
+    language: english
+    turns:
+      - message: "Delete the event at 10 o'clock for me"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-39"
+              title: "Meeting"
+              date: "2026-07-15"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 40
+    name: "1403 EN - today's event"
+    language: english
+    turns:
+      - message: "Delete today's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-40"
+              title: "Meeting"
+              date: "2026-07-15"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 41
+    name: "1403 EN - tomorrow's event"
+    language: english
+    turns:
+      - message: "Delete tomorrow's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-41"
+              title: "Meeting"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 42
+    name: "1403 EN - day after tomorrow"
+    language: english
+    turns:
+      - message: "Delete the event for the day after tomorrow"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-42"
+              title: "Meeting"
+              date: "2026-07-17"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 43
+    name: "1403 EN - on 3/26"
+    language: english
+    turns:
+      - message: "Delete the event on 3/26"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-43"
+              title: "Meeting"
+              date: "2027-03-26"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 44
+    name: "1403 EN - today's lunch"
+    language: english
+    turns:
+      - message: "Delete today's lunch event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-44"
+              title: "Lunch"
+              date: "2026-07-15"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 45
+    name: "1403 EN - today's Meeting"
+    language: english
+    turns:
+      - message: "Delete today's Meeting event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-45"
+              title: "Meeting"
+              date: "2026-07-15"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 46
+    name: "1403 EN - tomorrow's Meeting"
+    language: english
+    turns:
+      - message: "Delete tomorrow's Meeting event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-46"
+              title: "Meeting"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 47
+    name: "1403 EN - Meeting day after tomorrow"
+    language: english
+    turns:
+      - message: "Delete the Meeting event for the day after tomorrow"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-47"
+              title: "Meeting"
+              date: "2026-07-17"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 48
+    name: "1403 EN - Outing on 3/26"
+    language: english
+    turns:
+      - message: 'Delete the "Outing" event on 3/26'
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-48"
+              title: "Outing"
+              date: "2027-03-26"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 49
+    name: "1403 EN - Monday's event"
+    language: english
+    turns:
+      - message: "Delete Monday's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-49"
+              title: "Meeting"
+              date: "2026-07-20"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 50
+    name: "1403 EN - Friday's event"
+    language: english
+    turns:
+      - message: "Delete Friday's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-50"
+              title: "Meeting"
+              date: "2026-07-17"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 51
+    name: "1403 EN - Sunday's event"
+    language: english
+    turns:
+      - message: "Delete Sunday's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-51"
+              title: "Brunch"
+              date: "2026-07-19"
+              time: "11:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 52
+    name: "1403 EN - next Monday's event"
+    language: english
+    turns:
+      - message: "Delete next Monday's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-52"
+              title: "Meeting"
+              date: "2026-07-20"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 53
+    name: "1403 EN - next Friday's event"
+    language: english
+    turns:
+      - message: "Delete next Friday's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-53"
+              title: "Meeting"
+              date: "2026-07-24"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 54
+    name: "1403 EN - Meeting this Monday"
+    language: english
+    turns:
+      - message: "Delete the Meeting event this Monday"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-54"
+              title: "Meeting"
+              date: "2026-07-20"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 55
+    name: "1403 EN - 음력 15일 religious service"
+    language: english
+    turns:
+      - message: "Delete the event for going to a religious service on the 15th (lunar calendar)"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-55"
+              title: "Religious service"
+              date: "2026-07-28"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 56
+    name: "1403 EN - this week's event"
+    language: english
+    turns:
+      - message: "Delete this week's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-56"
+              title: "Meeting"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 57
+    name: "1403 EN - next week's event"
+    language: english
+    turns:
+      - message: "Delete next week's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-57"
+              title: "Meeting"
+              date: "2026-07-22"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 58
+    name: "1403 EN - this month's event"
+    language: english
+    turns:
+      - message: "Delete this month's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-58"
+              title: "Meeting"
+              date: "2026-07-25"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 59
+    name: "1403 EN - next month's event"
+    language: english
+    turns:
+      - message: "Delete next month's event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-59"
+              title: "Meeting"
+              date: "2026-08-10"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 60
+    name: "1403 EN - on the 25th"
+    language: english
+    turns:
+      - message: "Delete the event on the 25th"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-60"
+              title: "Meeting"
+              date: "2026-07-25"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 61
+    name: "1403 EN - 25th of next month"
+    language: english
+    turns:
+      - message: "Delete the event on the 25th of next month"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-61"
+              title: "Meeting"
+              date: "2026-08-25"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 62
+    name: "1403 EN - on the 5th"
+    language: english
+    turns:
+      - message: "Delete the event on the 5th"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-62"
+              title: "Meeting"
+              date: "2026-08-05"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 63
+    name: "1403 EN - 음력 15일"
+    language: english
+    turns:
+      - message: "Delete the event on the 15th (lunar calendar)"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-63"
+              title: "Ceremony"
+              date: "2026-07-28"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 64
+    name: "1403 EN - first day of month"
+    language: english
+    turns:
+      - message: "Delete the event on the first day of the month"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-64"
+              title: "Meeting"
+              date: "2026-08-01"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 65
+    name: "1403 EN - last day of month"
+    language: english
+    turns:
+      - message: "Delete the event on the last day of the month"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-65"
+              title: "Meeting"
+              date: "2026-07-31"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 66
+    name: "1403 EN - Meeting 10am tomorrow"
+    language: english
+    turns:
+      - message: "Delete the Meeting event at 10am tomorrow"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-66"
+              title: "Meeting"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 67
+    name: "1403 EN - 조건 없는 삭제 (재질의 유도)"
+    language: english
+    turns:
+      - message: "I want to delete an event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-67"
+              title: "Meeting"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 68
+    name: "1403 EN - 연 반복 Mom's birthday"
+    language: english
+    turns:
+      - message: "Delete Mom's birthday event that was set up annually."
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-68"
+              title: "Mom's birthday"
+              date: "2026-09-10"
+              time: "00:00"
+              recurring: "Y"
+              isActive: "Y"
+
+  - id: 69
+    name: "1403 EN - Lunch with Jane (2)"
+    language: english
+    turns:
+      - message: 'Delete the "Lunch with Jane" event'
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-69"
+              title: "Lunch with Jane"
+              date: "2026-07-17"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 70
+    name: "1403 EN - 1pm event (2)"
+    language: english
+    turns:
+      - message: "Delete the event at 1pm"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-70"
+              title: "Lunch"
+              date: "2026-07-15"
+              time: "13:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 71
+    name: "1403 EN - Lunch with Jane on Nov 7"
+    language: english
+    turns:
+      - message: 'Delete the "Lunch with Jane" event on November 7th.'
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-71"
+              title: "Lunch with Jane"
+              date: "2026-11-07"
+              time: "12:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 72
+    name: "1403 EN - this afternoon client meeting"
+    language: english
+    turns:
+      - message: "Delete this afternoon's meeting with a client"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-72"
+              title: "Meeting with client"
+              date: "2026-07-15"
+              time: "15:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 73
+    name: "1403 EN - tomorrow morning doctor"
+    language: english
+    turns:
+      - message: "Delete tomorrow morning's doctor's appointment"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-73"
+              title: "Doctor's appointment"
+              date: "2026-07-16"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 74
+    name: "1403 EN - gym day after tomorrow evening"
+    language: english
+    turns:
+      - message: "Delete the gym session the day after tomorrow evening"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-74"
+              title: "Gym session"
+              date: "2026-07-17"
+              time: "19:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 75
+    name: "1403 EN - partner meeting 4/30"
+    language: english
+    turns:
+      - message: "Delete the meeting with a partner on 4/30"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-75"
+              title: "Meeting with partner"
+              date: "2027-04-30"
+              time: "14:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 76
+    name: "1403 EN - Minh's birthday"
+    language: english
+    turns:
+      - message: "Delete Minh's birthday event"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-76"
+              title: "Minh's birthday"
+              date: "2026-08-20"
+              time: "00:00"
+              recurring: "Y"
+              isActive: "Y"
+
+  - id: 77
+    name: "1403 EN - next week's business trip"
+    language: english
+    turns:
+      - message: "Delete next week's business trip"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-77"
+              title: "Business trip"
+              date: "2026-07-22"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 78
+    name: "1403 EN - team meeting Wednesday"
+    language: english
+    turns:
+      - message: "Delete the team meeting on Wednesday"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-78"
+              title: "Team meeting"
+              date: "2026-07-15"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 79
+    name: "1403 EN - tonight's dinner"
+    language: english
+    turns:
+      - message: "Delete tonight's dinner appointment"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-79"
+              title: "Dinner appointment"
+              date: "2026-07-15"
+              time: "19:00"
+              recurring: "N"
+              isActive: "Y"
+
+  # ═════ AI-FTC-1404 Calendar Remove All (EN) ═════
+  - id: 80
+    name: "1404 EN - whole calendar"
+    language: english
+    turns:
+      - message: "Delete my whole calendar"
+        mainIntent: Calendar
+        subIntent: RemoveEvent
+        mock:
+          list:
+            - itemId: "evt-80a"
+              title: "Team sync"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+            - itemId: "evt-80b"
+              title: "Dentist"
+              date: "2026-07-18"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  # ═════ AI-FTC-1405 Calendar CloseScreen (EN) ═════
+  # 서버는 빈 메시지로 즉시 END — 실제 화면 닫기는 단말 몫.
+  - id: 81
+    name: "1405 EN - dismiss calendar screen"
+    language: english
+    turns:
+      - message: "Dismiss this calendar screen."
+        mainIntent: Calendar
+        subIntent: CloseScreen
+
+  - id: 82
+    name: "1405 EN - back out of calendar screen"
+    language: english
+    turns:
+      - message: "Back out of the calendar screen that's currently showing."
+        mainIntent: Calendar
+        subIntent: CloseScreen
+
+  # ═════ AI-FTC-1301 Reminder Create (VI) ═════
+  - id: 83
+    name: "1301 VI - 다음 주 월요일 10시 회의"
+    language: vietnamese
+    turns:
+      - message: "Nhắc Họp vào thứ 2 tuần sau 10h"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: 85
+    name: "1301 VI - 이번 달 예산 점검"
+    language: vietnamese
+    turns:
+      - message: "Nhắc tôi xem lại ngân sách trong tháng này"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: 86
+    name: "1301 VI - 매월 말일 → 후속 발화"
+    language: vietnamese
+    turns:
+      - message: "Nhắc tôi mỗi tháng vào ngày cuối cùng bắt đầu từ tháng 1 năm 2028"
+        mainIntent: Reminder
+        subIntent: Create
+      - message: "8h sáng đi họp"
+        mainIntent: Reminder
+        subIntent: Create
+
+  # ═════ AI-FTC-1302 Reminder View (VI) ═════
+  - id: 88
+    name: "1302 VI - 15일 알림 조회"
+    language: vietnamese
+    turns:
+      - message: "Ngày 15 có nhắc nhở nào không"
+        mainIntent: Reminder
+        subIntent: ViewList
+        mock:
+          list:
+            - itemId: "rem-88"
+              title: "Xem lại ngân sách"
+              date: "2026-07-15"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 90
+    name: "1302 VI - 오늘 6시 알림"
+    language: vietnamese
+    turns:
+      - message: "Hôm nay có nhắc nhở lúc 6 giờ không"
+        mainIntent: Reminder
+        subIntent: ViewList
+        mock:
+          list:
+            - itemId: "rem-90"
+              title: "Tập thể dục"
+              date: "2026-07-15"
+              time: "06:00"
+              recurring: "N"
+              isActive: "Y"
+
+  # ═════ AI-FTC-1303 Reminder Remove (VI) ═════
+  - id: 91
+    name: "1303 VI - 이번 주말"
+    language: vietnamese
+    turns:
+      - message: "Xóa nhắc nhở cuối tuần này"
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-91"
+              title: "Dọn nhà"
+              date: "2026-07-18"
+              time: "09:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 92
+    name: "1303 VI - 이번 달"
+    language: vietnamese
+    turns:
+      - message: "Xóa nhắc nhở tháng này"
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-92"
+              title: "Xem lại ngân sách"
+              date: "2026-07-25"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 93
+    name: "1303 VI - 오늘 저녁 7시"
+    language: vietnamese
+    turns:
+      - message: "Xóa nhắc nhở lúc 7 giờ tối nay giúp mình."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-93"
+              title: "Uống thuốc"
+              date: "2026-07-15"
+              time: "19:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 94
+    name: "1303 VI - 매일 반복 알림 취소"
+    language: vietnamese
+    turns:
+      - message: "Hủy nhắc nhở định kỳ hàng ngày cho mình nhé."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-94"
+              title: "Uống thuốc"
+              date: "2026-07-15"
+              time: "08:00"
+              recurring: "Y"
+              isActive: "Y"
+
+  # ═════ AI-FTC-1304 Reminder Remove All (VI) — paraphrase 10종 ═════
+  - id: 95
+    name: "1304 VI - Xóa toàn bộ nhắc nhở"
+    language: vietnamese
+    turns:
+      - message: "Xóa toàn bộ nhắc nhở"
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-95a"
+              title: "Uống thuốc"
+              date: "2026-07-15"
+              time: "08:00"
+              recurring: "Y"
+              isActive: "Y"
+            - itemId: "rem-95b"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 96
+    name: "1304 VI - Xóa hết nhắc nhở"
+    language: vietnamese
+    turns:
+      - message: "Xóa hết nhắc nhở"
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-96"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 97
+    name: "1304 VI - Xóa tất cả nhắc nhở"
+    language: vietnamese
+    turns:
+      - message: "Xóa tất cả nhắc nhở"
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-97"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 98
+    name: "1304 VI - Xóa toàn bộ lời nhắc"
+    language: vietnamese
+    turns:
+      - message: "Xóa toàn bộ lời nhắc"
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-98"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 99
+    name: "1304 VI - Xóa hết lời nhắc"
+    language: vietnamese
+    turns:
+      - message: "Xóa hết lời nhắc"
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-99"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 100
+    name: "1304 VI - Bỏ sạch toàn bộ reminder"
+    language: vietnamese
+    turns:
+      - message: "Bỏ sạch toàn bộ reminder."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-100"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 101
+    name: "1304 VI - Dọn hết danh sách lời nhắc"
+    language: vietnamese
+    turns:
+      - message: "Dọn hết danh sách lời nhắc."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-101"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 102
+    name: "1304 VI - Loại bỏ tất cả nhắc nhở hiện tại"
+    language: vietnamese
+    turns:
+      - message: "Loại bỏ tất cả nhắc nhở hiện tại."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-102"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 103
+    name: "1304 VI - Cho tôi xóa sạch toàn bộ reminder"
+    language: vietnamese
+    turns:
+      - message: "Cho tôi xóa sạch toàn bộ reminder."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-103"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+  - id: 104
+    name: "1304 VI - Hủy hết mọi nhắc nhở đang lưu"
+    language: vietnamese
+    turns:
+      - message: "Hủy hết mọi nhắc nhở đang lưu."
+        mainIntent: Reminder
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "rem-104"
+              title: "Họp"
+              date: "2026-07-16"
+              time: "10:00"
+              recurring: "N"
+              isActive: "Y"
+
+  # ═════ AI-FTC-1301 Reminder Create (EN) ═════
+  - id: 105
+    name: "1301 EN - 07:33 Sep 25 2026 documents"
+    language: english
+    turns:
+      - message: "Set a reminder at 07:33 on September 25, 2026 to bring my documents."
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: 106
+    name: "1301 EN - TV360 News 7pm"
+    language: english
+    turns:
+      - message: "Remind me to watch the News on TV360 at 7pm"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: 107
+    name: "1301 EN - review budget this month"
+    language: english
+    turns:
+      - message: "Remind me to review the budget this month"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: 108
+    name: "1301 EN - pay rent → 7:30 next month"
+    language: english
+    turns:
+      - message: "Remind me to pay rent on the first day of the month"
+        mainIntent: Reminder
+        subIntent: Create
+      - message: "7:30 next month"
+        mainIntent: Reminder
+        subIntent: Create
+
+  - id: 109
+    name: "1301 EN - 매월 말일 2028.1 시작"
+    language: english
+    turns:
+      - message: "Remind me every month on the last day, starting from January 2028"
+        mainIntent: Reminder
+        subIntent: Create
+
+  # ═════ Alarm ═════
+  - id: 129
+    name: "1203 VI - 전체 알람 끄기"
+    language: vietnamese
+    turns:
+      - message: "Tắt toàn bộ báo thức giúp tau"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-129a"
+              time: "06:00"
+              recurring: "Y"
+              isActive: "Y"
+            - itemId: "alm-129b"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 130
+    name: "1205 VI - 다음 주말 알람 삭제"
+    language: vietnamese
+    turns:
+      - message: "Xóa báo thức cuối tuần sau"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-130"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 131
+    name: "1205 VI - 주간 알람 삭제"
+    language: vietnamese
+    turns:
+      - message: "Xóa báo thức tuần"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-131"
+              time: "07:00"
+              recurring: "Y"
+              isActive: "Y"
+
+  - id: 140
+    name: "1202 EN - 모레 알람 조회"
+    language: english
+    turns:
+      - message: "Show alarms the day after tomorrow"
+        mainIntent: Alarm
+        subIntent: ViewList
+        mock:
+          list:
+            - itemId: "alm-140"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+
+  # 시트의 한 셀 — 생성 2건 후 비활성/삭제를 연속 발화하는 17턴 시나리오.
+  # 비활성/삭제 발화마다 mock 아이템을 줘서 CONFIRM 재질의(LOCK)가 걸리는데,
+  # 다음 발화가 새 주제라 364405 로 잠금이 풀리는 흐름까지가 관찰 대상.
+  - id: 141
+    name: "1205 EN - 생성/비활성/삭제 17턴 시나리오"
+    language: english
+    turns:
+      - message: "Set alarm at 9 AM every fortnight"
+        mainIntent: Alarm
+        subIntent: Create
+      - message: "Set alarm for me at 5 PM for the next 3 days"
+        mainIntent: Alarm
+        subIntent: Create
+      - message: "Disable the weekend alarms please"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-141a"
+              time: "08:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Turn off the weekday alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-141b"
+              time: "06:30"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Disable all active alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-141c"
+              time: "06:30"
+              recurring: "Y"
+              isActive: "Y"
+            - itemId: "alm-141d"
+              time: "09:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Turn off the 7:00 AM daily alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-141e"
+              time: "07:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Delete this weekend's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141f"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete next weekend's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141g"
+              time: "08:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete this week's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141h"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete next week's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141i"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete the alarm for the week after next week"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141j"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete the weekly alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141k"
+              time: "07:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Delete this month's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141l"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete next month's alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141m"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete the alarm for June"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141n"
+              time: "07:00"
+              recurring: "N"
+              isActive: "Y"
+      - message: "Delete the two weekly alarm"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-141o"
+              time: "09:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Turn the alarm off"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-141p"
+              time: "09:00"
+              recurring: "Y"
+              isActive: "Y"
+
+  # 링잉 알람 정지 — 서버는 빈 메시지로 즉시 END, 실제 정지는 단말 몫.
+  - id: 143
+    name: "1208 EN - turn off alarm right now"
+    language: english
+    turns:
+      - message: "Turn off the alarm right now"
+        mainIntent: Alarm
+        subIntent: StopRinging
+
+  - id: 144
+    name: "1201 EN - Create an alarm → 2"
+    language: english
+    turns:
+      - message: "Create an alarm"
+        mainIntent: Alarm
+        subIntent: Create
+      - message: "2"
+        mainIntent: Alarm
+        subIntent: Create
+
+  - id: 145
+    name: "1203 EN - disable 5 PM alarm"
+    language: english
+    turns:
+      - message: "Disable the 5 PM alarm"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-145"
+              time: "17:00"
+              recurring: "N"
+              isActive: "Y"
+
+  - id: 146
+    name: "1203 EN - 7AM 데일리 끄기 → two weekly 삭제"
+    language: english
+    turns:
+      - message: "Turn off the 7:00 AM daily alarms"
+        mainIntent: Alarm
+        subIntent: DeactivateSetting
+        mock:
+          list:
+            - itemId: "alm-146a"
+              time: "07:00"
+              recurring: "Y"
+              isActive: "Y"
+      - message: "Delete the two weekly alarm"
+        note: "LOCK 중 새 요청 — 364405 처리 관찰"
+        mainIntent: Alarm
+        subIntent: Remove
+        mock:
+          list:
+            - itemId: "alm-146b"
+              time: "09:00"
+              recurring: "Y"
+              isActive: "Y"

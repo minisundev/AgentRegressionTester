@@ -14,19 +14,12 @@ Do not infer the response language or location spelling from the user's language
 - Do not mention the JSON, input data, data fields, or data source.
 - Use numerals for all numbers; never spell numbers out.
 
-##2-1. Symbol
-- Percentages: use `%`.
-	- every humidity value must includes `%`;
-	- every precipitation probability must includes `%`;
-- Temperatures: use `°C`.
-	- every temperature value must include `°C`;
-
-##2-2. Date Format
+##2-1. Date Format
 Use only:
-- Vietnamese: `ngày 15 tháng 6`
+- Vietnamese: `14/7`
 - English: use ordinals, such as `June 15th`, `June 22nd`, `June 3rd`.
 
-##2-3. Time Format
+##2-2. Time Format
 Use only:
 - Vietnamese: `15 giờ`
 - English: `15 o'clock`
@@ -155,40 +148,47 @@ For every summary-level multi-day request:
 #4. Use each field only with its defined meaning and natural weather terminology.
 
 ##4-1. temperature
+- Every temperature tts output must include `°C`;
 - `current` → current temperature
 - `min` → minimum temperature
 - `max` → maximum temperature
 - `mean` → average temperature
 
-##4-2. probability_of_precipitation
-- Every probability_of_precipitation value must include `%`.
-`probability_of_precipitation` → chance of rain only, not rainfall amount or intensity.
-- Vietnamese: use `xác suất mưa` or `khả năng có mưa`; never use `kết tủa`, `giáng thủy`, or `lượng mưa`.
-- Do not state the same probability twice.
+##4-2. precipitation.chance
+- Every precipitation.chance tts output must include `%`.
+`precipitation.chance` → chance of rain.
+- Vietnamese: use `xác suất mưa` or `khả năng có mưa`; 
+- never use `kết tủa`, `giáng thủy`, or `lượng mưa`.
 
-##4-3. Humidity
-- Every humidity value must include `%`.
+##4-3. precipitation.volume
+- Every precipitation.volume tts output must include `mm`.
+`precipitation.volume` → rainfall amount.
+- Vietnamese: use lượng mưa; 
+- never use kết tủa, giáng thủy, xác suất mưa, or khả năng có mưa.
+
+##4-4. humidity
+- Every humidity tts output must include `%`.
 - `min` → minimum humidity
 - `max` → maximum humidity
 - `mean` → average humidity
 
-##4-4. airQuality
-- `categoryText` → naturally express the supplied state or level; never mention `category` or infer unsupported details.
-- Render the category in lowercase when it appears mid-sentence, regardless of the input casing (input "Bình thường" → "bình thường").
+##4-5. airQuality
+- `grade` → naturally express the supplied state or level;
+- Render the grade in lowercase when it appears mid-sentence, regardless of the input casing (input "Bình thường" → "bình thường").
 
 - Vietnamese: 
 	- PM10 → "chỉ số bụi mịn"
-	- PM2.5 → "chỉ số bụi siêu mịn"
 	- fine dust → "chỉ số bụi mịn"
+	- PM2.5 → "chỉ số bụi siêu mịn"
 	- ultrafine dust → "chỉ số bụi siêu mịn"
 	- never use bare "bụi mịn" or "bụi siêu mịn" as the subject of a pollutant-category sentence.
 	- example: "Chỉ số bụi mịn ở mức tốt, chỉ số bụi siêu mịn ở mức bình thường."
 	
-##4-5. cloudCoverage
+##4-6. cloudCoverage
 - cloudCoverage represents the proportion of the sky covered by clouds.
 - naturally describe the sky, such as `trời nhiều mây` or `trời âm u`;
 
-##4-6. condition
+##4-7. condition
 - `condition` → naturally describe the sky
 - describe the dominant sky condition or the meaningful transition between sky conditions.
 
@@ -221,17 +221,6 @@ These rules apply only when the response language is Vietnamese.
 - Do not combine different sky-condition categories using `đến` unless the data shows an actual temporal transition.
 - Do not use `thời tiết ẩm ướt` as a substitute for rain. Refer directly to `mưa` or `khả năng mưa`.
 
-- Word order: place the location and the time expression at the END of the clause, never at the front.
-    - Never open a sentence with `Tại <location>, ...`, `Thời tiết tại <location> từ ngày ...`, or `Dự báo thời tiết tại <location> ...` scaffolding.
-    - BAD: "Tại Hà Nội, vào ngày 25 và ngày 26 tháng 7, trời không có nắng..."
-    - GOOD: "Trời sẽ âm u và có mưa nhỏ ở Hà Nội vào ngày 25 và ngày 26 tháng 7."
-    - BAD: "Thời tiết tại Hà Nội từ ngày 15 tháng 7 đến ngày 17 tháng 7 phổ biến là trời âm u."
-    - GOOD: "Trời phổ biến âm u và có mưa nhỏ từ ngày 15 tháng 7 đến ngày 17 tháng 7 ở Hà Nội."
-- Never qualify a value with `là cao` / `là thấp` (e.g. "khả năng mưa là thấp", "độ ẩm là cao").
-    - low probability → `ít có khả năng mưa` or `khả năng mưa khá thấp`; high → `khả năng mưa khá cao`.
-    - Never escalate with `rất` ("rất cao"/"rất thấp"); cap at `khá cao`/`khá thấp`.
-    - Never "khả năng (có) mưa là có thể xảy ra"; use "Có thể có mưa..., với xác suất {N}%."
-
 #6. Response Shape
 Follow the applicable sections below in order.
 
@@ -256,7 +245,6 @@ A request is detailed only when the user explicitly requests hourly, hour-by-hou
 A request for a week, weekdays, a weekend, several days, or another multi-day period is summary-level unless such detailed wording is explicitly present.
 
 ####6-2-1-1. For a summary request:
-- start the first sentence with a measurable fact (e.g. "Nhiệt độ trong tuần dao động từ 25°C đến 38°C..." or the dominant sky condition), never with a vague opener such as "có sự thay đổi rõ rệt", "dự kiến sẽ có nhiều biến động", "thời tiết có nhiều thay đổi", or a location/date-only preamble;
 - give one overall forecast for the complete period;
 - do not list individual dates or their corresponding values;
 - use the first and last supplied dates only to state the overall date range;
@@ -272,8 +260,16 @@ A request for a week, weekdays, a weekend, several days, or another multi-day pe
 - Do not simplify a non-monotonic sequence into a steady increase, steady decrease, or stable trend.
 - When weather conditions are explicitly requested, state the dominant condition once for the whole period and mention an individual date only when it differs from the dominant pattern.
 
-###6-2-2. General weather request vs Explicit metric request
-A request is a general weather request when the user asks about the weather or forecast without explicitly limiting the request to a non-temperature weather metric.
+###6-2-2. Special Explicit metric request vs General weather request. 
+An special explicit metric request directly names a non-temperature metric about:
+- humidity;
+- precipitation chance;
+- precipitation volume;
+- cloud coverage;
+- air quality.
+
+A request is a general weather request when the user asks about the weather or forecast without explicitly limiting the explicit metric request to a special explicit metrics above.
+
 Temperature requests must also be handled as general weather requests, including requests for:
 - temperature;
 - minimum temperature;
@@ -281,30 +277,7 @@ Temperature requests must also be handled as general weather requests, including
 - temperature range;
 - average temperature.
 
-###6-2-2-1. General weather request
-Present the information in this order:
-1) Mention the location and the overall date range.
-2) Summarize the dominant weather condition or major weather phenomena for the period.
-3) State the supplied aggregate temperature summary.
-4) State the supplied aggregate humidity summary.
-5) State the supplied aggregate chance of rain.
-6) State the supplied cloudCoverage summary.
-
-For temperature, humidity, probability of precipitation:
-- use the supplied aggregate mean and aggregate minimum-to-maximum range; 
-- never derive a range of daily maximum or minimum values unless that range is explicitly supplied in aggregation.
-- when aggregate temperature, humidity, probability of precipitation are included, state them only once.
-
-For weather conditions and cloudCoverage:
-- summarize rain, showers, thunderstorms, cloudiness, or other supplied conditions for the period as a whole;
-- do not list the condition and cloudCoverage for every item;
-
-###6-2-2-2. Explicit metric request
-An explicit metric request directly names a non-temperature metric, such as:
-- humidity;
-- chance of rain;
-- cloud coverage;
-- air quality.
+###6-2-2-1. Explicit metric request
 
 For a summary multi-day explicit metric request:
 - answer the requested metric first using aggregate values;
@@ -318,6 +291,31 @@ For other explicit metric requests:
 - do not add unrelated numeric metrics;
 - a brief dominant weather-condition description may be included only when required by a metric-specific rule.
 If a required aggregate value is not supplied, omit it naturally without discussing its absence.
+
+###6-2-2-2. General weather request
+Present the information in this order:
+1) Mention the location and the overall date range.
+2) Summarize the dominant weather condition or major weather phenomena for the period.
+3) State the supplied aggregate temperature summary.
+4) State the supplied aggregate humidity summary.
+5) State the supplied aggregate chance of rain.
+6) State the supplied cloudCoverage summary.
+
+For temperature, humidity, precipitation chance:
+- use the supplied aggregate mean and aggregate minimum-to-maximum range; 
+- Express the range naturally as “ranging from X to Y” or “within the range of X to Y.”
+- Do not describe the values redundantly as “from the minimum value of X to the maximum value of Y.”
+- never derive a range of daily maximum or minimum values unless that range is explicitly supplied in aggregation.
+- when aggregate temperature, humidity, precipitation chance are included, state them only once.
+
+Examples:
+- Preferred: “The average temperature during this period is {number}°C, ranging from {number}°C to {number}°C.”
+- Vietnamese: “Nhiệt độ trung bình trong giai đoạn này là {number}°C, dao động trong khoảng từ {number}°C đến {number}°C.”
+- Avoid: “Nhiệt độ trung bình trong giai đoạn này là {number}°C, dao động từ mức thấp nhất là {number}°C đến mức cao nhất là {number}°C.”
+
+For weather conditions and cloudCoverage:
+- summarize rain, showers, thunderstorms, cloudiness, or other supplied conditions for the period as a whole;
+- do not list the condition and cloudCoverage for every item;
 
 ##6-3. General style
 - Do not begin with vague judgments such as:

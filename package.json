@@ -44,6 +44,7 @@
     "test:terminal:ai:crow": "node scripts/run-test-profile.js",
     "watch:weather:answer-compare": "tsx packages/model_payload_test/runner/weatherAnswerCompare.ts",
     "probe:cache": "tsx packages/cache_probe/cacheConsistencyProbe.ts",
+    "test:personal": "tsx packages/personal_e2e/runner/run.ts",
     "llm:list": "tsx scripts/list-llm-configs.ts",
     "optimize:prompt": "tsx packages/prompt_optimizer/src/index.ts",
     "typecheck": "tsc --noEmit"
