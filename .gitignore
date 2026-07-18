@@ -30,5 +30,8 @@ Thumbs.db
 
 # prompt_optimizer run artifacts
 packages/prompt_optimizer/runs/
+
+# hallucination analyzer run artifacts
+packages/model_payload_test/analysis_runs/
 packages/e2e_regression/config/testcases/optimizer_focus.yaml
 .entity-golden-generation.json

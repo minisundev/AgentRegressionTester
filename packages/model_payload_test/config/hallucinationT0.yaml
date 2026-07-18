@@ -1,0 +1,33 @@
+# Gemma vs GPT vs Gemini — temperature 0 hallucination comparison.
+#
+# Purpose: fix sampling randomness at t0 across all three providers and let the
+# GPT answer judge (EVALUATE_WITH_GPT=1) score data fidelity, so remaining
+# failures are attributable to the model itself. Evidence base for the
+# "why Gemma can't be used" report.
+#
+# Usage (repo root):
+#   ANSWER_COMPARE_CONFIG=packages/model_payload_test/config/hallucinationT0.yaml \
+#   EVALUATE_WITH_GPT=1 npm run watch:weather:answer-compare
+#
+# Caveat: the GPT-5 family rejects custom temperature — llmId 6 (gpt-5.4) always
+# runs at its default sampling. It is included as the production baseline, not
+# as a true t0 point.
+cases:
+  - key: gemma_t0
+    label: Gemma-27B t0
+    provider: gemma
+    llmId: 2
+    temperature: 0
+
+  - key: gpt54_t0
+    label: GPT-5.4 (temp fixed by API)
+    provider: gpt
+    llmId: 6
+    temperature: 0
+
+  - key: gemini_t0
+    label: Gemini-3.5-Flash t0
+    provider: gemini
+    llmId: 8
+    temperature: 0
+    thinkingLevel: minimal

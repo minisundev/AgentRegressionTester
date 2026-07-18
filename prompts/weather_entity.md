@@ -314,6 +314,8 @@ Vietnamese hour discriminator: `N giờ/tiếng tới` (with or without `trong`)
 DURATION — weather reporting uses it as "the coming N hours" from now. Only the
 point-offset forms `N giờ/tiếng nữa` and `sau N giờ` are single-point offsets (see #9).
 
+RATIONALE (do not "fix" this asymmetry): day-unit tới gets rangeRelation="after" because days are discrete calendar blocks starting tomorrow; hour-unit tới gets rangeRelation=null because hours are a rolling window starting now. This unit-dependent split is INTENTIONAL. See #8-5.
+
 Vague upcoming periods still have no numeric count:
 - "next few days"→ delta = null
 - "trong vài ngày tới"→ delta = null
@@ -340,7 +342,9 @@ Examples:
 - "6/24 to 6/27"→ delta = 4
 - "after 3pm and before 5pm"→ delta = 1
 
-A start anchor plus a duration is not a two-boundary range:
+A start anchor plus a duration is not a two-boundary range
+
+Division of labor: the parser computes delta ONLY when the count is derivable from the utterance alone without a calendar (clock ranges, date ranges, explicit N). weekPart blocks ("weekend", "weekdays", "whole") require knowing which calendar dates fall in that block — that is backend work, so the parser must NOT compute delta for them. "Thursday to Saturday" is countable without a calendar (always 3); "this weekend" is not (its dates depend on today). This split is INTENTIONAL.
 
 ##6-5. Boundary expressions
 For a boundary expression, set `delta` only when the user explicitly states a count.
@@ -367,6 +371,7 @@ Examples:
 - `tuần giữa tháng` / `tuần cuối tháng`→ delta = 10
 
 The normalized count remains 10 even when the current month has 31 days.
+RATIONALE: 10 is a PRODUCT-DEFINED normalization constant for month-segment queries (roughly one "tuần" segment of ~10 days in the Vietnamese three-segment month division: thượng/trung/hạ tuần). Do NOT recalculate delta from actual calendar lengths, and do NOT treat this as a violation of #6-1 — month segments are an enumerated exception to the "exactly calculable" principle.
 
 #7. deltaUnit
 `deltaUnit` represents only the unit of the forecast-point count stored in `delta`.
@@ -396,10 +401,12 @@ Examples:
 - "from 7pm to 10pm"→ deltaUnit = "hour"
 - "3 hours after 7pm"→ deltaUnit = "hour"
 - "trong 5 giờ tới"→ deltaUnit = "hour"
+- "10 giờ tới"→ deltaUnit = "hour"
+- "10 tiếng tới"→ deltaUnit = "hour"
 
-When the expression is a single-point hour offset and `delta` is null:
-- "in 3 hours" / "2 giờ nữa"→ deltaUnit = null
-- "10 giờ tới" / "10 tiếng tới" (bare, no "trong")→ deltaUnit = null
+When the expression is a single-point hour offset and delta is null:
+- "in 3 hours" / "2 giờ nữa" / "sau 10 giờ"
+  → deltaUnit = null
 
 ##7-3. Day unit
 Set `deltaUnit = "day"` when each forecast point represents one calendar day.
@@ -447,6 +454,15 @@ Meanings:
 - the forecast-point unit
 - the anchor value itself
 - granularity
+
+##8-0. The token `tới` is polysemous — NEVER map it 1:1 to any single field:
+(a) future-duration marker in `N ngày/tuần tới` → see #8-5(a)
+(b) rolling-window marker in `N giờ/tiếng tới` → see #8-5(b)
+(c) range connector in `từ X tới Y` → rangeRelation = "from"
+    because the stored anchor is the inclusive start boundary; see #8-3
+(d) standalone accentless `toi` → do NOT treat it as a temporal marker.
+    Recognize accentless `toi` only when it appears inside an otherwise
+    unambiguous temporal expression; see #8-6
 
 ##8-1. FROM
 Set `rangeRelation = "from"` for an inclusive forward boundary.
@@ -500,6 +516,7 @@ Examples:
 The anchor of a future duration depends on the TIME UNIT, because days are
 discrete calendar blocks while hours are a rolling stream:
 
+INTENTIONAL ASYMMETRY:
 (a) DAY/WEEK-unit durations → `rangeRelation = "after"` (exclusive of today;
 the "upcoming" days have not started yet, so the range begins on the NEXT
 calendar day).
@@ -561,6 +578,8 @@ Contrast (point offset `nữa`/`sau` vs duration `tới`):
 - "10 giờ nữa độ ẩm như thế nào" → relativeHours = 10, delta = null, rangeRelation = null
 - "10 giờ tới độ ẩm như thế nào" / "trong 10 giờ tới..." → relativeHours = null, delta = 10, deltaUnit = "hour", rangeRelation = null
 
+sau N giờ disambiguation: if N is a plausible clock hour WITH a meridiem/daypart marker attached (sau 7h tối, sau 19h), it is a clock-time boundary → #10-2. Otherwise (sau 3 giờ, sau 3 tiếng) it is a relative offset → relativeHours = N.
+
 English:
 - "in 3 hours" → relativeHours = 3
 - "after 2 hours" → relativeHours = 2
@@ -597,6 +616,7 @@ If no concrete clock time: specificHour = null.
 - Extract the anchor NUMBER into specificHour (marker → #11).
 - relativeHours stays null (clock anchor, not a relative offset).
 - The before/after DIRECTION is a span → see #6 (delta).
+- "bare sau N giờ without daypart → #9"
 Examples (number only):
 - "weather after 7pm"  → specificHour = 7
 - "weather before 7pm" → specificHour = 7
@@ -652,6 +672,10 @@ Examples:
 "from 7 to 10" → meridiem = null
 
 ##11-3. Vague meridiem with timeOfDay
+
+The rules in #11-3 determine meridiem only when a specificHour is also present.
+If there is no specific clock hour, extract only timeOfDay and keep meridiem = null.
+
 Mapping Examples:
 ###11-3-1. dawn → "am"
 English Examples: dawn / early morning / daybreak / before sunrise / crack of dawn / first light / predawn
@@ -794,11 +818,11 @@ Default Month: {currentMonth}
 
 ##14-1. Explicit calendar dates
 Examples:
-- "March 25" → "{currentYear}-03-25"
+- "March 28" → "{currentYear}-03-28"
 - "ngày 17 tháng 2" → "{currentYear}-02-17"
-- "25/3" → "{currentYear}-03-25"
+- "28/3" → "{currentYear}-03-28"
 - "12/25" → "{currentYear}-12-25"
-- "March 25 2025" → "2025-12-25"
+- "March 28 2025" → "2025-03-28"
 
 ##14-2. Vietnamese current-month segment start dates
 Beginning segment, `specificDate = "{currentYear}-{currentMonth}-01"`:
@@ -864,6 +888,12 @@ When relativeWeeks is set:
 - It MAY be used together with delta.
 - If the expression refers to a specific weekday, set specificWeekday to that weekday.
 
+##16-0. tuần routing (check in this order):
+N tuần as continuous duration ("2 tuần tới") → delta = N*7, see #16-1
+tuần + month-position modifier ("tuần cuối tháng") → specificDate, see #16-5 and #14-2
+tuần + week pointer ("tuần sau") → relativeWeeks, see #16-2
+cuối tuần → weekPart = "weekend", see #17-1
+
 ##16-1. CRITICAL: week SPAN vs week OFFSET
 - A continuous-range expression like "next N weeks" is a SPAN, not an OFFSET.
   → delta = N*7 (see #6), relativeWeeks = null, specificWeekday = null.
@@ -879,7 +909,8 @@ English:
 - "the week after next" → relativeWeeks = 2
 
 Vietnamese:
-- "tuần này", "trong tuần này", "cả tuần này", "suốt tuần này", "tuần hiện tại", "các ngày trong tuần", "ngày trong tuần" → relativeWeeks = 0
+- "các ngày trong tuần", "ngày trong tuần" → relativeWeeks = null
+- "tuần này", "trong tuần này", "cả tuần này", "suốt tuần này", "tuần hiện tại" → relativeWeeks = 0
 - "tuần sau", "tuần tới", "tuần kế tiếp", "trong tuần sau", "cả tuần sau", "suốt tuần sau" → relativeWeeks = 1
 - "tuần sau nữa", "tuần kế tiếp nữa", "tuần tới nữa" → relativeWeeks = 2
 
@@ -890,8 +921,9 @@ English:
 - "weekend after next" → relativeWeeks = 2
 
 Vietnamese:
+- "cuối tuần" → relativeWeeks = null
 - "cuối tuần này" → relativeWeeks = 0
-- "cuối tuần sau" → relativeWeeks = 1
+- "cuối tuần sau"/"cuối tuần tới" → relativeWeeks = 1
 - "cuối tuần sau nữa" → relativeWeeks = 2
 
 ##16-4. Daily breakdown expressions within a week
@@ -907,7 +939,7 @@ Vietnamese:
 
 Rules:
 - Set weekPart = "whole". Never set weekPart = "weekdays" or specificWeekday.
-- If no week modifier is present, default to relativeWeeks = 0.
+- If no week modifier is present, default to relativeWeeks = null.
 - Takes priority over #17-2 when both a daily-breakdown trigger and a week modifier appear.
 
 ##16-5. Vietnamese week-of-month expressions
@@ -923,8 +955,11 @@ Examples:
 weekPart captures broad, predefined day groupings within a week.
 MUST be one of: "whole" | "weekdays" | "weekend" | null.
 "whole" covers the entire single week and is set for the entire week expressions listed in #16-2 and #16-4.
-Vietnamese "các ngày trong tuần (này/sau/sau nữa)" means the days of that week as a
-whole, NOT the working-day block → weekPart = "whole" (with the week's relativeWeeks).
+
+CRITICAL CONTRAST (both look like "days of the week" but map differently):
+- "các ngày trong tuần" = the days of that week AS A WHOLE → weekPart = "whole"
+- "ngày làm việc" / "ngày thường" / "từ thứ Hai đến thứ Sáu" = the working-day block → weekPart = "weekdays"
+- Do NOT merge these two lists.
 
 CRITICAL RULE:
 When weekPart is detected, do NOT attempt to calculate `delta` or `specificWeekday`. Just extract the weekPart and let the backend handle the exact date ranges. 
@@ -943,7 +978,7 @@ Vietnamese:
 ##17-2. "weekdays" (Monday - Friday)
 Expressions referring to the working days as a single continuous block.
 - English: weekdays, on weekdays, during the week, workdays, working days
-- Vietnamese: giữa tuần, từ thứ Hai đến thứ Sáu, thứ Hai đến thứ Sáu, ngày thường, các ngày thường, ngày làm việc, các ngày làm việc
+- Vietnamese: từ thứ Hai đến thứ Sáu, thứ Hai đến thứ Sáu, ngày thường, các ngày thường, ngày làm việc, các ngày làm việc
 → weekPart = "weekdays"
 
 #18. fallback
